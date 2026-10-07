@@ -276,3 +276,69 @@ body {
         top: -20px;
     }
 }
+
+/* === 商品頁 (Shop) 區塊 === */
+.shop-container {
+    max-width: 1200px; margin: 120px auto 80px; padding: 2rem;
+}
+.section-title {
+    text-align: center; margin-bottom: 3rem; font-size: 2.2rem; letter-spacing: 4px; color: var(--text-dark);
+}
+.category-title {
+    font-family: 'Lato', 'Noto Sans TC', sans-serif;
+    font-size: 1.2rem; font-weight: 400; color: var(--primary-color);
+    letter-spacing: 2px; margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;
+}
+
+/* 商品網格 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 3rem 2rem;
+}
+.product-card {
+    cursor: pointer; text-align: center; transition: transform 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+.product-card .img-wrapper {
+    width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
+    background: #fff; margin-bottom: 1.5rem; border-radius: 4px;
+}
+.product-card img {
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+}
+.product-card:hover img { transform: scale(1.05); }
+.product-title {
+    font-size: 0.95rem; font-weight: 400; color: var(--text-dark);
+    margin-bottom: 1rem; line-height: 1.5; letter-spacing: 1px;
+}
+
+/* 購物車按鈕 */
+.add-to-cart-btn {
+    background: transparent; border: 1px solid var(--text-dark);
+    color: var(--text-dark); padding: 0.6rem 1.5rem;
+    font-size: 0.85rem; letter-spacing: 1.5px; cursor: pointer;
+    transition: all 0.3s ease; border-radius: 2px;
+}
+.add-to-cart-btn:hover {
+    background: var(--text-dark); color: #fff;
+}
+
+/* 專屬介紹視角 (Detail View) */
+.back-btn {
+    background: none; border: none; font-size: 0.9rem; color: var(--text-light);
+    cursor: pointer; margin-bottom: 2rem; letter-spacing: 1px; transition: color 0.3s;
+}
+.back-btn:hover { color: var(--text-dark); }
+.detail-layout {
+    display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start;
+}
+.detail-image { flex: 1; min-width: 300px; }
+.detail-image img { width: 100%; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.detail-info { flex: 1; min-width: 300px; padding-top: 2rem; }
+.detail-info h2 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 2rem; }
+.detail-desc { font-size: 1rem; line-height: 2.2; color: var(--text-light); letter-spacing: 1px; text-align: justify; margin-bottom: 3rem; }
+.detail-cart-btn { padding: 1rem 3rem; font-size: 1rem; }
