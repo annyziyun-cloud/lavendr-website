@@ -203,8 +203,8 @@ body {
 /* 左上角直書文字設計 */
 .vertical-text {
     position: absolute;
-    top: -20px;
-    left: 2rem;
+    top: -40px;         /* 稍微往上提 */
+    left: 0;            /* 往左推到邊界 */
     writing-mode: vertical-rl;
     text-orientation: mixed;
     font-family: 'Playfair Display', 'Noto Serif TC', serif;
@@ -218,13 +218,14 @@ body {
 /* 左右雙欄排版 */
 .story-layout {
     display: flex;
-    flex-wrap: wrap; /* 在手機版時會自動折行 */
+    flex-wrap: wrap; 
     align-items: center;
-    gap: 5rem; /* 圖文之間的間距 */
-    margin-top: 4rem; /* 讓出空間給左上角直書文字 */
+    gap: 5rem; 
+    margin-top: 6rem;   /* 把圖片往下推，避開直書文字的尾端 */
+    margin-left: 3.5rem;  /* 把圖片往右推，拉開完美的水平空間 */
 }
 
-/* 左側圖片區塊 */
+/* 左側圖片區塊 (保持不變，或可再次確認) */
 .story-image {
     flex: 1;
     min-width: 300px;
@@ -235,10 +236,10 @@ body {
     height: auto;
     object-fit: cover;
     border-radius: 4px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* 微微的陰影增加立體感 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* 右側文字區塊 */
+/* 右側文字區塊 (保持不變) */
 .story-text {
     flex: 1;
     min-width: 300px;
@@ -246,30 +247,32 @@ body {
 }
 .story-text h2 {
     font-size: 2rem;
-    letter-spacing: 8px; /* 加大字距呈現 LOGO 感 */
+    letter-spacing: 8px;
     margin-bottom: 3rem;
     color: var(--text-dark);
 }
 .story-paragraphs p {
     margin-bottom: 2rem;
     font-size: 0.95rem;
-    line-height: 2.2; /* 較寬的行高產生呼吸感 */
+    line-height: 2.2;
     color: var(--text-light);
     letter-spacing: 1.5px;
-    text-align: justify; /* 左右對齊 */
+    text-align: justify;
 }
 
-/* RWD: 手機版微調 */
+/* RWD: 手機版微調 (需更新，確保手機版不會跑版) */
 @media (max-width: 768px) {
     .story-layout {
         flex-direction: column;
         gap: 3rem;
+        margin-left: 0;    /* 手機版將往右推的距離歸零 */
+        margin-top: 4rem;
     }
     .story-text {
         padding-right: 0;
     }
     .vertical-text {
         left: 1rem;
-        top: -10px;
+        top: -20px;
     }
 }
