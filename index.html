@@ -112,9 +112,73 @@
 
         <!-- 3. 商品頁面 -->
         <section id="shop" class="page-section">
-            <div class="page-container glass-card">
-                <h2 class="serif-title" data-i18n="shop_title">商品與主打</h2>
-                <p data-i18n="shop_desc">Shop & Products 測試區塊。未來可在此展示香氛選物清單。</p>
+            <div class="shop-container">
+                
+                <!-- 視角 A：商品列表 -->
+                <div id="shop-list-view">
+                    <h2 class="serif-title section-title">Shop Collection</h2>
+                    
+                    <!-- 主打商品 -->
+                    <h3 class="category-title">主打商品</h3>
+                    <div class="product-grid">
+                        <div class="product-card" onclick="openProduct('p1')">
+                            <div class="img-wrapper"><img src="./product-1.jpg" alt="留白禮盒"></div>
+                            <h4 class="product-title">【茶香】留白 (Blank Space) 禮盒 100ml</h4>
+                            <button class="add-to-cart-btn">加入購物車</button>
+                        </div>
+                        <div class="product-card" onclick="openProduct('p2')">
+                            <div class="img-wrapper"><img src="./product-2.jpg" alt="織眠禮盒"></div>
+                            <h4 class="product-title">【花香】織眠 (Woven Sleep) 禮盒 100ml</h4>
+                            <button class="add-to-cart-btn">加入購物車</button>
+                        </div>
+                        <div class="product-card" onclick="openProduct('p3')">
+                            <div class="img-wrapper"><img src="./product-3.jpg" alt="隅間禮盒"></div>
+                            <h4 class="product-title">【咖啡】隅間 (The Corner) 禮盒 100ml</h4>
+                            <button class="add-to-cart-btn">加入購物車</button>
+                        </div>
+                    </div>
+
+                    <!-- 香氛小物 -->
+                    <h3 class="category-title" style="margin-top: 5rem;">香氛小物</h3>
+                    <div class="product-grid">
+                        <div class="product-card" onclick="openProduct('p4')">
+                            <div class="img-wrapper"><img src="./product-4.jpg" alt="擴香棒"></div>
+                            <h4 class="product-title">擴香棒禮盒 10根+2朵裝飾紙花</h4>
+                            <button class="add-to-cart-btn">加入購物車</button>
+                        </div>
+                        <div class="product-card" onclick="openProduct('p5')">
+                            <div class="img-wrapper"><img src="./product-5.jpg" alt="留白補充包"></div>
+                            <h4 class="product-title">【茶香】留白 (Blank Space) 補充包 100ml</h4>
+                            <button class="add-to-cart-btn">加入購物車</button>
+                        </div>
+                        <div class="product-card" onclick="openProduct('p6')">
+                            <div class="img-wrapper"><img src="./product-6.jpg" alt="織眠補充包"></div>
+                            <h4 class="product-title">【花香】織眠 (Woven Sleep) 補充包 100ml</h4>
+                            <button class="add-to-cart-btn">加入購物車</button>
+                        </div>
+                        <div class="product-card" onclick="openProduct('p7')">
+                            <div class="img-wrapper"><img src="./product-7.jpg" alt="隅間補充包"></div>
+                            <h4 class="product-title">【咖啡】隅間 (The Corner) 補充包 100ml</h4>
+                            <button class="add-to-cart-btn">加入購物車</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 視角 B：單一商品介紹頁 (預設隱藏) -->
+                <div id="product-detail-view" style="display: none;">
+                    <button class="back-btn" onclick="closeProduct()">← 返回商品列表</button>
+                    <div class="detail-layout">
+                        <div class="detail-image">
+                            <img id="detail-img" src="" alt="商品圖片">
+                        </div>
+                        <div class="detail-info">
+                            <h2 id="detail-title" class="serif-title"></h2>
+                            <p id="detail-desc" class="detail-desc"></p>
+                            <button class="add-to-cart-btn detail-cart-btn">加入購物車</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
