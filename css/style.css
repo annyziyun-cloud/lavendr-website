@@ -2,9 +2,10 @@
     --primary-color: #8D8B85; /* 莫蘭迪灰棕 */
     --text-dark: #333333;
     --text-light: #666666;
-    --glass-bg: rgba(255, 255, 255, 0.65);
-    --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-shadow: rgba(0, 0, 0, 0.08);
+    /* 因為背景變白，毛玻璃的透明度稍微調降，讓質感更通透 */
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -18,6 +19,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    background-color: #F7F5F0; /* 溫潤的米白色背景 */
 }
 
 .serif-title, .logo {
@@ -25,19 +27,10 @@ body {
     font-weight: 600;
 }
 
-/* 基礎大理石背景 */
-.marble-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover; background-position: center;
-    opacity: 0.7; z-index: -2;
-}
-
 /* 導覽列 */
 .glass-nav {
     position: fixed; top: 0; width: 100%;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
@@ -72,7 +65,7 @@ body {
 /* 毛玻璃通用屬性 */
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     box-shadow: 0 8px 32px 0 var(--glass-shadow);
@@ -81,24 +74,25 @@ body {
 /* === 首頁 Hero Section === */
 .hero-section {
     width: 100vw; height: 100vh;
-    /* 這裡使用一張帶有空間感的輕奢背景圖 */
-    background-image: url('https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=2000&q=80');
+    /* 這裡替換成你上傳的圖片檔名。如果在根目錄就是 ../hero.jpg */
+    background-image: url('../hero.jpg');
     background-size: cover; background-position: center;
     position: relative;
     display: flex; justify-content: center; align-items: center;
 }
+
 /* 加上一層微薄的遮罩讓文字更清晰 */
 .hero-section::after {
     content: ''; position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(255, 255, 255, 0.2); z-index: 1;
+    background: rgba(255, 255, 255, 0.15); z-index: 1;
 }
 .hero-text-box {
     position: relative; z-index: 2; text-align: center;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
     padding: 3rem 4rem; border-radius: 8px;
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 .hero-quote {
     font-size: 2.2rem; color: #222;
@@ -127,10 +121,11 @@ body {
 .news-card {
     display: flex; flex-direction: column; overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: #FFFFFF; /* 在米白背景上，讓卡片呈現純白以跳出層次 */
 }
 .news-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 .popup-card {
     padding: 2.5rem; justify-content: center; text-align: left;
@@ -164,12 +159,13 @@ body {
 .modal {
     display: none; position: fixed; z-index: 2000; left: 0; top: 0;
     width: 100%; height: 100%; overflow: auto;
-    background-color: rgba(0,0,0,0.4); backdrop-filter: blur(5px);
+    background-color: rgba(0,0,0,0.2); backdrop-filter: blur(8px);
     align-items: center; justify-content: center;
 }
 .modal.show { display: flex; animation: fadeIn 0.3s; }
 .modal-content {
     padding: 3rem; max-width: 500px; width: 90%; position: relative; text-align: center;
+    background: rgba(255, 255, 255, 0.85); /* 提升彈窗的白度 */
 }
 .close-btn {
     position: absolute; top: 1rem; right: 1.5rem;
