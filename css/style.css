@@ -1,0 +1,154 @@
+:root {
+    /* 莫蘭迪/輕奢基礎色系 */
+    --primary-color: #8D8B85;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 內文使用乾淨的無襯線體 */
+    font-family: 'Lato', 'Noto Sans TC', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 標題使用優雅的襯線體 */
+.serif-title, .logo {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-weight: 600;
+}
+
+/* 大理石背景 (使用免費無版權大理石紋理圖測試) */
+.marble-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+/* 導覽列毛玻璃設定 */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #000;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #000;
+}
+
+.lang-toggle {
+    background: transparent;
+    border: 1px solid var(--text-light);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+    background: var(--text-dark);
+    color: #fff;
+}
+
+/* 內容區塊毛玻璃卡片 */
+.main-content {
+    max-width: 900px;
+    margin: 120px auto 50px; /* 留出導覽列高度 */
+    padding: 0 2rem;
+}
+
+.page-section {
+    display: none; /* 預設隱藏所有頁面 */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.page-section.active {
+    display: block; /* 只顯示啟用的頁面 */
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.glass-card p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+/* 簡單的淡入動畫讓切換更有呼吸感 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
