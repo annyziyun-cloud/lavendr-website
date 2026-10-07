@@ -114,31 +114,31 @@
         <section id="shop" class="page-section">
             <div class="shop-container">
                 
-                <!-- 視角 A：商品列表 (改用 mood 香味示意圖) -->
+                <!-- 視角 A：商品列表 -->
                 <div id="shop-list-view">
                     <h2 class="serif-title section-title">Shop Collection</h2>
                     
-                    <!-- 主打商品 -->
+                    <!-- 主打商品 (使用 mood 情境圖) -->
                     <h3 class="category-title">主打商品</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p1')">
-                            <div class="img-wrapper"><img src="./mood-1.jpg" alt="留白 香味示意圖"></div>
+                            <div class="img-wrapper"><img src="./mood-1.jpg" alt="留白示意圖"></div>
                             <h4 class="product-title">【茶香】留白 (Blank Space) 禮盒 100ml</h4>
                             <button class="add-to-cart-btn">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p2')">
-                            <div class="img-wrapper"><img src="./mood-2.jpg" alt="織眠 香味示意圖"></div>
+                            <div class="img-wrapper"><img src="./mood-2.jpg" alt="織眠示意圖"></div>
                             <h4 class="product-title">【花香】織眠 (Woven Sleep) 禮盒 100ml</h4>
                             <button class="add-to-cart-btn">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p3')">
-                            <div class="img-wrapper"><img src="./mood-3.jpg" alt="隅間 香味示意圖"></div>
+                            <div class="img-wrapper"><img src="./mood-3.jpg" alt="隅間示意圖"></div>
                             <h4 class="product-title">【咖啡】隅間 (The Corner) 禮盒 100ml</h4>
                             <button class="add-to-cart-btn">加入購物車</button>
                         </div>
                     </div>
 
-                    <!-- 香氛小物 -->
+                    <!-- 香氛小物 (直接使用 product 實體圖) -->
                     <h3 class="category-title" style="margin-top: 5rem;">香氛小物</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p4')">
@@ -162,8 +162,9 @@
                             <button class="add-to-cart-btn">加入購物車</button>
                         </div>
                     </div>
+                </div>
 
-                <!-- 視角 B：單一商品介紹頁 (包含兩張圖片) -->
+                <!-- 視角 B：單一商品介紹頁 (務必確認這裡有兩張 img 標籤) -->
                 <div id="product-detail-view" style="display: none;">
                     <button class="back-btn" onclick="closeProduct()">← 返回商品列表</button>
                     <div class="detail-layout">
