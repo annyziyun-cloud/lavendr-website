@@ -191,3 +191,85 @@ body {
     font-size: 1.8rem; font-weight: 300; color: #aaa; cursor: pointer; transition: color 0.3s;
 }
 .close-btn:hover { color: #000; }
+
+/* === 品牌故事 (Brand Story) 區塊 === */
+.story-container {
+    max-width: 1100px;
+    margin: 140px auto 80px; /* 避開導覽列 */
+    padding: 2rem;
+    position: relative;
+}
+
+/* 左上角直書文字設計 */
+.vertical-text {
+    position: absolute;
+    top: -20px;
+    left: 2rem;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    line-height: 2;
+    z-index: 10;
+}
+
+/* 左右雙欄排版 */
+.story-layout {
+    display: flex;
+    flex-wrap: wrap; /* 在手機版時會自動折行 */
+    align-items: center;
+    gap: 5rem; /* 圖文之間的間距 */
+    margin-top: 4rem; /* 讓出空間給左上角直書文字 */
+}
+
+/* 左側圖片區塊 */
+.story-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+.story-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* 微微的陰影增加立體感 */
+}
+
+/* 右側文字區塊 */
+.story-text {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 2rem;
+}
+.story-text h2 {
+    font-size: 2rem;
+    letter-spacing: 8px; /* 加大字距呈現 LOGO 感 */
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+.story-paragraphs p {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 2.2; /* 較寬的行高產生呼吸感 */
+    color: var(--text-light);
+    letter-spacing: 1.5px;
+    text-align: justify; /* 左右對齊 */
+}
+
+/* RWD: 手機版微調 */
+@media (max-width: 768px) {
+    .story-layout {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .story-text {
+        padding-right: 0;
+    }
+    .vertical-text {
+        left: 1rem;
+        top: -10px;
+    }
+}
