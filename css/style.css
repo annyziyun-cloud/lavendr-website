@@ -240,8 +240,20 @@ body {
 }
 .back-btn:hover { color: var(--text-dark); }
 .detail-layout { display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start; }
-.detail-image { flex: 1; min-width: 300px; }
-.detail-image img { width: 100%; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.detail-images-column { 
+    flex: 1; 
+    min-width: 300px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 2rem; /* 兩張圖片之間的間距 */
+}
+.detail-images-column img { 
+    width: 100%; 
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+}
 .detail-info { flex: 1; min-width: 300px; padding-top: 2rem; }
 .detail-info h2 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 2rem; line-height: 1.4; }
 .detail-desc { font-size: 1rem; line-height: 2.2; color: var(--text-light); letter-spacing: 1px; text-align: justify; margin-bottom: 3rem; }
