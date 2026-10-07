@@ -1,25 +1,38 @@
 :root {
-    --primary-color: #8D8B85; /* 莫蘭迪灰棕 */
+    /* 莫蘭迪灰棕基礎色系 */
+    --primary-color: #8D8B85; 
     --text-dark: #333333;
     --text-light: #666666;
-    /* 因為背景變白，毛玻璃的透明度稍微調降，讓質感更通透 */
+    --bg-color: #F7F5F0; /* 溫潤的米白色背景 */
+    
+    /* 毛玻璃屬性 */
     --glass-bg: rgba(255, 255, 255, 0.4);
     --glass-border: rgba(255, 255, 255, 0.6);
     --glass-shadow: rgba(0, 0, 0, 0.05);
 }
 
+/* === 1. 全域重置與基礎設定 === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 客製化極簡捲軸 */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-color); }
+::-webkit-scrollbar-thumb { background: #d0ceca; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
 body {
     font-family: 'Lato', 'Noto Sans TC', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
-    background-color: #F7F5F0; /* 溫潤的米白色背景 */
+    background-color: var(--bg-color);
+    /* 字體抗鋸齒優化，讓輕奢字體邊緣更銳利優雅 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .serif-title, .logo {
@@ -27,42 +40,52 @@ body {
     font-weight: 600;
 }
 
-/* 導覽列 */
+/* === 2. 導覽列 (Navigation) === */
 .glass-nav {
-    position: fixed; top: 0; width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 .nav-container {
-    max-width: 1200px; margin: 0 auto; padding: 1.2rem 2rem;
-    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 1.2rem 2rem;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
 }
 .logo { font-size: 1.5rem; letter-spacing: 2px; color: #000; text-decoration: none; }
 .nav-links { list-style: none; display: flex; gap: 2rem; }
-.nav-item { text-decoration: none; color: var(--text-light); font-size: 0.95rem; transition: color 0.3s; }
+.nav-item { 
+    text-decoration: none; color: var(--text-light); 
+    font-size: 0.95rem; transition: color 0.4s ease; 
+}
 .nav-item:hover, .nav-item.active { color: #000; }
+
 .lang-toggle {
     background: transparent; border: 1px solid var(--text-light);
     padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer;
-    color: var(--text-dark); transition: all 0.3s ease;
+    color: var(--text-dark); transition: all 0.4s ease;
 }
 .lang-toggle:hover { background: var(--text-dark); color: #fff; }
 
-/* 頁面切換控制 */
-.page-section { display: none; animation: fadeIn 0.6s ease-out; }
-.page-section.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-/* 其他頁面的通用容器 */
-.page-container {
-    max-width: 900px; margin: 120px auto 80px; padding: 3rem;
-    min-height: 60vh; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
+/* === 3. 頁面切換控制與動畫 === */
+.page-section { display: none; }
+/* 引入更柔和的貝茲曲線，增加呼吸感 */
+.page-section.active { display: block; animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(15px); } 
+    to { opacity: 1; transform: translateY(0); } 
 }
 
-/* 毛玻璃通用屬性 */
+/* 通用毛玻璃卡片 */
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -71,90 +94,64 @@ body {
     box-shadow: 0 8px 32px 0 var(--glass-shadow);
 }
 
-/* === 首頁 Hero Section === */
+/* === 4. 首頁 Hero Section === */
 .hero-section {
-    width: 100vw; height: 100vh;
-    background-image: url('../hero.jpg'); /* 你的照片檔名 */
-    background-size: cover; background-position: center;
+    width: 100%; /* 防呆：不用 100vw，避免出現橫向捲軸 */
+    height: 100vh;
+    background-image: url('../hero.jpg'); 
+    background-size: cover; 
+    background-position: center;
     position: relative;
     display: flex; 
-    /* 將排版改為靠左，並垂直置中偏下 */
     justify-content: flex-start; 
     align-items: center;
-    padding-left: 10%; /* 讓文字距離左邊緣有呼吸感 */
+    padding-left: 10%;
 }
-
-/* 改用由左至右漸淡的遮罩，只稍微提亮左側確保文字清晰，不遮擋中央人物 */
 .hero-section::after {
     content: ''; position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
-    z-index: 1;
-    pointer-events: none; /* 確保遮罩不會阻擋滑鼠點擊 */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
+    z-index: 1; pointer-events: none; 
 }
-
-/* 移除原本的毛玻璃方框，讓文字自由 */
 .hero-text-box {
     position: relative; z-index: 2; 
-    text-align: left; /* 文字改為左對齊，更有雜誌感 */
-    background: transparent; /* 移除背景色 */
-    backdrop-filter: none; /* 移除毛玻璃 */
-    -webkit-backdrop-filter: none;
-    border: none; /* 移除邊框 */
-    padding: 0;
-    max-width: 500px; /* 限制單行字數，讓排版更修長 */
-    margin-top: 5%; /* 稍微往下推，避開頭部視線 */
+    text-align: left; 
+    max-width: 500px; 
+    margin-top: 5%; 
 }
-
 .hero-quote {
-    font-size: 2.4rem; 
-    color: #2c2a29; /* 使用深棕灰色取代死黑，更有莫蘭迪感 */
-    margin-bottom: 2.5rem; 
-    letter-spacing: 4px; 
-    font-weight: 400;
-    line-height: 1.5;
-    /* 加入一點點極輕微的白色發光，避免文字在沙灘處被吃掉 */
+    font-size: 2.4rem; color: #2c2a29; 
+    margin-bottom: 2.5rem; letter-spacing: 4px; 
+    font-weight: 400; line-height: 1.5;
     text-shadow: 0 0 20px rgba(255,255,255,0.7);
 }
-
 .hero-btn {
-    display: inline-block;
-    padding: 1rem 3.5rem;
+    display: inline-block; padding: 1rem 3.5rem;
     border: 1px solid #2c2a29; color: #2c2a29;
     text-decoration: none; font-size: 0.95rem; letter-spacing: 2px;
     transition: all 0.4s ease; background: transparent;
 }
-.hero-btn:hover {
-    background: #2c2a29; color: #fff;
-}
+.hero-btn:hover { background: #2c2a29; color: #fff; }
 
-/* === 首頁 News & Pop-up 區塊 === */
-.news-section {
-    max-width: 1200px; margin: 0 auto; padding: 6rem 2rem;
-}
+/* === 5. 首頁 News & Pop-up 卡片 === */
+.news-section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
 .card-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;
 }
 .news-card {
     display: flex; flex-direction: column; overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    background: #FFFFFF; /* 在米白背景上，讓卡片呈現純白以跳出層次 */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
+    background: #FFFFFF; border-radius: 8px; /* 加入微圓角更精緻 */
 }
-.news-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-}
-.popup-card {
-    padding: 2.5rem; justify-content: center; text-align: left;
-}
+.news-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+
+.popup-card { padding: 2.5rem; justify-content: center; text-align: left; }
 .popup-card .date { font-family: 'Lato', sans-serif; color: var(--primary-color); margin: 1rem 0 0.5rem; }
-.popup-card .desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 2rem; }
+.popup-card .desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8; }
 .tag {
     display: inline-block; font-size: 0.75rem; text-transform: uppercase;
     letter-spacing: 1px; color: #fff; background: var(--primary-color);
-    padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 1rem; align-self: flex-start;
+    padding: 0.25rem 0.75rem; border-radius: 4px; margin-bottom: 1rem; align-self: flex-start;
 }
 .action-btn {
     display: inline-block; padding: 0.8rem 1.5rem;
@@ -166,179 +163,107 @@ body {
 
 .event-card { cursor: pointer; }
 .img-wrapper { width: 100%; height: 220px; overflow: hidden; }
-.event-card img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s ease;
-}
+.event-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
 .event-card:hover img { transform: scale(1.05); }
 .card-content { padding: 2rem; }
 .card-content .desc { font-size: 0.85rem; color: var(--primary-color); margin-top: 1rem; }
 
-/* === Modal 彈窗樣式 === */
+/* === 6. Modal 彈窗樣式 === */
 .modal {
     display: none; position: fixed; z-index: 2000; left: 0; top: 0;
     width: 100%; height: 100%; overflow: auto;
     background-color: rgba(0,0,0,0.2); backdrop-filter: blur(8px);
     align-items: center; justify-content: center;
 }
-.modal.show { display: flex; animation: fadeIn 0.3s; }
+.modal.show { display: flex; animation: fadeIn 0.4s ease; }
 .modal-content {
     padding: 3rem; max-width: 500px; width: 90%; position: relative; text-align: center;
-    background: rgba(255, 255, 255, 0.85); /* 提升彈窗的白度 */
+    background: rgba(255, 255, 255, 0.9); border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 .close-btn {
     position: absolute; top: 1rem; right: 1.5rem;
     font-size: 1.8rem; font-weight: 300; color: #aaa; cursor: pointer; transition: color 0.3s;
 }
-.close-btn:hover { color: #000; }
+.close-btn:hover { color: var(--text-dark); }
 
-/* === 品牌故事 (Brand Story) 區塊 === */
-.story-container {
-    max-width: 1100px;
-    margin: 140px auto 80px; /* 避開導覽列 */
-    padding: 2rem;
-    position: relative;
-}
-
-/* 左上角直書文字設計 */
+/* === 7. 品牌故事 (Brand Story) 區塊 === */
+.story-container { max-width: 1100px; margin: 140px auto 80px; padding: 2rem; position: relative; }
 .vertical-text {
-    position: absolute;
-    top: -40px;         /* 稍微往上提 */
-    left: 0;            /* 往左推到邊界 */
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+    position: absolute; top: -40px; left: 0;
+    writing-mode: vertical-rl; text-orientation: mixed;
     font-family: 'Playfair Display', 'Noto Serif TC', serif;
-    letter-spacing: 4px;
-    color: var(--text-light);
-    font-size: 0.85rem;
-    line-height: 2;
-    z-index: 10;
+    letter-spacing: 4px; color: var(--text-light); font-size: 0.85rem; line-height: 2; z-index: 10;
 }
-
-/* 左右雙欄排版 */
-.story-layout {
-    display: flex;
-    flex-wrap: wrap; 
-    align-items: center;
-    gap: 5rem; 
-    margin-top: 6rem;   /* 把圖片往下推，避開直書文字的尾端 */
-    margin-left: 3.5rem;  /* 把圖片往右推，拉開完美的水平空間 */
-}
-
-/* 左側圖片區塊 (保持不變，或可再次確認) */
-.story-image {
-    flex: 1;
-    min-width: 300px;
-    position: relative;
-}
-.story-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-/* 右側文字區塊 (保持不變) */
-.story-text {
-    flex: 1;
-    min-width: 300px;
-    padding-right: 2rem;
-}
-.story-text h2 {
-    font-size: 2rem;
-    letter-spacing: 8px;
-    margin-bottom: 3rem;
-    color: var(--text-dark);
-}
+.story-layout { display: flex; flex-wrap: wrap; align-items: center; gap: 5rem; margin-top: 6rem; margin-left: 3.5rem; }
+.story-image { flex: 1; min-width: 300px; position: relative; }
+.story-image img { width: 100%; height: auto; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.story-text { flex: 1; min-width: 300px; padding-right: 2rem; }
+.story-text h2 { font-size: 2rem; letter-spacing: 8px; margin-bottom: 3rem; color: var(--text-dark); }
 .story-paragraphs p {
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
-    line-height: 2.2;
-    color: var(--text-light);
-    letter-spacing: 1.5px;
-    text-align: justify;
+    margin-bottom: 2rem; font-size: 0.95rem; line-height: 2.2;
+    color: var(--text-light); letter-spacing: 1.5px; text-align: justify;
 }
 
-/* RWD: 手機版微調 (需更新，確保手機版不會跑版) */
-@media (max-width: 768px) {
-    .story-layout {
-        flex-direction: column;
-        gap: 3rem;
-        margin-left: 0;    /* 手機版將往右推的距離歸零 */
-        margin-top: 4rem;
-    }
-    .story-text {
-        padding-right: 0;
-    }
-    .vertical-text {
-        left: 1rem;
-        top: -20px;
-    }
-}
-
-/* === 商品頁 (Shop) 區塊 === */
-.shop-container {
-    max-width: 1200px; margin: 120px auto 80px; padding: 2rem;
-}
-.section-title {
-    text-align: center; margin-bottom: 3rem; font-size: 2.2rem; letter-spacing: 4px; color: var(--text-dark);
-}
+/* === 8. 商品頁 (Shop) 區塊 === */
+.shop-container { max-width: 1200px; margin: 120px auto 80px; padding: 2rem; }
+.section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; letter-spacing: 4px; color: var(--text-dark); }
 .category-title {
     font-family: 'Lato', 'Noto Sans TC', sans-serif;
     font-size: 1.2rem; font-weight: 400; color: var(--primary-color);
     letter-spacing: 2px; margin-bottom: 2rem;
     border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;
 }
-
-/* 商品網格 */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 3rem 2rem;
-}
-.product-card {
-    cursor: pointer; text-align: center; transition: transform 0.3s ease;
-}
-.product-card:hover {
-    transform: translateY(-5px);
-}
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 3rem 2rem; }
+.product-card { cursor: pointer; text-align: center; transition: transform 0.4s ease; }
+.product-card:hover { transform: translateY(-5px); }
 .product-card .img-wrapper {
     width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
     background: #fff; margin-bottom: 1.5rem; border-radius: 4px;
 }
-.product-card img {
-    width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
-}
+.product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
 .product-card:hover img { transform: scale(1.05); }
 .product-title {
     font-size: 0.95rem; font-weight: 400; color: var(--text-dark);
-    margin-bottom: 1rem; line-height: 1.5; letter-spacing: 1px;
+    margin-bottom: 1rem; line-height: 1.6; letter-spacing: 1px;
 }
-
-/* 購物車按鈕 */
 .add-to-cart-btn {
-    background: transparent; border: 1px solid var(--text-dark);
-    color: var(--text-dark); padding: 0.6rem 1.5rem;
-    font-size: 0.85rem; letter-spacing: 1.5px; cursor: pointer;
-    transition: all 0.3s ease; border-radius: 2px;
+    background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark);
+    padding: 0.6rem 1.5rem; font-size: 0.85rem; letter-spacing: 1.5px; cursor: pointer;
+    transition: all 0.4s ease; border-radius: 2px; margin-top: 0.5rem;
 }
-.add-to-cart-btn:hover {
-    background: var(--text-dark); color: #fff;
-}
+.add-to-cart-btn:hover { background: var(--text-dark); color: #fff; }
 
 /* 專屬介紹視角 (Detail View) */
 .back-btn {
-    background: none; border: none; font-size: 0.9rem; color: var(--text-light);
+    background: none; border: none; font-size: 0.95rem; color: var(--text-light);
     cursor: pointer; margin-bottom: 2rem; letter-spacing: 1px; transition: color 0.3s;
 }
 .back-btn:hover { color: var(--text-dark); }
-.detail-layout {
-    display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start;
-}
+.detail-layout { display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start; }
 .detail-image { flex: 1; min-width: 300px; }
 .detail-image img { width: 100%; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 .detail-info { flex: 1; min-width: 300px; padding-top: 2rem; }
-.detail-info h2 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 2rem; }
+.detail-info h2 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 2rem; line-height: 1.4; }
 .detail-desc { font-size: 1rem; line-height: 2.2; color: var(--text-light); letter-spacing: 1px; text-align: justify; margin-bottom: 3rem; }
 .detail-cart-btn { padding: 1rem 3rem; font-size: 1rem; }
+
+/* === 9. RWD 手機版全面適應 (防跑版) === */
+@media (max-width: 768px) {
+    /* 導覽列 */
+    .nav-links { display: none; /* 手機版通常會收合進漢堡選單，這裡先隱藏避免擁擠 */ }
+    
+    /* 首頁 */
+    .hero-section { justify-content: center; padding-left: 0; text-align: center; }
+    .hero-section::after { background: rgba(255, 255, 255, 0.4); /* 手機版改為全域半透明，確保字體清晰 */ }
+    .hero-text-box { margin-top: 0; text-align: center; padding: 0 2rem; }
+    .hero-quote { font-size: 1.8rem; }
+    
+    /* 品牌故事 */
+    .story-layout { flex-direction: column; gap: 3rem; margin-left: 0; margin-top: 4rem; }
+    .story-text { padding-right: 0; }
+    .vertical-text { left: 1rem; top: -20px; }
+    
+    /* 商品詳情 */
+    .detail-layout { flex-direction: column; gap: 2rem; }
+    .detail-info { padding-top: 0; }
+}
