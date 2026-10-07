@@ -85,3 +85,78 @@ window.onclick = function(event) {
         modal.classList.remove('show');
     }
 }
+
+// === 4. 處理商品頁切換與資料庫 ===
+
+// 定義商品香氛介紹資料
+const productData = {
+    'p1': {
+        title: '【茶香】留白 (Blank Space) 禮盒 100ml',
+        img: './product-1.jpg',
+        desc: '這是一段專屬於清晨的靜謐時光。彷彿在灑滿微光的木地板上，安靜地翻開一本散文集。時間在這裡慢了下來，微冷的白茶香氣伴隨著雪松的溫潤，撫平了所有的躁動。這款香氣不爭不搶，為擁擠的日常騰出了一處能夠深呼吸的空白角落。'
+    },
+    'p2': {
+        title: '【花香】織眠 (Woven Sleep) 禮盒 100ml',
+        img: './product-2.jpg',
+        desc: '如同剛洗淨的棉麻布料，揉合了微風與陽光曝曬後的乾燥氣息。宛如被厚實的羊毛毯輕輕包裹，純粹且柔軟。輕盈的小蒼蘭在空氣中交織出一張隱形的網，接住了所有的疲憊，給人無比溫柔的安全感。'
+    },
+    'p3': {
+        title: '【咖啡】隅間 (The Corner) 禮盒 100ml',
+        img: './product-3.jpg',
+        desc: '在城市邊緣的木造老屋裡，沒有過多的喧囂，只有淺焙咖啡豆的微苦，與乾燥香根草沉澱下來的木質底蘊。這是一抹屬於創作者的香氣，伴隨你在案前書寫、思考，沉浸在自己專屬角落之時。'
+    },
+    'p4': {
+        title: '擴香棒禮盒 10根+2朵裝飾紙花',
+        img: './product-4.jpg',
+        desc: '精選高孔隙率擴香纖維棒，搭配手工細緻紙花。能完美吸附香氛精華並均勻釋放，為您的專屬空間增添優雅的視覺與嗅覺層次。'
+    },
+    'p5': {
+        title: '【茶香】留白 (Blank Space) 補充包 100ml',
+        img: './product-5.jpg',
+        desc: '（補充包）這是一段專屬於清晨的靜謐時光。彷彿在灑滿微光的木地板上，安靜地翻開一本散文集。時間在這裡慢了下來，微冷的白茶香氣伴隨著雪松的溫潤，撫平了所有的躁動。'
+    },
+    'p6': {
+        title: '【花香】織眠 (Woven Sleep) 補充包 100ml',
+        img: './product-6.jpg',
+        desc: '（補充包）如同剛洗淨的棉麻布料，揉合了微風與陽光曝曬後的乾燥氣息。宛如被厚實的羊毛毯輕輕包裹，純粹且柔軟。'
+    },
+    'p7': {
+        title: '【咖啡】隅間 (The Corner) 補充包 100ml',
+        img: './product-7.jpg',
+        desc: '（補充包）在城市邊緣的木造老屋裡，沒有過多的喧囂，只有淺焙咖啡豆的微苦，與乾燥香根草沉澱下來的木質底蘊。'
+    }
+};
+
+// 開啟商品專屬介紹
+function openProduct(productId) {
+    const data = productData[productId];
+    if (!data) return;
+
+    document.getElementById('detail-title').textContent = data.title;
+    document.getElementById('detail-desc').textContent = data.desc;
+    document.getElementById('detail-img').src = data.img;
+
+    document.getElementById('shop-list-view').style.display = 'none';
+    document.getElementById('product-detail-view').style.display = 'block';
+    window.scrollTo(0, 0); // 畫面回到最上方
+}
+
+// 關閉商品專屬介紹，返回列表
+function closeProduct() {
+    document.getElementById('product-detail-view').style.display = 'none';
+    document.getElementById('shop-list-view').style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+// 監聽所有的「加入購物車」按鈕
+document.addEventListener('DOMContentLoaded', () => {
+    // 取得所有購物車按鈕
+    const cartBtns = document.querySelectorAll('.add-to-cart-btn');
+    cartBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // 阻止事件冒泡，避免點擊按鈕時同時觸發進入商品介紹頁
+            e.stopPropagation(); 
+            alert('已成功加入購物車！(目前為測試模式)');
+        });
+    });
+});
