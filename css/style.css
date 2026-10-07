@@ -1,11 +1,10 @@
 :root {
-    /* 莫蘭迪/輕奢基礎色系 */
-    --primary-color: #8D8B85;
+    --primary-color: #8D8B85; /* 莫蘭迪灰棕 */
     --text-dark: #333333;
     --text-light: #666666;
-    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.65);
     --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-shadow: rgba(0, 0, 0, 0.05);
+    --glass-shadow: rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -15,140 +14,165 @@
 }
 
 body {
-    /* 內文使用乾淨的無襯線體 */
     font-family: 'Lato', 'Noto Sans TC', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* 標題使用優雅的襯線體 */
 .serif-title, .logo {
     font-family: 'Playfair Display', 'Noto Serif TC', serif;
     font-weight: 600;
 }
 
-/* 大理石背景 (使用免費無版權大理石紋理圖測試) */
+/* 基礎大理石背景 */
 .marble-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0; width: 100vw; height: 100vh;
     background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.8;
-    z-index: -1;
+    background-size: cover; background-position: center;
+    opacity: 0.7; z-index: -2;
 }
 
-/* 導覽列毛玻璃設定 */
+/* 導覽列 */
 .glass-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    position: fixed; top: 0; width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
 }
-
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 1200px; margin: 0 auto; padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
 }
-
-.logo {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    color: #000;
-    text-decoration: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-}
-
-.nav-item:hover, .nav-item.active {
-    color: #000;
-}
-
+.logo { font-size: 1.5rem; letter-spacing: 2px; color: #000; text-decoration: none; }
+.nav-links { list-style: none; display: flex; gap: 2rem; }
+.nav-item { text-decoration: none; color: var(--text-light); font-size: 0.95rem; transition: color 0.3s; }
+.nav-item:hover, .nav-item.active { color: #000; }
 .lang-toggle {
-    background: transparent;
-    border: 1px solid var(--text-light);
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Lato', sans-serif;
-    color: var(--text-dark);
-    transition: all 0.3s ease;
+    background: transparent; border: 1px solid var(--text-light);
+    padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer;
+    color: var(--text-dark); transition: all 0.3s ease;
+}
+.lang-toggle:hover { background: var(--text-dark); color: #fff; }
+
+/* 頁面切換控制 */
+.page-section { display: none; animation: fadeIn 0.6s ease-out; }
+.page-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 其他頁面的通用容器 */
+.page-container {
+    max-width: 900px; margin: 120px auto 80px; padding: 3rem;
+    min-height: 60vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
 }
 
-.lang-toggle:hover {
-    background: var(--text-dark);
-    color: #fff;
-}
-
-/* 內容區塊毛玻璃卡片 */
-.main-content {
-    max-width: 900px;
-    margin: 120px auto 50px; /* 留出導覽列高度 */
-    padding: 0 2rem;
-}
-
-.page-section {
-    display: none; /* 預設隱藏所有頁面 */
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-.page-section.active {
-    display: block; /* 只顯示啟用的頁面 */
-}
-
+/* 毛玻璃通用屬性 */
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
-    padding: 3rem;
     box-shadow: 0 8px 32px 0 var(--glass-shadow);
-    text-align: center;
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.glass-card h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
+/* === 首頁 Hero Section === */
+.hero-section {
+    width: 100vw; height: 100vh;
+    /* 這裡使用一張帶有空間感的輕奢背景圖 */
+    background-image: url('https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover; background-position: center;
+    position: relative;
+    display: flex; justify-content: center; align-items: center;
+}
+/* 加上一層微薄的遮罩讓文字更清晰 */
+.hero-section::after {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.2); z-index: 1;
+}
+.hero-text-box {
+    position: relative; z-index: 2; text-align: center;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 3rem 4rem; border-radius: 8px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.hero-quote {
+    font-size: 2.2rem; color: #222;
+    margin-bottom: 2.5rem; letter-spacing: 3px; font-weight: 400;
+}
+.hero-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 1px solid #222; color: #222;
+    text-decoration: none; font-size: 0.95rem; letter-spacing: 2px;
+    transition: all 0.4s ease; background: transparent;
+}
+.hero-btn:hover {
+    background: #222; color: #fff;
 }
 
-.glass-card p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    max-width: 600px;
+/* === 首頁 News & Pop-up 區塊 === */
+.news-section {
+    max-width: 1200px; margin: 0 auto; padding: 6rem 2rem;
 }
+.card-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+.news-card {
+    display: flex; flex-direction: column; overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.popup-card {
+    padding: 2.5rem; justify-content: center; text-align: left;
+}
+.popup-card .date { font-family: 'Lato', sans-serif; color: var(--primary-color); margin: 1rem 0 0.5rem; }
+.popup-card .desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 2rem; }
+.tag {
+    display: inline-block; font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 1px; color: #fff; background: var(--primary-color);
+    padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 1rem; align-self: flex-start;
+}
+.action-btn {
+    display: inline-block; padding: 0.8rem 1.5rem;
+    background: var(--text-dark); color: #fff; text-decoration: none;
+    font-size: 0.9rem; letter-spacing: 1px; text-align: center; border-radius: 4px;
+    transition: opacity 0.3s;
+}
+.action-btn:hover { opacity: 0.8; }
 
-/* 簡單的淡入動畫讓切換更有呼吸感 */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.event-card { cursor: pointer; }
+.img-wrapper { width: 100%; height: 220px; overflow: hidden; }
+.event-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
 }
+.event-card:hover img { transform: scale(1.05); }
+.card-content { padding: 2rem; }
+.card-content .desc { font-size: 0.85rem; color: var(--primary-color); margin-top: 1rem; }
+
+/* === Modal 彈窗樣式 === */
+.modal {
+    display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+    width: 100%; height: 100%; overflow: auto;
+    background-color: rgba(0,0,0,0.4); backdrop-filter: blur(5px);
+    align-items: center; justify-content: center;
+}
+.modal.show { display: flex; animation: fadeIn 0.3s; }
+.modal-content {
+    padding: 3rem; max-width: 500px; width: 90%; position: relative; text-align: center;
+}
+.close-btn {
+    position: absolute; top: 1rem; right: 1.5rem;
+    font-size: 1.8rem; font-weight: 300; color: #aaa; cursor: pointer; transition: color 0.3s;
+}
+.close-btn:hover { color: #000; }
