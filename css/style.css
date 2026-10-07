@@ -74,39 +74,58 @@ body {
 /* === 首頁 Hero Section === */
 .hero-section {
     width: 100vw; height: 100vh;
-    /* 這裡替換成你上傳的圖片檔名。如果在根目錄就是 ../hero.jpg */
-    background-image: url('../hero.jpg');
+    background-image: url('../hero.jpg'); /* 你的照片檔名 */
     background-size: cover; background-position: center;
     position: relative;
-    display: flex; justify-content: center; align-items: center;
+    display: flex; 
+    /* 將排版改為靠左，並垂直置中偏下 */
+    justify-content: flex-start; 
+    align-items: center;
+    padding-left: 10%; /* 讓文字距離左邊緣有呼吸感 */
 }
 
-/* 加上一層微薄的遮罩讓文字更清晰 */
+/* 改用由左至右漸淡的遮罩，只稍微提亮左側確保文字清晰，不遮擋中央人物 */
 .hero-section::after {
     content: ''; position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(255, 255, 255, 0.15); z-index: 1;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+    z-index: 1;
+    pointer-events: none; /* 確保遮罩不會阻擋滑鼠點擊 */
 }
+
+/* 移除原本的毛玻璃方框，讓文字自由 */
 .hero-text-box {
-    position: relative; z-index: 2; text-align: center;
-    background: rgba(255, 255, 255, 0.5);
-    padding: 3rem 4rem; border-radius: 8px;
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: relative; z-index: 2; 
+    text-align: left; /* 文字改為左對齊，更有雜誌感 */
+    background: transparent; /* 移除背景色 */
+    backdrop-filter: none; /* 移除毛玻璃 */
+    -webkit-backdrop-filter: none;
+    border: none; /* 移除邊框 */
+    padding: 0;
+    max-width: 500px; /* 限制單行字數，讓排版更修長 */
+    margin-top: 5%; /* 稍微往下推，避開頭部視線 */
 }
+
 .hero-quote {
-    font-size: 2.2rem; color: #222;
-    margin-bottom: 2.5rem; letter-spacing: 3px; font-weight: 400;
+    font-size: 2.4rem; 
+    color: #2c2a29; /* 使用深棕灰色取代死黑，更有莫蘭迪感 */
+    margin-bottom: 2.5rem; 
+    letter-spacing: 4px; 
+    font-weight: 400;
+    line-height: 1.5;
+    /* 加入一點點極輕微的白色發光，避免文字在沙灘處被吃掉 */
+    text-shadow: 0 0 20px rgba(255,255,255,0.7);
 }
+
 .hero-btn {
     display: inline-block;
-    padding: 1rem 3rem;
-    border: 1px solid #222; color: #222;
+    padding: 1rem 3.5rem;
+    border: 1px solid #2c2a29; color: #2c2a29;
     text-decoration: none; font-size: 0.95rem; letter-spacing: 2px;
     transition: all 0.4s ease; background: transparent;
 }
 .hero-btn:hover {
-    background: #222; color: #fff;
+    background: #2c2a29; color: #fff;
 }
 
 /* === 首頁 News & Pop-up 區塊 === */
