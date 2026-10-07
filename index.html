@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lavend/r | 舒適感與空間美學</title>
-    <!-- 引入優雅襯線體(標題)與乾淨無襯線體(內文) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -29,40 +28,100 @@
         </div>
     </nav>
 
-    <!-- 內容區塊 (毛玻璃資訊卡) -->
+    <!-- 內容區塊 -->
     <main class="main-content">
-        <!-- 1. 首頁 -->
-        <section id="home" class="page-section glass-card active">
-            <h2 class="serif-title" data-i18n="home_title">主視覺與當季活動</h2>
-            <p data-i18n="home_desc">Hero Section & Pop-up & News 測試區塊。為您的空間注入輕奢與呼吸感。</p>
+        <!-- 1. 首頁 (Hero Section + News) -->
+        <section id="home" class="page-section active">
+            <!-- Hero 全螢幕區塊 -->
+            <div class="hero-section">
+                <div class="hero-text-box">
+                    <h2 class="serif-title hero-quote" data-i18n="hero_quote">點燃一縷香氣，在喧囂裡漫成一座島嶼。</h2>
+                    <a href="#shop" class="hero-btn" data-i18n="hero_btn">探索香氛 (Shop Now)</a>
+                </div>
+            </div>
+
+            <!-- Pop-up & News 卡片區塊 -->
+            <div class="news-section">
+                <div class="card-layout">
+                    <!-- 快閃情報卡片 -->
+                    <div class="glass-card news-card popup-card">
+                        <span class="tag" data-i18n="tag_popup">Pop-up Store</span>
+                        <h3 class="serif-title" data-i18n="popup_title">華山文創 快閃體驗店</h3>
+                        <p class="date" data-i18n="popup_date">2026.11.15 - 11.17</p>
+                        <p class="desc" data-i18n="popup_desc">邀請您親臨現場，感受專屬命定香氣，尋找空間裡的寧靜。</p>
+                        <a href="https://maps.google.com/?q=華山1914文化創意產業園區" target="_blank" class="action-btn" data-i18n="popup_btn">Google Maps 導航</a>
+                    </div>
+
+                    <!-- 當季活動卡片 1 -->
+                    <div class="glass-card news-card event-card" onclick="openModal('event1')">
+                        <div class="img-wrapper">
+                            <!-- 使用香氛/空間美學示意圖 -->
+                            <img src="https://images.unsplash.com/photo-1608528577891-eb05fce3636c?auto=format&fit=crop&w=600&q=80" alt="滿千免運">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag" data-i18n="tag_event">Event</span>
+                            <h3 class="serif-title" data-i18n="event1_title">滿千免運 限定優惠</h3>
+                            <p class="desc" data-i18n="click_more">點擊查看詳情</p>
+                        </div>
+                    </div>
+
+                    <!-- 當季活動卡片 2 -->
+                    <div class="glass-card news-card event-card" onclick="openModal('event2')">
+                        <div class="img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80" alt="新會員贈禮">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag" data-i18n="tag_event">Event</span>
+                            <h3 class="serif-title" data-i18n="event2_title">首次加入會員贈 $100 購物金</h3>
+                            <p class="desc" data-i18n="click_more">點擊查看詳情</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- 2. 品牌故事 -->
-        <section id="story" class="page-section glass-card">
-            <h2 class="serif-title" data-i18n="story_title">品牌故事</h2>
-            <p data-i18n="story_desc">Brand Story 測試區塊。將舒適感與空間美學帶入日常。</p>
+        <section id="story" class="page-section">
+            <div class="page-container glass-card">
+                <h2 class="serif-title" data-i18n="story_title">品牌故事</h2>
+                <p data-i18n="story_desc">Brand Story 測試區塊。將舒適感與空間美學帶入日常。</p>
+            </div>
         </section>
 
         <!-- 3. 商品頁面 -->
-        <section id="shop" class="page-section glass-card">
-            <h2 class="serif-title" data-i18n="shop_title">商品與主打</h2>
-            <p data-i18n="shop_desc">Shop & Products 測試區塊。未來可在此展示香氛選物清單。</p>
+        <section id="shop" class="page-section">
+            <div class="page-container glass-card">
+                <h2 class="serif-title" data-i18n="shop_title">商品與主打</h2>
+                <p data-i18n="shop_desc">Shop & Products 測試區塊。未來可在此展示香氛選物清單。</p>
+            </div>
         </section>
 
         <!-- 4. FAQ 與政策 -->
-        <section id="support" class="page-section glass-card">
-            <h2 class="serif-title" data-i18n="support_title">常見問題與退換貨政策</h2>
-            <p data-i18n="support_desc">Support & Policy 測試區塊。提供最完善的售後服務與物流資訊。</p>
+        <section id="support" class="page-section">
+            <div class="page-container glass-card">
+                <h2 class="serif-title" data-i18n="support_title">常見問題與退換貨政策</h2>
+                <p data-i18n="support_desc">Support & Policy 測試區塊。提供最完善的售後服務與物流資訊。</p>
+            </div>
         </section>
 
         <!-- 5. 會員系統 -->
-        <section id="member" class="page-section glass-card">
-            <h2 class="serif-title" data-i18n="member_title">會員登記 / 登入</h2>
-            <p data-i18n="member_desc">Member System 測試區塊。累積點數、兌換專屬禮遇與禮券。</p>
+        <section id="member" class="page-section">
+            <div class="page-container glass-card">
+                <h2 class="serif-title" data-i18n="member_title">會員登記 / 登入</h2>
+                <p data-i18n="member_desc">Member System 測試區塊。此處可供結帳時兌換點數、禮品、禮卷，以及紀錄點數等用途。</p>
+            </div>
         </section>
     </main>
 
-    <!-- 引入語言包與邏輯腳本 -->
+    <!-- 活動詳情彈窗 (Modal) -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title" class="serif-title">活動說明</h3>
+            <p id="modal-desc">這裡是活動說明的詳細頁面內容，之後可以換成獨立連結或載入圖文。</p>
+        </div>
+    </div>
+
     <script src="js/i18n.js"></script>
     <script src="js/app.js"></script>
 </body>
