@@ -31,7 +31,7 @@ const translations = {
         nav_shop: "Shop",
         nav_support: "Support & Policy",
         nav_member: "Member",
-        hero_quote: "Ignite a scent, blooming into an island amidst the noise.",
+        hero_quote: "Light a fragrance, bloom into an island.",
         hero_btn: "Shop Now",
         tag_popup: "Pop-up Store",
         tag_event: "Event",
