@@ -111,7 +111,7 @@ const productData = {
     'p4': {
         title: '擴香棒禮盒 10根+2朵裝飾紙花',
         // 拿掉 moodImg，只保留實體圖
-        productImg: './product-4.jpg',
+        productImg: './product-4. png',
         desc: '精選高孔隙率擴香纖維棒，搭配手工細緻紙花。能完美吸附香氛精華並均勻釋放，為您的專屬空間增添優雅的視覺與嗅覺層次。'
     },
     'p5': {
