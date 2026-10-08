@@ -49,6 +49,11 @@ const translations = {
         p7_title: "【咖啡】隅間 (The Corner) 補充包 100ml",
         p7_desc: "（補充包）在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。",
 
+        // --- 三種不同的注意事項 (中文) ---
+        notice_gift: "擴香瓶系列產品為維持香氣品質並防止運送過程中液體外漏，我們採用安全的防光分裝包裝（補充包）形式出貨。禮盒內含總容量 100ml 之擴香液，並無額外附贈補充包。建議您收到後，再緩緩倒入擴香瓶中。",
+        notice_sticks: "本禮盒含十根擴香棒與兩朵手工紙花。為確保最佳的擴香效果，建議初次使用時將擴香棒上下顛倒浸泡2-3分鐘，讓纖維充分吸收香氛。若感覺香氣變淡，可能為擴香棒的孔隙被灰塵填滿，導致吸附與揮發能力下降，建議 1 到 2 個月更換一次使用。",
+        notice_refill: "本產品為擴香液補充包，無附贈擴香瓶。為確保香氣純粹，建議您保存置陰涼處。在注入不同香味前，請先將原有的擴香瓶清洗並完全晾乾，或直接更換全新擴香棒，以免破壞您的香氛體驗。",
+
         // --- 客服與政策 ---
         support_main_title: "客服與政策",
         support_intro: "感謝您來到 Lavend/r。<br>為了提供您最完善的購物體驗，請在選購前閱讀以下服務說明。若有任何疑問，歡迎隨時與我們的團隊聯繫。",
@@ -113,8 +118,8 @@ const translations = {
         back_to_list: "← Back to Shop",
         notice_title: "Product Info",
         notice_main: "To ensure the highest fragrance quality and prevent leakage during transit, our diffuser liquids are securely packed in light-proof refill pouches. The gift set includes a total of 100ml of fragrance (no additional refill included). Upon receiving, simply pour the liquid into your diffuser bottle.",
-        notice_sticks: "Our handmade paper flowers and reed sticks are crafted from delicate materials. For optimal diffusion, we recommend replacing the sticks every 1-2 months. Please keep the paper flowers away from direct moisture to maintain their shape.",
-        notice_refill: "This is a refill pack of diffuser liquid; a diffuser bottle is not included. Store in a cool, dry place away from direct sunlight. Once opened, we recommend pouring the entire contents into your diffuser bottle to maintain optimal scent performance.",
+        notice_sticks: "This gift set includes ten diffuser sticks and two handmade paper flowers. To ensure you have the best experience, it is recommended to soak the diffuser sticks upside down for 2-3 minutes before first use to allow the fibers to fully absorb the fragrance. If the scent seems weaker, it may be because the pores of the diffuser stick are filled with dust, reducing its absorption and evaporation capabilities. In this case, it is recommended to replace the diffuser stick every 1 to 2 months.",
+        notice_refill: "This is a refill pack of diffuser liquid; a diffuser bottle is not included. Store in a cool, dry place away from direct sunlight. Before adding a different fragrance, please clean and completely dry the existing diffuser bottle, or replace it with a brand new diffuser stick, to avoid ruining your fragrance experience.",
         
         // --- Product Titles & Descriptions ---
         p1_title: "[ Tea ] Blank Space Diffuser Set 100ml",
@@ -132,6 +137,11 @@ const translations = {
         p7_title: "[ Coffee ] The Corner Refill 100ml",
         p7_desc: "(Refill) Tucked away in an old wooden house on the city's edge, the noise simply fades away. There is only the subtle bitterness of light-roast coffee, grounded by the deep, woody undertones of dry vetiver.",
 
+        // --- 三種不同的注意事項 (英文) ---
+        notice_gift: "To ensure the highest fragrance quality and prevent leakage during transit, our diffuser liquids are securely packed in refill pouches. The gift set includes a total of 100ml of fragrance (no additional refill included). Upon receiving, simply pour the liquid into your diffuser bottle.",
+        notice_sticks: "For optimal fragrance diffusion, we recommend flipping the reed sticks upside down upon first use to allow the fibers to fully absorb the scent. If the fragrance fades, regularly invert the sticks or replace them with new ones.",
+        notice_refill: "This eco-friendly refill pouch is designed to prolong your fragrance experience. To ensure scent purity, we recommend washing and thoroughly drying your diffuser bottle, or using new reed sticks, before switching to a different fragrance.",
+        
         // --- Support & Policy ---
         support_main_title: "Support & Policy",
         support_intro: "Welcome to Lavend/r.<br>To ensure you have the best shopping experience, please take a moment to read our policies before placing an order. If you have any questions, our team is always here to help.",
