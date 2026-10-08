@@ -292,6 +292,99 @@ body {
 }
 .detail-cart-btn { padding: 1rem 3rem; font-size: 1rem; }
 
+/* === 客服與政策 (Support & Policy) 區塊 === */
+.support-container {
+    max-width: 800px;
+    margin: 140px auto 80px;
+    padding: 2rem;
+}
+.support-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.support-header h2 {
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+}
+.support-intro {
+    color: var(--text-light);
+    line-height: 2;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* 摺疊面板 Accordion */
+.accordion-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.accordion-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: box-shadow 0.3s ease;
+}
+.accordion-item:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+.accordion-header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: transparent;
+}
+.accordion-header h3 {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+    margin: 0;
+}
+.accordion-header .icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+.content-inner {
+    padding: 0 2rem 2.5rem;
+    color: var(--text-light);
+    line-height: 2.2;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+/* 強調字體與列表樣式 */
+.content-inner strong {
+    color: var(--text-dark);
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 1rem;
+}
+.content-inner ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+.content-inner li {
+    margin-bottom: 0.5rem;
+}
+
+/* 展開狀態的旋轉動畫 */
+.accordion-item.active .icon {
+    transform: rotate(45deg); /* 將 + 轉成 x */
+}
+
 /* === 10. 頁尾 (Footer) 區塊 === */
 .site-footer {
     background-color: #fff; /* 與背景做出微小區隔 */
