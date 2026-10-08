@@ -38,41 +38,32 @@
                 </div>
             </div>
 
-            <!-- Pop-up & News 卡片區塊 -->
-            <div class="news-section">
-                <div class="card-layout">
-                    <!-- 快閃情報卡片 -->
-                    <div class="glass-card news-card popup-card">
-                        <span class="tag" data-i18n="tag_popup">Pop-up Store</span>
-                        <h3 class="serif-title" data-i18n="popup_title">華山文創 快閃體驗店</h3>
-                        <p class="date" data-i18n="popup_date">2026.11.15 - 11.17</p>
-                        <p class="desc" data-i18n="popup_desc">邀請您親臨現場，感受專屬命定香氣，尋找空間裡的寧靜。</p>
-                        <a href="https://maps.google.com/?q=華山1914文化創意產業園區" target="_blank" class="action-btn" data-i18n="popup_btn">Google Maps 導航</a>
+            <!-- === 首頁 兩大活動區塊 === -->
+            <div class="events-section">
+                <!-- 活動 1：開幕限定禮遇 (圖右文左) -->
+                <div class="event-row">
+                    <div class="event-text">
+                        <h3 class="serif-title" data-i18n="event1_title">開幕限定禮遇</h3>
+                        <p class="event-desc" data-i18n="event1_desc">即日起至2027年X月X日...</p>
+                        <!-- 點擊探索更多，自動滑動到商品區塊 -->
+                        <a href="#shop" class="action-btn" data-i18n="btn_explore">探索更多</a>
                     </div>
-
-                    <!-- 當季活動卡片 1 -->
-                    <div class="glass-card news-card event-card" onclick="openModal('event1')">
-                        <div class="img-wrapper">
-                            <!-- 使用香氛/空間美學示意圖 -->
-                            <img src="https://images.unsplash.com/photo-1608528577891-eb05fce3636c?auto=format&fit=crop&w=600&q=80" alt="滿千免運">
-                        </div>
-                        <div class="card-content">
-                            <span class="tag" data-i18n="tag_event">Event</span>
-                            <h3 class="serif-title" data-i18n="event1_title">滿千免運 限定優惠</h3>
-                            <p class="desc" data-i18n="click_more">點擊查看詳情</p>
-                        </div>
+                    <div class="event-image">
+                        <img src="./event-1.jpg" alt="開幕限定禮遇">
                     </div>
+                </div>
 
-                    <!-- 當季活動卡片 2 -->
-                    <div class="glass-card news-card event-card" onclick="openModal('event2')">
-                        <div class="img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80" alt="新會員贈禮">
-                        </div>
-                        <div class="card-content">
-                            <span class="tag" data-i18n="tag_event">Event</span>
-                            <h3 class="serif-title" data-i18n="event2_title">首次加入會員贈 $100 購物金</h3>
-                            <p class="desc" data-i18n="click_more">點擊查看詳情</p>
-                        </div>
+                <!-- 活動 2：會員專屬 (圖左文右) -->
+                <!-- 加上 reverse class 讓排版反轉 -->
+                <div class="event-row reverse">
+                    <div class="event-image">
+                        <img src="./event-2.jpg" alt="會員專屬">
+                    </div>
+                    <div class="event-text">
+                        <h3 class="serif-title" data-i18n="event2_title">會員專屬</h3>
+                        <p class="event-desc" data-i18n="event2_desc">購買任一產品並成為會員...</p>
+                        <!-- 點擊探索更多，自動滑動到會員系統區塊 -->
+                        <a href="#member" class="action-btn" data-i18n="btn_explore">探索更多</a>
                     </div>
                 </div>
             </div>
