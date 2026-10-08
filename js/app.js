@@ -82,7 +82,7 @@ const productData = {
     'p1': { moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg' },
     'p2': { moodImg: 'assets/mood-2.jpg', productImg: 'assets/product-2.jpg' },
     'p3': { moodImg: 'assets/mood-3.jpg', productImg: 'assets/product-3.jpg' },
-    'p4': { productImg: 'assets/product-4.jpg' }, // 無情境圖
+    'p4': { productImg: 'assets/product-4.png' }, // 無情境圖
     'p5': { productImg: 'assets/product-5.jpg' },
     'p6': { productImg: 'assets/product-6.jpg' },
     'p7': { productImg: 'assets/product-7.jpg' }
