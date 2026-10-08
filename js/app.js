@@ -103,7 +103,7 @@ function openProduct(productId) {
     // 【關鍵步驟】動態替換這個商品專屬的翻譯標籤 (例如：變成 p1_title, p1_desc)
     titleElement.setAttribute('data-i18n', productId + '_title');
     descElement.setAttribute('data-i18n', productId + '_desc');
-    
+    noticeElement.setAttribute('data-i18n', data.noticeKey);
     // 呼叫翻譯函數，讓標題跟內文立刻顯示為目前的語言 (中文或英文)
     updateLanguage(currentLang);
 
