@@ -199,8 +199,67 @@
                 <p data-i18n="member_desc">Member System 測試區塊。此處可供結帳時兌換點數、禮品、禮卷，以及紀錄點數等用途。</p>
             </div>
         </section>
-    </main>
+    </main> <!-- 確保這是原本 main 區塊的結尾 -->
 
+    <!-- === 頁尾 (Footer) 區塊 === -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- 區塊 1：客服與聯絡 -->
+            <div class="footer-col">
+                <h4 data-i18n="footer_cs">客服中心</h4>
+                <ul class="footer-links">
+                    <li><a href="#support" data-i18n="footer_faq">常見問題</a></li>
+                    <!-- 使用你的 Gmail 網址 -->
+                    <li><a href="mailto:annyziyun@gmail.com">annyziyun@gmail.com</a></li>
+                    <!-- 預留電話欄位，可自行更改 -->
+                    <li><a href="tel:+886976955612" data-i18n="footer_tel">+886 976-955-612</a></li>
+                    <li><a href="#support" data-i18n="footer_shipping">運送服務</a></li>
+                    <li><a href="#support" data-i18n="footer_return">退換貨服務</a></li>
+                </ul>
+            </div>
+
+            <!-- 區塊 2：關於品牌 -->
+            <div class="footer-col">
+                <h4 data-i18n="footer_about">關於我們</h4>
+                <ul class="footer-links">
+                    <li><a href="#story" data-i18n="nav_story">合作計畫</a></li>
+                    <li><a href="#shop" data-i18n="footer_gift">企業贈禮</a></li>
+                </ul>
+            </div>
+
+            <!-- 區塊 3：了解我們 (社群) -->
+            <div class="footer-col">
+                <h4 data-i18n="footer_social">了解我們</h4>
+                <ul class="footer-links">
+                    <!-- 替換成你實際的社群連結 -->
+                    <li><a href="https://www.instagram.com/lavendr_tw/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a></li>
+                    <li><a href="#" target="_blank">LINE Official</a></li>
+                </ul>
+            </div>
+
+            <!-- 區塊 4：電子報訂閱 -->
+            <div class="footer-col newsletter-col">
+                <h4 data-i18n="footer_newsletter">訂閱電子報</h4>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('感謝您的訂閱！');">
+                    <input type="email" placeholder="Email" required data-i18n-placeholder="footer_email_placeholder">
+                    <button type="submit">→</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 頁尾底層：版權與條款 -->
+        <div class="footer-bottom">
+            <p class="copyright">© Lavend/r Digital Studio 2027</p>
+            <div class="footer-legal">
+                <a href="#" data-i18n="footer_terms">條款細則</a>
+                <a href="#" data-i18n="footer_privacy">隱私權政策</a>
+            </div>
+            <!-- 回到頂端按鈕 -->
+            <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
+        </div>
+    </footer>
+
+    <!-- 原本的腳本引入 -->
     <script src="js/i18n.js"></script>
     <script src="js/app.js"></script>
 </body>
