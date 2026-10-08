@@ -98,7 +98,7 @@ body {
 .hero-section {
     width: 100%; /* 防呆：不用 100vw，避免出現橫向捲軸 */
     height: 100vh;
-    background-image: url('../hero.jpg'); 
+    background-image: url('../hero2.jpg'); 
     background-size: cover; 
     background-position: center;
     position: relative;
