@@ -79,13 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === 4. 處理商品頁切換與資料庫 (這裡現在只管圖片，不管文字) ===
 const productData = {
-    'p1': { moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg' },
-    'p2': { moodImg: 'assets/mood-2.jpg', productImg: 'assets/product-2.jpg' },
-    'p3': { moodImg: 'assets/mood-3.jpg', productImg: 'assets/product-3.jpg' },
-    'p4': { productImg: 'assets/product-4.png' }, // 無情境圖
-    'p5': { productImg: 'assets/product-5.jpg' },
-    'p6': { productImg: 'assets/product-6.jpg' },
-    'p7': { productImg: 'assets/product-7.jpg' }
+    'p1': { moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg', noticeKey: 'notice_main'},
+    'p2': { moodImg: 'assets/mood-2.jpg', productImg: 'assets/product-2.jpg', noticeKey: 'notice_main' },
+    'p3': { moodImg: 'assets/mood-3.jpg', productImg: 'assets/product-3.jpg', noticeKey: 'notice_main' },
+    'p4': { productImg: 'assets/product-4.png', noticeKey: 'notice_sticks' }, // 無情境圖
+    'p5': { productImg: 'assets/product-5.jpg', noticeKey: 'notice_refill' },
+    'p6': { productImg: 'assets/product-6.jpg', noticeKey: 'notice_refill' },
+    'p7': { productImg: 'assets/product-7.jpg', noticeKey: 'notice_refill' }
 };
 
 // 開啟商品專屬介紹
@@ -96,6 +96,7 @@ function openProduct(productId) {
     // 抓取元素
     const titleElement = document.getElementById('detail-title');
     const descElement = document.getElementById('detail-desc');
+    const noticeElement = document.getElementById('detail-notice');
     const moodImgElement = document.getElementById('detail-mood-img');
     const productImgElement = document.getElementById('detail-product-img');
     
