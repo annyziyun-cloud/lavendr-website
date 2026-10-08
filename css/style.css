@@ -292,6 +292,118 @@ body {
 }
 .detail-cart-btn { padding: 1rem 3rem; font-size: 1rem; }
 
+/* === 10. 頁尾 (Footer) 區塊 === */
+.site-footer {
+    background-color: #fff; /* 與背景做出微小區隔 */
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 6rem 2rem 2rem;
+    margin-top: 6rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+.footer-col h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.footer-links {
+    list-style: none;
+}
+.footer-links li {
+    margin-bottom: 1rem;
+}
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+.footer-links a:hover {
+    color: var(--text-dark);
+}
+
+/* 電子報訂閱輸入框 */
+.newsletter-form {
+    display: flex;
+    border-bottom: 1px solid var(--text-dark);
+    padding-bottom: 0.5rem;
+}
+.newsletter-form input {
+    border: none;
+    background: transparent;
+    outline: none;
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+.newsletter-form input::placeholder {
+    color: #aaa;
+}
+.newsletter-form button {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 0 0.5rem;
+}
+
+/* 頁尾底部 (版權與條款) */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.copyright {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+.footer-legal a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-left: 2rem;
+    transition: color 0.3s ease;
+}
+.footer-legal a:hover {
+    color: var(--text-dark);
+}
+
+/* 回到頂端按鈕 */
+.scroll-top-btn {
+    background: transparent;
+    border: 1px solid var(--text-light);
+    color: var(--text-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+.scroll-top-btn:hover {
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+}
+
 /* === 9. RWD 手機版全面適應 (防跑版) === */
 @media (max-width: 768px) {
     /* 導覽列 */
@@ -311,6 +423,11 @@ body {
     /* 商品詳情 */
     .detail-layout { flex-direction: column; gap: 2rem; }
     .detail-info { padding-top: 0; }
+
+    .footer-container { gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-legal a { margin: 0 1rem; }
+    .scroll-top-btn { margin-top: 1rem; }
 }
 
 /* 產品資訊與注意事項 */
