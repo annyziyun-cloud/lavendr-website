@@ -92,41 +92,41 @@ window.onclick = function(event) {
 const productData = {
     'p1': {
         title: '【茶香】留白 (Blank Space) 禮盒 100ml',
-        moodImg: './mood-1.jpg',     // 有情境圖
-        productImg: './product-1.jpg', 
+        moodImg: 'assets/mood-1.jpg',     // 有情境圖
+        productImg: 'assets/product-1.jpg', 
         desc: '這是一段專屬於清晨的靜謐時光。彷彿在灑滿微光的木地板上，安靜地翻開一本散文集。時間在這裡慢了下來，微冷的白茶香氣伴隨著雪松的溫潤，撫平了所有的躁動。這款香氣不爭不搶，為擁擠的日常騰出了一處能夠深呼吸的空白角落。'
     },
     'p2': {
         title: '【花香】織眠 (Woven Sleep) 禮盒 100ml',
-        moodImg: './mood-2.jpg',     // 有情境圖
-        productImg: './product-2.jpg',
+        moodImg: 'assets/mood-2.jpg',     // 有情境圖
+        productImg: 'assets/product-2.jpg',
         desc: '如同剛洗淨的棉麻布料，揉合了微風與陽光曝曬後的乾燥氣息。宛如被厚實的羊毛毯輕輕包裹，純粹且柔軟。輕盈的小蒼蘭在空氣中交織出一張隱形的網，接住了所有的疲憊，給人無比溫柔的安全感。'
     },
     'p3': {
         title: '【咖啡】隅間 (The Corner) 禮盒 100ml',
-        moodImg: './mood-3.jpg',     // 有情境圖
-        productImg: './product-3.jpg',
+        moodImg: 'assets/mood-3.jpg',     // 有情境圖
+        productImg: 'assets/product-3.jpg',
         desc: '在城市邊緣的木造老屋裡，沒有過多的喧囂，只有淺焙咖啡豆的微苦，與乾燥香根草沉澱下來的木質底蘊。這是一抹屬於創作者的香氣，伴隨你在案前書寫、思考，沉浸在自己專屬角落之時。'
     },
     'p4': {
         title: '擴香棒禮盒 10根+2朵裝飾紙花',
         // 拿掉 moodImg，只保留實體圖
-        productImg: './product-4.png',
+        productImg: 'assets/product-4.png',
         desc: '精選高孔隙率擴香纖維棒，搭配手工細緻紙花。能完美吸附香氛精華並均勻釋放，為您的專屬空間增添優雅的視覺與嗅覺層次。'
     },
     'p5': {
         title: '【茶香】留白 (Blank Space) 補充包 100ml',
-        productImg: './product-5.jpg',
+        productImg: 'assets/product-5.jpg',
         desc: '【茶香】留白 (Blank Space) 補充包。這是一段專屬於清晨的靜謐時光。彷彿在灑滿微光的木地板上，安靜地翻開一本散文集。時間在這裡慢了下來，微冷的白茶香氣伴隨著雪松的溫潤，撫平了所有的躁動。'
     },
     'p6': {
         title: '【花香】織眠 (Woven Sleep) 補充包 100ml',
-        productImg: './product-6.jpg',
+        productImg: 'assets/product-6.jpg',
         desc: '【花香】織眠 (Woven Sleep) 補充包。如同剛洗淨的棉麻布料，揉合了微風與陽光曝曬後的乾燥氣息。宛如被厚實的羊毛毯輕輕包裹，純粹且柔軟。'
     },
     'p7': {
         title: '【咖啡】隅間 (The Corner) 補充包 100ml',
-        productImg: './product-7.jpg',
+        productImg: 'assets/product-7.jpg',
         desc: '【咖啡】隅間 (The Corner) 補充包。在城市邊緣的木造老屋裡，沒有過多的喧囂，只有淺焙咖啡豆的微苦，與乾燥香根草沉澱下來的木質底蘊。'
     }
 };
