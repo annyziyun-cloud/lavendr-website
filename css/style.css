@@ -256,7 +256,15 @@ body {
 }
 .detail-info { flex: 1; min-width: 300px; padding-top: 2rem; }
 .detail-info h2 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 2rem; line-height: 1.4; }
-.detail-desc { font-size: 1rem; line-height: 2.2; color: var(--text-light); letter-spacing: 1px; text-align: justify; margin-bottom: 3rem; }
+.detail-desc { 
+    font-size: 1rem; 
+    line-height: 2.2; 
+    color: var(--text-light); 
+    letter-spacing: 1px; 
+    text-align: justify; 
+    margin-bottom: 2rem;
+    white-space: pre-wrap; /* 讓 \n 能正確變成換行 */
+}
 .detail-cart-btn { padding: 1rem 3rem; font-size: 1rem; }
 
 /* === 9. RWD 手機版全面適應 (防跑版) === */
