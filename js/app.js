@@ -6,7 +6,7 @@ function updateLanguage(lang) {
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
-            el.textContent = translations[lang][key];
+            el.innerHTML = translations[lang][key];
         }
     });
     
@@ -72,6 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation(); 
             const alertMsg = currentLang === 'zh' ? '已成功加入購物車！(目前為測試模式)' : 'Added to cart successfully! (Test mode)';
             alert(alertMsg);
+            
+    // === 5. 處理客服與政策摺疊面板 (Accordion) ===
+    const accordions = document.querySelectorAll('.accordion-header');
+    accordions.forEach(acc => {
+        acc.addEventListener('click', function() {
+            const item = this.parentElement;
+            const content = this.nextElementSibling;
+            
+            // 點擊時，關閉其他已展開的面板 (保持畫面極簡)
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                }
+            });
+
+            // 切換當前面板的狀態
+            item.classList.toggle('active');
+            if (item.classList.contains('active')) {
+                // 自動計算內容高度並展開
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
         });
     });
 });
