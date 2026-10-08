@@ -299,19 +299,22 @@ body {
     padding: 2rem;
 }
 .support-header {
-    text-align: center;
+    text-align: left; /* 改為靠左對齊 */
     margin-bottom: 4rem;
+    padding-left: 0.5rem; /* 稍微往內縮一點點，與下方摺疊面板邊緣對齊 */
 }
 .support-header h2 {
     font-size: 2.2rem;
     letter-spacing: 4px;
     margin-bottom: 1.5rem;
+    color: var(--text-dark);
 }
 .support-intro {
     color: var(--text-light);
-    line-height: 2;
+    line-height: 2.2; /* 稍微拉大行高增加舒適感 */
     font-size: 1rem;
     letter-spacing: 1px;
+    max-width: 600px; /* 限制寬度，讓文字斷行看起來更漂亮，不會拉得太長 */
 }
 
 /* 摺疊面板 Accordion */
