@@ -92,40 +92,40 @@ window.onclick = function(event) {
 const productData = {
     'p1': {
         title: '【茶香】留白 (Blank Space) 禮盒 100ml',
-        moodImg: './mood-1.jpg',
-        productImg: './product-1.jpg', 
+        moodImg: 'assets/mood-1.jpg',
+        productImg: 'assets/product-1.jpg', 
         desc: '這是只屬於清晨的靜謐時刻。彷彿坐在沐浴著柔和光線的木地板上，輕輕翻開一本散文集。時間在這裡彷彿慢了下來。清爽的白茶香氣與溫暖舒適的雪松木質香交織融合，撫慰所有的躁動。這是一種毫不費力、低調的香氛——在忙碌的一天中，悄悄開闢出一片寧靜的空白，讓你可以好好深呼吸。'
     },
     'p2': {
         title: '【花香】織眠 (Woven Sleep) 禮盒 100ml',
-        moodImg: './mood-2.jpg',
-        productImg: './product-2.jpg',
+        moodImg: 'assets/mood-2.jpg',
+        productImg: 'assets/product-2.jpg',
         desc: '如同剛洗過的亞麻布一樣，散發著微風拂過後陽光晾曬的清新氣息。感覺就像被厚厚的羊毛毯輕輕包裹——純淨而無比柔軟。小蒼蘭的輕盈香氣如同無形的網子般環繞著你，帶走你所有的疲憊，帶來深深的慰藉和安全感。'
     },
     'p3': {
         title: '【咖啡】隅間 (The Corner) 禮盒 100ml',
-        moodImg: './mood-3.jpg',
-        productImg: './product-3.jpg',
+        moodImg: 'assets/mood-3.jpg',
+        productImg: 'assets/product-3.jpg',
         desc: '在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。這是創作者的氣息──伴你寫作、思考，讓你徹底沉浸這完全屬於自己的角落。'
     },
     'p4': {
         title: '擴香棒禮盒 10根+2朵裝飾紙花',
-        productImg: './product-4.jpg',
+        productImg: 'assets/product-4.jpg',
         desc: '精選高孔隙率擴香纖維棒，搭配手工細緻紙花。能完美吸附香氛精華並均勻釋放，為您的專屬空間增添優雅的視覺與嗅覺層次。'
     },
     'p5': {
         title: '【茶香】留白 (Blank Space) 補充包 100ml',
-        productImg: './product-5.jpg',
+        productImg: 'assets/product-5.jpg',
         desc: '（補充包）這是只屬於清晨的靜謐時刻。彷彿坐在沐浴著柔和光線的木地板上，輕輕翻開一本散文集。時間在這裡彷彿慢了下來。清爽的白茶香氣與溫暖舒適的雪松木質香交織融合，撫慰所有的躁動。'
     },
     'p6': {
         title: '【花香】織眠 (Woven Sleep) 補充包 100ml',
-        productImg: './product-6.jpg',
+        productImg: 'assets/product-6.jpg',
         desc: '（補充包）如同剛洗過的亞麻布一樣，散發著微風拂過後陽光晾曬的清新氣息。感覺就像被厚厚的羊毛毯輕輕包裹——純淨而無比柔軟。'
     },
     'p7': {
         title: '【咖啡】隅間 (The Corner) 補充包 100ml',
-        productImg: './product-7.jpg',
+        productImg: 'assets/product-7.jpg',
         desc: '（補充包）在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。'
     }
 };
