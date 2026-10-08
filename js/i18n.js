@@ -49,6 +49,21 @@ const translations = {
         p7_title: "【咖啡】隅間 (The Corner) 補充包 100ml",
         p7_desc: "（補充包）在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。",
 
+        // --- 客服與政策 ---
+        support_main_title: "客服與政策",
+        support_intro: "感謝您來到 Lavend/r。<br>為了提供您最完善的購物體驗，請在選購前閱讀以下服務說明。若有任何疑問，歡迎隨時與我們的團隊聯繫。",
+        policy1_title: "購物須知",
+        policy1_content: "<strong>訂單成立與出貨：</strong><br>訂單於付款完成後即成立。現貨商品將於 3-5 個工作日內（不含例假日）進行包裝與寄出。若包含預購或特調香氛商品，出貨時間請參考該商品頁面之具體說明。<br><br><strong>訂單修改與取消：</strong><br>若需修改收件資訊或取消訂單，請於訂單成立後的 12 小時內聯繫我們，若商品已進入物流程序，恕無法進行攔截與修改。<br><br><strong>商品呈現：</strong><br>我們的產品皆有一定比例的手工工序，每件商品的紋理與細節可能會有細微的個體差異，此為正常現象，也是每件器物的獨特之處。",
+        
+        policy2_title: "配送與運費",
+        policy2_content: "<strong>國內配送：</strong><ul><li>宅配到府：運費 NT$100（預計出貨後 1-2 日送達）</li><li>超商取貨（7-11 / 全家）：運費 NT$70（預計出貨後 2-3 日送達）</li></ul>單筆訂單滿 NT$1,000 即享免運優惠。<br><br><strong>開箱錄影保障：</strong><br>由於包裹內含易碎的陶瓷器皿與液體，為保障您的權益，請於拆封包裹時「錄影」。若發現商品有破損或液體外漏，請於簽收包裹後 24 小時內，將影片、照片等傳送至客服信箱，我們將立即為您提供協助。",
+        
+        policy3_title: "退換貨政策",
+        policy3_content: "<strong>7 日猶豫期規範：</strong><br>依照消費者保護法規定，您享有商品到貨後 7 日的猶豫期（由取件或簽收當日算起）。猶豫期非試用期，若需辦理退貨，請保持商品、擴香竹、贈品及原包裝的“全新未拆封狀態”。<br><br><strong>主觀氣味與試香：</strong><br>香氛氣味屬於個人主觀感受，我們了解盲買的疑慮。為此，部分正裝香氛產品會附贈同款試香。強烈建議您先體驗試香，若氣味不符預期，請勿拆封正裝產品（包含封膜與貼紙），方可聯繫我們為您辦理退貨。<br><br><strong>無法退換貨之情形：</strong><ul><li>擴香液、精油等商品，因涉及衛生與保存考量，一旦拆封即無法退換。</li><li>陶瓷擴香瓶若已注入液體或有明顯使用痕跡。</li><li>未提供開箱影片、照片，且簽收包裹後24小時才反應商品破損者。</li><li>超過 7 日猶豫期。</li></ul>",
+        
+        policy4_title: "聯絡我們",
+        policy4_content: "我們隨時準備好為您解答任何關於氣味、產品或訂單的疑問。<br><br><strong>客服信箱：</strong> annyziyun@gmail.com<br><strong>Instagram 客服：</strong> lavendr_tw<br><strong>服務時間：</strong> 週一至週五 10:00 - 18:00（遇國定假日公休）<br><strong>回覆時效：</strong> 收到訊息後，我們將於 1-2 個工作日內盡快為您回覆，遇活動檔期可能稍有延遲，感謝您的耐心等候。",
+
         // --- Footer 頁尾 ---
         footer_cs: "客服中心",
         footer_faq: "常見問題",
@@ -64,8 +79,6 @@ const translations = {
         footer_privacy: "隱私權政策",
         
         // --- 其他 ---
-        support_title: "常見問題與退換貨政策",
-        support_desc: "Support & Policy 測試區塊。提供最完善的售後服務與物流資訊。",
         member_title: "會員登記 / 登入",
         member_desc: "Member System 測試區塊。此處可供結帳時兌換點數、禮品、禮卷，以及紀錄點數等用途。"
     },
@@ -119,6 +132,21 @@ const translations = {
         p7_title: "[ Coffee ] The Corner Refill 100ml",
         p7_desc: "(Refill) Tucked away in an old wooden house on the city's edge, the noise simply fades away. There is only the subtle bitterness of light-roast coffee, grounded by the deep, woody undertones of dry vetiver.",
 
+        // --- Support & Policy ---
+        support_main_title: "Support & Policy",
+        support_intro: "Welcome to Lavend/r.<br>To ensure you have the best shopping experience, please take a moment to read our policies before placing an order. If you have any questions, our team is always here to help.",
+        policy1_title: "Shopping Guide",
+        policy1_content: "<strong>Order Confirmation & Shipping:</strong><br>Your order is confirmed once payment is complete. In-stock items will be packed and shipped within 3-5 business days (excluding weekends and holidays). For pre-orders or custom fragrance items, please refer to the specific product page for estimated shipping times.<br><br><strong>Modifying or Canceling Orders:</strong><br>If you need to change your shipping info or cancel your order, please contact us within 12 hours of placing it. Once your package has entered the shipping process, we won't be able to intercept or make changes to it.<br><br><strong>About Our Products:</strong><br>Our items involve a certain amount of handcrafting. You might notice slight variations in texture and detail from piece to piece. This is completely normal and is exactly what makes each piece uniquely yours.",
+        
+        policy2_title: "Shipping Policy",
+        policy2_content: "<strong>Domestic Shipping (Taiwan):</strong><ul><li>Home Delivery: NT$100 (Estimated 1-2 days after shipping)</li><li>Convenience Store Pickup (7-11 / FamilyMart): NT$70 (Estimated 2-3 days after shipping)</li></ul>Free shipping on all orders over NT$1,000.<br><br><strong>Unboxing Video for Your Protection:</strong><br>Since our packages contain fragile ceramics and liquids, please record a video while unboxing to protect your rights. If you find any damaged items or leaked liquids, please send the video and photos to our customer service email within 24 hours of receiving the package. We'll assist you right away.",
+        
+        policy3_title: "Return & Exchange",
+        policy3_content: "<strong>7-Day Cooling-Off Period:</strong><br>In accordance with consumer protection laws, you have a 7-day cooling-off period starting from the day you receive your package. Please note that this is not a trial period. To be eligible for a return, the product, reed sticks, gifts, and original packaging must remain in a “brand-new, unopened condition.”<br><br><strong>Scent Preferences & Testers:</strong><br>We know scent is very personal and blind buying can be tricky. That's why some of our full-sized fragrances come with a matching tester. We highly recommend trying the tester first. If the scent isn't quite what you expected, please leave the full-sized product completely sealed (including the shrink wrap and stickers) and contact us to process a return.<br><br><strong>Non-Returnable Items:</strong><ul><li>Diffuser liquids and essential oils cannot be returned once opened due to hygiene and preservation reasons.</li><li>Ceramic diffusers that have been filled with liquid or show obvious signs of use.</li><li>Reports of damaged goods made more than 24 hours after delivery, or without providing unboxing videos/photos.</li><li>Requests made after the 7-day cooling-off period.</li></ul>",
+        
+        policy4_title: "Contact Us",
+        policy4_content: "We're always ready to help with any questions you might have about our scents, products, or your order.<br><br><strong>Email:</strong> annyziyun@gmail.com<br><strong>Instagram:</strong> @lavendr_tw<br><strong>Service Hours:</strong> Monday - Friday, 10:00 AM - 6:00 PM (Closed on national holidays)<br><strong>Response Time:</strong> We do our best to get back to you within 1-2 business days. Responses might be slightly delayed during busy promotional periods. Thank you for your patience!",
+        
         // --- Footer ---
         footer_cs: "Customer Service",
         footer_faq: "FAQ",
@@ -134,8 +162,6 @@ const translations = {
         footer_privacy: "Privacy Policy",
         
         // --- Others ---
-        support_title: "FAQ & Policy",
-        support_desc: "Testing block for Support & Policy. Best logistics and after-sales service.",
         member_title: "Login / Register",
         member_desc: "Member System testing block. Redeem points, gifts, and vouchers here."
     }
