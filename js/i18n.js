@@ -33,7 +33,9 @@ const translations = {
         add_to_cart: "加入購物車",
         back_to_list: "← 返回商品列表",
         notice_title: "Product Info | 產品資訊",
-        notice_desc: "擴香瓶系列產品為維持香氣品質並防止運送過程中液體外漏，我們採用安全的防光分裝包裝（補充包）形式出貨。禮盒內含總容量 100ml 之擴香液，並無額外附贈補充包。建議您收到後，再緩緩倒入擴香瓶中，開啟專屬您的靜謐時光。",
+        notice_main: "擴香瓶系列產品為維持香氣品質並防止運送過程中液體外漏，我們採用安全的防光分裝包裝（補充包）形式出貨。禮盒內含總容量 100ml 之擴香液，並無額外附贈補充包。建議您收到後，再緩緩倒入擴香瓶中，開啟專屬您的靜謐時光。",
+        notice_sticks: "手工紙花與擴香棒皆為細緻材質。為維持最佳擴香效果，建議每 1 至 2 個月更換一次擴香棒。紙花請避免直接接觸水分或用力拉扯。",
+        notice_refill: "此為擴香液補充包，無附贈擴香瓶。請存放於陰涼乾燥處，避免陽光直射。開封後建議一次性倒入擴香瓶中，以維持香氣的最佳展現。",
         
         // --- 商品標題與介紹 ---
         p1_title: "【茶香】留白 (Blank Space) 禮盒 100ml",
@@ -91,7 +93,9 @@ const translations = {
         add_to_cart: "Add to Cart",
         back_to_list: "← Back to Shop",
         notice_title: "Product Info",
-        notice_desc: "To ensure the highest fragrance quality and prevent leakage during transit, our diffuser liquids are securely packed in light-proof refill pouches. The gift set includes a total of 100ml of fragrance (no additional refill included). Upon receiving, simply pour the liquid into your diffuser bottle.",
+        notice_main: "To ensure the highest fragrance quality and prevent leakage during transit, our diffuser liquids are securely packed in light-proof refill pouches. The gift set includes a total of 100ml of fragrance (no additional refill included). Upon receiving, simply pour the liquid into your diffuser bottle.",
+        notice_sticks: "Our handmade paper flowers and reed sticks are crafted from delicate materials. For optimal diffusion, we recommend replacing the sticks every 1-2 months. Please keep the paper flowers away from direct moisture to maintain their shape.",
+        notice_refill: "This is a refill pack of diffuser liquid; a diffuser bottle is not included. Store in a cool, dry place away from direct sunlight. Once opened, we recommend pouring the entire contents into your diffuser bottle to maintain optimal scent performance.",
         
         // --- Product Titles & Descriptions ---
         p1_title: "[ Tea ] Blank Space Diffuser Set 100ml",
