@@ -66,6 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 新增：監聽 Logo 點擊回首頁 ---
+    const logoLink = document.getElementById('logo-link');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            history.pushState(null, null, '#home');
+            navigateTo('#home');
+        });
+    }
+
     // 監聽所有其他超連結 (例如：首頁活動的"探索更多"、Footer連結)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (!anchor.classList.contains('nav-item')) {
