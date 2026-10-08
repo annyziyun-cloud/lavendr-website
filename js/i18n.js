@@ -48,6 +48,19 @@ const translations = {
         p6_desc: "（補充包）如同剛洗過的亞麻布一樣，散發著微風拂過後陽光晾曬的清新氣息。感覺就像被厚厚的羊毛毯輕輕包裹——純淨而無比柔軟。",
         p7_title: "【咖啡】隅間 (The Corner) 補充包 100ml",
         p7_desc: "（補充包）在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。",
+
+        // --- Footer 頁尾 ---
+        footer_cs: "客服中心",
+        footer_faq: "常見問題",
+        footer_tel: "+886 976-955-612",
+        footer_shipping: "運送服務 (運費與取貨)",
+        footer_return: "退換貨服務",
+        footer_about: "合作計畫",
+        footer_gift: "企業贈禮",
+        footer_social: "了解我們",
+        footer_newsletter: "訂閱電子報",
+        footer_terms: "條款細則",
+        footer_privacy: "隱私權政策",
         
         // --- 其他 ---
         support_title: "常見問題與退換貨政策",
@@ -104,6 +117,19 @@ const translations = {
         p6_desc: "(Refill) Like freshly washed linen, it carries the crisp, sun-dried scent of a gentle breeze. It feels just like being gently wrapped in a thick wool blanket—pure and incredibly soft.",
         p7_title: "[ Coffee ] The Corner Refill 100ml",
         p7_desc: "(Refill) Tucked away in an old wooden house on the city's edge, the noise simply fades away. There is only the subtle bitterness of light-roast coffee, grounded by the deep, woody undertones of dry vetiver.",
+
+        // --- Footer ---
+        footer_cs: "Customer Service",
+        footer_faq: "FAQ",
+        footer_tel: "+886 976-955-612",
+        footer_shipping: "Shipping Information",
+        footer_return: "Returns & Exchanges",
+        footer_about: "Cross-Branding Project",
+        footer_gift: "Corporate Gifting",
+        footer_social: "Connect with Us",
+        footer_newsletter: "Newsletter",
+        footer_terms: "Terms & Conditions",
+        footer_privacy: "Privacy Policy",
         
         // --- Others ---
         support_title: "FAQ & Policy",
