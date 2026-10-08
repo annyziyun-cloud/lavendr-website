@@ -6,7 +6,7 @@ const translations = {
         nav_shop: "商品",
         nav_support: "客服與政策",
         nav_member: "會員系統",
-        hero_quote: "點燃一縷香氣，在喧囂裡漫成一座島嶼。",
+        hero_quote: "點燃一縷芬芳，在喧囂裡漫成一座島嶼。",
         hero_btn: "探索香氛 (Shop Now)",
         event1_title: "開幕限定禮遇",
         event1_desc: "即日起至2027年X月X日，凡於官方網站選購任一款擴香禮盒，訂單即享【Lavend/r 香氛體驗組】。敬邀探索，限量呈獻。",
