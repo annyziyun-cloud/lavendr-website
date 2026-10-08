@@ -118,55 +118,55 @@
                 <div id="shop-list-view">
                     <h2 class="serif-title section-title">Shop Collection</h2>
                     
-                    <!-- 主打商品 (使用 mood 情境圖) -->
-                    <h3 class="category-title">主打商品</h3>
+                    <!-- 主打商品 -->
+                    <h3 class="category-title" data-i18n="shop_main">主打商品</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p1')">
                             <div class="img-wrapper"><img src="assets/mood-1.jpg" alt="留白示意圖"></div>
-                            <h4 class="product-title">【茶香】留白 (Blank Space) 禮盒 100ml</h4>
-                            <button class="add-to-cart-btn">加入購物車</button>
+                            <h4 class="product-title" data-i18n="p1_title">【茶香】留白 (Blank Space) 禮盒 100ml</h4>
+                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p2')">
                             <div class="img-wrapper"><img src="assets/mood-2.jpg" alt="織眠示意圖"></div>
-                            <h4 class="product-title">【花香】織眠 (Woven Sleep) 禮盒 100ml</h4>
-                            <button class="add-to-cart-btn">加入購物車</button>
+                            <h4 class="product-title" data-i18n="p2_title">【花香】織眠 (Woven Sleep) 禮盒 100ml</h4>
+                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p3')">
                             <div class="img-wrapper"><img src="assets/mood-3.jpg" alt="隅間示意圖"></div>
-                            <h4 class="product-title">【咖啡】隅間 (The Corner) 禮盒 100ml</h4>
-                            <button class="add-to-cart-btn">加入購物車</button>
+                            <h4 class="product-title" data-i18n="p3_title">【咖啡】隅間 (The Corner) 禮盒 100ml</h4>
+                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
 
-                    <!-- 香氛小物 (直接使用 product 實體圖) -->
-                    <h3 class="category-title" style="margin-top: 5rem;">香氛小物</h3>
+                    <!-- 香氛小物 -->
+                    <h3 class="category-title" style="margin-top: 5rem;" data-i18n="shop_acc">香氛小物</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p4')">
-                            <div class="img-wrapper"><img src="assets/product-4.png" alt="擴香棒"></div>
-                            <h4 class="product-title">擴香棒禮盒 10根+2朵裝飾紙花</h4>
-                            <button class="add-to-cart-btn">加入購物車</button>
+                            <div class="img-wrapper"><img src="assets/product-4.jpg" alt="擴香棒"></div>
+                            <h4 class="product-title" data-i18n="p4_title">擴香棒禮盒 10根+2朵裝飾紙花</h4>
+                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p5')">
                             <div class="img-wrapper"><img src="assets/product-5.jpg" alt="留白補充包"></div>
-                            <h4 class="product-title">【茶香】留白 (Blank Space) 補充包 100ml</h4>
-                            <button class="add-to-cart-btn">加入購物車</button>
+                            <h4 class="product-title" data-i18n="p5_title">【茶香】留白 (Blank Space) 補充包 100ml</h4>
+                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p6')">
                             <div class="img-wrapper"><img src="assets/product-6.jpg" alt="織眠補充包"></div>
-                            <h4 class="product-title">【花香】織眠 (Woven Sleep) 補充包 100ml</h4>
-                            <button class="add-to-cart-btn">加入購物車</button>
+                            <h4 class="product-title" data-i18n="p6_title">【花香】織眠 (Woven Sleep) 補充包 100ml</h4>
+                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p7')">
                             <div class="img-wrapper"><img src="assets/product-7.jpg" alt="隅間補充包"></div>
-                            <h4 class="product-title">【咖啡】隅間 (The Corner) 補充包 100ml</h4>
-                            <button class="add-to-cart-btn">加入購物車</button>
+                            <h4 class="product-title" data-i18n="p7_title">【咖啡】隅間 (The Corner) 補充包 100ml</h4>
+                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 視角 B：單一商品介紹頁 (務必確認這裡有兩張 img 標籤) -->
+                <!-- 視角 B：單一商品介紹頁 -->
                 <div id="product-detail-view" style="display: none;">
-                    <button class="back-btn" onclick="closeProduct()">← 返回商品列表</button>
+                    <button class="back-btn" onclick="closeProduct()" data-i18n="back_to_list">← 返回商品列表</button>
                     <div class="detail-layout">
                         <!-- 左側：直行排列的兩張圖片 -->
                         <div class="detail-images-column">
@@ -175,16 +175,17 @@
                         </div>
                         <!-- 右側：商品資訊 -->
                         <div class="detail-info">
+                            <!-- 這裡我們保留標籤，但拿掉裡面的字，等 JS 來掛載 data-i18n -->
                             <h2 id="detail-title" class="serif-title"></h2>
                             <p id="detail-desc" class="detail-desc"></p>
                             
-                            <!-- 新增：產品資訊與注意事項區塊 -->
+                            <!-- 產品資訊與注意事項區塊 -->
                             <div class="product-notice">
-                                <h4>Product Info | 產品資訊</h4>
-                                <p id="detail-notice">擴香瓶系列產品為維持香氣品質並防止運送過程中液體外漏，我們採用安全的防光分裝包裝（補充包）形式出貨。禮盒內含總容量 100ml 之擴香液，並無額外附贈補充包。建議您收到後，再緩緩倒入擴香瓶中，開啟專屬您的靜謐儀式。</p>
+                                <h4 data-i18n="notice_title">Product Info | 產品資訊</h4>
+                                <p id="detail-notice" data-i18n="notice_desc">注意事項內容...</p>
                             </div>
                             
-                            <button class="add-to-cart-btn detail-cart-btn">加入購物車</button>
+                            <button class="add-to-cart-btn detail-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
                 </div>
