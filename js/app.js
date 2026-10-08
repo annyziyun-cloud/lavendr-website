@@ -88,46 +88,45 @@ window.onclick = function(event) {
 
 // === 4. 處理商品頁切換與資料庫 ===
 
-// 定義商品香氛介紹資料
+// 定義商品香氛介紹資料 (雙語更新版)
 const productData = {
     'p1': {
         title: '【茶香】留白 (Blank Space) 禮盒 100ml',
-        moodImg: 'assets/mood-1.jpg',     // 有情境圖
-        productImg: 'assets/product-1.jpg', 
-        desc: '這是一段專屬於清晨的靜謐時光。彷彿在灑滿微光的木地板上，安靜地翻開一本散文集。時間在這裡慢了下來，微冷的白茶香氣伴隨著雪松的溫潤，撫平了所有的躁動。這款香氣不爭不搶，為擁擠的日常騰出了一處能夠深呼吸的空白角落。'
+        moodImg: './mood-1.jpg',
+        productImg: './product-1.jpg', 
+        desc: '這是只屬於清晨的靜謐時刻。彷彿坐在沐浴著柔和光線的木地板上，輕輕翻開一本散文集。時間在這裡彷彿慢了下來。清爽的白茶香氣與溫暖舒適的雪松木質香交織融合，撫慰所有的躁動。這是一種毫不費力、低調的香氛——在忙碌的一天中，悄悄開闢出一片寧靜的空白，讓你可以好好深呼吸。\n\nThis is a quiet moment that belongs solely to the early morning. It feels like sitting on a wooden floor bathed in soft light, quietly opening a book of prose. Time slows down here. The cool, crisp scent of white tea blends with the comforting warmth of cedarwood, soothing away all the restlessness. It’s an effortless, unassuming fragrance—quietly carving out a serene, blank space in your crowded day where you can finally take a deep breath.'
     },
     'p2': {
         title: '【花香】織眠 (Woven Sleep) 禮盒 100ml',
-        moodImg: 'assets/mood-2.jpg',     // 有情境圖
-        productImg: 'assets/product-2.jpg',
-        desc: '如同剛洗淨的棉麻布料，揉合了微風與陽光曝曬後的乾燥氣息。宛如被厚實的羊毛毯輕輕包裹，純粹且柔軟。輕盈的小蒼蘭在空氣中交織出一張隱形的網，接住了所有的疲憊，給人無比溫柔的安全感。'
+        moodImg: './mood-2.jpg',
+        productImg: './product-2.jpg',
+        desc: '如同剛洗過的亞麻布一樣，散發著微風拂過後陽光晾曬的清新氣息。感覺就像被厚厚的羊毛毯輕輕包裹——純淨而無比柔軟。小蒼蘭的輕盈香氣如同無形的網子般環繞著你，帶走你所有的疲憊，帶來深深的慰藉和安全感。\n\nLike freshly washed linen, it carries the crisp, sun-dried scent of a gentle breeze. It feels just like being gently wrapped in a thick wool blanket—pure and incredibly soft. Airy notes of freesia weave an invisible net around you, catching all your exhaustion and offering a deeply comforting sense of security.'
     },
     'p3': {
         title: '【咖啡】隅間 (The Corner) 禮盒 100ml',
-        moodImg: 'assets/mood-3.jpg',     // 有情境圖
-        productImg: 'assets/product-3.jpg',
-        desc: '在城市邊緣的木造老屋裡，沒有過多的喧囂，只有淺焙咖啡豆的微苦，與乾燥香根草沉澱下來的木質底蘊。這是一抹屬於創作者的香氣，伴隨你在案前書寫、思考，沉浸在自己專屬角落之時。'
+        moodImg: './mood-3.jpg',
+        productImg: './product-3.jpg',
+        desc: '在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。這是創作者的氣息──伴你寫作、思考，讓你徹底沉浸這完全屬於自己的角落。\n\nTucked away in an old wooden house on the city\'s edge, the noise simply fades away. There is only the subtle bitterness of light-roast coffee, grounded by the deep, woody undertones of dry vetiver. This is the scent of a creator—lingering beside you as you write, think, and completely lose yourself in a corner that is entirely your own.'
     },
     'p4': {
         title: '擴香棒禮盒 10根+2朵裝飾紙花',
-        // 拿掉 moodImg，只保留實體圖
-        productImg: 'assets/product-4.png',
-        desc: '精選高孔隙率擴香纖維棒，搭配手工細緻紙花。能完美吸附香氛精華並均勻釋放，為您的專屬空間增添優雅的視覺與嗅覺層次。'
+        productImg: './product-4.jpg',
+        desc: '精選高孔隙率擴香纖維棒，搭配手工細緻紙花。能完美吸附香氛精華並均勻釋放，為您的專屬空間增添優雅的視覺與嗅覺層次。\n\nPremium high-porosity reed diffusers paired with delicate handmade paper flowers. They perfectly absorb fragrance essences and release them evenly, adding elegant visual and olfactory layers to your personal space.'
     },
     'p5': {
         title: '【茶香】留白 (Blank Space) 補充包 100ml',
-        productImg: 'assets/product-5.jpg',
-        desc: '【茶香】留白 (Blank Space) 補充包。這是一段專屬於清晨的靜謐時光。彷彿在灑滿微光的木地板上，安靜地翻開一本散文集。時間在這裡慢了下來，微冷的白茶香氣伴隨著雪松的溫潤，撫平了所有的躁動。'
+        productImg: './product-5.jpg',
+        desc: '（補充包）這是只屬於清晨的靜謐時刻。彷彿坐在沐浴著柔和光線的木地板上，輕輕翻開一本散文集。時間在這裡彷彿慢了下來。清爽的白茶香氣與溫暖舒適的雪松木質香交織融合，撫慰所有的躁動。'
     },
     'p6': {
         title: '【花香】織眠 (Woven Sleep) 補充包 100ml',
-        productImg: 'assets/product-6.jpg',
-        desc: '【花香】織眠 (Woven Sleep) 補充包。如同剛洗淨的棉麻布料，揉合了微風與陽光曝曬後的乾燥氣息。宛如被厚實的羊毛毯輕輕包裹，純粹且柔軟。'
+        productImg: './product-6.jpg',
+        desc: '（補充包）如同剛洗過的亞麻布一樣，散發著微風拂過後陽光晾曬的清新氣息。感覺就像被厚厚的羊毛毯輕輕包裹——純淨而無比柔軟。'
     },
     'p7': {
         title: '【咖啡】隅間 (The Corner) 補充包 100ml',
-        productImg: 'assets/product-7.jpg',
-        desc: '【咖啡】隅間 (The Corner) 補充包。在城市邊緣的木造老屋裡，沒有過多的喧囂，只有淺焙咖啡豆的微苦，與乾燥香根草沉澱下來的木質底蘊。'
+        productImg: './product-7.jpg',
+        desc: '（補充包）在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。'
     }
 };
 
