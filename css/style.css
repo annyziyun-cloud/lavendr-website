@@ -279,3 +279,26 @@ body {
     .detail-layout { flex-direction: column; gap: 2rem; }
     .detail-info { padding-top: 0; }
 }
+
+/* 產品資訊與注意事項 */
+.product-notice {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(247, 245, 240, 0.5); /* 非常淡的米色底 */
+    border-left: 2px solid var(--primary-color);
+    border-radius: 0 4px 4px 0;
+}
+.product-notice h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    letter-spacing: 1.5px;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+}
+.product-notice p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
