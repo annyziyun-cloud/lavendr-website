@@ -179,7 +179,7 @@ const scentQuizData = {
     baseQuestions: [
         {
             id: 'Q1', 
-            question: { zh: '推開 Lavend/r 的門，你希望今天帶走的這瓶香氛，是為了誰而調製？', en: 'Opening the door to Lavend/r, who is this fragrance for?' },
+            question: { zh: '你希望今天帶走的這瓶香氛，是為了誰而調製？', en: 'Opening the door to Lavend/r, who is this fragrance for?' },
             options: [
                 { label: { zh: '「給現在的我」', en: '"For my present self"' }, value: 'A' }, 
                 { label: { zh: '「給理想中的我」', en: '"For my ideal self"' }, value: 'B' },
