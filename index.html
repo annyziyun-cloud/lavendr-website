@@ -82,6 +82,48 @@
             </div>
         </section>
 
+        <!-- 2. 新增：調香問卷測驗區塊 -->
+        <section id="quiz" class="page-section">
+            <div class="quiz-page-container">
+                <div class="quiz-header">
+                    <h2 class="serif-title" data-i18n="quiz_title">Lavend/r 調香情境問卷</h2>
+                    <p class="quiz-intro" data-i18n="quiz_intro">透過幾個簡單的問題，尋找最契合你靈魂深處的專屬香氣。</p>
+                </div>
+
+                <!-- 問卷主要互動區 -->
+                <div class="workbench-step" id="step1-quiz">
+                    <!-- 題目顯示區 -->
+                    <div id="quizContainer" class="quiz-container">
+                        <div class="question-box">
+                            <h3 id="questionText">Loading...</h3>
+                            <div id="optionsContainer" class="options-grid"></div>
+                        </div>
+                    </div>
+
+                    <!-- 測驗結果顯示區 (預設隱藏) -->
+                    <div id="quizResult" style="display: none;">
+                        <h3 class="result-label" data-i18n="quiz_result_label">YOUR SCENT NARRATIVE</h3>
+                        <h2 id="resultName" class="serif-title result-name"></h2>
+                        <p id="resultQuote" class="result-quote"></p>
+                        
+                        <div class="result-details glass-card">
+                            <h4 data-i18n="quiz_structure">專屬香味結構</h4>
+                            <div id="resultNotes" class="result-notes"></div>
+                            
+                            <h4 data-i18n="quiz_analysis" style="margin-top: 2rem;">香味解析</h4>
+                            <div id="resultStory" class="result-story"></div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 3rem;">
+                            <button class="action-btn" onclick="resetQuiz()" data-i18n="quiz_restart">重新測驗</button>
+                            <a href="#shop" class="action-btn" style="background: var(--primary-color); margin-left: 1rem;" data-i18n="quiz_go_shop">前往探索商品</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main> <!-- 結束 main -->
+
         <!-- 2. 品牌故事 -->
         <section id="story" class="page-section">
             <div class="story-container">
