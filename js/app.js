@@ -375,12 +375,16 @@ let currentQIndex = 0;
 let scores = {};
 let chosenBranch = 'A';
 let selectedMultiple = [];
+let selectedNotes = []; // 新增：用來收集使用者點擊的專屬香材
 
 function initQuiz() {
     currentPhase = 'base';
     currentQIndex = 0;
     scores = {};
     chosenBranch = 'A';
+    selectedMultiple = [];
+    selectedNotes = []; // 每次測驗重置香材收集器
+    
     document.getElementById('quizContainer').style.display = 'block';
     document.getElementById('quizResult').style.display = 'none';
     renderQuestion();
@@ -473,10 +477,15 @@ function renderQuestion() {
             btn.className = 'quiz-option-btn';
             btn.textContent = opt.label;
             btn.onclick = () => {
-                // 如果是 Q1，記錄分支路線
+                // 記錄分支路線
                 if (q.id === 'Q1') chosenBranch = opt.value;
-                // 如果選項帶有 archetype 原型，計分加一
+                // 計分
                 if (opt.archetype) scores[opt.archetype] = (scores[opt.archetype] || 0) + 1;
+                
+                // --- 新增：收集該選項專屬的香材 (拆解並存入陣列) ---
+                if (opt.note) {
+                    opt.note.split('、').forEach(n => selectedNotes.push(n));
+                }
                 
                 currentQIndex++;
                 renderQuestion();
@@ -489,7 +498,7 @@ function renderQuestion() {
 function showResult() {
     document.getElementById('quizContainer').style.display = 'none';
     
-    // 計算最高分的原型 (預設為 second_skin)
+    // 1. 計算最高分的原型
     let highestScore = 0;
     let finalArchetype = 'second_skin'; 
     for (const [arch, score] of Object.entries(scores)) {
@@ -499,13 +508,24 @@ function showResult() {
         }
     }
     
+    // 2. 顯示故事文案
     const result = fragranceProfiles[finalArchetype];
     document.getElementById('resultName').textContent = result.name;
     document.getElementById('resultQuote').textContent = result.quote;
-    
-    // 將 Array 轉換成有換行的字串
     document.getElementById('resultStory').innerHTML = result.storyTemplate.join('<br><br>');
     
+    // 3. --- 新增：處理並顯示專屬香氣結構 ---
+    // 利用 Set 過濾掉重複出現的香材，並用高質感的 ✦ 符號串接
+    const uniqueNotes = [...new Set(selectedNotes)];
+    const notesDisplay = uniqueNotes.length > 0 ? uniqueNotes.join(' ✦ ') : '純粹特調';
+    
+    document.getElementById('resultNotes').innerHTML = `
+        <div style="font-size: 1.15rem; color: #8a7a8f; font-weight: 600; margin-bottom: 2rem; letter-spacing: 1.5px; line-height: 1.8;">
+            ${notesDisplay}
+        </div>
+    `;
+    
+    // 4. 切換畫面並滑動
     document.getElementById('quizResult').style.display = 'block';
     document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth' });
 }
