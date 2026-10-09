@@ -519,6 +519,12 @@ body {
     color: #fff;
 }
 
+.quiz-option-btn.selected {
+    background: var(--text-dark);
+    color: #fff;
+    border-color: var(--text-dark);
+}
+
 /* 測驗結果呈現 */
 #quizResult {
     text-align: center;
