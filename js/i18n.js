@@ -13,7 +13,7 @@ const translations = {
         event2_title: "會員專屬",
         event2_desc: "購買任一產品並成為 Lavend/r 會員，誠摯邀請您填寫《香氛體驗問卷》。填寫完成後，即可解鎖專屬優惠碼（每位會員限定兌換乙次）。",
         event3_title: "尋找專屬香氛 | Find Your Lavend/r",
-        event3_desc: "每一種香氣，都是一種生活狀態的投射。<br><br>還不確定哪一款香氛最契合您當下的頻率，或是最符合您的送禮需求嗎？<br>點擊下方連結，跟隨直覺完成這份香氛指南。<br>讓我們透過您的回答，為您梳理出專屬的氣味輪廓，讓您在未來的每一次挑香中，都能輕鬆遇見那款最合適的選擇。",
+        event3_desc: "每一種香氣，都是一種生活狀態的投射。還不確定哪一款香氛最契合您當下的頻率，或是最符合您的送禮需求嗎？點擊下方連結，跟隨直覺完成這份香氛指南。讓我們透過您的回答，為您梳理出專屬的氣味輪廓，讓您在未來的每一次挑香中，都能輕鬆遇見那款最合適的選擇。",
         btn_explore: "探索更多",
         
         // --- 品牌故事 ---
@@ -103,7 +103,7 @@ const translations = {
         event2_title: "Member Exclusive",
         event2_desc: "Make any purchase, join as a Lavend/r member, and complete our Fragrance Experience Survey. Once finished, you'll unlock an exclusive discount code for your next order! (Limit one per member).",
         event3_title: "Find Your Exclusive Scent | Find Your Lavend/r",
-        event3_desc: "Every fragrance is a reflection of a state of living.<br><br>Unsure which scent best resonates with your current frequency or perfectly fits your gifting needs?<br>Click the link below and follow your intuition to complete this fragrance guide.<br>Through your answers, we will outline your unique olfactory profile, making it effortless to find your perfect match in all your future scent selections.",
+        event3_desc: "Every fragrance is a reflection of a state of living.Unsure which scent best resonates with your current frequency or perfectly fits your gifting needs?<br>Click the link below and follow your intuition to complete this fragrance guide.Through your answers, we will outline your unique olfactory profile, making it effortless to find your perfect match in all your future scent selections.",
         btn_explore: "Explore More",
         
         // --- Brand Story ---
