@@ -483,7 +483,7 @@ body {
     padding: 3rem 4rem;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-    text-align: center;
+    text-align: left;
     min-height: 400px;
     display: flex;
     flex-direction: column;
@@ -527,7 +527,7 @@ body {
 
 /* 測驗結果呈現 */
 #quizResult {
-    text-align: center;
+    text-align: left;
     animation: fadeIn 0.8s ease-out forwards;
 }
 .result-label {
