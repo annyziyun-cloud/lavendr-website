@@ -173,12 +173,14 @@ body {
     object-position: center;
 }
 
-/* 確保文字浮在圖片上方，並精準靠左 */
+/* 確保文字浮在圖片上方，並使用絕對定位精準靠左 */
 .hero-content {
-    position: relative;
+    position: absolute; /* 改為絕對定位，不受其他元素影響 */
+    left: 5%; /* 距離左側邊緣的距離，若想更靠左可改為 5% 或 6% */
+    top: 50%; /* 垂直置中 */
+    transform: translateY(-50%); /* 修正垂直置中的偏移量 */
     z-index: 10;
     text-align: left;
-    margin-left: 8%; /* 進一步往左推，與左上角 Logo 產生垂直對齊的錯覺 */
     max-width: 500px;
 }
 
