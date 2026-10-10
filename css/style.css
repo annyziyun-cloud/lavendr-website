@@ -212,40 +212,95 @@ body {
 }
 
 /* === 7. 品牌故事 (Brand Story) 區塊 === */
-.story-container { max-width: 1100px; margin: 140px auto 80px; padding: 2rem; position: relative; }
-.vertical-text {
-    position: absolute; top: -40px; left: 0;
-    writing-mode: vertical-rl; text-orientation: mixed;
-    font-family: 'Playfair Display', 'Noto Serif TC', serif;
-    letter-spacing: 4px; color: var(--text-light); font-size: 0.85rem; line-height: 2; z-index: 10;
-}
-.story-layout { display: flex; flex-wrap: wrap; align-items: center; gap: 5rem; margin-top: 6rem; margin-left: 3.5rem; }
-.story-image { flex: 1; min-width: 300px; position: relative; }
-.story-image img { width: 100%; height: auto; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.story-text { flex: 1; min-width: 300px; padding-right: 2rem; }
-.story-text h2 { font-size: 2rem; letter-spacing: 8px; margin-bottom: 3rem; color: var(--text-dark); }
-.story-paragraphs p {
-    margin-bottom: 2rem; font-size: 0.95rem; line-height: 2.2;
-    color: var(--text-light); letter-spacing: 1.5px; text-align: justify;
+.story-container {
+    max-width: 1200px;
+    margin: 140px auto 80px;
+    padding: 2rem;
 }
 
-/* --- 品牌故事：影片與宣傳文案區塊 --- */
-.brand-video-section {
-    margin-top: 6rem;
-    padding-top: 5rem;
-    border-top: 1px solid rgba(0,0,0,0.05);
+/* --- 上半部：原本文案與圖片 --- */
+.story-upper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4rem;
+    margin-bottom: 10rem; /* 與下半部影片拉開距離 */
 }
 
-.video-wrapper {
+/* 左側：直排標題與圖片 */
+.story-upper-left {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+/* 經典直列排版 (Writing Mode) */
+.vertical-title {
+    writing-mode: vertical-rl; /* 讓文字直排，從右向左讀 */
+    text-orientation: mixed;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-family: 'Lato', 'Noto Serif TC', serif;
+    letter-spacing: 4px;
+    padding-top: 1rem;
+}
+.vertical-title .vt-zh {
+    font-size: 0.95rem;
+}
+.vertical-title .vt-en {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+.story-img-wrapper {
+    flex: 1;
+}
+.story-img-wrapper img {
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto 4rem auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08); /* 增加高級感的柔和陰影 */
-    background: #000; /* 影片載入前的底色 */
+    max-width: 450px;
+    height: auto;
+    display: block;
 }
 
+/* 右側：原本文案 */
+.story-upper-right {
+    flex: 1;
+    padding-top: 8rem; /* 讓文字稍微往下沉，與左側圖片形成錯落的美感 */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.story-upper-right h3 {
+    font-size: 2rem;
+    letter-spacing: 12px;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+.story-upper-right p {
+    color: var(--text-light);
+    line-height: 2.2;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+/* --- 下半部：影片與新文案 --- */
+.story-lower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+}
+
+/* 滿版影片 */
+.video-wrapper.full-width {
+    width: 100%;
+    background: #000;
+}
 .video-wrapper video {
     width: 100%;
     height: auto;
@@ -253,12 +308,11 @@ body {
     outline: none;
 }
 
+/* 影片下方新文案 */
 .video-copy {
     max-width: 700px;
-    margin: 0 auto;
     text-align: center;
 }
-
 .video-copy .quote-en {
     font-size: 1.5rem;
     color: var(--text-light);
@@ -266,31 +320,36 @@ body {
     margin-bottom: 0.5rem;
     font-style: italic;
 }
-
 .video-copy .quote-zh {
     font-size: 1.8rem;
     color: var(--text-dark);
     letter-spacing: 4px;
     margin-bottom: 3rem;
 }
-
-.video-desc p {
+.quote-desc p {
     color: var(--text-light);
     line-height: 2.2;
     font-size: 1rem;
     letter-spacing: 1px;
-    margin-bottom: 2rem;
-    text-align: justify; /* 讓長文的左右邊緣對齊，更像雜誌 */
+    margin-bottom: 1.5rem;
 }
-
-/* 強調最後一句引言 */
-.video-desc .highlight-text {
+.quote-desc .highlight-text {
     font-size: 1.15rem;
     color: var(--text-dark);
     font-weight: 600;
-    text-align: center;
     margin-top: 3rem;
     letter-spacing: 2px;
+}
+
+/* --- 手機版 RWD 調整 --- */
+@media (max-width: 900px) {
+    .story-upper {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .story-upper-right {
+        padding-top: 2rem;
+    }
 }
 
 /* === 8. 商品頁 (Shop) 區塊 === */
