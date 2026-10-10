@@ -229,6 +229,70 @@ body {
     color: var(--text-light); letter-spacing: 1.5px; text-align: justify;
 }
 
+/* --- 品牌故事：影片與宣傳文案區塊 --- */
+.brand-video-section {
+    margin-top: 6rem;
+    padding-top: 5rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.video-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 4rem auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08); /* 增加高級感的柔和陰影 */
+    background: #000; /* 影片載入前的底色 */
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+    outline: none;
+}
+
+.video-copy {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-copy .quote-en {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.video-copy .quote-zh {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 3rem;
+}
+
+.video-desc p {
+    color: var(--text-light);
+    line-height: 2.2;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    text-align: justify; /* 讓長文的左右邊緣對齊，更像雜誌 */
+}
+
+/* 強調最後一句引言 */
+.video-desc .highlight-text {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    text-align: center;
+    margin-top: 3rem;
+    letter-spacing: 2px;
+}
+
 /* === 8. 商品頁 (Shop) 區塊 === */
 .shop-container { max-width: 1200px; margin: 120px auto 80px; padding: 2rem; }
 .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; letter-spacing: 4px; color: var(--text-dark); }
