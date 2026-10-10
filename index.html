@@ -28,13 +28,36 @@
 
     <!-- 內容區塊 -->
     <main class="main-content">
-        <!-- 1. 首頁 (Hero Section + News) -->
+        <!-- 1. 首頁與活動區塊 -->
         <section id="home" class="page-section active">
-            <!-- Hero 全螢幕區塊 -->
+            <!-- === 封面輪播區塊 === -->
             <div class="hero-section">
-                <div class="hero-text-box">
-                    <h2 class="serif-title hero-quote" data-i18n="hero_quote">點燃一縷芬芳，在喧囂裡漫成一座島嶼。</h2>
-                    <a href="#shop" class="hero-btn" data-i18n="hero_btn">探索香氛 (Shop Now)</a>
+                <!-- 輪播圖片群 -->
+                <div class="hero-carousel">
+                    <!-- 第一張照片 (原來的 hero.jpg) -->
+                    <div class="carousel-slide active">
+                        <img src="./hero.jpg" alt="Lavend/r 品牌形象 1">
+                    </div>
+                    <!-- 第二張照片 (你準備的 hero2.jpg) -->
+                    <div class="carousel-slide">
+                        <img src="./hero2.jpg" alt="Lavend/r 品牌形象 2">
+                    </div>
+                </div>
+
+                <!-- 左右切換箭頭 -->
+                <button class="carousel-control prev" aria-label="Previous slide">❮</button>
+                <button class="carousel-control next" aria-label="Next slide">❯</button>
+                
+                <!-- 下方切換點點 -->
+                <div class="carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                </div>
+
+                <!-- 原本的文字與按鈕 (完全不動) -->
+                <div class="hero-content">
+                    <h2 class="serif-title" data-i18n="hero_quote">點燃一縷芬芳，在喧囂裡漫成一座島嶼。</h2>
+                    <a href="#shop" class="hero-btn action-btn" data-i18n="hero_btn">探索香氛 (Shop Now)</a>
                 </div>
             </div>
 
