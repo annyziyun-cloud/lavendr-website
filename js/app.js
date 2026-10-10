@@ -128,6 +128,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+// === 6. 首頁封面輪播圖 (Hero Carousel) ===
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    let slideInterval;
+
+    function showSlide(n) {
+        if (!slides.length) return;
+        
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slideIndex = n;
+        if (slideIndex >= slides.length) slideIndex = 0;
+        if (slideIndex < 0) slideIndex = slides.length - 1;
+        
+        slides[slideIndex].classList.add('active');
+        if (dots[slideIndex]) dots[slideIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(slideIndex + 1);
+    }
+
+    function prevSlide() {
+        showSlide(slideIndex - 1);
+    }
+
+    function startSlideInterval() {
+        // 設定每 5 秒 (5000 毫秒) 自動切換一張，可自行調整
+        slideInterval = setInterval(nextSlide, 5000); 
+    }
+
+    function resetSlideInterval() {
+        clearInterval(slideInterval);
+        startSlideInterval();
+    }
+
+    // 綁定箭頭事件
+    const nextBtn = document.querySelector('.carousel-control.next');
+    const prevBtn = document.querySelector('.carousel-control.prev');
+    if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetSlideInterval(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetSlideInterval(); });
+
+    // 綁定點點事件
+    dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            const idx = parseInt(e.target.getAttribute('data-slide'));
+            showSlide(idx);
+            resetSlideInterval();
+        });
+    });
+
+    // 初始化輪播
+    if (slides.length > 0) {
+        showSlide(0);
+        startSlideInterval();
+    }
+    
     initQuiz();
 });
 
