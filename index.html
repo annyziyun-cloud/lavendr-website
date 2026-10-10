@@ -124,19 +124,21 @@
         <!-- 2. 品牌故事 -->
         <section id="story" class="page-section">
             <div class="story-container">
-                <!-- 左上角直書裝飾字 -->
-                <div class="vertical-text">
-                    <p>品牌故事與定義</p>
-                    <p>BRAND STORY</p>
-                </div>
-
-                <div class="story-layout">
-                    <!-- 左側圖片 -->
-                    <div class="story-image">
-                        <!-- 替換成你剛上傳的照片檔名 -->
-                        <img src="./story-img.png" alt="Lavend/r Brand Story">
+                
+                <!-- 上半部分：原本文案與圖片 -->
+                <div class="story-upper">
+                    <!-- 左側：直排標題與圖片 -->
+                    <div class="story-upper-left">
+                        <div class="vertical-title">
+                            <span class="vt-zh">品牌故事與定義</span>
+                            <span class="vt-en">BRAND STORY</span>
+                        </div>
+                        <div class="story-img-wrapper">
+                            <!-- 請確認這裡的圖片檔名與你上傳的白襯衫圖片一致 -->
+                            <img src="./story-img.png" alt="Lavend/r 品牌意象">
+                        </div>
                     </div>
-
+                    
                     <!-- 右側文字 -->
                     <div class="story-text">
                         <h2 class="serif-title">L A V E N D / R</h2>
@@ -149,21 +151,21 @@
                             <p data-i18n="story_p3">品牌名中刻意加入的「/」（Slash），它代表了解構與重新定義。它是一抹橫跨在框架之上的斜槓，斬斷世俗定義，回歸自我本質。一如薰衣草，簡單卻極具韌性。</p>
                         </div>
 
-                        <!-- 下半部：品牌形象影片與專屬文案 -->
-                <div class="brand-video-section">
-                    <!-- 影片播放器 -->
-                    <div class="video-wrapper">
-                        <video controls playsinline width="100%" id="brandVideo">
+                        <!-- 下半部分：滿版影片與新文案 -->
+                <div class="story-lower">
+                    <!-- 滿版影片 -->
+                    <div class="video-wrapper full-width">
+                        <video controls playsinline id="brandVideo">
                             <source src="brand-video.mp4" type="video/mp4">
                         </video>
                     </div>
                     
-                    <!-- 影片宣傳文案 -->
+                    <!-- 影片下方新文案 -->
                     <div class="video-copy">
                         <h3 class="serif-title quote-en" data-i18n="video_quote_en">Light a fragrance, bloom into an island.</h3>
                         <h4 class="serif-title quote-zh" data-i18n="video_quote_zh">點燃一縷芬芳，在喧囂裡漫成一座島嶼。</h4>
                         
-                        <div class="video-desc">
+                        <div class="quote-desc">
                             <p data-i18n="video_p1">這是 LAVEND/R 的品牌靈魂，亦是其所勾勒的空間願景。氣味，從不是環境裡的附庸，而是一種無形的建築語言。當第一滴香氣於空氣中氤氳，便已在無聲之間，圈起了一片靜謐——那是一座任憑靈魂安放、讓自我沉澱的私密之島。</p>
                             <p data-i18n="video_p2">準備好一起踏上這座由芬芳滋養而成的專屬島嶼了嗎？</p>
                             <p data-i18n="video_p3">跟隨 LAVEND/R 首發影像中女孩的輕快步伐，以充滿呼吸感的日常視角，展開一場生機盎然的感官漫遊。在這裡，香氣不再僅是抽象的嗅覺，而是眼前具象的風景：是拂過雙頰的微風，也是腳下輕盈跳躍的小徑。</p>
@@ -171,7 +173,8 @@
                             <p class="highlight-text" data-i18n="video_p5">點燃一縷芬芳，任由感官引路。</p>
                         </div>
                     </div>
-                </div> 
+                </div>
+
             </div>
         </section>
 
