@@ -173,12 +173,29 @@ body {
     object-position: center;
 }
 
+/* 確保文字浮在圖片上方，並精準靠左 */
 .hero-content {
     position: relative;
     z-index: 10;
-    text-align: left; /* 文字本身改為靠左對齊 */
-    margin-left: 10%; /* 距離螢幕左側保留 10% 的呼吸空間 */
-    max-width: 450px; /* 限制文字區塊最大寬度，讓長標題自動斷成兩行 */
+    text-align: left;
+    margin-left: 8%; /* 進一步往左推，與左上角 Logo 產生垂直對齊的錯覺 */
+    max-width: 500px;
+}
+
+/* 針對首頁大標題的高級感微調 */
+.hero-content h2 {
+    font-size: 2.2rem; /* 微調字體大小 */
+    line-height: 1.7; /* 撐開上下兩行的空間，增加呼吸感 */
+    letter-spacing: 5px; /* 拉開字距，這是精品品牌最常用的排版技巧 */
+    font-weight: 300; /* 讓字體視覺變輕盈 */
+    margin-bottom: 2.5rem; /* 拉開文字與按鈕的距離，不讓畫面擁擠 */
+    color: var(--text-dark); 
+}
+
+/* 微調首頁按鈕，讓它更俐落 */
+.hero-content .hero-btn {
+    letter-spacing: 2px;
+    padding: 1rem 2.5rem;
 }
 
 /* 左右切換箭頭 */
