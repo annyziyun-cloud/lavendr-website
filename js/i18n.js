@@ -124,10 +124,10 @@ const translations = {
 
         // --- 新增：品牌影片文案 (英文) ---
         video_quote_en: "Light a fragrance, bloom into an island.",
-        video_p1: "This is the soul of LAVEND/R and the spatial vision it outlines. Scent is never a mere accessory to an environment, but an invisible architectural language. As the first drop of fragrance dissipates into the air, it silently carves out a serene space—a private island where the soul can rest and the self can settle.",
-        video_p2: "Are you ready to step onto this exclusive island nourished by fragrance?",
-        video_p3: "Follow the brisk footsteps of the girl in LAVEND/R's debut campaign. From a breathable, everyday perspective, embark on a vibrant sensory roam. Here, scent is no longer just an abstract olfactory experience, but a tangible landscape before your eyes: the breeze brushing against your cheeks, the light path jumping beneath your feet.",
-        video_p4: "Accompanied by curious exploration and captured moments, every second hides unexpected surprises, gently awakening pure joy.",
+        video_p1: "This is the very essence of LAVEND/R, and the spatial vision it brings to life. Scent is never just a background detail; it’s an invisible form of architecture. The moment that first drop of fragrance blooms in the air, it quietly builds a boundary of calm around you—a personal sanctuary where you can finally exhale, ground yourself, and just be.",
+        video_p2: "Are you ready to step onto this private island with us?",
+        video_p3: "Follow the girl in LAVEND/R's debut film. Through a breezy, effortless lens, we’re taking you on a sensory wandering that feels completely alive. Here, fragrance is no longer an abstract feeling—it becomes the scenery unfolding right in front of you. It’s the gentle breeze brushing against your cheeks, and the playful path springing beneath your feet.",
+        video_p4: "Between curious exploration and captured moments, every single moment holds a beautiful, unexpected surprise, gently awakening pure joy.",
         video_p5: "Light a fragrance, let your senses lead the way.",
         
         // --- Shop General ---
