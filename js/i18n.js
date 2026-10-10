@@ -22,6 +22,15 @@ const translations = {
         story_p1: "薰衣草（Lavender）常被貼上溫柔、恬靜的標籤。",
         story_p2: "而薰衣草實則是一種在貧瘠砂礫中也能傲然生長的植物。它不需要肥沃的土壤，卻能開出深邃、沉靜的紫色。Lavend/r 的誕生，希望能將薰衣草的真實本質，重新歸還給每一位獨特的個體。",
         story_p3: "品牌名中刻意加入的「/」（Slash），它代表了解構與重新定義。它是一抹橫跨在框架之上的斜槓，斬斷世俗定義，回歸自我本質。一如薰衣草，簡單卻極具韌性。",
+
+        // --- 新增：品牌影片文案 (中文) ---
+        video_quote_en: "Light a fragrance, bloom into an island.",
+        video_quote_zh: "點燃一縷芬芳，在喧囂裡漫成一座島嶼。",
+        video_p1: "這是 LAVEND/R 的品牌靈魂，亦是其所勾勒的空間願景。氣味，從不是環境裡的附庸，而是一種無形的建築語言。當第一滴香氣於空氣中氤氳，便已在無聲之間，圈起了一片靜謐——那是一座任憑靈魂安放、讓自我沉澱的私密之島。",
+        video_p2: "準備好一起踏上這座由芬芳滋養而成的專屬島嶼了嗎？",
+        video_p3: "跟隨 LAVEND/R 首發影像中女孩的輕快步伐，以充滿呼吸感的日常視角，展開一場生機盎然的感官漫遊。在這裡，香氣不再僅是抽象的嗅覺，而是眼前具象的風景：是拂過雙頰的微風，也是腳下輕盈跳躍的小徑。",
+        video_p4: "伴隨著充滿好奇的探索與定格，每一個瞬間都藏著不期而遇的驚喜，輕巧地喚醒那份純粹的快樂。",
+        video_p5: "點燃一縷芬芳，任由感官引路。",
         
         // --- 商品頁通用詞彙 ---
         shop_title: "商品與主打",
@@ -112,6 +121,14 @@ const translations = {
         story_p1: "Lavender is often labeled as gentle and tranquil.",
         story_p2: "Yet, lavender is actually a plant that grows proudly even in barren gravel. It doesn't need fertile soil to bloom in a deep, serene purple. The birth of Lavend/r hopes to return the true essence of lavender to every unique individual.",
         story_p3: "The slash (/) in the brand name represents deconstruction and redefinition. It's a slash across the framework, severing worldly definitions to return to one's true nature. Just like lavender: simple, yet incredibly resilient.",
+
+        // --- 新增：品牌影片文案 (英文) ---
+        video_quote_en: "Light a fragrance, bloom into an island.",
+        video_p1: "This is the soul of LAVEND/R and the spatial vision it outlines. Scent is never a mere accessory to an environment, but an invisible architectural language. As the first drop of fragrance dissipates into the air, it silently carves out a serene space—a private island where the soul can rest and the self can settle.",
+        video_p2: "Are you ready to step onto this exclusive island nourished by fragrance?",
+        video_p3: "Follow the brisk footsteps of the girl in LAVEND/R's debut campaign. From a breathable, everyday perspective, embark on a vibrant sensory roam. Here, scent is no longer just an abstract olfactory experience, but a tangible landscape before your eyes: the breeze brushing against your cheeks, the light path jumping beneath your feet.",
+        video_p4: "Accompanied by curious exploration and captured moments, every second hides unexpected surprises, gently awakening pure joy.",
+        video_p5: "Light a fragrance, let your senses lead the way.",
         
         // --- Shop General ---
         shop_title: "Shop & Products",
