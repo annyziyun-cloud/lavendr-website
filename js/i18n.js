@@ -151,7 +151,7 @@ const translations = {
         event1_desc: "Order any Diffuser Set by [Date] and receive a complimentary Lavend/r Discovery Set with your purchase. Available while supplies last!",
         event2_title: "Member Exclusive",
         event2_desc: "Make any purchase, join as a Lavend/r member, and complete our Fragrance Experience Survey. Once finished, you'll unlock an exclusive discount code for your next order! (Limit one per member).",
-        event3_title: "Find Your Exclusive Scent | Find Your Lavend/r",
+        event3_title: "Find Your Lavend/r",
         event3_desc: "Every fragrance is a reflection of a state of living.Unsure which scent best resonates with your current frequency or perfectly fits your gifting needs?<br>Click the link below and follow your intuition to complete this fragrance guide.Through your answers, we will outline your unique olfactory profile, making it effortless to find your perfect match in all your future scent selections.",
         btn_explore: "Explore More",
         
