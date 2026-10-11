@@ -346,6 +346,8 @@ body {
     color: var(--text-muted); letter-spacing: 2px; font-size: 0.95rem; transition: color 0.3s;
 }
 .member-anchor-nav .anchor-link:hover { color: var(--text-dark); }
+.member-section-block { margin-bottom: 8rem; }
+
 /* --- 第一區塊：高級毛玻璃分割佈局 (Split Layout) --- */
 .split-layout {
     display: flex;
@@ -353,7 +355,7 @@ body {
     background: linear-gradient(135deg, #efebe4 0%, #f7f5f0 100%);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08); /* 深邃柔和的陰影 */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
     min-height: 650px;
     margin: 0 auto 8rem auto;
     max-width: 1000px;
@@ -378,7 +380,6 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    /* 漸層遮罩，讓文字能清楚浮現在圖片上 */
     background: linear-gradient(to right, rgba(247, 245, 240, 0.2), rgba(247, 245, 240, 0.8));
     z-index: 2;
 }
@@ -401,7 +402,7 @@ body {
     line-height: 2;
 }
 
-/* 右側毛玻璃面板 (Glassmorphism) */
+/* 右側毛玻璃面板 */
 .premium-glass {
     flex: 1;
     background: rgba(255, 255, 255, 0.65);
@@ -415,110 +416,49 @@ body {
     z-index: 5;
 }
 
-.auth-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-.auth-header h3 {
-    font-size: 1.6rem;
-    letter-spacing: 2px;
-    color: var(--text-dark);
-    margin-bottom: 0.8rem;
-}
-.security-notice {
-    font-size: 0.85rem;
-    color: #a39587;
-    letter-spacing: 1px;
-    line-height: 1.6;
-}
+.auth-header { text-align: center; margin-bottom: 2rem; }
+.auth-header h3 { font-size: 1.6rem; letter-spacing: 2px; color: var(--text-dark); margin-bottom: 0.8rem; }
+.security-notice { font-size: 0.85rem; color: #a39587; letter-spacing: 1px; line-height: 1.6; }
 
 /* 登入/註冊切換標籤 */
-.auth-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-bottom: 2.5rem;
-}
+.auth-tabs { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; }
 .auth-tab {
-    background: none;
-    border: none;
-    font-size: 1.05rem;
-    color: #a39587;
-    cursor: pointer;
-    padding-bottom: 0.5rem;
-    position: relative;
-    letter-spacing: 1.5px;
-    transition: color 0.3s;
+    background: none; border: none; font-size: 1.05rem; color: #a39587;
+    cursor: pointer; padding-bottom: 0.5rem; position: relative;
+    letter-spacing: 1.5px; transition: color 0.3s;
 }
 .auth-tab::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: var(--text-dark);
-    transition: width 0.3s ease;
+    content: ''; position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%); width: 0; height: 2px;
+    background: var(--text-dark); transition: width 0.3s ease;
 }
-.auth-tab.active {
-    color: var(--text-dark);
-    font-weight: 600;
-}
-.auth-tab.active::after {
-    width: 100%;
-}
+.auth-tab.active { color: var(--text-dark); font-weight: 600; }
+.auth-tab.active::after { width: 100%; }
 
 /* 表單與圓潤輸入框 */
-.auth-form {
-    display: none;
-    flex-direction: column;
-    gap: 1.2rem;
-    animation: fadeIn 0.4s ease-out;
-}
+.auth-form { display: none; flex-direction: column; gap: 1.2rem; animation: fadeIn 0.4s ease-out; }
 .auth-form.active { display: flex; }
 
 .input-group input {
-    width: 100%;
-    padding: 1.1rem 1.5rem;
-    border: 1px solid rgba(163, 149, 135, 0.2);
-    border-radius: 12px; /* 大圓角設計 */
-    font-size: 0.95rem;
-    background: rgba(255, 255, 255, 0.8);
-    outline: none;
-    transition: all 0.3s ease;
-    color: var(--text-dark);
+    width: 100%; padding: 1.1rem 1.5rem; border: 1px solid rgba(163, 149, 135, 0.2);
+    border-radius: 12px; font-size: 0.95rem; background: rgba(255, 255, 255, 0.8);
+    outline: none; transition: all 0.3s ease; color: var(--text-dark);
 }
-.input-group input::placeholder {
-    color: #b0a8a0;
-    letter-spacing: 0.5px;
-}
+.input-group input::placeholder { color: #b0a8a0; letter-spacing: 0.5px; }
 .input-group input:focus {
-    background: #fff;
-    border-color: #a39587;
-    box-shadow: 0 0 0 4px rgba(163, 149, 135, 0.1); /* 點擊時的柔和光暈 */
+    background: #fff; border-color: #a39587; box-shadow: 0 0 0 4px rgba(163, 149, 135, 0.1);
 }
 
-/* 高級質感按鈕 (暖咖色調) */
+/* 高級質感按鈕 */
 .premium-btn {
-    background: #a39587; 
-    color: #fff;
-    border: none;
-    padding: 1.2rem;
-    border-radius: 12px;
-    font-size: 1rem;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    margin-top: 1rem;
+    background: #a39587; color: #fff; border: none; padding: 1.2rem;
+    border-radius: 12px; font-size: 1rem; letter-spacing: 3px; cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-top: 1rem;
     box-shadow: 0 10px 20px rgba(163, 149, 135, 0.2);
 }
-.premium-btn:hover {
-    background: #8e8071;
-    transform: translateY(-2px);
-    box-shadow: 0 15px 25px rgba(163, 149, 135, 0.3);
-}
+.premium-btn:hover { background: #8e8071; transform: translateY(-2px); box-shadow: 0 15px 25px rgba(163, 149, 135, 0.3); }
 
-/* 儀表板樣式更新 (適配毛玻璃面板) */
+/* 儀表板樣式 */
 #dashboard-card-view { text-align: center; }
 .member-tier-label { font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem; letter-spacing: 1px; }
 .progress-section { background: rgba(255,255,255,0.6); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; text-align: left; }
@@ -531,6 +471,18 @@ body {
 .stat-box h4 { font-size: 1.3rem; color: var(--text-dark); margin-top: 0.5rem; }
 .outline-btn { background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark); padding: 0.8rem 2rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; letter-spacing: 1px;}
 .outline-btn:hover { background: var(--text-dark); color: #fff; }
+
+/* --- 第二區塊：會員等級卡片 --- */
+.tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.tier-card { padding: 2.5rem 2rem; border-radius: 8px; text-align: left; }
+.tier-seedling { background: #eef1ec; }
+.tier-dewdrop { background: #f6efe9; } 
+.tier-lavender { background: #edeaf0; }
+.tier-card h4 { font-size: 1.2rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+.tier-condition { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 1rem; }
+.tier-card ul { list-style: none; padding: 0; }
+.tier-card ul li { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.6; padding-left: 1.2rem; position: relative; }
+.tier-card ul li::before { content: "✦"; position: absolute; left: 0; color: #8a7a8f; font-size: 0.8rem; }
 
 /* =========================================
    8. 客服與折疊面板 (Support & Accordion)
