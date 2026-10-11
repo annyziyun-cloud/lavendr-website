@@ -1,7 +1,11 @@
-// === 1. 語言變數與切換邏輯 ===
+/* =======================================================
+   1. 全局變數與基礎設定
+   ======================================================= */
 let currentLang = localStorage.getItem('lavendr_lang') || 'zh';
 
+// 翻譯更新函數
 function updateLanguage(lang) {
+    // 1. 替換一般文字
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -10,19 +14,23 @@ function updateLanguage(lang) {
         }
     });
 
+    // 2. 替換輸入框提示文字 (Placeholder)
     const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
     placeholders.forEach(el => {
-        const text = lang === 'zh' ? '電郵地址' : 'Email Address';
-        el.setAttribute('placeholder', text);
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.setAttribute('placeholder', translations[lang][key]);
+        }
     });
     
+    // 3. 替換按鈕本身文字
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
         langBtn.textContent = lang === 'zh' ? 'EN / 中文' : '中 / English';
     }
     localStorage.setItem('lavendr_lang', lang);
 
-    // 如果問卷正在進行中或顯示結果，即時更新問卷語言
+    // 4. 即時更新問卷語言
     if (document.getElementById('quizContainer') && document.getElementById('quizContainer').style.display === 'block') {
         renderQuestion();
     } else if (document.getElementById('quizResult') && document.getElementById('quizResult').style.display === 'block') {
@@ -30,13 +38,21 @@ function updateLanguage(lang) {
     }
 }
 
-// === 2. 網頁互動主邏輯 ===
+
+/* =======================================================
+   2. 網頁互動主邏輯 (DOMContentLoaded)
+   ======================================================= */
 document.addEventListener('DOMContentLoaded', () => {
+    
+    /* --- A. 基礎頁面切換邏輯 --- */
     const pages = document.querySelectorAll('.page-section');
     const navItems = document.querySelectorAll('.nav-item');
+    const listView = document.getElementById('shop-list-view');
+    const detailView = document.getElementById('product-detail-view');
 
     function navigateTo(hash) {
         if (!hash) hash = '#home';
+        
         pages.forEach(page => page.classList.remove('active'));
         navItems.forEach(nav => nav.classList.remove('active'));
 
@@ -46,8 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetPage) targetPage.classList.add('active');
         if (targetNav) targetNav.classList.add('active');
         
-        const listView = document.getElementById('shop-list-view');
-        const detailView = document.getElementById('product-detail-view');
         if (hash === '#shop' && listView && detailView) {
             listView.style.display = 'block';
             detailView.style.display = 'none';
@@ -55,27 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     }
 
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
+    /* --- B. 事件監聽綁定 --- */
+    
+    // 1. 全局錨點跳轉 (排除會員快捷鍵)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            if (anchor.classList.contains('anchor-link')) return; 
+
             e.preventDefault();
-            const targetHash = e.target.getAttribute('href');
+            const targetHash = anchor.getAttribute('href');
             history.pushState(null, null, targetHash);
             navigateTo(targetHash);
         });
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        if (!anchor.classList.contains('nav-item')) {
-            anchor.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetHash = anchor.getAttribute('href');
-                history.pushState(null, null, targetHash);
-                navigateTo(targetHash);
-            });
-        }
-    });
-
-    // 監聽 Logo 點擊回首頁
+    // 2. Logo 點擊回首頁
     const logoLink = document.getElementById('logo-link');
     if (logoLink) {
         logoLink.addEventListener('click', (e) => {
@@ -85,9 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window.addEventListener('popstate', () => navigateTo(window.location.hash));
-    navigateTo(window.location.hash);
-
+    // 3. 語言切換按鈕
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
         langBtn.addEventListener('click', () => {
@@ -95,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLanguage(currentLang);
         });
     }
-    updateLanguage(currentLang);
 
+    // 4. 加入購物車提示
     const cartBtns = document.querySelectorAll('.add-to-cart-btn');
     cartBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -106,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 5. 折疊面板 (FAQ & Support)
     const accordions = document.querySelectorAll('.accordion-header');
     accordions.forEach(acc => {
         acc.addEventListener('click', function() {
@@ -128,7 +135,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-// === 6. 首頁封面輪播圖 (Hero Carousel) ===
+    /* --- C. 會員頁面專屬功能 --- */
+    
+    // 1. 登入/註冊表單切換
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const formLogin = document.getElementById('login-form');
+    const formRegister = document.getElementById('register-form');
+
+    if (tabLogin && tabRegister && formLogin && formRegister) {
+        tabLogin.addEventListener('click', () => {
+            tabLogin.classList.add('active');
+            tabRegister.classList.remove('active');
+            formLogin.classList.add('active');
+            formRegister.classList.remove('active');
+        });
+        tabRegister.addEventListener('click', () => {
+            tabRegister.classList.add('active');
+            tabLogin.classList.remove('active');
+            formRegister.classList.add('active');
+            formLogin.classList.remove('active');
+        });
+    }
+
+    // 2. 頂部快捷錨點平滑滾動
+    document.querySelectorAll('.member-anchor-nav .anchor-link').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href'); 
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 120, 
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    /* --- D. 首頁封面輪播 (Hero Carousel) --- */
     let slideIndex = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dots .dot');
@@ -148,31 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dots[slideIndex]) dots[slideIndex].classList.add('active');
     }
 
-    function nextSlide() {
-        showSlide(slideIndex + 1);
-    }
+    function nextSlide() { showSlide(slideIndex + 1); }
+    function prevSlide() { showSlide(slideIndex - 1); }
+    function startSlideInterval() { slideInterval = setInterval(nextSlide, 5000); }
+    function resetSlideInterval() { clearInterval(slideInterval); startSlideInterval(); }
 
-    function prevSlide() {
-        showSlide(slideIndex - 1);
-    }
-
-    function startSlideInterval() {
-        // 設定每 5 秒 (5000 毫秒) 自動切換一張，可自行調整
-        slideInterval = setInterval(nextSlide, 5000); 
-    }
-
-    function resetSlideInterval() {
-        clearInterval(slideInterval);
-        startSlideInterval();
-    }
-
-    // 綁定箭頭事件
     const nextBtn = document.querySelector('.carousel-control.next');
     const prevBtn = document.querySelector('.carousel-control.prev');
     if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetSlideInterval(); });
     if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetSlideInterval(); });
 
-    // 綁定點點事件
     dots.forEach(dot => {
         dot.addEventListener('click', (e) => {
             const idx = parseInt(e.target.getAttribute('data-slide'));
@@ -181,16 +211,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 初始化輪播
     if (slides.length > 0) {
         showSlide(0);
         startSlideInterval();
     }
-    
-    initQuiz();
+
+    /* --- E. 啟動與初始化 --- */
+    window.addEventListener('popstate', () => navigateTo(window.location.hash));
+    navigateTo(window.location.hash);
+    updateLanguage(currentLang);
+    initQuiz(); // 初始化問卷
 });
 
-// === 3. 商品切換邏輯 ===
+
+/* =======================================================
+   3. 商品切換邏輯
+   ======================================================= */
 const productData = {
     'p1': { moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg', noticeKey: 'notice_gift' },
     'p2': { moodImg: 'assets/mood-2.jpg', productImg: 'assets/product-2.jpg', noticeKey: 'notice_gift' },
@@ -232,13 +268,13 @@ function closeProduct() {
 
 
 /* =======================================================
-   ★ 4. Lavend/r 調香系統大腦 (全雙語版 + 香材收集)
+   4. Lavend/r 調香系統大腦 (全雙語版 + 香材收集)
    ======================================================= */
 const scentQuizData = {
     baseQuestions: [
         {
             id: 'Q1', 
-            question: { zh: '你希望今天帶走的這瓶香氛，是為了誰而調製？', en: 'Opening the door to Lavend/r, who is this fragrance for?' },
+            question: { zh: '推開 Lavend/r 的門，你希望今天帶走的這瓶香水，是為了誰而調製？', en: 'Opening the door to Lavend/r, who is this fragrance for?' },
             options: [
                 { label: { zh: '「給現在的我」', en: '"For my present self"' }, value: 'A' }, 
                 { label: { zh: '「給理想中的我」', en: '"For my ideal self"' }, value: 'B' },
@@ -404,37 +440,6 @@ const scentQuizData = {
                     { label: { zh: '「我們的故事還在繼續，這只是其中一個美好的分號。」', en: '"Our story continues; this is just one beautiful semicolon."' }, archetype: 'grounded_earth' }
                 ]
             }
-        ], 
-        'D': [
-            {
-                id: 'D1', 
-                question: { zh: '如果這段記憶是一張照片，它罩著什麼樣的光線與濾鏡？', en: 'If this memory were a photograph, what kind of lighting and filter covers it?' },
-                options: [
-                    { label: { zh: '帶著灰藍調的清晨，空氣微冷，一切尚未甦醒。', en: 'A grayish-blue early morning, the air is crisp, and nothing has awakened yet.' }, archetype: 'mineral_horizon', notes: { zh: ['海鹽', '薄荷', '杜松子'], en: ['Sea Salt', 'Mint', 'Juniper Berry'] } },
-                    { label: { zh: '飽滿的暖橘色夕陽，有一種熱烈卻即將消逝的悵然。', en: 'A rich warm-orange sunset, carrying a passionate yet fleeting melancholy.' }, archetype: 'velvet_paradox', notes: { zh: ['甜橙', '肉桂', '菸草'], en: ['Sweet Orange', 'Cinnamon', 'Tobacco'] } },
-                    { label: { zh: '昏暗空間裡的一束微光，聚焦在某個安靜的物件上。', en: 'A glimmer of light in a dim space, focusing on a quiet object.' }, archetype: 'intellectual_woods', notes: { zh: ['乾燥木柴', '莎草', '廣藿香'], en: ['Dry Firewood', 'Cypriol', 'Patchouli'] } },
-                    { label: { zh: '低飽和的灰綠色調，萬物被雨水洗刷過，帶著濕潤的重量。', en: 'A desaturated grey-green tone, everything washed by rain, carrying a moist weight.' }, archetype: 'grounded_earth', notes: { zh: ['橡木苔', '苦橙葉', '無花果葉'], en: ['Oakmoss', 'Petitgrain', 'Fig Leaf'] } }
-                ]
-            },
-            {
-                id: 'D2', 
-                question: { zh: '當畫面逐漸淡出，這段記憶留在你腦海中的背景音是什麼？', en: 'As the scene fades out, what is the background sound of this memory left in your mind?' },
-                options: [
-                    { label: { zh: '筆尖劃過紙張的沙沙聲，或書頁翻動的微小聲響。', en: 'The rustling of a pen across paper, or the faint sound of turning pages.' }, archetype: 'intellectual_woods', notes: { zh: ['廣藿香', '皮革', '莎草'], en: ['Patchouli', 'Leather', 'Cypriol'] } },
-                    { label: { zh: '窗外樹葉被風吹動的摩挲聲，帶著某種遼闊與釋然。', en: 'The rustle of leaves blown by the wind outside, carrying a sense of vastness and relief.' }, archetype: 'grounded_earth', notes: { zh: ['雪松', '橡木苔', '扁柏'], en: ['Cedarwood', 'Oakmoss', 'Hinoki'] } },
-                    { label: { zh: '某個人低聲的呢喃，或是兩人之間連心跳都能聽見的寂靜。', en: 'Someone\'s low murmur, or a silence between two people where you can even hear a heartbeat.' }, archetype: 'second_skin', notes: { zh: ['白麝香', '香草', '琥珀'], en: ['White Musk', 'Vanilla', 'Amber'] } },
-                    { label: { zh: '隔著厚重玻璃，城市遠方極其微弱的車流低頻嗡鳴。', en: 'Through heavy glass, the extremely faint low-frequency hum of distant city traffic.' }, archetype: 'mineral_horizon', notes: { zh: ['龍涎香'], en: ['Ambergris'] } }
-                ]
-            },
-            {
-                id: 'D3', 
-                question: { zh: '若以文學的視角來看，這個瞬間屬於故事的哪一個篇章？', en: 'From a literary perspective, to which chapter of the story does this moment belong?' },
-                options: [
-                    { label: { zh: '沒有前因後果，直接從最深刻的那一秒切入。', en: 'No cause and effect, cutting directly into the most profound second.' }, archetype: 'vibrant_awakening' },
-                    { label: { zh: '那是所有喧囂落下後，留下的最後一句未完的對白。', en: 'It is the last unfinished line of dialogue left after all the noise has settled.' }, archetype: 'velvet_paradox' },
-                    { label: { zh: '其實什麼都沒發生，但心裡知道，一切都不一樣了。', en: 'Actually, nothing happened, but in my heart, I knew everything had changed.' }, archetype: 'second_skin' }
-                ]
-            }
         ] 
     }
 };
@@ -496,7 +501,7 @@ let currentQIndex = 0;
 let scores = {};
 let chosenBranch = 'A';
 let selectedMultiple = [];
-let selectedNotes = []; // 收集的是包含 {zh: [], en: []} 的物件陣列
+let selectedNotes = []; 
 
 function initQuiz() {
     currentPhase = 'base';
@@ -533,7 +538,6 @@ function renderQuestion() {
         }
     }
 
-    // 根據當前語言顯示題目
     document.getElementById('questionText').innerHTML = q.question[currentLang];
     const optionsContainer = document.getElementById('optionsContainer');
     optionsContainer.innerHTML = '';
@@ -594,7 +598,6 @@ function renderQuestion() {
                 if (q.id === 'Q1') chosenBranch = opt.value;
                 if (opt.archetype) scores[opt.archetype] = (scores[opt.archetype] || 0) + 1;
                 
-                // 收集專屬香材
                 if (opt.notes) {
                     selectedNotes.push(opt.notes);
                 }
@@ -621,12 +624,10 @@ function showResult() {
     
     const result = fragranceProfiles[finalArchetype];
     
-    // 雙語顯示結果故事
     document.getElementById('resultName').textContent = result.name[currentLang];
     document.getElementById('resultQuote').textContent = result.quote[currentLang];
     document.getElementById('resultStory').innerHTML = result.story[currentLang].join('<br><br>');
     
-    // 處理動態香精名稱 (雙語去重)
     let uniqueZh = [...new Set(selectedNotes.flatMap(n => n.zh))];
     let uniqueEn = [...new Set(selectedNotes.flatMap(n => n.en))];
     
@@ -645,7 +646,6 @@ function showResult() {
     
     document.getElementById('quizResult').style.display = 'block';
     
-    // 滑動對齊 (避免卷動過頭，可選用)
     const resultHeader = document.querySelector('.result-label');
     if(resultHeader) {
         const topPos = resultHeader.getBoundingClientRect().top + window.scrollY - 100;
