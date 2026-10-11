@@ -217,26 +217,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --- E. 會員系統 API 串接與狀態管理 --- */
-    const API_URL = "https://script.google.com/macros/s/AKfycbyxjvRYJhJGITtJIW26cFMlU-9vb0bIaLVwVLs5EdE15v4D4sshdKZTZZTgv3P2wv1wQQ/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbxczAApDD7t4S3WJG0XDfTcOuanyuv3v-_m9-vfdNL58fB1FbpIiJvJbQdNToPT9GI9Kg/exec";
     
     const authCardView = document.getElementById('auth-card-view');
     const dashboardCardView = document.getElementById('dashboard-card-view');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // 1. 檢查並渲染登入狀態
+    // 1. 檢查並渲染登入狀態 (加入點數與等級的動態讀取)
     function checkLoginState() {
         const storedUser = localStorage.getItem('lavendr_user');
         if (storedUser) {
             const userData = JSON.parse(storedUser);
-            // 隱藏表單，顯示看板
+            
             if(authCardView) authCardView.style.display = 'none';
             if(dashboardCardView) {
                 dashboardCardView.style.display = 'block';
+                
+                // 渲染姓名
                 const welcomeTitle = dashboardCardView.querySelector('h3');
                 if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${userData.name}`;
+                
+                // 渲染會員等級
+                const tierLabel = dashboardCardView.querySelector('.member-tier-label');
+                if (tierLabel && userData.tier) tierLabel.textContent = `目前等級：${userData.tier}`;
+                
+                // 渲染點數
+                const pointsElement = document.getElementById('member-points');
+                if (pointsElement && userData.points !== undefined) pointsElement.textContent = `${userData.points} pts`;
             }
         } else {
-            // 未登入，顯示表單
             if(authCardView) authCardView.style.display = 'block';
             if(dashboardCardView) dashboardCardView.style.display = 'none';
         }
@@ -281,11 +290,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 const result = await response.json();
 
-                // 假設 Google Sheet 回傳的 JSON 裡有 success: true
                 if (result.success || result.status === 'success') {
                     alert(currentLang === 'zh' ? '註冊成功！歡迎來到 Lavend/r。' : 'Registration successful!');
-                    // 自動登入：將資料存入瀏覽器記憶體
-                    localStorage.setItem('lavendr_user', JSON.stringify({ name, phone, birthday }));
+                    // 註冊後自動給予預設值存入記憶體
+                    localStorage.setItem('lavendr_user', JSON.stringify({ 
+                        name: name, 
+                        phone: phone, 
+                        points: 0, 
+                        tier: '微風草本 Seedling' 
+                    }));
                     formRegister.reset();
                     checkLoginState();
                 } else {
@@ -300,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. 登入表單送出邏輯
+    // 4. 登入表單送出邏輯 (將後端回傳的點數與等級存入記憶體)
     if (formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -320,9 +333,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (result.success || result.status === 'success') {
-                    // 將後端回傳的用戶名稱與手機存入記憶體
-                    const userName = result.name || result.user?.name || 'Member';
-                    localStorage.setItem('lavendr_user', JSON.stringify({ name: userName, phone }));
+                    // 接收後端的姓名、點數與等級
+                    const userData = {
+                        name: result.name || 'Member',
+                        phone: phone,
+                        points: result.points,
+                        tier: result.tier
+                    };
+                    localStorage.setItem('lavendr_user', JSON.stringify(userData));
                     formLogin.reset();
                     checkLoginState();
                 } else {
