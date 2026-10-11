@@ -405,16 +405,18 @@
                             </form>
                         </div>
 
-                        <!-- 狀態 B：儀表板 (預設為 0 的初始狀態) -->
+                        <!-- 狀態 B：儀表板 -->
                         <div id="dashboard-card-view" style="display: none;">
                             <h3 class="serif-title">Welcome</h3>
                             <p class="member-tier-label">目前等級：微風草本 Seedling</p>
                             
                             <div class="progress-section">
                                 <div class="progress-bar-container">
-                                    <div class="progress-bar" style="width: 0%;"></div>
+                                    <!-- 加上 id="progress-bar-fill" 讓 JS 控制寬度 -->
+                                    <div id="progress-bar-fill" class="progress-bar" style="width: 0%;"></div>
                                 </div>
-                                <p class="progress-text">距離升階「晨露花香」還差 NT$6,000，解鎖常態 85 折與雙倍點數！</p>
+                                <!-- 加上 id="progress-text-desc" 讓 JS 替換差額數字與文案 -->
+                                <p id="progress-text-desc" class="progress-text">距離升階「晨露花香」還差 NT$6,000</p>
                             </div>
                             
                             <div class="dashboard-stats">
