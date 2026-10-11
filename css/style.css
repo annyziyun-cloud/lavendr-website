@@ -469,6 +469,10 @@ body {
 .stat-box { background: rgba(255,255,255,0.6); padding: 1.5rem; border-radius: 12px; flex: 1; }
 .stat-box span { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px; }
 .stat-box h4 { font-size: 1.3rem; color: var(--text-dark); margin-top: 0.5rem; }
+.stat-link { text-decoration: none; display: block; margin-top: 0.5rem; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.stat-link h4 { margin-top: 0; color: var(--text-dark); transition: color 0.3s ease; }
+.stat-link:hover { transform: translateX(5px); }
+.stat-link:hover h4 { color: #a39587; }
 .outline-btn { background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark); padding: 0.8rem 2rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; letter-spacing: 1px;}
 .outline-btn:hover { background: var(--text-dark); color: #fff; }
 
