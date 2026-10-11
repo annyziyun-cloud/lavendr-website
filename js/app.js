@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --- E. 會員系統 API 串接與狀態管理 --- */
-    const API_URL = "https://script.google.com/macros/s/AKfycbzs7074XIxt0aAw4JoZkaxxIzOq6u3tVE0dcAYULbyet0bmY2_YRZl8meT2t1m_RjHikg/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbz2SHrIvQ1EviK4k28bDbizIekSMcOpi0dDqNkjHqt5hmtJbh99Adn7iQiLP2DHmOpumQ/exec";
     
     const authCardView = document.getElementById('auth-card-view');
     const dashboardCardView = document.getElementById('dashboard-card-view');
