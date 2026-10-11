@@ -5,6 +5,12 @@ let currentLang = localStorage.getItem('lavendr_lang') || 'zh';
 
 // 翻譯更新函數
 function updateLanguage(lang) {
+    // 當語言切換時，如果已經有登入資料，就重新渲染儀表板
+    const storedUser = localStorage.getItem('lavendr_user');
+    if (storedUser && typeof renderDashboard === 'function') {
+        renderDashboard(JSON.parse(storedUser));
+    }
+   
     // 1. 替換一般文字
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
