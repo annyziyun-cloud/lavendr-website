@@ -616,7 +616,9 @@ body {
     .detail-info { padding-top: 0; }
 
     /* 會員系統 */
-    .tiers-grid { grid-template-columns: 1fr; }
+    .tier-horizontal-card { flex-direction: column; align-items: flex-start; padding: 2.5rem 2rem; }
+    .tier-header { flex: 1; width: 100%; padding-right: 0; border-right: none; border-bottom: 1px solid rgba(163, 149, 135, 0.2); padding-bottom: 2rem; margin-bottom: 2rem; }
+    .tier-benefits { padding-left: 0; }
     .member-anchor-nav { flex-wrap: wrap; gap: 1.5rem; }
     .member-card { padding: 2rem 1.5rem; }
 
