@@ -405,31 +405,36 @@
                             </form>
                         </div>
 
-                        <!-- 狀態 B：儀表板 -->
+                        <!-- 狀態 B：儀表板 (預設為 0 的初始狀態) -->
                         <div id="dashboard-card-view" style="display: none;">
-                            <h3 class="serif-title">Welcome, 高子芸</h3>
+                            <h3 class="serif-title">Welcome</h3>
                             <p class="member-tier-label">目前等級：微風草本 Seedling</p>
+                            
                             <div class="progress-section">
                                 <div class="progress-bar-container">
-                                    <div class="progress-bar" style="width: 75%;"></div>
+                                    <!-- 進度條初始歸零 -->
+                                    <div class="progress-bar" style="width: 0%;"></div>
                                 </div>
-                                <p class="progress-text">距離升階「晨露花香」還差 NT$500，解鎖常態 85 折與雙倍點數！</p>
+                                <p class="progress-text">距離升階「晨露花香」還差 NT$6,000，解鎖常態 85 折與雙倍點數！</p>
                             </div>
+                            
                             <div class="dashboard-stats">
                                 <div class="stat-box">
                                     <span>可用點數</span>
-                                    <h4>150 pts</h4>
+                                    <!-- 點數初始歸零 -->
+                                    <h4 id="member-points">0 pts</h4>
                                 </div>
                                 <div class="stat-box">
-                                    <span>專屬優惠碼</span>
-                                    <h4>LAVENDR2026</h4>
+                                    <span>專屬禮遇</span>
+                                    <!-- 將原本的優惠碼改為導向商品的優雅連結 -->
+                                    <a href="#shop" class="stat-link">
+                                        <h4>限定禮盒兌換 ➔</h4>
+                                    </a>
                                 </div>
                             </div>
+                            
                             <button id="logout-btn" class="outline-btn">登出</button>
                         </div>
-
-                    </div>
-                </div>
 
                 <!-- 第二區塊：品牌專屬會員等級介紹 (典雅橫排設計) -->
                 <div id="member-tiers" class="member-section-block">
