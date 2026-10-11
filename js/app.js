@@ -228,19 +228,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const dashboardCardView = document.getElementById('dashboard-card-view');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // ★ 負責渲染畫面 (支援雙語動態切換)
+    // ★ 負責渲染畫面 (統一由 JS 處理動態變數與中英雙語)
     function renderDashboard(data) {
+        // 抓取當前語言 (假設你的全域變數是 currentLang，若無則預設 zh)
+        const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
+        
         // 1. 更新姓名
         const welcomeTitle = dashboardCardView.querySelector('h3');
         if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${data.name}`;
         
-        // 2. 更新等級 (依照當前語言 currentLang 切換顯示方式)
+        // 2. 更新等級 (中英切換)
         const tierLabel = dashboardCardView.querySelector('.member-tier-label');
         if (tierLabel && data.tier) {
-            const prefix = currentLang === 'zh' ? '目前等級：' : 'Current Tier: ';
+            const prefix = lang === 'zh' ? '目前等級：' : 'Current Tier: ';
             let tierName = data.tier;
-            // 若為英文，過濾掉中文部分，只留英文等級名
-            if (currentLang === 'en') {
+            
+            // 如果是英文版，濾掉中文只保留英文等級名稱
+            if (lang === 'en') {
                  if (tierName.includes('Seedling')) tierName = 'Seedling';
                  else if (tierName.includes('Dewdrop')) tierName = 'Dewdrop';
                  else if (tierName.includes('Lavender')) tierName = 'Lavender (VIP)';
@@ -248,9 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tierLabel.textContent = `${prefix}${tierName}`;
         }
         
-        // 3. 更新點數
+        // 3. 更新點數 (加上千分位逗號，如 2,000 pts)
         const pointsElement = document.getElementById('member-points');
-        if (pointsElement && data.points !== undefined) pointsElement.textContent = `${data.points} pts`;
+        if (pointsElement && data.points !== undefined) {
+            pointsElement.textContent = `${Number(data.points).toLocaleString()} pts`;
+        }
 
         // 4. 動態計算進度條與雙語文案
         const progressBar = document.getElementById('progress-bar-fill');
@@ -266,28 +272,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 target = 6000;
                 percentage = (spending / target) * 100;
                 const diff = target - spending;
-                descText = currentLang === 'zh' 
+                descText = lang === 'zh' 
                     ? `距「晨露花香」僅 NT$${diff.toLocaleString()}。升級即享常態 85 折與雙倍點數禮遇。`
                     : `Just NT$${diff.toLocaleString()} to go for "Dewdrop". Level up to enjoy an everyday 15% off and double points.`;
             } else if (spending >= 6000 && spending < 10000) {
                 target = 10000;
                 percentage = (spending / target) * 100;
                 const diff = target - spending;
-                descText = currentLang === 'zh'
-                    ? `距「薰衣草花田」僅 NT$${diff.toLocaleString()}。升級即享指定臻享組合最低 6 折。`
+                descText = lang === 'zh'
+                    ? `距「薰衣草花田」僅 NT$${diff.toLocaleString()}。升級即享指定臻享組合最低 6 折`
                     : `Just NT$${diff.toLocaleString()} to go for "Lavender (VIP)". Level up to get up to 40% off on selected sets.`;
             } else {
                 percentage = 100;
-                descText = currentLang === 'zh'
-                    ? `感謝您與 Lavend/r 相伴。您已是最高等級「薰衣草花田」VIP，專屬頂級禮遇為您常設。`
-                    : `Thanks for being part of Lavend/r. You're officially highest tier "Lavender (VIP)". Enjoy your ultimate perks!`;
+                descText = lang === 'zh'
+                    ? `感謝您與 Lavend/r 相伴。您目前已是最高會員等級，專屬頂級禮遇為您常設。`
+                    : `Thanks for being part of Lavend/r. You're officially the highest tier "Lavender (VIP)". Enjoy your ultimate perks!`;
             }
 
             progressBar.style.width = `${percentage}%`;
             progressDesc.textContent = descText;
         }
     }
-
     // 1. 檢查並渲染登入狀態
     async function checkLoginState() {
         const storedUser = localStorage.getItem('lavendr_user');
