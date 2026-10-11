@@ -595,7 +595,7 @@ const scentQuizData = {
                 question: { zh: '如果這瓶香氛化作一句低語，那會是下列哪一句？', en: 'If this fragrance turned into a whisper, which would it be?' },
                 options: [
                     { label: { zh: '「世界再喧囂，我也能成為自己的避難所。」', en: '"No matter how noisy the world gets, I can be my own sanctuary."' }, archetype: 'intellectual_woods' },
-                    { label: { zh: '「你不必總是那麼堅強，允許自己被溫柔地接住吧。」', en: '"You don\'t always have to be so strong; allow yourself to be caught gently."' }, archetype: 'second_skin' },
+                    { label: { zh: '「你不必總是那麼堅強，允許自己被溫柔接住吧。」', en: '"You don\'t always have to be so strong; allow yourself to be caught gently."' }, archetype: 'second_skin' },
                     { label: { zh: '「無論好壞，所有的經歷都是為了迎來下一次的破曉。」', en: '"Good or bad, all experiences pave the way for the next dawn."' }, archetype: 'vibrant_awakening' },
                     { label: { zh: '「就讓心裡保留一片下雨的空間，陰影裡也有它的美意。」', en: '"Leave a space for rain in your heart; shadows have their own beauty."' }, archetype: 'grounded_earth' }
                 ]
@@ -679,28 +679,28 @@ const scentQuizData = {
                 id: 'D1',
                 question: { zh: '如果這段記憶是一張照片，它罩著什麼樣的光線與濾鏡？', en: 'If this memory were a photograph, what kind of light and filter would it be bathed in?' },
                 options: [
-                    { label: { zh: '帶著灰藍調的清晨，空氣微冷，一切尚未甦醒。', en: 'A grayish-blue morning, the air slightly crisp, everything yet to awaken.' }, value: '1', note: '海鹽、薄荷、杜松子' },
-                    { label: { zh: '飽滿的暖橘色夕陽，有一種熱烈卻即將消逝的悵然。', en: 'A rich, warm orange sunset, carrying a passionate yet fleeting sense of melancholy.' }, value: '2', note: '甜橙、肉桂、菸草、粉紅胡椒' },
-                    { label: { zh: '昏暗空間裡的一束微光，聚焦在某個安靜的物件上。', en: 'A single beam of light in a dim space, focused on a quiet object.' }, value: '3', note: '乾燥木柴、莎草、廣藿香' },
-                    { label: { zh: '低飽和的灰綠色調，萬物被雨水洗刷過，帶著濕潤的重量。', en: 'A low-saturation grayish-green tone, everything washed by rain, carrying a dewy weight.' }, value: '4', note: '橡木苔、苦橙葉、無花果葉' },
-                    { label: { zh: '穿透樹冠的斑駁光影，罩著一層柔軟的藕粉色濾鏡，如夢似幻。', en: 'Dappled light filtering through the canopy, bathed in a soft lotus-pink filter, like a dream.' }, value: '5', note: '白茶、洋甘菊、鳶尾花' },
-                    { label: { zh: '稍微過曝的純白光線，乾淨得毫無雜質，帶著一絲眩目。', en: 'A slightly overexposed pure white light, flawlessly clean, with a touch of glare.' }, value: '6', note: '醛香、鈴蘭、白麝香' },
-                    { label: { zh: '泛黃的復古色調，邊緣微糊，卻保留了當時的溫度。', en: 'A yellowed vintage tone, edges slightly blurred, yet preserving the warmth of that moment.' }, value: '7', note: '香草、零陵香豆、羊絨木' },
-                    { label: { zh: '褪去色彩的深藍色午夜，只有冷調的月光或霓虹勾勒出輪廓。', en: 'A desaturated deep blue midnight, with only cold moonlight or neon tracing the outlines.' }, value: '8', note: '晚香玉、沒藥' }
+                    { label: { zh: '帶著灰藍調的清晨，空氣微冷，一切尚未甦醒。', en: 'A grayish-blue morning, the air slightly crisp, everything yet to awaken.' }, value: '1', notes: { zh: ['海鹽', '薄荷', '杜松子'], en: ['Sea Salt', 'Mint', 'Juniper Berry'] } },
+                    { label: { zh: '飽滿的暖橘色夕陽，有一種熱烈卻即將消逝的悵然。', en: 'A rich, warm orange sunset, carrying a passionate yet fleeting sense of melancholy.' }, value: '2', notes: { zh: ['甜橙', '肉桂', '菸草', '粉紅胡椒'], en: ['Sweet Orange', 'Cinnamon', 'Tobacco', 'Pink Pepper'] } },
+                    { label: { zh: '昏暗空間裡的一束微光，聚焦在某個安靜的物件上。', en: 'A single beam of light in a dim space, focused on a quiet object.' }, value: '3', notes: { zh: ['乾燥木柴', '莎草', '廣藿香'], en: ['Dry Firewood', 'Cypriol', 'Patchouli'] } },
+                    { label: { zh: '低飽和的灰綠色調，萬物被雨水洗刷過，帶著濕潤的重量。', en: 'A low-saturation grayish-green tone, everything washed by rain, carrying a dewy weight.' }, value: '4', notes: { zh: ['橡木苔', '苦橙葉', '無花果葉'], en: ['Oakmoss', 'Petitgrain', 'Fig Leaf'] } },
+                    { label: { zh: '穿透樹冠的斑駁光影，罩著一層柔軟的藕粉色濾鏡，如夢似幻。', en: 'Dappled light filtering through the canopy, bathed in a soft lotus-pink filter, like a dream.' }, value: '5', notes: { zh: ['白茶', '洋甘菊', '鳶尾花'], en: ['White Tea', 'Chamomile', 'Iris'] } },
+                    { label: { zh: '稍微過曝的純白光線，乾淨得毫無雜質，帶著一絲眩目。', en: 'A slightly overexposed pure white light, flawlessly clean, with a touch of glare.' }, value: '6', notes: { zh: ['醛香', '鈴蘭', '白麝香'], en: ['Aldehydes', 'Lily of the Valley', 'White Musk'] } },
+                    { label: { zh: '泛黃的復古色調，邊緣微糊，卻保留了當時的溫度。', en: 'A yellowed vintage tone, edges slightly blurred, yet preserving the warmth of that moment.' }, value: '7', notes: { zh: ['香草', '零陵香豆', '羊絨木'], en: ['Vanilla', 'Tonka Bean', 'Cashmere Wood'] } },
+                    { label: { zh: '褪去色彩的深藍色午夜，只有冷調的月光或霓虹勾勒出輪廓。', en: 'A desaturated deep blue midnight, with only cold moonlight or neon tracing the outlines.' }, value: '8', notes: { zh: ['晚香玉', '沒藥'], en: ['Tuberose', 'Myrrh'] } }
                 ]
             },
             {
                 id: 'D2',
                 question: { zh: '當畫面逐漸淡出，這段記憶留在你腦海中的背景音是什麼？', en: 'As the image fades out, what is the background sound this memory leaves in your mind?' },
                 options: [
-                    { label: { zh: '筆尖劃過紙張的沙沙聲，或書頁翻動的微小聲響。', en: 'The rustle of a pen nib scratching across paper, or the faint sound of pages turning.' }, value: '1', note: '廣藿香、皮革、莎草' },
-                    { label: { zh: '窗外樹葉被風吹動的摩挲聲，帶著某種遼闊與釋然。', en: 'The rustling of leaves blown by the wind outside the window, carrying a sense of vastness and relief.' }, value: '2', note: '雪松、橡木苔、扁柏' },
-                    { label: { zh: '某個人低聲的呢喃，或是兩人之間連心跳都能聽見的寂靜。', en: 'Someone\'s low murmur, or a silence between two people where even heartbeats can be heard.' }, value: '3', note: '白麝香、香草、琥珀' },
-                    { label: { zh: '雨滴規律打在窗玻璃上的悶響，將世界與你安穩地隔絕開來。', en: 'The rhythmic, muffled sound of raindrops hitting the window glass, safely isolating you from the world.' }, value: '4', note: '香根草' },
-                    { label: { zh: '萬物被大雪覆蓋時那種絕對的靜謐，連一根針掉落都能聽見。', en: 'The absolute stillness when everything is covered in heavy snow, where you could hear a pin drop.' }, value: '5', note: '龍涎醚' },
-                    { label: { zh: '柴火燃燒到最後的細微劈啪聲，或是燭芯即將熄滅的微光。', en: 'The faint crackling of firewood burning to its end, or the last glimmer of a dying candle wick.' }, value: '6', note: '檀香、沉香、乳香、沒藥' },
-                    { label: { zh: '身體翻動時，棉麻或絲絨布料互相摩擦的輕柔簌簌聲。', en: 'The soft rustling of cotton, linen, or velvet fabric rubbing together as a body shifts.' }, value: '7', note: '鳶尾花根、羊絨木、黃葵籽' },
-                    { label: { zh: '隔著厚重玻璃，城市遠方極其微弱的車流低頻嗡鳴。', en: 'The extremely faint, low-frequency hum of distant city traffic through thick glass.' }, value: '8', note: '龍涎香' }
+                    { label: { zh: '筆尖劃過紙張的沙沙聲，或書頁翻動的微小聲響。', en: 'The rustle of a pen nib scratching across paper, or the faint sound of pages turning.' }, value: '1', notes: { zh: ['廣藿香', '皮革', '莎草'], en: ['Patchouli', 'Leather', 'Cypriol'] } },
+                    { label: { zh: '窗外樹葉被風吹動的摩挲聲，帶著某種遼闊與釋然。', en: 'The rustling of leaves blown by the wind outside the window, carrying a sense of vastness and relief.' }, value: '2', notes: { zh: ['雪松', '橡木苔', '扁柏'], en: ['Cedarwood', 'Oakmoss', 'Hinoki'] } },
+                    { label: { zh: '某個人低聲的呢喃，或是兩人之間連心跳都能聽見的寂靜。', en: 'Someone\'s low murmur, or a silence between two people where even heartbeats can be heard.' }, value: '3', notes: { zh: ['白麝香', '香草', '琥珀'], en: ['White Musk', 'Vanilla', 'Amber'] } },
+                    { label: { zh: '雨滴規律打在窗玻璃上的悶響，將世界與你安穩地隔絕開來。', en: 'The rhythmic, muffled sound of raindrops hitting the window glass, safely isolating you from the world.' }, value: '4', notes: { zh: ['香根草'], en: ['Vetiver'] } },
+                    { label: { zh: '萬物被大雪覆蓋時那種絕對的靜謐，連一根針掉落都能聽見。', en: 'The absolute stillness when everything is covered in heavy snow, where you could hear a pin drop.' }, value: '5', notes: { zh: ['龍涎醚'], en: ['Ambroxan'] } },
+                    { label: { zh: '柴火燃燒到最後的細微劈啪聲，或是燭芯即將熄滅的微光。', en: 'The faint crackling of firewood burning to its end, or the last glimmer of a dying candle wick.' }, value: '6', notes: { zh: ['檀香', '沉香', '乳香', '沒藥'], en: ['Sandalwood', 'Oud', 'Frankincense', 'Myrrh'] } },
+                    { label: { zh: '身體翻動時，棉麻或絲絨布料互相摩擦的輕柔簌簌聲。', en: 'The soft rustling of cotton, linen, or velvet fabric rubbing together as a body shifts.' }, value: '7', notes: { zh: ['鳶尾花根', '羊絨木', '黃葵籽'], en: ['Orris Root', 'Cashmere Wood', 'Ambrette Seed'] } },
+                    { label: { zh: '隔著厚重玻璃，城市遠方極其微弱的車流低頻嗡鳴。', en: 'The extremely faint, low-frequency hum of distant city traffic through thick glass.' }, value: '8', notes: { zh: ['龍涎香'], en: ['Ambergris'] } }
                 ]
             },
             {
@@ -712,6 +712,7 @@ const scentQuizData = {
                     { label: { zh: '其實什麼都沒發生，但心裡知道，一切都不一樣了。', en: 'Actually, nothing happened, but you know in your heart that everything is different now.' }, value: '3' }
                 ]
             }
+        ]
     }
 };
 
