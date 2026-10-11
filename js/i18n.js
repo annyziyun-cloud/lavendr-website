@@ -98,7 +98,7 @@ const translations = {
         mem_nav_auth: "會員登入",
         mem_nav_tiers: "等級權益",
         mem_nav_faq: "點數規則",
-        mem_title_auth: "會員登入 / 加入會員",
+        mem_title_auth: "會員系統",
         mem_security: "為保障您的資訊安全，建議設定與其他重要帳戶不同的密碼。",
         mem_tab_login: "登入",
         mem_tab_register: "註冊",
@@ -126,13 +126,13 @@ const translations = {
         mem_tier3_4: "點數回饋加倍（每滿 NT$100 累積 2 點）",
         mem_title_faq: "點數規則與常見問題",
         faq_q1: "Q1：點數如何累積與折抵？",
-        faq_a1: "每一份對香氣的熱愛，都能化為實質的回饋。在 Lavend/r 每消費 NT$100 即可累積 1 點，點數可於結帳時直接折抵現金，或換購限定小禮盒，讓您的下一趟感官旅程更加輕盈。",
+        faq_a1: "在 Lavend/r 每消費 NT$100 即可累積 1 點，點數可於結帳時直接折抵現金，或換購限定小禮盒，讓您的下一趟感官旅程更加輕盈。",
         faq_q2: "Q2：點數何時會到期？",
-        faq_a2: "為了讓點數循環流動，所有累積的點數將統一於每年 12 月 31 日到期歸零。建議您在歲末年終之際，挑選一份專屬香氛犒賞自己。",
+        faq_a2: "所有累積的點數將統一於每年 12 月 31 日到期歸零。建議您在歲末年終之際，將點數用於現金折抵，或用於換購小禮盒使用。",
         faq_q3: "Q3：如何升級或維持會員資格？",
         faq_a3: "您的每一筆訂單我們都用心記錄。只要在 12 個月內累積消費達到指定門檻，系統將會自動為您升級，並立即開啟下一階段的專屬禮遇。",
         faq_q4: "Q4：點數過期了怎麼辦？",
-        faq_a4: "我們明白生活有時會讓人忘記時間。Lavend/r 提供溫暖的「點數緩衝機制」：每年 1 月 1 日至 1 月 7 日期間，只要在官網成立任一筆不限金額的訂單，系統將會自動解凍您上一年度未使用的點數，並延展效期至當年年底。"
+        faq_a4: "我們明白生活有時會讓人忘記時間。若您不小心錯過了年度結算日，請參考「點數緩衝機制」：每年 1 月 1 日至 1 月 7 日期間，只要在官網成立任一筆不限金額的訂單，系統將會自動解凍您上一年度未使用的點數，並延展效期至當年年底。"
     },
     en: {
         // --- Navigation & Home ---
@@ -232,7 +232,7 @@ const translations = {
         mem_nav_auth: "Login",
         mem_nav_tiers: "Privileges",
         mem_nav_faq: "Points Policy",
-        mem_title_auth: "Login / Register",
+        mem_title_auth: "Welcome Back",
         mem_security: "For your security, we recommend using a unique password different from your other important accounts.",
         mem_tab_login: "Login",
         mem_tab_register: "Register",
@@ -260,12 +260,12 @@ const translations = {
         mem_tier3_4: "Earn 2 points for every NT$100 spent",
         mem_title_faq: "Points Policy & FAQ",
         faq_q1: "Q1: How do I earn and redeem points?",
-        faq_a1: "Every passion for fragrance turns into tangible rewards. Earn 1 point for every NT$100 spent. Points can be used as cash discount during checkout or to redeem exclusive gift boxes.",
+        faq_a1: "Every passion for fragrance turns into tangible rewards. Earn 1 point for every NT$100 spent. Points can be used as cash discount during checkout or to redeem exclusive gifts.",
         faq_q2: "Q2: When do points expire?",
-        faq_a2: "To keep the points flowing, all accumulated points expire and reset to zero on December 31st each year. We suggest treating yourself to a fragrance at year-end.",
+        faq_a2: "All accumulated points expire and reset to zero on December 31st each year. We recommend that you use your points for direct cash discounts at checkout or to redeem gifts at the end of the year.",
         faq_q3: "Q3: How do I upgrade or maintain my tier?",
         faq_a3: "We carefully track every order. Simply reach the specific spending threshold within 12 months, and the system will automatically upgrade your tier and unlock new privileges.",
         faq_q4: "Q4: What if my points expire?",
-        faq_a4: "We know life gets busy. Lavend/r offers a warm 'Buffer Mechanism': Make any purchase (no minimum amount) between January 1st and January 7th, and the system will unfreeze your unused points from the previous year, extending their validity to the end of the current year."
+        faq_a4: "We know life gets busy. If you accidentally missed the annual settlement date, please refer to the 'Buffer Mechanism': Make any purchase (no minimum amount) between January 1st and January 7th, and the system will unfreeze your unused points from the previous year, extending their validity to the end of the current year."
     }
 };
