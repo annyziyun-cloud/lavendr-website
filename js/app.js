@@ -362,6 +362,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = inputs[1].value.trim();
             const birthday = inputs[2].value;
             const password = inputs[3].value;
+            if (password.length < 8) {
+                alert(currentLang === 'zh' ? '為了您的帳號安全，密碼請至少設定 8 個字元。' : 'For security, password must be at least 8 characters.');
+                return; // 中斷註冊程序
+            }
 
             setButtonLoading(formRegister, true, currentLang === 'zh' ? '註冊中...' : 'Registering...');
 
