@@ -250,6 +250,231 @@ body {
     transform: scale(1.3); /* 正在看的那一張點點會微放大 */
 }
 
+/* === 會員系統專屬樣式 === */
+.member-page-container {
+    max-width: 1000px;
+    margin: 140px auto 80px;
+    padding: 2rem;
+}
+
+/* 浮動快捷導覽 */
+.member-anchor-nav {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 1rem;
+}
+.member-anchor-nav .anchor-link {
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+.member-anchor-nav .anchor-link:hover {
+    color: var(--text-dark);
+}
+
+.member-section-block {
+    margin-bottom: 8rem;
+}
+
+/* --- 第一區塊：登入與儀表板卡片 --- */
+.member-card {
+    background: #f5f3f0; /* 莫蘭迪灰咖色系底色 */
+    border-radius: 12px;
+    padding: 4rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+    text-align: center;
+}
+.security-notice {
+    font-size: 0.85rem;
+    color: #8a7a8f; /* 莫蘭迪紫，溫柔提醒 */
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+/* 登入/註冊切換 */
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.auth-tab {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid transparent;
+}
+.auth-tab.active {
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--text-dark);
+}
+
+/* 表單樣式 */
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.auth-form.active {
+    display: flex;
+}
+.auth-form input {
+    padding: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: #fff;
+    outline: none;
+}
+.auth-form input:focus {
+    border-color: #8a7a8f;
+}
+
+/* 儀表板樣式 */
+.member-tier-label {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+.progress-section {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #e8e4dc;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.progress-bar {
+    height: 100%;
+    background: #8a7a8f; /* 進度條顏色 */
+    border-radius: 3px;
+    transition: width 1s ease-in-out;
+}
+.progress-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.dashboard-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+}
+.stat-box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    min-width: 140px;
+}
+.stat-box span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+.stat-box h4 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-top: 0.5rem;
+}
+.outline-btn {
+    background: transparent;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.outline-btn:hover {
+    background: var(--text-dark);
+    color: #fff;
+}
+
+/* --- 第二區塊：會員等級卡片 --- */
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.tier-card {
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    text-align: left;
+}
+/* 莫蘭迪柔和背景色 */
+.tier-seedling { background: #eef1ec; } /* 淺綠 */
+.tier-dewdrop { background: #f6efe9; }  /* 柔粉 */
+.tier-lavender { background: #edeaf0; } /* 淺紫/灰 */
+
+.tier-card h4 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.tier-condition {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 1rem;
+}
+.tier-card ul {
+    list-style: none;
+    padding: 0;
+}
+.tier-card ul li {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    padding-left: 1.2rem;
+    position: relative;
+}
+.tier-card ul li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #8a7a8f;
+    font-size: 0.8rem;
+}
+
+/* --- 第三區塊：Q&A 折疊面板 --- */
+.faq-accordion {
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+/* 手機版 RWD 調整 */
+@media (max-width: 768px) {
+    .tiers-grid {
+        grid-template-columns: 1fr;
+    }
+    .member-anchor-nav {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    .member-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
 /* === 5. 首頁 Events 活動長方塊 === */
 .events-section {
     max-width: 1200px; 
