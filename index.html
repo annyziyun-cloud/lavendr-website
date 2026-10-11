@@ -349,55 +349,85 @@
                     <a href="#member-faq" class="anchor-link" data-i18n="mem_nav_faq">點數規則</a>
                 </div>
 
-                <!-- 第一區塊：核心行動區 -->
-                <div id="member-auth" class="member-section-block">
-                    <div class="member-card auth-card" id="auth-card-view">
-                        <h3 class="serif-title" data-i18n="mem_title_auth">會員登入 / 加入會員</h3>
-                        <p class="security-notice" data-i18n="mem_security">為保障您的資訊安全，建議設定與其他重要帳戶不同的密碼。</p>
-                        
-                        <div class="auth-tabs">
-                            <button class="auth-tab active" id="tab-login" data-i18n="mem_tab_login">登入</button>
-                            <button class="auth-tab" id="tab-register" data-i18n="mem_tab_register">註冊</button>
+                <!-- 📌 第一區塊：核心行動區 (高級毛玻璃分割佈局) -->
+                <div id="member-auth" class="member-section-block split-layout">
+                    
+                    <!-- 左側：視覺形象區 (增加氛圍感) -->
+                    <div class="auth-visual">
+                        <img src="./story-image.jpg" alt="Lavend/r 品牌意象" class="auth-bg-img">
+                        <div class="glass-overlay-text">
+                            <h3 class="serif-title">L A V E N D / R</h3>
+                            <p data-i18n="hero_quote">點燃一縷芬芳，在喧囂裡漫成一座島嶼。</p>
                         </div>
-
-                        <!-- 登入表單 -->
-                        <form id="login-form" class="auth-form active">
-                            <input type="tel" data-i18n-placeholder="mem_ph_account" placeholder="手機號碼 (Account)" required>
-                            <input type="password" data-i18n-placeholder="mem_ph_pass" placeholder="密碼 (Password)" required>
-                            <button type="submit" class="action-btn" data-i18n="mem_btn_login">登入</button>
-                        </form>
-
-                        <!-- 註冊表單 -->
-                        <form id="register-form" class="auth-form">
-                            <input type="text" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
-                            <input type="tel" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required>
-                            <input type="text" data-i18n-placeholder="mem_ph_birth" placeholder="生日 (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
-                            <input type="password" data-i18n-placeholder="mem_ph_setpass" placeholder="設定密碼 (Password)" required>
-                            <button type="submit" class="action-btn" data-i18n="mem_btn_register">發送驗證碼並註冊</button>
-                        </form>
                     </div>
 
-                    <!-- 狀態 B：儀表板 (預設隱藏) -->
-                    <div class="member-card dashboard-card" id="dashboard-card-view" style="display: none;">
-                        <h3 class="serif-title">Welcome, 高子芸</h3>
-                        <p class="member-tier-label">目前等級：微風草本 Seedling</p>
-                        <div class="progress-section">
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 75%;"></div>
+                    <!-- 右側：表單與看板區 (毛玻璃質感) -->
+                    <div class="auth-content premium-glass">
+                        
+                        <!-- 狀態 A：登入 / 註冊表單 -->
+                        <div id="auth-card-view">
+                            <div class="auth-header">
+                                <h3 class="serif-title" data-i18n="mem_title_auth">會員登入 / 加入會員</h3>
+                                <p class="security-notice" data-i18n="mem_security">為保障您的資訊安全，建議設定與其他重要帳戶不同的密碼。</p>
                             </div>
-                            <p class="progress-text">距離升階「晨露花香」還差 NT$500，解鎖常態 85 折與雙倍點數！</p>
+                            
+                            <div class="auth-tabs">
+                                <button class="auth-tab active" id="tab-login" data-i18n="mem_tab_login">登入</button>
+                                <button class="auth-tab" id="tab-register" data-i18n="mem_tab_register">註冊</button>
+                            </div>
+
+                            <!-- 登入表單 -->
+                            <form id="login-form" class="auth-form active">
+                                <div class="input-group">
+                                    <input type="tel" data-i18n-placeholder="mem_ph_account" placeholder="手機號碼 (Account)" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" data-i18n-placeholder="mem_ph_pass" placeholder="密碼 (Password)" required>
+                                </div>
+                                <button type="submit" class="premium-btn" data-i18n="mem_btn_login">登入 (Login)</button>
+                            </form>
+
+                            <!-- 註冊表單 -->
+                            <form id="register-form" class="auth-form">
+                                <div class="input-group">
+                                    <input type="text" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="tel" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" data-i18n-placeholder="mem_ph_birth" placeholder="生日 (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" data-i18n-placeholder="mem_ph_setpass" placeholder="設定密碼 (Password)" required>
+                                </div>
+                                <button type="submit" class="premium-btn" data-i18n="mem_btn_register">發送驗證碼並註冊</button>
+                            </form>
                         </div>
-                        <div class="dashboard-stats">
-                            <div class="stat-box">
-                                <span>可用點數</span>
-                                <h4>150 pts</h4>
+
+                        <!-- 狀態 B：儀表板 -->
+                        <div id="dashboard-card-view" style="display: none;">
+                            <h3 class="serif-title">Welcome, 高子芸</h3>
+                            <p class="member-tier-label">目前等級：微風草本 Seedling</p>
+                            <div class="progress-section">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 75%;"></div>
+                                </div>
+                                <p class="progress-text">距離升階「晨露花香」還差 NT$500，解鎖常態 85 折與雙倍點數！</p>
                             </div>
-                            <div class="stat-box">
-                                <span>專屬優惠碼</span>
-                                <h4>LAVENDR2026</h4>
+                            <div class="dashboard-stats">
+                                <div class="stat-box">
+                                    <span>可用點數</span>
+                                    <h4>150 pts</h4>
+                                </div>
+                                <div class="stat-box">
+                                    <span>專屬優惠碼</span>
+                                    <h4>LAVENDR2026</h4>
+                                </div>
                             </div>
+                            <button id="logout-btn" class="outline-btn">登出</button>
                         </div>
-                        <button id="logout-btn" class="outline-btn">登出</button>
+
                     </div>
                 </div>
 
