@@ -216,11 +216,142 @@ document.addEventListener('DOMContentLoaded', () => {
         startSlideInterval();
     }
 
-    /* --- E. 啟動與初始化 --- */
+    /* --- E. 會員系統 API 串接與狀態管理 --- */
+    const API_URL = "https://script.google.com/macros/s/AKfycbzs7074XIxt0aAw4JoZkaxxIzOq6u3tVE0dcAYULbyet0bmY2_YRZl8meT2t1m_RjHikg/exec";
+    
+    const authCardView = document.getElementById('auth-card-view');
+    const dashboardCardView = document.getElementById('dashboard-card-view');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    // 1. 檢查並渲染登入狀態
+    function checkLoginState() {
+        const storedUser = localStorage.getItem('lavendr_user');
+        if (storedUser) {
+            const userData = JSON.parse(storedUser);
+            // 隱藏表單，顯示看板
+            if(authCardView) authCardView.style.display = 'none';
+            if(dashboardCardView) {
+                dashboardCardView.style.display = 'block';
+                const welcomeTitle = dashboardCardView.querySelector('h3');
+                if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${userData.name}`;
+            }
+        } else {
+            // 未登入，顯示表單
+            if(authCardView) authCardView.style.display = 'block';
+            if(dashboardCardView) dashboardCardView.style.display = 'none';
+        }
+    }
+
+    // 2. 按鈕載入狀態控制 (防連點)
+    function setButtonLoading(form, isLoading, loadingText = '處理中...') {
+        const btn = form.querySelector('button[type="submit"]');
+        if (!btn) return;
+        if (isLoading) {
+            btn.dataset.originalText = btn.textContent;
+            btn.textContent = loadingText;
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'not-allowed';
+        } else {
+            btn.textContent = btn.dataset.originalText || '送出';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
+        }
+    }
+
+    // 3. 註冊表單送出邏輯
+    if (formRegister) {
+        formRegister.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const inputs = formRegister.querySelectorAll('input');
+            const name = inputs[0].value.trim();
+            const phone = inputs[1].value.trim();
+            const birthday = inputs[2].value;
+            const password = inputs[3].value;
+
+            setButtonLoading(formRegister, true, currentLang === 'zh' ? '註冊中...' : 'Registering...');
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    redirect: "follow",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: JSON.stringify({ action: "register", name, phone, birthday, password })
+                });
+                const result = await response.json();
+
+                // 假設 Google Sheet 回傳的 JSON 裡有 success: true
+                if (result.success || result.status === 'success') {
+                    alert(currentLang === 'zh' ? '註冊成功！歡迎來到 Lavend/r。' : 'Registration successful!');
+                    // 自動登入：將資料存入瀏覽器記憶體
+                    localStorage.setItem('lavendr_user', JSON.stringify({ name, phone, birthday }));
+                    formRegister.reset();
+                    checkLoginState();
+                } else {
+                    alert(result.message || (currentLang === 'zh' ? '註冊失敗，請檢查資料或稍後再試。' : 'Registration failed.'));
+                }
+            } catch (error) {
+                console.error('API Error:', error);
+                alert(currentLang === 'zh' ? '系統連線異常，請稍後再試。' : 'Network error, please try again.');
+            } finally {
+                setButtonLoading(formRegister, false);
+            }
+        });
+    }
+
+    // 4. 登入表單送出邏輯
+    if (formLogin) {
+        formLogin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const inputs = formLogin.querySelectorAll('input');
+            const phone = inputs[0].value.trim();
+            const password = inputs[1].value;
+
+            setButtonLoading(formLogin, true, currentLang === 'zh' ? '登入中...' : 'Logging in...');
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    redirect: "follow",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: JSON.stringify({ action: "login", phone, password })
+                });
+                const result = await response.json();
+
+                if (result.success || result.status === 'success') {
+                    // 將後端回傳的用戶名稱與手機存入記憶體
+                    const userName = result.name || result.user?.name || 'Member';
+                    localStorage.setItem('lavendr_user', JSON.stringify({ name: userName, phone }));
+                    formLogin.reset();
+                    checkLoginState();
+                } else {
+                    alert(result.message || (currentLang === 'zh' ? '帳號或密碼錯誤' : 'Invalid credentials'));
+                }
+            } catch (error) {
+                console.error('API Error:', error);
+                alert(currentLang === 'zh' ? '系統連線異常，請稍後再試。' : 'Network error, please try again.');
+            } finally {
+                setButtonLoading(formLogin, false);
+            }
+        });
+    }
+
+    // 5. 登出邏輯
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('lavendr_user');
+            checkLoginState();
+        });
+    }
+
+
+    /* --- F. 啟動與初始化 --- */
     window.addEventListener('popstate', () => navigateTo(window.location.hash));
     navigateTo(window.location.hash);
     updateLanguage(currentLang);
-    initQuiz(); // 初始化問卷
+    initQuiz();
+    checkLoginState(); // 網頁載入時立刻檢查是否已經登入過
 });
 
 
