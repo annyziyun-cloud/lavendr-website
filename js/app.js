@@ -217,14 +217,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --- E. 會員系統 API 串接與狀態管理 --- */
-    const API_URL = "https://script.google.com/macros/s/AKfycbxczAApDD7t4S3WJG0XDfTcOuanyuv3v-_m9-vfdNL58fB1FbpIiJvJbQdNToPT9GI9Kg/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbwipIReLEm3nr0M6olx_ia3Q-vAuYzynzmn_Fhidd0Gbcv8vlo_iaPaqcIVXRLKRGkE0Q/exec"; 
     
     const authCardView = document.getElementById('auth-card-view');
     const dashboardCardView = document.getElementById('dashboard-card-view');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // 1. 檢查並渲染登入狀態 (加入點數與等級的動態讀取)
-    function checkLoginState() {
+    // ★ 負責渲染畫面 (包含動態計算進度條與文字)
+    function renderDashboard(data) {
+        // 1. 更新姓名與等級
+        const welcomeTitle = dashboardCardView.querySelector('h3');
+        if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${data.name}`;
+        
+        const tierLabel = dashboardCardView.querySelector('.member-tier-label');
+        if (tierLabel && data.tier) tierLabel.textContent = `目前等級：${data.tier}`;
+        
+        // 2. 更新點數
+        const pointsElement = document.getElementById('member-points');
+        if (pointsElement && data.points !== undefined) pointsElement.textContent = `${data.points} pts`;
+
+        // 3. 處理「年度消費」對應的進度條與文案
+        const progressBar = document.getElementById('progress-bar-fill');
+        const progressDesc = document.getElementById('progress-text-desc');
+        
+        if (progressBar && progressDesc && data.spending !== undefined) {
+            const spending = Number(data.spending) || 0;
+            let target = 0;
+            let percentage = 0;
+            let descText = "";
+
+            if (spending < 6000) {
+                // 等級 1：微風草本
+                target = 6000;
+                percentage = (spending / target) * 100;
+                const diff = target - spending;
+                descText = `距離升階「晨露花香」還差 NT$${diff.toLocaleString()}，解鎖常態 85 折與雙倍點數！`;
+            } else if (spending >= 6000 && spending < 10000) {
+                // 等級 2：晨露花香
+                target = 10000;
+                percentage = (spending / target) * 100;
+                const diff = target - spending;
+                descText = `距離升階「薰衣草花田」還差 NT$${diff.toLocaleString()}，解鎖指定組合最低 6 折！`;
+            } else {
+                // 等級 3：薰衣草花田 (滿級)
+                percentage = 100;
+                descText = `您已解鎖最高等級「薰衣草花田 (VIP)」，請盡情享受專屬最高禮遇！`;
+            }
+
+            // 更新畫面進度條寬度與文字
+            progressBar.style.width = `${percentage}%`;
+            progressDesc.textContent = descText;
+        }
+    }
+
+    // 1. 檢查並渲染登入狀態
+    async function checkLoginState() {
         const storedUser = localStorage.getItem('lavendr_user');
         if (storedUser) {
             const userData = JSON.parse(storedUser);
@@ -233,17 +280,31 @@ document.addEventListener('DOMContentLoaded', () => {
             if(dashboardCardView) {
                 dashboardCardView.style.display = 'block';
                 
-                // 渲染姓名
-                const welcomeTitle = dashboardCardView.querySelector('h3');
-                if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${userData.name}`;
-                
-                // 渲染會員等級
-                const tierLabel = dashboardCardView.querySelector('.member-tier-label');
-                if (tierLabel && userData.tier) tierLabel.textContent = `目前等級：${userData.tier}`;
-                
-                // 渲染點數
-                const pointsElement = document.getElementById('member-points');
-                if (pointsElement && userData.points !== undefined) pointsElement.textContent = `${userData.points} pts`;
+                renderDashboard(userData);
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: "POST",
+                        redirect: "follow",
+                        headers: { "Content-Type": "text/plain;charset=utf-8" },
+                        body: JSON.stringify({ action: "getUserInfo", phone: userData.phone })
+                    });
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        const newData = {
+                            name: result.name,
+                            phone: userData.phone,
+                            spending: result.spending,  // 新增記錄消費金額
+                            points: result.points,
+                            tier: result.tier || "微風草本 Seedling"
+                        };
+                        localStorage.setItem('lavendr_user', JSON.stringify(newData));
+                        renderDashboard(newData);
+                    }
+                } catch (err) {
+                    console.log("背景更新資料失敗", err);
+                }
             }
         } else {
             if(authCardView) authCardView.style.display = 'block';
@@ -251,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. 按鈕載入狀態控制 (防連點)
+    // 2. 按鈕載入狀態控制
     function setButtonLoading(form, isLoading, loadingText = '處理中...') {
         const btn = form.querySelector('button[type="submit"]');
         if (!btn) return;
@@ -269,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 3. 註冊表單送出邏輯
+    // 3. 註冊表單送出
     if (formRegister) {
         formRegister.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -292,10 +353,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (result.success || result.status === 'success') {
                     alert(currentLang === 'zh' ? '註冊成功！歡迎來到 Lavend/r。' : 'Registration successful!');
-                    // 註冊後自動給予預設值存入記憶體
+                    // 註冊時將 spending 也預設為 0
                     localStorage.setItem('lavendr_user', JSON.stringify({ 
                         name: name, 
                         phone: phone, 
+                        spending: 0,
                         points: 0, 
                         tier: '微風草本 Seedling' 
                     }));
@@ -313,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. 登入表單送出邏輯 (將後端回傳的點數與等級存入記憶體)
+    // 4. 登入表單送出
     if (formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -333,12 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (result.success || result.status === 'success') {
-                    // 接收後端的姓名、點數與等級
                     const userData = {
                         name: result.name || 'Member',
                         phone: phone,
+                        spending: result.spending, // 儲存消費金額
                         points: result.points,
-                        tier: result.tier
+                        tier: result.tier || '微風草本 Seedling'
                     };
                     localStorage.setItem('lavendr_user', JSON.stringify(userData));
                     formLogin.reset();
@@ -362,7 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
             checkLoginState();
         });
     }
-
 
     /* --- F. 啟動與初始化 --- */
     window.addEventListener('popstate', () => navigateTo(window.location.hash));
