@@ -273,15 +273,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 percentage = (spending / target) * 100;
                 const diff = target - spending;
                 descText = lang === 'zh' 
-                    ? `距「晨露花香」僅 NT$${diff.toLocaleString()}。升級即享常態 85 折與雙倍點數禮遇。`
-                    : `Just NT$${diff.toLocaleString()} to go for "Dewdrop". Level up to enjoy an everyday 15% off and double points.`;
+                    ? `距「晨露花香」僅 NT$${diff.toLocaleString()}。升級即享常態 85 折與1.5倍點數禮遇。`
+                    : `Just NT$${diff.toLocaleString()} to go for "Dewdrop". Level up to enjoy a regular 15% off on all items and earn 1.5 points for every NT$100 spent.`;
             } else if (spending >= 6000 && spending < 10000) {
                 target = 10000;
                 percentage = (spending / target) * 100;
                 const diff = target - spending;
                 descText = lang === 'zh'
                     ? `距「薰衣草花田」僅 NT$${diff.toLocaleString()}。升級即享指定臻享組合最低 6 折`
-                    : `Just NT$${diff.toLocaleString()} to go for "Lavender (VIP)". Level up to get up to 40% off on selected sets.`;
+                    : `Just NT$${diff.toLocaleString()} to go for "Lavender (VIP)". Level up to get up to 40% off on selected sets & exquisite birthday gift.`;
             } else {
                 percentage = 100;
                 descText = lang === 'zh'
