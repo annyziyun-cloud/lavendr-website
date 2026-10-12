@@ -89,46 +89,20 @@ body {
 }
 .lang-toggle:hover { background: var(--text-dark); color: #fff; }
 
-/* =========================================
-   導覽列右側功能區 (語言切換 + 購物袋)
-   ========================================= */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
+/* 導覽列右側功能區 (語言切換 + 購物袋) */
+.nav-actions { display: flex; align-items: center; gap: 1.5rem; }
 
 .cart-icon-link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    color: var(--text-dark, #333);
-    transition: color 0.3s ease, transform 0.3s ease;
-    text-decoration: none;
+    position: relative; display: flex; align-items: center;
+    color: var(--text-dark, #333); transition: color 0.3s ease, transform 0.3s ease; text-decoration: none;
 }
-
-.cart-icon-link:hover {
-    color: #a39587; 
-    transform: translateY(-2px); 
-}
+.cart-icon-link:hover { color: #a39587; transform: translateY(-2px); }
 
 .cart-badge {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    background-color: #a39587; 
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 500;
-    min-width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 4px;
-    box-sizing: border-box;
-    font-family: 'Times New Roman', serif; 
+    position: absolute; top: -6px; right: -8px; background-color: #a39587; 
+    color: #fff; font-size: 0.7rem; font-weight: 500; min-width: 18px; height: 18px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    padding: 0 4px; box-sizing: border-box; font-family: 'Times New Roman', serif; 
 }
 
 
@@ -150,91 +124,47 @@ body {
    3. 首頁封面與輪播 (Hero Carousel)
    ========================================= */
 .hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start; 
-    align-items: center;
+    position: relative; width: 100%; height: 100vh; overflow: hidden;
+    display: flex; justify-content: flex-start; align-items: center;
 }
 .hero-section::after {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
     z-index: 1; pointer-events: none; 
 }
 
-.hero-carousel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-}
+.hero-carousel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; }
 .carousel-slide.active { opacity: 1; }
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .hero-content {
-    position: absolute;
-    left: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    text-align: left;
-    max-width: 500px;
+    position: absolute; left: 8%; top: 50%; transform: translateY(-50%);
+    z-index: 10; text-align: left; max-width: 500px;
 }
 .hero-content h2 {
-    font-size: 2.2rem;
-    line-height: 1.7;
-    letter-spacing: 5px;
-    font-weight: 300;
-    margin-bottom: 2.5rem;
-    color: var(--text-dark); 
-    text-shadow: 0 0 20px rgba(255,255,255,0.7);
+    font-size: 2.2rem; line-height: 1.7; letter-spacing: 5px; font-weight: 300;
+    margin-bottom: 2.5rem; color: var(--text-dark); text-shadow: 0 0 20px rgba(255,255,255,0.7);
 }
 .hero-content .hero-btn {
-    display: inline-block; padding: 1rem 2.5rem;
-    border: 1px solid #2c2a29; color: #2c2a29;
-    text-decoration: none; font-size: 0.95rem; letter-spacing: 2px;
-    transition: all 0.4s ease; background: transparent;
+    display: inline-block; padding: 1rem 2.5rem; border: 1px solid #2c2a29; color: #2c2a29;
+    text-decoration: none; font-size: 0.95rem; letter-spacing: 2px; transition: all 0.4s ease; background: transparent;
 }
 .hero-content .hero-btn:hover { background: #2c2a29; color: #fff; }
 
 .carousel-control {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: transparent; border: none; color: rgba(255, 255, 255, 0.6);
-    font-size: 2rem; cursor: pointer; z-index: 15;
-    padding: 1rem 1.5rem; transition: color 0.3s ease;
+    position: absolute; top: 50%; transform: translateY(-50%); background: transparent; border: none; 
+    color: rgba(255, 255, 255, 0.6); font-size: 2rem; cursor: pointer; z-index: 15; padding: 1rem 1.5rem; transition: color 0.3s ease;
 }
 .carousel-control:hover { color: #fff; }
 .carousel-control.prev { left: 2%; }
 .carousel-control.next { right: 2%; }
 
 .carousel-dots {
-    position: absolute; bottom: 3rem; left: 50%;
-    transform: translateX(-50%); z-index: 15;
-    display: flex; gap: 1rem;
+    position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 15; display: flex; gap: 1rem;
 }
 .carousel-dots .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4); cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); cursor: pointer; transition: background 0.3s ease, transform 0.3s ease;
 }
 .carousel-dots .dot:hover { background: rgba(255, 255, 255, 0.8); }
 .carousel-dots .dot.active { background: #fff; transform: scale(1.3); }
@@ -244,15 +174,11 @@ body {
    4. 首頁活動區塊 (Events)
    ========================================= */
 .events-section {
-    max-width: 1200px; margin: 0 auto; 
-    padding: 6rem 2rem;
-    display: flex; flex-direction: column; gap: 5rem;
+    max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; display: flex; flex-direction: column; gap: 5rem;
 }
 .event-row {
-    display: flex; align-items: center; background: #FFFFFF;
-    border-radius: 8px; overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-    transition: transform 0.5s ease;
+    display: flex; align-items: center; background: #FFFFFF; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06); transition: transform 0.5s ease;
 }
 .event-row:hover { transform: translateY(-5px); }
 .event-row.reverse { flex-direction: row-reverse; }
@@ -260,13 +186,10 @@ body {
 .event-text { flex: 1; padding: 5rem 4rem; }
 .event-text h3 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-dark); letter-spacing: 3px; }
 .event-desc {
-    font-size: 0.95rem; color: var(--text-light); line-height: 2.2;
-    margin-bottom: 2.5rem; letter-spacing: 1px; white-space: pre-wrap;
+    font-size: 0.95rem; color: var(--text-light); line-height: 2.2; margin-bottom: 2.5rem; letter-spacing: 1px; white-space: pre-wrap;
 }
 .event-image { flex: 1; min-width: 350px; height: 100%; }
-.event-image img {
-    width: 100%; height: 100%; min-height: 400px; object-fit: cover;
-}
+.event-image img { width: 100%; height: 100%; min-height: 400px; object-fit: cover; }
 
 
 /* =========================================
@@ -274,16 +197,11 @@ body {
    ========================================= */
 .story-container { max-width: 1200px; margin: 140px auto 80px; padding: 2rem; }
 
-.story-upper {
-    display: flex; flex-direction: row; align-items: flex-start;
-    gap: 4rem; margin-bottom: 10rem;
-}
+.story-upper { display: flex; flex-direction: row; align-items: flex-start; gap: 4rem; margin-bottom: 10rem; }
 .story-upper-left { flex: 1; display: flex; flex-direction: row; gap: 2rem; }
 .vertical-title {
-    writing-mode: vertical-rl; text-orientation: mixed;
-    display: flex; flex-direction: row; gap: 1rem;
-    color: var(--text-muted); font-family: 'Lato', 'Noto Serif TC', serif;
-    letter-spacing: 4px; padding-top: 1rem;
+    writing-mode: vertical-rl; text-orientation: mixed; display: flex; flex-direction: row; gap: 1rem;
+    color: var(--text-muted); font-family: 'Lato', 'Noto Serif TC', serif; letter-spacing: 4px; padding-top: 1rem;
 }
 .vertical-title .vt-zh { font-size: 0.95rem; }
 .vertical-title .vt-en { font-size: 0.85rem; letter-spacing: 2px; }
@@ -291,14 +209,10 @@ body {
 .story-img-wrapper { flex: 1; }
 .story-img-wrapper img { width: 100%; max-width: 450px; height: auto; display: block; }
 
-.story-upper-right {
-    flex: 1; padding-top: 8rem; 
-    display: flex; flex-direction: column; gap: 1rem;
-}
+.story-upper-right { flex: 1; padding-top: 8rem; display: flex; flex-direction: column; gap: 1rem; }
 .story-upper-right h3 { font-size: 2rem; letter-spacing: 12px; color: var(--text-dark); margin-bottom: 2rem; }
 .story-upper-right p {
-    color: var(--text-light); line-height: 2.2; font-size: 1rem;
-    letter-spacing: 1.5px; margin-bottom: 1.5rem; text-align: justify;
+    color: var(--text-light); line-height: 2.2; font-size: 1rem; letter-spacing: 1.5px; margin-bottom: 1.5rem; text-align: justify;
 }
 
 .story-lower { display: flex; flex-direction: column; align-items: center; gap: 5rem; }
@@ -325,27 +239,18 @@ body {
 .product-card { cursor: pointer; text-align: center; transition: transform 0.4s ease; }
 .product-card:hover { transform: translateY(-5px); }
 .product-card .img-wrapper {
-    width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
-    background: #fff; margin-bottom: 1.5rem; border-radius: 4px;
+    width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #fff; margin-bottom: 1.5rem; border-radius: 4px;
 }
 .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
 .product-card:hover img { transform: scale(1.05); }
 .product-title {
-    font-size: 0.95rem; font-weight: 400; color: var(--text-dark);
-    margin-bottom: 0.4rem; /* 將原本的 1rem 縮小，讓標題跟價格靠近一點 */
-    line-height: 1.6; letter-spacing: 1px;
+    font-size: 0.95rem; font-weight: 400; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.6; letter-spacing: 1px;
 }
 
-.product-price {
-    font-size: 0.85rem;
-    color: var(--text-light); /* 使用溫和的淺灰色 */
-    margin-bottom: 1.2rem;
-    letter-spacing: 1px;
-}
+.product-price { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.2rem; letter-spacing: 1px; }
 .add-to-cart-btn {
     background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark);
-    padding: 0.6rem 1.5rem; font-size: 0.85rem; letter-spacing: 1.5px; cursor: pointer;
-    transition: all 0.4s ease; border-radius: 2px; margin-top: 0.5rem;
+    padding: 0.6rem 1.5rem; font-size: 0.85rem; letter-spacing: 1.5px; cursor: pointer; transition: all 0.4s ease; border-radius: 2px; margin-top: 0.5rem;
 }
 .add-to-cart-btn:hover { background: var(--text-dark); color: #fff; }
 
@@ -355,18 +260,11 @@ body {
 }
 .back-btn:hover { color: var(--text-dark); }
 .detail-layout { display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start; }
-.detail-images-column { 
-    flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 2rem; 
-}
-.detail-images-column img { 
-    width: 100%; height: auto; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-}
+.detail-images-column { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 2rem; }
+.detail-images-column img { width: 100%; height: auto; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 .detail-info { flex: 1; min-width: 300px; padding-top: 2rem; }
 .detail-info h2 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 2rem; line-height: 1.4; }
-.detail-desc { 
-    font-size: 1rem; line-height: 2.2; color: var(--text-light); 
-    letter-spacing: 1px; text-align: justify; margin-bottom: 2rem; white-space: pre-wrap; 
-}
+.detail-desc { font-size: 1rem; line-height: 2.2; color: var(--text-light); letter-spacing: 1px; text-align: justify; margin-bottom: 2rem; white-space: pre-wrap; }
 .detail-cart-btn { padding: 1rem 3rem; font-size: 1rem; }
 
 .product-notice {
@@ -388,76 +286,27 @@ body {
     display: flex; justify-content: center; gap: 3rem; margin-bottom: 5rem;
     border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 1rem;
 }
-.member-anchor-nav .anchor-link {
-    color: var(--text-muted); letter-spacing: 2px; font-size: 0.95rem; transition: color 0.3s;
-}
+.member-anchor-nav .anchor-link { color: var(--text-muted); letter-spacing: 2px; font-size: 0.95rem; transition: color 0.3s; }
 .member-anchor-nav .anchor-link:hover { color: var(--text-dark); }
 .member-section-block { margin-bottom: 8rem; }
 
 /* --- 會員系統的卡片佈局 --- */
 .member-section-block.split-layout {
-    display: flex;
-    flex-direction: row;
-    background: linear-gradient(135deg, #efebe4 0%, #f7f5f0 100%);
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
-    min-height: 650px;
-    margin: 0 auto 8rem auto;
-    max-width: 1000px;
+    display: flex; flex-direction: row; background: linear-gradient(135deg, #efebe4 0%, #f7f5f0 100%);
+    border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    min-height: 650px; margin: 0 auto 8rem auto; max-width: 1000px;
 }
 
-.auth-visual {
-    flex: 1.2;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.auth-bg-img {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-.auth-visual::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(247, 245, 240, 0.2), rgba(247, 245, 240, 0.8));
-    z-index: 2;
-}
-.glass-overlay-text {
-    position: relative;
-    z-index: 3;
-    padding: 3rem;
-    text-align: left;
-}
-.glass-overlay-text h3 {
-    font-size: 2.2rem;
-    letter-spacing: 8px;
-    color: var(--text-dark);
-    margin-bottom: 1.5rem;
-}
-.glass-overlay-text p {
-    font-size: 1rem;
-    letter-spacing: 2px;
-    color: var(--text-light);
-    line-height: 2;
-}
+.auth-visual { flex: 1.2; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.auth-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.auth-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(247, 245, 240, 0.2), rgba(247, 245, 240, 0.8)); z-index: 2; }
+.glass-overlay-text { position: relative; z-index: 3; padding: 3rem; text-align: left; }
+.glass-overlay-text h3 { font-size: 2.2rem; letter-spacing: 8px; color: var(--text-dark); margin-bottom: 1.5rem; }
+.glass-overlay-text p { font-size: 1rem; letter-spacing: 2px; color: var(--text-light); line-height: 2; }
 
 .premium-glass {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-left: 1px solid rgba(255, 255, 255, 0.8);
-    padding: 4rem 3.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 5;
+    flex: 1; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid rgba(255, 255, 255, 0.8); padding: 4rem 3.5rem; display: flex; flex-direction: column; justify-content: center; z-index: 5;
 }
 
 .auth-header { text-align: center; margin-bottom: 2rem; }
@@ -466,14 +315,11 @@ body {
 
 .auth-tabs { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; }
 .auth-tab {
-    background: none; border: none; font-size: 1.05rem; color: #a39587;
-    cursor: pointer; padding-bottom: 0.5rem; position: relative;
+    background: none; border: none; font-size: 1.05rem; color: #a39587; cursor: pointer; padding-bottom: 0.5rem; position: relative;
     letter-spacing: 1.5px; transition: color 0.3s;
 }
 .auth-tab::after {
-    content: ''; position: absolute; bottom: 0; left: 50%;
-    transform: translateX(-50%); width: 0; height: 2px;
-    background: var(--text-dark); transition: width 0.3s ease;
+    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--text-dark); transition: width 0.3s ease;
 }
 .auth-tab.active { color: var(--text-dark); font-weight: 600; }
 .auth-tab.active::after { width: 100%; }
@@ -482,20 +328,15 @@ body {
 .auth-form.active { display: flex; }
 
 .input-group input {
-    width: 100%; padding: 1.1rem 1.5rem; border: 1px solid rgba(163, 149, 135, 0.2);
-    border-radius: 12px; font-size: 0.95rem; background: rgba(255, 255, 255, 0.8);
+    width: 100%; padding: 1.1rem 1.5rem; border: 1px solid rgba(163, 149, 135, 0.2); border-radius: 12px; font-size: 0.95rem; background: rgba(255, 255, 255, 0.8);
     outline: none; transition: all 0.3s ease; color: var(--text-dark);
 }
 .input-group input::placeholder { color: #b0a8a0; letter-spacing: 0.5px; }
-.input-group input:focus {
-    background: #fff; border-color: #a39587; box-shadow: 0 0 0 4px rgba(163, 149, 135, 0.1);
-}
+.input-group input:focus { background: #fff; border-color: #a39587; box-shadow: 0 0 0 4px rgba(163, 149, 135, 0.1); }
 
 .premium-btn {
-    background: #a39587; color: #fff; border: none; padding: 1.2rem;
-    border-radius: 12px; font-size: 1rem; letter-spacing: 3px; cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-top: 1rem;
-    box-shadow: 0 10px 20px rgba(163, 149, 135, 0.2);
+    background: #a39587; color: #fff; border: none; padding: 1.2rem; border-radius: 12px; font-size: 1rem; letter-spacing: 3px; cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-top: 1rem; box-shadow: 0 10px 20px rgba(163, 149, 135, 0.2);
 }
 .premium-btn:hover { background: #8e8071; transform: translateY(-2px); box-shadow: 0 15px 25px rgba(163, 149, 135, 0.3); }
 
@@ -621,11 +462,206 @@ body {
 
 
 /* =========================================
+   12. 結帳與購物車頁面 (Checkout - 高級編輯風格)
+   ========================================= */
+.checkout-section {
+    background-color: var(--bg-color); 
+    padding: 140px 5% 8rem 5%;
+    color: var(--text-dark);
+}
+
+.checkout-progress-bar {
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-light);
+}
+.checkout-progress-bar .active { color: var(--text-dark); font-weight: 600; }
+.checkout-progress-bar .separator { margin: 0 1rem; font-weight: 300; }
+
+/* 🌟 強制使用 CSS Grid 確保絕對並排 🌟 */
+.checkout-page-container.split-layout {
+    display: grid !important;
+    grid-template-columns: 55% 38% !important; /* 左邊佔 55%，右邊佔 38% */
+    gap: 7% !important; /* 中間空出 7% 的完美留白 */
+    align-items: start !important; 
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    min-height: auto !important;
+    max-width: 1200px !important; 
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+.checkout-forms-area { 
+    width: 100% !important; 
+    flex: none !important;
+}
+
+.checkout-summary-area { 
+    width: 100% !important;
+    flex: none !important;
+    position: sticky !important; 
+    top: 120px !important; 
+    background: transparent !important; 
+    padding: 0 !important; 
+    box-shadow: none !important; 
+    border: none !important; 
+    border-radius: 0 !important;
+}
+
+.checkout-block { margin-bottom: 4rem; }
+.checkout-block .serif-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    font-weight: 400;
+    border-bottom: none; 
+    padding-bottom: 0;
+}
+
+.guest-subtitle { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; }
+
+/* === 極簡底線輸入框 === */
+.checkout-form .input-row { display: flex; gap: 2rem; }
+.checkout-form input {
+    width: 100%;
+    padding: 0.8rem 0;
+    margin-bottom: 2rem;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    background: transparent;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease;
+}
+.checkout-form input::placeholder { color: #999; font-weight: 300; letter-spacing: 0.5px; }
+.checkout-form input:focus { 
+    outline: none; 
+    border-bottom: 1px solid var(--text-dark); 
+    box-shadow: none; 
+    background: transparent; 
+}
+
+/* === 運送方式單選按鈕 === */
+.shipping-method-toggle {
+    display: flex; gap: 2.5rem; margin-bottom: 2rem;
+}
+.radio-label {
+    display: flex; align-items: center; gap: 0.6rem; cursor: pointer;
+    font-size: 0.9rem; color: var(--text-dark);
+}
+.radio-label input[type="radio"] { display: none; }
+.custom-radio {
+    width: 14px; height: 14px; border: 1px solid #aaa; border-radius: 50%;
+    display: inline-block; position: relative; transition: border-color 0.3s ease;
+}
+.radio-label input[type="radio"]:checked + .custom-radio { border-color: var(--text-dark); }
+.radio-label input[type="radio"]:checked + .custom-radio::after {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 6px; height: 6px; background: var(--text-dark); border-radius: 50%;
+}
+
+/* === 極簡下拉選單 === */
+.checkout-form select {
+    width: 100%; padding: 0.8rem 0; margin-bottom: 2rem; border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent; border-radius: 0;
+    font-family: inherit; font-size: 0.95rem; color: var(--text-dark); transition: border-color 0.3s ease; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="%23333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-repeat: no-repeat; background-position: right center; background-size: 16px;
+}
+.checkout-form select:focus { outline: none; border-bottom: 1px solid var(--text-dark); }
+.checkout-form select:invalid { color: #999; }
+.checkout-form select option { color: var(--text-dark); }
+.checkout-form select:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* === 銀行匯款資訊框 === */
+.bank-info-box {
+    background-color: transparent; border: 1px solid rgba(0,0,0,0.1); padding: 1.8rem 2rem;
+    border-left: 2px solid var(--text-dark); margin-bottom: 2rem;
+}
+.bank-notice { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px; }
+.bank-details p {
+    font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.8rem; display: flex; justify-content: space-between;
+    border-bottom: 1px dashed rgba(0,0,0,0.05); padding-bottom: 0.8rem;
+}
+.bank-details p:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.bank-details span { color: var(--text-light); }
+.bank-details strong { font-family: 'Lato', sans-serif; font-weight: 600; letter-spacing: 1.5px; }
+
+/* === 連結與按鈕 === */
+.editorial-link {
+    display: inline-block; font-size: 0.85rem; color: var(--text-light); text-decoration: none;
+    border-bottom: 1px solid var(--text-light); padding-bottom: 2px; transition: all 0.3s ease; letter-spacing: 1px;
+}
+.editorial-link:hover { color: var(--text-dark); border-color: var(--text-dark); }
+.editorial-link.small { font-size: 0.75rem; border: none; text-decoration: underline; }
+
+.editorial-btn {
+    background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark);
+    padding: 1rem 2rem; font-size: 0.85rem; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;
+}
+.editorial-btn:hover { background: var(--text-dark); color: #fff; }
+.editorial-btn.full-width { width: 100%; margin-top: 2rem; padding: 1.2rem; }
+
+/* === 訂單摘要區 === */
+.summary-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2.5rem; }
+.summary-header .serif-title { margin: 0; font-size: 1.5rem; }
+
+.cart-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; border-bottom: none; padding: 0; }
+.cart-item-img { width: 70px; height: 70px; object-fit: cover; background-color: #eaeaea; border-radius: 0; }
+.cart-item-info { flex: 1; }
+.cart-item-info h5 { margin: 0 0 0.5rem 0; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; }
+.cart-item-info p { margin: 0 0 0.5rem 0; font-size: 0.85rem; color: var(--text-light); }
+.cart-item-price { font-size: 0.9rem; font-weight: 500; }
+
+.qty-control {
+    border: none !important; margin-top: 0.5rem; color: var(--text-light); font-size: 0.85rem;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.qty-control span[onclick] { font-size: 1.1rem; }
+
+.cart-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; }
+.remove-text-btn { background: none; border: none; font-size: 0.75rem; color: #999; text-decoration: underline; cursor: pointer; padding: 0; }
+.remove-text-btn:hover { color: var(--text-dark); }
+
+.thin-divider { border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 2rem 0; }
+
+.discount-inputs .input-with-btn { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-end; }
+.discount-inputs input { margin-bottom: 0; flex: 1; padding: 0.8rem 0; border-radius: 0; }
+.discount-inputs .editorial-btn { padding: 0.6rem 1.5rem; }
+
+.price-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-light); }
+.price-row.total { font-size: 1.2rem; color: var(--text-dark); margin-top: 1rem; font-weight: 600; }
+.muted-text { color: #999; font-size: 0.8rem; }
+.points-earned-hint { text-align: right; font-size: 0.8rem; color: #999; margin-top: 0.5rem; }
+
+/* =========================================
    11. 手機版響應式設計 (RWD)
    ========================================= */
 @media (max-width: 900px) {
     .story-upper { flex-direction: column; gap: 3rem; }
     .story-upper-right { padding-top: 2rem; }
+
+    /* 結帳區 RWD 微調 (平板與手機版改為上下排列) */
+    .checkout-page-container.split-layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        gap: 4rem !important; 
+    }
+    .checkout-forms-area, .checkout-summary-area {
+        width: 100% !important;
+    }
+    .checkout-summary-area { 
+        position: relative !important; 
+        top: 0 !important; 
+    }
 }
 
 @media (max-width: 768px) {
@@ -633,10 +669,7 @@ body {
     
     .hero-section::after { background: rgba(255, 255, 255, 0.4); }
     .hero-content {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        width: 90%;
+        left: 50%; transform: translate(-50%, -50%); text-align: center; width: 90%;
     }
     .hero-content h2 { font-size: 1.8rem; }
     
@@ -671,317 +704,8 @@ body {
     .footer-bottom { flex-direction: column; text-align: center; }
     .footer-legal a { margin: 0 1rem; }
     .scroll-top-btn { margin-top: 1rem; }
-}
-
-/* =========================================
-   12. 結帳與購物車頁面 (Checkout - 高級編輯風格)
-   ========================================= */
-.checkout-section {
-    background-color: var(--bg-color); /* 融入全站背景，徹底取消卡片感 */
-    padding: 140px 5% 8rem 5%;
-    color: var(--text-dark);
-}
-
-/* ★ 強力覆寫：避免結帳區塊被會員系統的 split-layout 卡片樣式污染 */
-.checkout-section .split-layout {
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    min-height: auto;
-    max-width: 1400px; /* 拉寬滿版，增加呼吸感 */
-}
-
-/* 頂部進度條 */
-.checkout-progress-bar {
-    text-align: left;
-    max-width: 1400px;
-    margin: 0 auto 4rem auto;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: var(--text-light);
-}
-.checkout-progress-bar .active { color: var(--text-dark); font-weight: 600; }
-.checkout-progress-bar .separator { margin: 0 1rem; font-weight: 300; }
-
-/* 滿版雙欄佈局 (無邊框、無陰影) */
-.checkout-page-container.split-layout {
-    display: flex;
-    flex-direction: row; /* 強制水平左右排列 */
-    flex-wrap: nowrap; /* 強制不換行，避免右側掉下去 */
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 6%; /* 左右兩欄的安全間距 */
-    max-width: 1200px; /* 控制最大寬度讓畫面凝聚不鬆散 */
-    margin: 0 auto;
-}
-
-.checkout-forms-area { 
-    flex: 0 0 54%; /* 左側固定佔比 54% */
-    width: 54%; 
-}
-
-/* 確保右側明細區背景透明，無陰影，並固定在右側 */
-.checkout-summary-area { 
-    flex: 0 0 40%; /* 右側固定佔比 40% */
-    width: 40%; 
-    position: sticky; 
-    top: 120px; 
-    background: transparent; 
-    padding: 0; 
-    box-shadow: none; 
-    border: none; 
-    border-radius: 0;
-}
-
-/* 區塊標題 */
-.checkout-block { margin-bottom: 4rem; }
-.checkout-block .serif-title {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-dark);
-    font-weight: 400;
-    border-bottom: none; /* 確保沒有多餘底線 */
-    padding-bottom: 0;
-}
-
-.guest-subtitle { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; }
-
-/* === 極簡底線輸入框 (核心靈魂) === */
-.checkout-form .input-row { display: flex; gap: 2rem; }
-.checkout-form input {
-    width: 100%;
-    padding: 0.8rem 0; /* 左右不留白，文字完美貼齊左側 */
-    margin-bottom: 2rem;
-    border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.15); /* 只有細細的底線 */
-    background: transparent;
-    border-radius: 0;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    transition: border-color 0.3s ease;
-}
-.checkout-form input::placeholder { color: #999; font-weight: 300; letter-spacing: 0.5px; }
-.checkout-form input:focus { 
-    outline: none; 
-    border-bottom: 1px solid var(--text-dark); 
-    box-shadow: none; /* 移除圓角版本的發光效果 */
-    background: transparent; 
-}
-
-/* === 運送方式單選按鈕 (Custom Radio) === */
-.shipping-method-toggle {
-    display: flex;
-    gap: 2.5rem;
-    margin-bottom: 2rem;
-}
-.radio-label {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-}
-.radio-label input[type="radio"] {
-    display: none; /* 隱藏原生圓圈 */
-}
-.custom-radio {
-    width: 14px;
-    height: 14px;
-    border: 1px solid #aaa;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    transition: border-color 0.3s ease;
-}
-.radio-label input[type="radio"]:checked + .custom-radio {
-    border-color: var(--text-dark);
-}
-.radio-label input[type="radio"]:checked + .custom-radio::after {
-    content: ''; position: absolute;
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 6px; height: 6px;
-    background: var(--text-dark);
-    border-radius: 50%;
-}
-
-/* === 極簡下拉選單 (Select) === */
-.checkout-form select {
-    width: 100%;
-    padding: 0.8rem 0;
-    margin-bottom: 2rem;
-    border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
-    background: transparent;
-    border-radius: 0;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    transition: border-color 0.3s ease;
-    cursor: pointer;
     
-    /* 移除原生下拉箭頭，換成極簡 SVG 箭頭 */
-    appearance: none; 
-    -webkit-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="%23333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 16px;
-}
-.checkout-form select:focus {
-    outline: none;
-    border-bottom: 1px solid var(--text-dark);
-}
-.checkout-form select:invalid { color: #999; /* Placeholder 顏色 */ }
-.checkout-form select option { color: var(--text-dark); }
-.checkout-form select:disabled { opacity: 0.5; cursor: not-allowed; }
-
-/* === 文字連結與按鈕 === */
-.editorial-link {
-    display: inline-block;
-    font-size: 0.85rem;
-    color: var(--text-light);
-    text-decoration: none;
-    border-bottom: 1px solid var(--text-light);
-    padding-bottom: 2px;
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-}
-.editorial-link:hover { color: var(--text-dark); border-color: var(--text-dark); }
-.editorial-link.small { font-size: 0.75rem; border: none; text-decoration: underline; }
-
-.editorial-btn {
-    background: transparent;
-    border: 1px solid var(--text-dark);
-    color: var(--text-dark);
-    padding: 1rem 2rem;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-.editorial-btn:hover { background: var(--text-dark); color: #fff; }
-.editorial-btn.full-width { width: 100%; margin-top: 2rem; padding: 1.2rem; }
-
-/* === 訂單摘要區 === */
-.summary-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 2.5rem;
-}
-.summary-header .serif-title { margin: 0; font-size: 1.5rem; }
-
-/* 購物車商品列表 */
-.cart-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    border-bottom: none; /* 移除預設底線 */
-    padding: 0;
-}
-.cart-item-img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    background-color: #eaeaea;
-    border-radius: 0; /* 編輯風格通常是直角圖片 */
-}
-.cart-item-info { flex: 1; }
-.cart-item-info h5 { margin: 0 0 0.5rem 0; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; }
-.cart-item-info p { margin: 0 0 0.5rem 0; font-size: 0.85rem; color: var(--text-light); }
-.cart-item-price { font-size: 0.9rem; font-weight: 500; }
-
-.qty-control {
-    border: none !important; /* 強制移除邊框 */
-    margin-top: 0.5rem; 
-    color: var(--text-light); 
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.qty-control span[onclick] { font-size: 1.1rem; }
-
-.cart-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; }
-.remove-text-btn {
-    background: none; border: none; font-size: 0.75rem; color: #999;
-    text-decoration: underline; cursor: pointer; padding: 0;
-}
-.remove-text-btn:hover { color: var(--text-dark); }
-
-/* 極細分隔線 */
-.thin-divider {
-    border: none;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    margin: 2rem 0;
-}
-
-/* 優惠碼與價格明細 */
-.discount-inputs .input-with-btn { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-end; }
-.discount-inputs input { margin-bottom: 0; flex: 1; padding: 0.8rem 0; border-radius: 0; }
-.discount-inputs .editorial-btn { padding: 0.6rem 1.5rem; }
-
-.price-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-light); }
-.price-row.total { font-size: 1.2rem; color: var(--text-dark); margin-top: 1rem; font-weight: 600; }
-.muted-text { color: #999; font-size: 0.8rem; }
-.points-earned-hint { text-align: right; font-size: 0.8rem; color: #999; margin-top: 0.5rem; }
-
-/* 結帳區 RWD 微調 (平板與手機版改為上下排列) */
-@media (max-width: 900px) {
-    .checkout-page-container.split-layout { 
-        flex-direction: column; 
-        gap: 4rem; 
-    }
-    .checkout-forms-area, .checkout-summary-area {
-        flex: 1 1 100%;
-        width: 100%;
-    }
-    .checkout-summary-area { 
-        position: relative; 
-        top: 0; 
-        margin-top: 0; 
-    }
     .checkout-form .input-row { flex-direction: column; gap: 0; }
-}
-
-/* === 銀行匯款資訊框 === */
-.bank-info-box {
-    background-color: transparent;
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 1.8rem 2rem;
-    border-left: 2px solid var(--text-dark);
-    margin-bottom: 2rem;
-}
-.bank-notice {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-.bank-details p {
-    font-size: 0.9rem;
-    color: var(--text-dark);
-    margin-bottom: 0.8rem;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px dashed rgba(0,0,0,0.05);
-    padding-bottom: 0.8rem;
-}
-.bank-details p:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-.bank-details span { color: var(--text-light); }
-.bank-details strong { font-family: 'Lato', sans-serif; font-weight: 600; letter-spacing: 1.5px; }
-
-/* 針對手機版的匯款框微調 */
-@media (max-width: 768px) {
     .bank-info-box { padding: 1.5rem 1rem; }
     .bank-details p { flex-direction: column; gap: 0.2rem; }
 }
