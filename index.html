@@ -389,18 +389,26 @@
 
                             <!-- 註冊表單 -->
                             <form id="register-form" class="auth-form">
+                                <!-- 第一欄：姓名 -->
                                 <div class="input-group">
-                                    <input type="name" minlength="8" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
+                                    <input type="text" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
                                 </div>
+                                
+                                <!-- 第二欄：手機號碼 -->
                                 <div class="input-group">
                                     <input type="tel" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required>
                                 </div>
+                                
+                                <!-- 第三欄：生日 -->
                                 <div class="input-group">
                                     <input type="text" data-i18n-placeholder="mem_ph_birth" placeholder="生日 (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
                                 </div>
+                                
+                                <!-- 第四欄 (最後一欄)：密碼 (設定至少 8 碼) -->
                                 <div class="input-group">
-                                    <input type="password" data-i18n-placeholder="mem_ph_setpass" placeholder="設定密碼 (Password)" required>
+                                    <input type="password" minlength="8" data-i18n-placeholder="mem_ph_setpass" placeholder="設定密碼 (至少 8 碼)" required>
                                 </div>
+                                
                                 <button type="submit" class="premium-btn" data-i18n="mem_btn_register">發送驗證碼並註冊</button>
                             </form>
                         </div>
