@@ -481,36 +481,36 @@ body {
 .checkout-progress-bar .active { color: var(--text-dark); font-weight: 600; }
 .checkout-progress-bar .separator { margin: 0 1rem; font-weight: 300; }
 
-/* 🌟 強制使用 CSS Grid 確保絕對並排 🌟 */
-.checkout-page-container.split-layout {
-    display: grid !important;
-    grid-template-columns: 55% 38% !important; /* 左邊佔 55%，右邊佔 38% */
-    gap: 7% !important; /* 中間空出 7% 的完美留白 */
-    align-items: start !important; 
-    background: transparent !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    min-height: auto !important;
-    max-width: 1200px !important; 
-    margin: 0 auto !important;
-    padding: 0 !important;
+/* 🌟 全新專屬 Grid 容器：保證一刀兩斷，絕對左右並排 🌟 */
+.checkout-grid-container {
+    display: grid;
+    grid-template-columns: 55% 38%; /* 左欄 55%，右欄 38% */
+    justify-content: space-between; /* 剩下 7% 留白做間距 */
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-.checkout-forms-area { 
-    width: 100% !important; 
-    flex: none !important;
+.checkout-forms-area {
+    /* 不需設定寬度，由 Grid 的 55% 自動接管 */
 }
 
 .checkout-summary-area { 
-    width: 100% !important;
-    flex: none !important;
-    position: sticky !important; 
-    top: 120px !important; 
-    background: transparent !important; 
-    padding: 0 !important; 
-    box-shadow: none !important; 
-    border: none !important; 
-    border-radius: 0 !important;
+    position: sticky; 
+    top: 120px; 
+}
+
+/* 手機版 RWD：切換為上下排列 */
+@media (max-width: 900px) {
+    .checkout-grid-container { 
+        grid-template-columns: 100%; /* 強制變為單一欄位 */
+        gap: 4rem; 
+    }
+    .checkout-summary-area { 
+        position: relative; 
+        top: 0; 
+    }
 }
 
 .checkout-block { margin-bottom: 4rem; }
