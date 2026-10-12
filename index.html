@@ -298,70 +298,67 @@
         </section>
 
     <!-- === 購物車與結帳頁面 === -->
-        <section id="checkout" class="page-section">
+        <section id="checkout" class="page-section checkout-section">
             <div class="checkout-page-container split-layout">
                 
                 <!-- 左側：資料填寫區 -->
                 <div class="checkout-forms-area">
-                    <h2 class="serif-title">Checkout</h2>
                     
-                    <!-- 1. 會員狀態區塊 (JS 動態切換) -->
-                    <div id="checkout-member-status" class="checkout-block">
+                    <!-- 1. 會員狀態區塊 -->
+                    <div id="checkout-member-status" class="checkout-block login-prompt-block">
                         <div class="guest-view">
-                            <p>專屬折扣與點數折抵</p>
-                            <button id="go-to-login-btn" class="outline-btn">登入 / 註冊會員</button>
+                            <h4 class="serif-title" data-i18n="co_guest_msg">專屬折扣與點數折抵</h4>
+                            <button id="go-to-login-btn" class="outline-btn" data-i18n="co_login_btn">登入 / 註冊會員</button>
                         </div>
                         <div class="logged-in-view" style="display: none;">
                             <p class="member-greeting">Welcome, <span id="checkout-user-name"></span></p>
-                            <p class="member-tier-info">目前等級：<span id="checkout-user-tier"></span></p>
+                            <p class="member-tier-info"><span data-i18n="co_tier_prefix">目前等級：</span><span id="checkout-user-tier"></span></p>
                         </div>
                     </div>
 
                     <!-- 2. 運送資訊 (Shipping Details) -->
                     <div class="checkout-block">
-                        <h4 class="serif-title">Shipping Details</h4>
+                        <h4 class="serif-title" data-i18n="co_shipping">Shipping Details</h4>
                         <form id="shipping-form" class="checkout-form">
                             <div class="input-row">
-                                <input type="text" placeholder="收件人姓名" required>
-                                <input type="tel" placeholder="聯絡電話" required>
+                                <input type="text" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名" required>
+                                <input type="tel" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話" required>
                             </div>
-                            <input type="text" placeholder="詳細送貨地址 (含縣市、區)" required>
+                            <input type="text" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (含縣市、區)" required>
                         </form>
                     </div>
 
-                    <!-- 3. 付款資訊 (Payment Details - 純排版保留) -->
+                    <!-- 3. 付款資訊 (Payment Details) -->
                     <div class="checkout-block">
-                        <h4 class="serif-title">Payment Details</h4>
+                        <h4 class="serif-title" data-i18n="co_payment">Payment Details</h4>
                         <form id="payment-form" class="checkout-form">
-                            <input type="text" placeholder="信用卡卡號 (XXXX-XXXX-XXXX-XXXX)" required>
+                            <input type="text" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (XXXX-XXXX-XXXX-XXXX)" required>
                             <div class="input-row">
-                                <input type="text" placeholder="有效期限 (MM/YY)" required>
-                                <input type="text" placeholder="安全碼 (CVC)" required>
+                                <input type="text" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (MM/YY)" required>
+                                <input type="text" data-i18n-placeholder="co_ph_cvc" placeholder="安全碼 (CVC)" required>
                             </div>
                         </form>
                     </div>
                 </div>
 
-                <!-- 右側：訂單摘要區 (毛玻璃質感) -->
-                <div class="checkout-summary-area premium-glass">
-                    <h3 class="serif-title">Order Summary</h3>
+                <!-- 右側：訂單摘要區 -->
+                <div class="checkout-summary-area">
+                    <h3 class="serif-title" data-i18n="co_summary">Order Summary</h3>
                     
                     <!-- 購物車商品列表 -->
                     <div id="cart-items-list" class="cart-items-container">
-                        <!-- 商品將由 JS 動態生成在這裡 -->
+                        <!-- 商品將由 JS 動態生成 -->
                     </div>
-
-                    <hr class="summary-divider">
 
                     <!-- 優惠碼與點數折抵區 -->
                     <div class="discount-inputs">
                         <div class="input-with-btn">
-                            <input type="text" id="promo-code-input" placeholder="輸入優惠碼">
-                            <button id="apply-promo-btn" class="outline-btn small-btn">套用</button>
+                            <input type="text" id="promo-code-input" data-i18n-placeholder="co_ph_promo" placeholder="輸入優惠碼">
+                            <button id="apply-promo-btn" class="outline-btn small-btn" data-i18n="co_btn_apply">套用</button>
                         </div>
                         <div id="points-redemption-area" class="input-with-btn" style="display: none;">
-                            <input type="number" id="points-use-input" placeholder="欲折抵點數 (可用: 0)">
-                            <button id="apply-points-btn" class="outline-btn small-btn">折抵</button>
+                            <input type="number" id="points-use-input" placeholder="欲折抵點數">
+                            <button id="apply-points-btn" class="outline-btn small-btn" data-i18n="co_btn_apply_pts">折抵</button>
                         </div>
                     </div>
 
@@ -370,35 +367,37 @@
                     <!-- 價格計算明細 -->
                     <div class="price-breakdown">
                         <div class="price-row">
-                            <span>小計 (Subtotal)</span>
+                            <span data-i18n="co_subtotal">小計 (Subtotal)</span>
                             <span id="summary-subtotal">NT$ 0</span>
                         </div>
                         <div class="price-row highlight-discount" id="row-tier-discount" style="display: none;">
-                            <span>會員等級折扣 (85折)</span>
+                            <span data-i18n="co_tier_discount">會員等級折扣 (85折)</span>
                             <span id="summary-tier-discount">- NT$ 0</span>
                         </div>
                         <div class="price-row highlight-discount" id="row-promo-discount" style="display: none;">
-                            <span>優惠碼折扣</span>
+                            <span data-i18n="co_promo_discount">優惠碼折扣</span>
                             <span id="summary-promo-discount">- NT$ 0</span>
                         </div>
                         <div class="price-row highlight-discount" id="row-points-discount" style="display: none;">
-                            <span>點數折抵</span>
+                            <span data-i18n="co_points_discount">點數折抵</span>
                             <span id="summary-points-discount">- NT$ 0</span>
                         </div>
                     </div>
 
-                    <hr class="summary-divider">
-
                     <!-- 總計與預計獲得點數 -->
                     <div class="price-total-area">
                         <div class="price-row total">
-                            <span>總計 (Total)</span>
+                            <span data-i18n="co_total">總計 (Total)</span>
                             <span id="summary-total">NT$ 0</span>
                         </div>
-                        <p class="points-earned-hint">完成此筆訂單預計可獲得 <strong id="summary-points-earned">0</strong> pts</p>
+                        <p class="points-earned-hint">
+                            <span data-i18n="co_points_earn_1">完成此筆訂單預計可獲得</span> 
+                            <strong id="summary-points-earned">0</strong> 
+                            <span data-i18n="co_points_earn_2">pts</span>
+                        </p>
                     </div>
 
-                    <button id="checkout-submit-btn" class="premium-btn full-width">確認結帳</button>
+                    <button id="checkout-submit-btn" class="premium-btn full-width" data-i18n="co_btn_checkout">確認結帳</button>
                 </div>
 
             </div>
