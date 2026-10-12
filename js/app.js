@@ -932,3 +932,112 @@ function showResult() {
 function resetQuiz() {
     initQuiz();
 }
+
+/* =======================================================
+   5. 購物車與結帳邏輯 (Checkout Logic)
+   ======================================================= */
+// 模擬購物車資料 (未來會從加入購物車按鈕動態寫入)
+let cart = [
+    { id: 'p1', name: '擴香瓶禮盒 (Diffuser Gift Box)', price: 1280, quantity: 1 },
+    { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 260, quantity: 2 },
+    { id: 'p3', name: '補充包 (Refill)', price: 660, quantity: 0 } // 數量為0暫不顯示
+];
+
+// 優惠狀態
+let appliedPromoDiscount = 0; 
+let appliedPoints = 0;
+
+function renderCheckoutPage() {
+    // 1. 檢查會員登入狀態
+    const storedUser = localStorage.getItem('lavendr_user');
+    const guestView = document.querySelector('.guest-view');
+    const loggedInView = document.querySelector('.logged-in-view');
+    const pointsArea = document.getElementById('points-redemption-area');
+    
+    let user = null;
+    let isVipOrDewdrop = false;
+
+    if (storedUser) {
+        user = JSON.parse(storedUser);
+        guestView.style.display = 'none';
+        loggedInView.style.display = 'block';
+        document.getElementById('checkout-user-name').textContent = user.name;
+        document.getElementById('checkout-user-tier').textContent = user.tier;
+        
+        // 判斷是否享有 85 折 (晨露花香 或 薰衣草花田)
+        if (user.tier.includes('Dewdrop') || user.tier.includes('Lavender')) {
+            isVipOrDewdrop = true;
+        }
+
+        // 開放點數折抵區塊
+        pointsArea.style.display = 'flex';
+        document.getElementById('points-use-input').placeholder = `欲折抵點數 (可用: ${user.points})`;
+    } else {
+        guestView.style.display = 'block';
+        loggedInView.style.display = 'none';
+        pointsArea.style.display = 'none';
+    }
+
+    // 2. 渲染購物車商品列表
+    const cartContainer = document.getElementById('cart-items-list');
+    cartContainer.innerHTML = '';
+    let subtotal = 0;
+
+    cart.forEach(item => {
+        if(item.quantity > 0) {
+            subtotal += item.price * item.quantity;
+            cartContainer.innerHTML += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h5>${item.name}</h5>
+                        <p>NT$ ${item.price.toLocaleString()} x ${item.quantity}</p>
+                    </div>
+                    <div class="cart-item-controls">
+                        <span>NT$ ${(item.price * item.quantity).toLocaleString()}</span>
+                        <!-- 未來可在此加入 + - 按鈕與垃圾桶圖示 -->
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    // 3. 計算折扣與總計
+    let tierDiscount = isVipOrDewdrop ? Math.floor(subtotal * 0.15) : 0; // 85折等於折抵 15%
+    let finalTotal = subtotal - tierDiscount - appliedPromoDiscount - appliedPoints;
+    if (finalTotal < 0) finalTotal = 0;
+
+    // 4. 更新右側摘要數字
+    document.getElementById('summary-subtotal').textContent = `NT$ ${subtotal.toLocaleString()}`;
+    
+    const rowTier = document.getElementById('row-tier-discount');
+    if (tierDiscount > 0) {
+        rowTier.style.display = 'flex';
+        document.getElementById('summary-tier-discount').textContent = `- NT$ ${tierDiscount.toLocaleString()}`;
+    } else {
+        rowTier.style.display = 'none';
+    }
+
+    document.getElementById('summary-total').textContent = `NT$ ${finalTotal.toLocaleString()}`;
+
+    // 5. 計算預計獲得點數 (假設基本規則：每 100 元得 1 點，依照實付金額計算)
+    let pointsEarned = Math.floor(finalTotal / 100);
+    // (未來可依照等級倍率再做加乘，如 Dewdrop * 1.5)
+    document.getElementById('summary-points-earned').textContent = pointsEarned.toLocaleString();
+}
+
+// 綁定跳轉登入按鈕
+const goToLoginBtn = document.getElementById('go-to-login-btn');
+if (goToLoginBtn) {
+    goToLoginBtn.addEventListener('click', () => {
+        // 將畫面平滑滾動至會員區塊
+        document.getElementById('member').scrollIntoView({ behavior: 'smooth' });
+    });
+}
+
+// 初始化渲染
+document.addEventListener('DOMContentLoaded', () => {
+    // 假設目前在結帳頁面，先渲染一次
+    if(document.getElementById('checkout')) {
+        renderCheckoutPage();
+    }
+});
