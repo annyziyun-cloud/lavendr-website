@@ -1092,14 +1092,24 @@ function renderCheckoutPage() {
     }
 }
 
-// 綁定跳轉登入按鈕
-const goToLoginBtn = document.getElementById('go-to-login-btn');
-if (goToLoginBtn) {
-    goToLoginBtn.addEventListener('click', () => {
-        // 將畫面平滑滾動至會員區塊
-        document.getElementById('member').scrollIntoView({ behavior: 'smooth' });
-    });
-}
+// ★ 修正：確保結帳頁「登入/註冊」按鈕精準跳轉至會員系統
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'go-to-login-btn') {
+        e.preventDefault();
+        const memberSection = document.getElementById('member');
+        if (memberSection) {
+            // 設定導覽列的高度偏移量 (約 80px)，避免標題被導覽列蓋住
+            const headerOffset = 80;
+            const elementPosition = memberSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+                 top: offsetPosition,
+                 behavior: "smooth"
+            });
+        }
+    }
+});
 
 // 初始化渲染
 document.addEventListener('DOMContentLoaded', () => {
