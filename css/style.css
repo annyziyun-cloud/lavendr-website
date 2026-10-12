@@ -930,10 +930,21 @@ body {
 .muted-text { color: #999; font-size: 0.8rem; }
 .points-earned-hint { text-align: right; font-size: 0.8rem; color: #999; margin-top: 0.5rem; }
 
-/* 結帳區 RWD 微調 */
-@media (max-width: 768px) {
-    .checkout-page-container.split-layout { flex-direction: column; gap: 4rem; }
-    .checkout-summary-area { position: relative; top: 0; margin-top: 0; }
+/* 結帳區 RWD 微調 (平板與手機版改為上下排列) */
+@media (max-width: 900px) {
+    .checkout-page-container.split-layout { 
+        flex-direction: column; 
+        gap: 4rem; 
+    }
+    .checkout-forms-area, .checkout-summary-area {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    .checkout-summary-area { 
+        position: relative; 
+        top: 0; 
+        margin-top: 0; 
+    }
     .checkout-form .input-row { flex-direction: column; gap: 0; }
 }
 
