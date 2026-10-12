@@ -690,8 +690,8 @@ body {
    結帳與購物車頁面 (Checkout) - 高質感優化版
    ========================================= */
 .checkout-section {
-    background-color: #FAF9F7; /* 延續品牌的溫潤米色底 */
-    padding: 4rem 5%;
+    background-color: #FAF9F7;
+    padding: 120px 5% 4rem 5%; 
 }
 
 .checkout-page-container.split-layout {
@@ -764,9 +764,73 @@ body {
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.cart-item-info h5 { margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 500; }
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 商品圖片 */
+.cart-item-img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: #f5f5f5; /* 圖片若沒載入的預設底色 */
+}
+
+/* 商品名稱與單價 */
+.cart-item-info {
+    flex: 1;
+}
+.cart-item-info h5 { margin: 0 0 0.3rem 0; font-size: 0.95rem; font-weight: 500; }
 .cart-item-info p { margin: 0; font-size: 0.85rem; color: #888; }
-.cart-item-controls span { font-weight: 500; }
+
+/* 右側控制區 (增減按鈕與刪除) */
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* 數量控制按鈕組 */
+.qty-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.qty-btn {
+    background: transparent;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #555;
+    transition: background 0.2s ease;
+}
+.qty-btn:hover { background: rgba(0,0,0,0.05); }
+.qty-value {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* 刪除按鈕 */
+.remove-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #999;
+    cursor: pointer;
+    padding: 0.2rem;
+    transition: color 0.2s ease;
+}
+.remove-btn:hover { color: #d9534f; }
 
 .discount-inputs { margin-top: 2rem; }
 .discount-inputs .input-with-btn {
