@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. 全局錨點跳轉 (排除會員快捷鍵)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
-            if (anchor.classList.contains('anchor-link')) return; 
+            if (anchor.classList.contains('anchor-link') || anchor.id === 'go-to-login-btn') return; 
 
             e.preventDefault();
             const targetHash = anchor.getAttribute('href');
@@ -232,22 +232,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const dashboardCardView = document.getElementById('dashboard-card-view');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // ★ 負責渲染畫面 (統一由 JS 處理動態變數與中英雙語)
     function renderDashboard(data) {
-        // 抓取當前語言 (假設你的全域變數是 currentLang，若無則預設 zh)
         const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
         
-        // 1. 更新姓名
         const welcomeTitle = dashboardCardView.querySelector('h3');
         if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${data.name}`;
         
-        // 2. 更新等級 (中英切換)
         const tierLabel = dashboardCardView.querySelector('.member-tier-label');
         if (tierLabel && data.tier) {
             const prefix = lang === 'zh' ? '目前等級：' : 'Current Tier: ';
             let tierName = data.tier;
             
-            // 如果是英文版，濾掉中文只保留英文等級名稱
             if (lang === 'en') {
                  if (tierName.includes('Seedling')) tierName = 'Seedling';
                  else if (tierName.includes('Dewdrop')) tierName = 'Dewdrop';
@@ -256,13 +251,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tierLabel.textContent = `${prefix}${tierName}`;
         }
         
-        // 3. 更新點數 (加上千分位逗號，如 2,000 pts)
         const pointsElement = document.getElementById('member-points');
         if (pointsElement && data.points !== undefined) {
             pointsElement.textContent = `${Number(data.points).toLocaleString()} pts`;
         }
 
-        // 4. 動態計算進度條與雙語文案
         const progressBar = document.getElementById('progress-bar-fill');
         const progressDesc = document.getElementById('progress-text-desc');
         
@@ -297,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
             progressDesc.textContent = descText;
         }
     }
-    // 1. 檢查並渲染登入狀態
+
     async function checkLoginState() {
         const storedUser = localStorage.getItem('lavendr_user');
         if (storedUser) {
@@ -306,7 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if(authCardView) authCardView.style.display = 'none';
             if(dashboardCardView) {
                 dashboardCardView.style.display = 'block';
-                
                 renderDashboard(userData);
 
                 try {
@@ -322,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const newData = {
                             name: result.name,
                             phone: userData.phone,
-                            spending: result.spending,  // 新增記錄消費金額
+                            spending: result.spending, 
                             points: result.points,
                             tier: result.tier || "微風草本 Seedling"
                         };
@@ -339,7 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. 按鈕載入狀態控制
     function setButtonLoading(form, isLoading, loadingText = '處理中...') {
         const btn = form.querySelector('button[type="submit"]');
         if (!btn) return;
@@ -357,7 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 3. 註冊表單送出
     if (formRegister) {
         formRegister.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -366,9 +356,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = inputs[1].value.trim();
             const birthday = inputs[2].value;
             const password = inputs[3].value;
+            
             if (password.length < 8) {
                 alert(currentLang === 'zh' ? '為了您的帳號安全，密碼請至少設定 8 個字元。' : 'For security, password must be at least 8 characters.');
-                return; // 中斷註冊程序
+                return; 
             }
 
             setButtonLoading(formRegister, true, currentLang === 'zh' ? '註冊中...' : 'Registering...');
@@ -384,7 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (result.success || result.status === 'success') {
                     alert(currentLang === 'zh' ? '註冊成功！歡迎來到 Lavend/r。' : 'Registration successful!');
-                    // 註冊時將 spending 也預設為 0
                     localStorage.setItem('lavendr_user', JSON.stringify({ 
                         name: name, 
                         phone: phone, 
@@ -406,7 +396,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. 登入表單送出
     if (formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -429,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const userData = {
                         name: result.name || 'Member',
                         phone: phone,
-                        spending: result.spending, // 儲存消費金額
+                        spending: result.spending,
                         points: result.points,
                         tier: result.tier || '微風草本 Seedling'
                     };
@@ -448,7 +437,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. 登出邏輯
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('lavendr_user');
@@ -461,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navigateTo(window.location.hash);
     updateLanguage(currentLang);
     initQuiz();
-    checkLoginState(); // 網頁載入時立刻檢查是否已經登入過
+    checkLoginState();
 });
 
 
@@ -938,9 +926,9 @@ function resetQuiz() {
 }
 
 /* =======================================================
-   5. 購物車與結帳邏輯 (Checkout Logic)
+   5. 購物車與結帳邏輯 (Checkout Logic - 高級感編輯版)
    ======================================================= */
-// 擴充購物車資料，加入商品圖片路徑 (請替換為實際圖檔路徑)
+// 擴充購物車資料，加入商品圖片路徑
 let cart = [
     { id: 'p1', name: '擴香瓶禮盒 (Diffuser Gift Box)', price: 1280, quantity: 1, img: 'images/product-box.jpg' },
     { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 260, quantity: 2, img: 'images/product-reeds.jpg' },
@@ -955,10 +943,10 @@ window.updateCartQuantity = function(productId, change) {
     const item = cart.find(p => p.id === productId);
     if (item) {
         let newQty = item.quantity + change;
-        if (newQty < 1) newQty = 1; // 最少為 1，若要刪除請按垃圾桶
+        if (newQty < 1) newQty = 1; // 最少為 1，若要刪除請按文字按鈕
         item.quantity = newQty;
-        renderCheckoutPage(); // 重新渲染畫面與價格
-        updateCartBadge();    // 更新右上角購物袋數字
+        renderCheckoutPage(); 
+        updateCartBadge();    
     }
 };
 
@@ -1029,7 +1017,7 @@ function renderCheckoutPage() {
         if(pointsArea) pointsArea.style.display = 'none';
     }
 
-    // 2. 渲染購物車商品列表 (雙語商品名)
+    // 2. 渲染購物車商品列表 (純文字高級感排版)
     const cartContainer = document.getElementById('cart-items-list');
     if(cartContainer) {
         cartContainer.innerHTML = '';
@@ -1045,23 +1033,26 @@ function renderCheckoutPage() {
                     displayName = lang === 'zh' ? parts[0].trim() : parts[1].replace(')', '').trim();
                 }
 
-                // 新的渲染結構：加入 img, qty-control, remove-btn
+                // 配合 Flat Design 與底線風格的結構
                 cartContainer.innerHTML += `
                     <div class="cart-item">
-                        <img src="${item.img}" alt="${displayName}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/65x65?text=Img'">
+                        <img src="${item.img}" alt="${displayName}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/60x60?text=Img'">
                         
                         <div class="cart-item-info">
                             <h5>${displayName}</h5>
                             <p>NT$ ${item.price.toLocaleString()}</p>
+                            
+                            <div class="qty-control" style="border:none; margin-top:0.5rem; color:#777; font-size:0.8rem;">
+                                Quantity: 
+                                <span style="cursor:pointer; padding:0 5px;" onclick="updateCartQuantity('${item.id}', -1)">-</span>
+                                ${item.quantity}
+                                <span style="cursor:pointer; padding:0 5px;" onclick="updateCartQuantity('${item.id}', 1)">+</span>
+                            </div>
                         </div>
                         
                         <div class="cart-item-actions">
-                            <div class="qty-control">
-                                <button class="qty-btn" onclick="updateCartQuantity('${item.id}', -1)">−</button>
-                                <span class="qty-value">${item.quantity}</span>
-                                <button class="qty-btn" onclick="updateCartQuantity('${item.id}', 1)">+</button>
-                            </div>
-                            <button class="remove-btn" onclick="removeCartItem('${item.id}')" title="移除商品">✕</button>
+                            <span class="cart-item-price">NT$ ${(item.price * item.quantity).toLocaleString()}</span>
+                            <button class="remove-text-btn" onclick="removeCartItem('${item.id}')">${lang === 'en' ? 'Remove' : '移除'}</button>
                         </div>
                     </div>
                 `;
@@ -1092,13 +1083,14 @@ function renderCheckoutPage() {
     }
 }
 
-// ★ 修正：確保結帳頁「登入/註冊」按鈕精準跳轉至會員系統
+// ★ 修正：確保結帳頁「登入/註冊」按鈕精準跳轉至會員系統 (並排除被原事件阻擋)
 document.addEventListener('click', function(e) {
-    if (e.target && e.target.id === 'go-to-login-btn') {
+    // 檢查點擊目標是否為跳轉按鈕 (包含<a>標籤的ID)
+    if (e.target && (e.target.id === 'go-to-login-btn' || e.target.closest('#go-to-login-btn'))) {
         e.preventDefault();
         const memberSection = document.getElementById('member');
         if (memberSection) {
-            // 設定導覽列的高度偏移量 (約 80px)，避免標題被導覽列蓋住
+            // 設定導覽列的高度偏移量
             const headerOffset = 80;
             const elementPosition = memberSection.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -1107,14 +1099,14 @@ document.addEventListener('click', function(e) {
                  top: offsetPosition,
                  behavior: "smooth"
             });
+            // 同時更新導覽列的 active 狀態
+            history.pushState(null, null, '#member');
+            
+            document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+            memberSection.classList.add('active');
+            const targetNav = document.querySelector(`.nav-item[href="#member"]`);
+            if (targetNav) targetNav.classList.add('active');
         }
-    }
-});
-
-// 初始化渲染
-document.addEventListener('DOMContentLoaded', () => {
-    // 假設目前在結帳頁面，先渲染一次
-    if(document.getElementById('checkout')) {
-        renderCheckoutPage();
     }
 });
