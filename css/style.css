@@ -89,6 +89,48 @@ body {
 }
 .lang-toggle:hover { background: var(--text-dark); color: #fff; }
 
+/* =========================================
+   導覽列右側功能區 (語言切換 + 購物袋)
+   ========================================= */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* 控制按鈕與購物袋之間的距離 */
+}
+
+.cart-icon-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--text-dark, #333);
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.cart-icon-link:hover {
+    color: #a39587; /* 游標移上時變成品牌暖咖色 */
+    transform: translateY(-2px); /* 微微上浮的細節互動 */
+}
+
+/* 購物袋右上角的數量小圓點 */
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: #a39587; /* 品牌暖咖色 */
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 500;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', serif; /* 數字採用襯線體增加質感 */
+}
 
 /* =========================================
    2. 頁面切換動畫
