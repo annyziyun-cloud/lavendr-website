@@ -687,97 +687,138 @@ body {
 }
 
 /* =========================================
-   12. 結帳與購物車頁面 (Checkout)
+   結帳與購物車頁面 (Checkout) - 高質感優化版
    ========================================= */
-.checkout-page-container {
-    align-items: flex-start;
-    gap: 4rem;
-    padding-top: 2rem;
+.checkout-section {
+    background-color: #FAF9F7; /* 延續品牌的溫潤米色底 */
+    padding: 4rem 5%;
 }
 
-.checkout-forms-area, .checkout-summary-area {
-    width: 100%;
+.checkout-page-container.split-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.checkout-forms-area {
+    flex: 1 1 55%;
+}
+
+.checkout-summary-area {
+    flex: 1 1 35%;
+    background: #FFFFFF; /* 右側用純白底色凸顯 */
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* 極輕微的高級陰影 */
+    position: sticky;
+    top: 100px;
 }
 
 .checkout-block {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
+}
+
+.checkout-block .serif-title {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* 登入提示區塊 */
+.login-prompt-block .guest-view {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .checkout-form .input-row {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .checkout-form input {
     width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
     border: 1px solid rgba(0,0,0,0.1);
     background: transparent;
-    border-radius: 4px;
+    border-radius: 6px;
     font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
 }
 
-/* 訂單摘要區 */
-.checkout-summary-area {
-    padding: 2.5rem;
-    position: sticky;
-    top: 100px; /* 讓右側摘要在滾動時固定 */
+.checkout-form input:focus {
+    outline: none;
+    border-color: #a39587; /* 聚焦時顯示品牌色 */
 }
 
+/* 訂單明細清單 */
 .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.cart-item-info h5 { margin: 0 0 0.5rem 0; font-size: 1rem; }
-.cart-item-info p { margin: 0; font-size: 0.85rem; color: #666; }
-.cart-item-controls { display: flex; align-items: center; gap: 1rem; }
+.cart-item-info h5 { margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 500; }
+.cart-item-info p { margin: 0; font-size: 0.85rem; color: #888; }
+.cart-item-controls span { font-weight: 500; }
 
-.summary-divider {
-    border: none;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    margin: 1.5rem 0;
-}
-
+.discount-inputs { margin-top: 2rem; }
 .discount-inputs .input-with-btn {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
     margin-bottom: 1rem;
 }
 
 .discount-inputs input {
     flex: 1;
-    padding: 0.8rem;
+    padding: 0.8rem 1rem;
     border: 1px solid rgba(0,0,0,0.1);
-    background: transparent;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
-.small-btn { padding: 0.8rem 1.5rem; }
+.small-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
 
+.price-breakdown { margin-top: 2rem; }
 .price-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     font-size: 0.95rem;
+    color: #555;
 }
 
-.highlight-discount { color: #a39587; } /* 品牌暖咖色 */
+.highlight-discount { color: #a39587; }
 
+.summary-divider {
+    border: none;
+    border-top: 1px dashed rgba(0,0,0,0.1); /* 用虛線增加精緻感 */
+    margin: 1.5rem 0;
+}
+
+.price-total-area { margin-top: 1.5rem; }
 .price-row.total {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-top: 1rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #111;
 }
 
 .points-earned-hint {
     text-align: right;
     font-size: 0.85rem;
-    color: #666;
+    color: #888;
     margin-top: 0.5rem;
 }
 
-.full-width { width: 100%; margin-top: 1.5rem; }
+.full-width { width: 100%; margin-top: 2rem; padding: 1.2rem; font-size: 1.05rem; }
+
+@media (max-width: 768px) {
+    .checkout-page-container.split-layout { flex-direction: column; }
+    .checkout-summary-area { position: relative; top: 0; margin-top: 2rem; padding: 1.5rem; }
+    .checkout-form .input-row { flex-direction: column; gap: 0; }
+}
