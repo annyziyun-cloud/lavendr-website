@@ -332,7 +332,15 @@ body {
 .product-card:hover img { transform: scale(1.05); }
 .product-title {
     font-size: 0.95rem; font-weight: 400; color: var(--text-dark);
-    margin-bottom: 1rem; line-height: 1.6; letter-spacing: 1px;
+    margin-bottom: 0.4rem; /* 將原本的 1rem 縮小，讓標題跟價格靠近一點 */
+    line-height: 1.6; letter-spacing: 1px;
+}
+
+.product-price {
+    font-size: 0.85rem;
+    color: var(--text-light); /* 使用溫和的淺灰色 */
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
 }
 .add-to-cart-btn {
     background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark);
