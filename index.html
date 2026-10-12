@@ -304,12 +304,13 @@
                 <!-- 左側：資料填寫區 -->
                 <div class="checkout-forms-area">
                     
-                    <!-- 1. 會員狀態區塊 (獨立資訊卡) -->
-                    <div id="checkout-member-status" class="checkout-block member-info-card">
+                    <!-- 1. 會員狀態區塊 (純白卡片) -->
+                    <div id="checkout-member-status" class="checkout-block checkout-card">
                         <div class="guest-view">
                             <h4 class="serif-title" data-i18n="co_guest_msg">專屬折扣與點數折抵</h4>
                             <p class="guest-subtitle" data-i18n="co_guest_sub">登入會員以享有您的專屬優惠與點數折抵。</p>
-                            <button id="go-to-login-btn" class="outline-btn" data-i18n="co_login_btn">登入 / 註冊會員</button>
+                            <!-- ★ 最簡單的跳轉解法：直接改用 a 標籤 -->
+                            <a href="#member" class="outline-btn" data-i18n="co_login_btn" style="text-decoration: none; display: inline-block; text-align: center;">登入 / 註冊會員</a>
                         </div>
                         <div class="logged-in-view" style="display: none;">
                             <p class="member-greeting">Welcome, <span id="checkout-user-name"></span></p>
@@ -317,9 +318,9 @@
                         </div>
                     </div>
 
-                    <!-- 2. 運送資訊 (Shipping Details) -->
-                    <div class="checkout-block">
-                        <h4 class="serif-title" data-i18n="co_shipping">Shipping Details</h4>
+                    <!-- 2. 運送資訊 (純白卡片) -->
+                    <div class="checkout-block checkout-card">
+                        <h4 class="serif-title" data-i18n="co_shipping">運送詳情</h4>
                         <form id="shipping-form" class="checkout-form">
                             <div class="input-row">
                                 <input type="text" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名" required>
@@ -329,9 +330,9 @@
                         </form>
                     </div>
 
-                    <!-- 3. 付款資訊 (Payment Details) -->
-                    <div class="checkout-block">
-                        <h4 class="serif-title" data-i18n="co_payment">Payment Details</h4>
+                    <!-- 3. 付款資訊 (純白卡片) -->
+                    <div class="checkout-block checkout-card">
+                        <h4 class="serif-title" data-i18n="co_payment">付款資訊</h4>
                         <form id="payment-form" class="checkout-form">
                             <input type="text" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (XXXX-XXXX-XXXX-XXXX)" required>
                             <div class="input-row">
