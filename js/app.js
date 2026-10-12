@@ -6,10 +6,13 @@ let currentLang = localStorage.getItem('lavendr_lang') || 'zh';
 // 翻譯更新函數
 function updateLanguage(lang) {
     const storedUser = localStorage.getItem('lavendr_user');
+    
+    // 確保 renderDashboard 在全域可用後執行
     if (storedUser && typeof renderDashboard === 'function') {
         renderDashboard(JSON.parse(storedUser));
     }
     
+    // 確保 renderCheckoutPage 在全域可用後執行
     if (typeof renderCheckoutPage === 'function' && document.getElementById('checkout')) {
         renderCheckoutPage();
     }
@@ -45,11 +48,91 @@ function updateLanguage(lang) {
     } else if (document.getElementById('quizResult') && document.getElementById('quizResult').style.display === 'block') {
         showResult();
     }
+
+    // 5. 即時更新超商下拉選單的預設文字
+    updateShippingPlaceholders();
+}
+
+/* =======================================================
+   2. 全域渲染函數 (提至全域避免 Scope 抓不到)
+   ======================================================= */
+function renderDashboard(data) {
+    const dashboardCardView = document.getElementById('dashboard-card-view');
+    if (!dashboardCardView) return;
+
+    const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
+    
+    const welcomeTitle = dashboardCardView.querySelector('h3');
+    if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${data.name}`;
+    
+    const tierLabel = dashboardCardView.querySelector('.member-tier-label');
+    if (tierLabel && data.tier) {
+        const prefix = lang === 'zh' ? '目前等級：' : 'Current Tier: ';
+        let tierName = data.tier;
+        
+        if (lang === 'en') {
+             if (tierName.includes('Seedling')) tierName = 'Seedling';
+             else if (tierName.includes('Dewdrop')) tierName = 'Dewdrop';
+             else if (tierName.includes('Lavender')) tierName = 'Lavender (VIP)';
+        }
+        tierLabel.textContent = `${prefix}${tierName}`;
+    }
+    
+    const pointsElement = document.getElementById('member-points');
+    if (pointsElement && data.points !== undefined) {
+        pointsElement.textContent = `${Number(data.points).toLocaleString()} pts`;
+    }
+
+    const progressBar = document.getElementById('progress-bar-fill');
+    const progressDesc = document.getElementById('progress-text-desc');
+    
+    if (progressBar && progressDesc && data.spending !== undefined) {
+        const spending = Number(data.spending) || 0;
+        let target = 0;
+        let percentage = 0;
+        let descText = "";
+
+        if (spending < 6000) {
+            target = 6000;
+            percentage = (spending / target) * 100;
+            const diff = target - spending;
+            descText = lang === 'zh' 
+                ? `距「晨露花香」僅 NT$${diff.toLocaleString()}。升級即享常態 85 折與1.5倍點數禮遇。`
+                : `Just NT$${diff.toLocaleString()} to go for "Dewdrop". Level up to enjoy a regular 15% off on all items and earn 1.5 points for every NT$100 spent.`;
+        } else if (spending >= 6000 && spending < 10000) {
+            target = 10000;
+            percentage = (spending / target) * 100;
+            const diff = target - spending;
+            descText = lang === 'zh'
+                ? `距「薰衣草花田」僅 NT$${diff.toLocaleString()}。升級即享指定臻享組合最低 6 折`
+                : `Just NT$${diff.toLocaleString()} to go for "Lavender (VIP)". Level up to get up to 40% off on selected sets & exquisite birthday gift.`;
+        } else {
+            percentage = 100;
+            descText = lang === 'zh'
+                ? `感謝您與 Lavend/r 相伴。您目前已是最高會員等級，專屬頂級禮遇為您常設。`
+                : `Thanks for being part of Lavend/r. You're officially the highest tier "Lavender (VIP)". Enjoy your ultimate perks!`;
+        }
+
+        progressBar.style.width = `${percentage}%`;
+        progressDesc.textContent = descText;
+    }
+}
+
+function updateShippingPlaceholders() {
+    const selectCity = document.getElementById('store-city-select');
+    const selectStore = document.getElementById('store-name-select');
+    
+    if (selectCity && selectCity.options[0].disabled) {
+        selectCity.options[0].textContent = currentLang === 'zh' ? '選擇縣市 (City)' : 'Select City';
+    }
+    if (selectStore && selectStore.options[0].disabled) {
+        selectStore.options[0].textContent = currentLang === 'zh' ? '選擇門市 (Store)' : 'Select Store';
+    }
 }
 
 
 /* =======================================================
-   2. 網頁互動主邏輯 (DOMContentLoaded)
+   3. 網頁互動主邏輯 (DOMContentLoaded)
    ======================================================= */
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -79,8 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --- B. 事件監聽綁定 --- */
-    
-    // 1. 全局錨點跳轉 (排除會員快捷鍵)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             if (anchor.classList.contains('anchor-link') || anchor.id === 'go-to-login-btn') return; 
@@ -92,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Logo 點擊回首頁
     const logoLink = document.getElementById('logo-link');
     if (logoLink) {
         logoLink.addEventListener('click', (e) => {
@@ -102,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. 語言切換按鈕
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
         langBtn.addEventListener('click', () => {
@@ -111,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. 加入購物車提示
     const cartBtns = document.querySelectorAll('.add-to-cart-btn');
     cartBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -121,7 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. 折疊面板 (FAQ & Support)
     const accordions = document.querySelectorAll('.accordion-header');
     accordions.forEach(acc => {
         acc.addEventListener('click', function() {
@@ -145,8 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* --- C. 會員頁面專屬功能 --- */
-    
-    // 1. 登入/註冊表單切換
     const tabLogin = document.getElementById('tab-login');
     const tabRegister = document.getElementById('tab-register');
     const formLogin = document.getElementById('login-form');
@@ -167,7 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. 頂部快捷錨點平滑滾動
     document.querySelectorAll('.member-anchor-nav .anchor-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -232,65 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dashboardCardView = document.getElementById('dashboard-card-view');
     const logoutBtn = document.getElementById('logout-btn');
 
-    function renderDashboard(data) {
-        const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
-        
-        const welcomeTitle = dashboardCardView.querySelector('h3');
-        if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${data.name}`;
-        
-        const tierLabel = dashboardCardView.querySelector('.member-tier-label');
-        if (tierLabel && data.tier) {
-            const prefix = lang === 'zh' ? '目前等級：' : 'Current Tier: ';
-            let tierName = data.tier;
-            
-            if (lang === 'en') {
-                 if (tierName.includes('Seedling')) tierName = 'Seedling';
-                 else if (tierName.includes('Dewdrop')) tierName = 'Dewdrop';
-                 else if (tierName.includes('Lavender')) tierName = 'Lavender (VIP)';
-            }
-            tierLabel.textContent = `${prefix}${tierName}`;
-        }
-        
-        const pointsElement = document.getElementById('member-points');
-        if (pointsElement && data.points !== undefined) {
-            pointsElement.textContent = `${Number(data.points).toLocaleString()} pts`;
-        }
-
-        const progressBar = document.getElementById('progress-bar-fill');
-        const progressDesc = document.getElementById('progress-text-desc');
-        
-        if (progressBar && progressDesc && data.spending !== undefined) {
-            const spending = Number(data.spending) || 0;
-            let target = 0;
-            let percentage = 0;
-            let descText = "";
-
-            if (spending < 6000) {
-                target = 6000;
-                percentage = (spending / target) * 100;
-                const diff = target - spending;
-                descText = lang === 'zh' 
-                    ? `距「晨露花香」僅 NT$${diff.toLocaleString()}。升級即享常態 85 折與1.5倍點數禮遇。`
-                    : `Just NT$${diff.toLocaleString()} to go for "Dewdrop". Level up to enjoy a regular 15% off on all items and earn 1.5 points for every NT$100 spent.`;
-            } else if (spending >= 6000 && spending < 10000) {
-                target = 10000;
-                percentage = (spending / target) * 100;
-                const diff = target - spending;
-                descText = lang === 'zh'
-                    ? `距「薰衣草花田」僅 NT$${diff.toLocaleString()}。升級即享指定臻享組合最低 6 折`
-                    : `Just NT$${diff.toLocaleString()} to go for "Lavender (VIP)". Level up to get up to 40% off on selected sets & exquisite birthday gift.`;
-            } else {
-                percentage = 100;
-                descText = lang === 'zh'
-                    ? `感謝您與 Lavend/r 相伴。您目前已是最高會員等級，專屬頂級禮遇為您常設。`
-                    : `Thanks for being part of Lavend/r. You're officially the highest tier "Lavender (VIP)". Enjoy your ultimate perks!`;
-            }
-
-            progressBar.style.width = `${percentage}%`;
-            progressDesc.textContent = descText;
-        }
-    }
-
     async function checkLoginState() {
         const storedUser = localStorage.getItem('lavendr_user');
         if (storedUser) {
@@ -351,11 +366,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formRegister) {
         formRegister.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const inputs = formRegister.querySelectorAll('input');
-            const name = inputs[0].value.trim();
-            const phone = inputs[1].value.trim();
-            const birthday = inputs[2].value;
-            const password = inputs[3].value;
+            // ★ 優化防呆抓取法，避免 input 順序調換時壞掉
+            const name = formRegister.querySelector('input[autocomplete="name"]')?.value.trim() || formRegister.querySelectorAll('input')[0].value.trim();
+            const phone = formRegister.querySelector('input[type="tel"]')?.value.trim() || formRegister.querySelectorAll('input')[1].value.trim();
+            const birthday = formRegister.querySelector('input[autocomplete="bday"]')?.value || formRegister.querySelectorAll('input')[2].value;
+            const password = formRegister.querySelector('input[type="password"]').value;
             
             if (password.length < 8) {
                 alert(currentLang === 'zh' ? '為了您的帳號安全，密碼請至少設定 8 個字元。' : 'For security, password must be at least 8 characters.');
@@ -399,9 +414,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const inputs = formLogin.querySelectorAll('input');
-            const phone = inputs[0].value.trim();
-            const password = inputs[1].value;
+            // ★ 優化防呆抓取法
+            const phone = formLogin.querySelector('input[type="tel"]')?.value.trim() || formLogin.querySelectorAll('input')[0].value.trim();
+            const password = formLogin.querySelector('input[type="password"]').value;
 
             setButtonLoading(formLogin, true, currentLang === 'zh' ? '登入中...' : 'Logging in...');
 
@@ -444,16 +459,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* --- F. 啟動與初始化 --- */
-    window.addEventListener('popstate', () => navigateTo(window.location.hash));
-    navigateTo(window.location.hash);
-    updateLanguage(currentLang);
-    initQuiz();
-    checkLoginState();
-});
 
-/* --- G. 結帳頁：運送方式與超商門市連動邏輯 --- */
-    // 預先保留的門市資料庫 (未來可無痛無限擴充)
+    /* --- G. 結帳頁：運送方式與超商門市連動邏輯 --- */
+    // ★ 修正：將這段拉進 DOMContentLoaded 確保網頁載入後才綁定事件
     const storeData = {
         '台北市': ['7-11 敦南門市', '7-11 松江門市', '7-11 信義門市'],
         '新北市': ['7-11 溫州門市', '7-11 永安門市'],
@@ -469,29 +477,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectStore = document.getElementById('store-name-select');
 
     if (radioHome && radioStore && viewHome && viewStore) {
-        // 1. 切換顯示與必填狀態
         function toggleShippingView() {
             if (radioHome.checked) {
                 viewHome.style.display = 'block';
                 viewStore.style.display = 'none';
-                inputHome.setAttribute('required', 'true');
-                selectCity.removeAttribute('required');
-                selectStore.removeAttribute('required');
+                if(inputHome) inputHome.setAttribute('required', 'true');
+                if(selectCity) selectCity.removeAttribute('required');
+                if(selectStore) selectStore.removeAttribute('required');
             } else {
                 viewHome.style.display = 'none';
                 viewStore.style.display = 'block';
-                inputHome.removeAttribute('required');
-                selectCity.setAttribute('required', 'true');
-                selectStore.setAttribute('required', 'true');
+                if(inputHome) inputHome.removeAttribute('required');
+                if(selectCity) selectCity.setAttribute('required', 'true');
+                if(selectStore) selectStore.setAttribute('required', 'true');
             }
         }
 
         radioHome.addEventListener('change', toggleShippingView);
         radioStore.addEventListener('change', toggleShippingView);
 
-        // 2. 匯入縣市清單
         if (selectCity) {
-            // 讀取字典裡面的翻譯當作 Placeholder
             const phCityText = currentLang === 'zh' ? '選擇縣市 (City)' : 'Select City';
             selectCity.innerHTML = `<option value="" disabled selected data-i18n="co_ph_city">${phCityText}</option>`;
             
@@ -502,7 +507,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectCity.appendChild(opt);
             }
 
-            // 3. 根據縣市動態產生對應的門市
             selectCity.addEventListener('change', function() {
                 const selectedCity = this.value;
                 const phStoreText = currentLang === 'zh' ? '選擇門市 (Store)' : 'Select Store';
@@ -515,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         opt.textContent = store;
                         selectStore.appendChild(opt);
                     });
-                    selectStore.disabled = false; // 解除門市選單封印
+                    selectStore.disabled = false;
                 } else {
                     selectStore.disabled = true;
                 }
@@ -523,8 +527,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /* --- F. 啟動與初始化 --- */
+    window.addEventListener('popstate', () => navigateTo(window.location.hash));
+    navigateTo(window.location.hash);
+    updateLanguage(currentLang);
+    initQuiz();
+    checkLoginState();
+});
+
+
 /* =======================================================
-   3. 商品切換邏輯
+   4. 商品切換邏輯 (保留原樣)
    ======================================================= */
 const productData = {
     'p1': { moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg', noticeKey: 'notice_gift' },
@@ -567,7 +580,7 @@ function closeProduct() {
 
 
 /* =======================================================
-   4. Lavend/r 調香系統大腦 (全雙語版 + 香材收集)
+   5. Lavend/r 調香系統大腦 (保留原樣)
    ======================================================= */
 const scentQuizData = {
     baseQuestions: [
@@ -833,7 +846,7 @@ const fragranceProfiles = {
     }
 };
 
-// --- 問卷引擎 (支援雙語與香材蒐集) ---
+// --- 問卷引擎 ---
 let currentPhase = 'base'; 
 let currentQIndex = 0;
 let scores = {};
@@ -996,9 +1009,8 @@ function resetQuiz() {
 }
 
 /* =======================================================
-   5. 購物車與結帳邏輯 (Checkout Logic - 高級感編輯版)
+   6. 購物車與結帳邏輯 (Checkout Logic - 高級感編輯版)
    ======================================================= */
-// 擴充購物車資料，加入商品圖片路徑
 let cart = [
     { id: 'p1', name: '擴香瓶禮盒 (Diffuser Gift Box)', price: 1280, quantity: 1, img: 'images/product-box.jpg' },
     { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 260, quantity: 2, img: 'images/product-reeds.jpg' },
@@ -1008,19 +1020,17 @@ let cart = [
 let appliedPromoDiscount = 0; 
 let appliedPoints = 0;
 
-// ★ 新增：更新商品數量的函數 (必須掛載到 window 以供 HTML inline onclick 呼叫)
 window.updateCartQuantity = function(productId, change) {
     const item = cart.find(p => p.id === productId);
     if (item) {
         let newQty = item.quantity + change;
-        if (newQty < 1) newQty = 1; // 最少為 1，若要刪除請按文字按鈕
+        if (newQty < 1) newQty = 1; 
         item.quantity = newQty;
         renderCheckoutPage(); 
         updateCartBadge();    
     }
 };
 
-// ★ 新增：刪除商品的函數
 window.removeCartItem = function(productId) {
     if (confirm(typeof currentLang !== 'undefined' && currentLang === 'en' ? 'Remove this item?' : '確定要移除此商品嗎？')) {
         cart = cart.filter(p => p.id !== productId);
@@ -1029,7 +1039,6 @@ window.removeCartItem = function(productId) {
     }
 };
 
-// ★ 新增：更新右上角導覽列的購物袋數字
 window.updateCartBadge = function() {
     const badge = document.getElementById('cart-badge');
     if (badge) {
@@ -1042,7 +1051,6 @@ window.updateCartBadge = function() {
 function renderCheckoutPage() {
     const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
     
-    // 1. 檢查會員登入狀態
     const storedUser = localStorage.getItem('lavendr_user');
     const guestView = document.querySelector('.guest-view');
     const loggedInView = document.querySelector('.logged-in-view');
@@ -1087,7 +1095,6 @@ function renderCheckoutPage() {
         if(pointsArea) pointsArea.style.display = 'none';
     }
 
-    // 2. 渲染購物車商品列表 (純文字高級感排版)
     const cartContainer = document.getElementById('cart-items-list');
     if(cartContainer) {
         cartContainer.innerHTML = '';
@@ -1103,7 +1110,6 @@ function renderCheckoutPage() {
                     displayName = lang === 'zh' ? parts[0].trim() : parts[1].replace(')', '').trim();
                 }
 
-                // 配合 Flat Design 與底線風格的結構
                 cartContainer.innerHTML += `
                     <div class="cart-item">
                         <img src="${item.img}" alt="${displayName}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/60x60?text=Img'">
@@ -1129,12 +1135,10 @@ function renderCheckoutPage() {
             }
         });
 
-        // 3. 計算折扣與總計
         let tierDiscount = isVipOrDewdrop ? Math.floor(subtotal * 0.15) : 0;
         let finalTotal = subtotal - tierDiscount - appliedPromoDiscount - appliedPoints;
         if (finalTotal < 0) finalTotal = 0;
 
-        // 4. 更新數字
         document.getElementById('summary-subtotal').textContent = `NT$ ${subtotal.toLocaleString()}`;
         
         const rowTier = document.getElementById('row-tier-discount');
@@ -1147,36 +1151,7 @@ function renderCheckoutPage() {
 
         document.getElementById('summary-total').textContent = `NT$ ${finalTotal.toLocaleString()}`;
 
-        // 5. 預計獲得點數
         let pointsEarned = Math.floor(finalTotal / 100);
         document.getElementById('summary-points-earned').textContent = pointsEarned.toLocaleString();
     }
 }
-
-// ★ 修正：確保結帳頁「登入/註冊」按鈕精準跳轉至會員系統 (並排除被原事件阻擋)
-document.addEventListener('click', function(e) {
-    // 檢查點擊目標是否為跳轉按鈕 (包含<a>標籤的ID)
-    if (e.target && (e.target.id === 'go-to-login-btn' || e.target.closest('#go-to-login-btn'))) {
-        e.preventDefault();
-        const memberSection = document.getElementById('member');
-        if (memberSection) {
-            // 設定導覽列的高度偏移量
-            const headerOffset = 80;
-            const elementPosition = memberSection.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-                 top: offsetPosition,
-                 behavior: "smooth"
-            });
-            // 同時更新導覽列的 active 狀態
-            history.pushState(null, null, '#member');
-            
-            document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-            memberSection.classList.add('active');
-            const targetNav = document.querySelector(`.nav-item[href="#member"]`);
-            if (targetNav) targetNav.classList.add('active');
-        }
-    }
-});
