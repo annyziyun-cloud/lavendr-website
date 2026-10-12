@@ -925,3 +925,44 @@ body {
     .checkout-summary-area { position: relative; top: 0; margin-top: 2rem; padding: 1.5rem; }
     .checkout-form .input-row { flex-direction: column; gap: 0; }
 }
+
+/* =========================================
+   結帳頁 - 左側質感卡片設計
+   ========================================= */
+/* 統一三大區塊的純白卡片風格 */
+.checkout-card {
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* 輕微的高級陰影 */
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.checkout-card .serif-title {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.15rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 1rem;
+}
+
+/* 表單輸入框高級感優化 */
+.checkout-form input {
+    width: 100%;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(0,0,0,0.08); /* 邊框變柔和 */
+    background-color: #FAFAFA; /* 微微的灰白底色，與純白卡片做出區隔 */
+    border-radius: 8px; 
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.checkout-form input:focus {
+    outline: none;
+    border-color: #a39587;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(163, 149, 135, 0.1);
+}
