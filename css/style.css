@@ -643,3 +643,99 @@ body {
     .footer-legal a { margin: 0 1rem; }
     .scroll-top-btn { margin-top: 1rem; }
 }
+
+/* =========================================
+   12. 結帳與購物車頁面 (Checkout)
+   ========================================= */
+.checkout-page-container {
+    align-items: flex-start;
+    gap: 4rem;
+    padding-top: 2rem;
+}
+
+.checkout-forms-area, .checkout-summary-area {
+    width: 100%;
+}
+
+.checkout-block {
+    margin-bottom: 3rem;
+}
+
+.checkout-form .input-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.checkout-form input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: transparent;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* 訂單摘要區 */
+.checkout-summary-area {
+    padding: 2.5rem;
+    position: sticky;
+    top: 100px; /* 讓右側摘要在滾動時固定 */
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.cart-item-info h5 { margin: 0 0 0.5rem 0; font-size: 1rem; }
+.cart-item-info p { margin: 0; font-size: 0.85rem; color: #666; }
+.cart-item-controls { display: flex; align-items: center; gap: 1rem; }
+
+.summary-divider {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin: 1.5rem 0;
+}
+
+.discount-inputs .input-with-btn {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.discount-inputs input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: transparent;
+    border-radius: 4px;
+}
+
+.small-btn { padding: 0.8rem 1.5rem; }
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.highlight-discount { color: #a39587; } /* 品牌暖咖色 */
+
+.price-row.total {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.points-earned-hint {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.full-width { width: 100%; margin-top: 1.5rem; }
