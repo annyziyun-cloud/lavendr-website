@@ -35,26 +35,25 @@
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
-                    <!-- 購物車數量標記 (測試先顯示 3，未來可由 JS 動態更新) -->
-                    <span id="cart-badge" class="cart-badge">3</span>
+                    <!-- 購物車數量標記 -->
+                    <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- 內容區塊 -->
+    <!-- 內容主區塊 -->
     <main class="main-content">
+        
         <!-- 1. 首頁與活動區塊 -->
         <section id="home" class="page-section active">
             <!-- === 封面輪播區塊 === -->
             <div class="hero-section">
                 <!-- 輪播圖片群 -->
                 <div class="hero-carousel">
-                    <!-- 第一張照片 (原來的 hero.jpg) -->
                     <div class="carousel-slide active">
                         <img src="./hero.jpg" alt="Lavend/r 品牌形象 1">
                     </div>
-                    <!-- 第二張照片 (你準備的 hero2.jpg) -->
                     <div class="carousel-slide">
                         <img src="./hero2.jpg" alt="Lavend/r 品牌形象 2">
                     </div>
@@ -70,7 +69,6 @@
                     <span class="dot" data-slide="1"></span>
                 </div>
 
-                <!-- 原本的文字與按鈕 (完全不動) -->
                 <div class="hero-content">
                     <h2 class="serif-title" data-i18n="hero_quote">點燃一縷芬芳，在喧囂裡漫成一座島嶼。</h2>
                     <a href="#shop" class="hero-btn action-btn" data-i18n="hero_btn">探索香氛 (Shop Now)</a>
@@ -79,12 +77,10 @@
 
             <!-- === 首頁 兩大活動區塊 === -->
             <div class="events-section">
-                <!-- 活動 1：開幕限定禮遇 (圖右文左) -->
                 <div class="event-row">
                     <div class="event-text">
                         <h3 class="serif-title" data-i18n="event1_title">開幕限定禮遇</h3>
                         <p class="event-desc" data-i18n="event1_desc">即日起至2027年X月X日...</p>
-                        <!-- 點擊探索更多，自動滑動到商品區塊 -->
                         <a href="#shop" class="action-btn" data-i18n="btn_explore">探索更多</a>
                     </div>
                     <div class="event-image">
@@ -92,8 +88,6 @@
                     </div>
                 </div>
 
-                <!-- 活動 2：會員專屬 (圖左文右) -->
-                <!-- 加上 reverse class 讓排版反轉 -->
                 <div class="event-row reverse">
                     <div class="event-image">
                         <img src="./event-2.jpg" alt="會員專屬">
@@ -101,24 +95,21 @@
                     <div class="event-text">
                         <h3 class="serif-title" data-i18n="event2_title">會員專屬</h3>
                         <p class="event-desc" data-i18n="event2_desc">購買任一產品並成為會員...</p>
-                        <!-- 點擊探索更多，自動滑動到會員系統區塊 -->
                         <a href="#member" class="action-btn" data-i18n="btn_explore">探索更多</a>
                     </div>
                 </div>
 
-                <!-- 活動 3：調香情境問卷 (圖右文左) -->
                 <div class="event-row">
                     <div class="event-text">
                         <h3 class="serif-title" data-i18n="event3_title">尋找專屬香氛 | Find Your Lavend/r</h3>
                         <p class="event-desc" data-i18n="event3_desc">每一種香氣，都是一種生活狀態的投射。還不確定哪一款香氛最契合您當下的頻率，或是最符合您的送禮需求嗎？點擊下方連結，跟隨直覺完成這份香氛指南。讓我們透過您的回答，為您梳理出專屬的氣味輪廓，讓您在未來的每一次挑香中，都能輕鬆遇見那款最合適的選擇。</p>
-                        <!-- 連結到問卷測驗區塊 -->
                         <a href="#quiz" class="action-btn" data-i18n="btn_explore">探索更多</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. 新增：調香問卷測驗區塊 -->
+        <!-- 2. 調香問卷測驗區塊 -->
         <section id="quiz" class="page-section">
             <div class="quiz-page-container">
                 <div class="quiz-header">
@@ -126,9 +117,7 @@
                     <p class="quiz-intro" data-i18n="quiz_intro">透過幾個簡單的問題，尋找最契合你靈魂深處的專屬香氣。</p>
                 </div>
 
-                <!-- 問卷主要互動區 -->
                 <div class="workbench-step" id="step1-quiz">
-                    <!-- 題目顯示區 -->
                     <div id="quizContainer" class="quiz-container">
                         <div class="question-box">
                             <h3 id="questionText">Loading...</h3>
@@ -136,7 +125,6 @@
                         </div>
                     </div>
 
-                    <!-- 測驗結果顯示區 (預設隱藏) -->
                     <div id="quizResult" style="display: none;">
                         <h3 class="result-label" data-i18n="quiz_result_label">YOUR SCENT NARRATIVE</h3>
                         <h2 id="resultName" class="serif-title result-name"></h2>
@@ -158,27 +146,21 @@
                 </div>
             </div>
         </section>
-    </main> <!-- 結束 main -->
 
-        <!-- 2. 品牌故事 -->
+        <!-- 3. 品牌故事 -->
         <section id="story" class="page-section">
             <div class="story-container">
-                
-                <!-- 上半部分：原本文案與圖片 -->
                 <div class="story-upper">
-                    <!-- 左側：直排標題與圖片 -->
                     <div class="story-upper-left">
                         <div class="vertical-title">
                             <span class="vt-zh">品牌故事與定義</span>
                             <span class="vt-en">BRAND STORY</span>
                         </div>
                         <div class="story-img-wrapper">
-                            <!-- 請確認這裡的圖片檔名與你上傳的白襯衫圖片一致 -->
                             <img src="./story-img.png" alt="Lavend/r 品牌意象">
                         </div>
                     </div>
                     
-                    <!-- 右側：品牌原本文案 -->
                     <div class="story-upper-right">
                         <h3 class="serif-title">L A V E N D / R</h3>
                         <p data-i18n="story_p1">薰衣草（Lavender）常被貼上溫柔、恬靜的標籤。</p>
@@ -187,16 +169,13 @@
                     </div>
                 </div>
 
-                <!-- 下半部分：滿版影片與新文案 -->
                 <div class="story-lower">
-                    <!-- 滿版影片 -->
                     <div class="video-wrapper full-width">
                         <video controls playsinline id="brandVideo">
                             <source src="brand-video.mp4" type="video/mp4">
                         </video>
                     </div>
                     
-                    <!-- 影片下方新文案 -->
                     <div class="video-copy">
                         <h3 class="serif-title quote-en" data-i18n="video_quote_en">Light a fragrance, bloom into an island.</h3>
                         <h4 class="serif-title quote-zh" data-i18n="video_quote_zh">點燃一縷芬芳，在喧囂裡漫成一座島嶼。</h4>
@@ -210,11 +189,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- 3. 商品頁面 -->
+        <!-- 4. 商品頁面 -->
         <section id="shop" class="page-section">
             <div class="shop-container">
                 
@@ -222,7 +200,6 @@
                 <div id="shop-list-view">
                     <h2 class="serif-title section-title">Shop Collection</h2>
                     
-                    <!-- 主打商品 -->
                     <h3 class="category-title" data-i18n="shop_main">主打商品</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p1')">
@@ -242,7 +219,6 @@
                         </div>
                     </div>
 
-                    <!-- 香氛小物 -->
                     <h3 class="category-title" style="margin-top: 5rem;" data-i18n="shop_acc">香氛小物</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p4')">
@@ -272,18 +248,14 @@
                 <div id="product-detail-view" style="display: none;">
                     <button class="back-btn" onclick="closeProduct()" data-i18n="back_to_list">← 返回商品列表</button>
                     <div class="detail-layout">
-                        <!-- 左側：直行排列的兩張圖片 -->
                         <div class="detail-images-column">
                             <img id="detail-mood-img" src="" alt="香味風格示意圖">
                             <img id="detail-product-img" src="" alt="商品實體圖">
                         </div>
-                        <!-- 右側：商品資訊 -->
                         <div class="detail-info">
-                            <!-- 這裡我們保留標籤，但拿掉裡面的字，等 JS 來掛載 data-i18n -->
                             <h2 id="detail-title" class="serif-title"></h2>
                             <p id="detail-desc" class="detail-desc"></p>
                             
-                            <!-- 產品資訊與注意事項區塊 -->
                             <div class="product-notice">
                                 <h4 data-i18n="notice_title">Product Info | 產品資訊</h4>
                                 <p id="detail-notice"></p>
@@ -297,10 +269,9 @@
             </div>
         </section>
 
-    <!-- === 購物車與結帳頁面 (極簡高級版) === -->
+        <!-- 5. 購物車與結帳頁面 (極簡高級版) -->
         <section id="checkout" class="page-section checkout-section">
             
-            <!-- 頂部進度提示 (純文字質感) -->
             <div class="checkout-progress-bar">
                 <span class="active">SHOPPING CART</span>
                 <span class="separator">——</span>
@@ -311,16 +282,14 @@
 
             <div class="checkout-page-container split-layout">
                 
-                <!-- 左側：資料填寫區 -->
                 <div class="checkout-forms-area">
                     
-                    <!-- 1. 會員狀態 -->
                     <div id="checkout-member-status" class="checkout-block">
                         <div class="guest-view">
                             <h4 class="serif-title" data-i18n="co_guest_msg">專屬折扣與點數折抵</h4>
                             <p class="guest-subtitle" data-i18n="co_guest_sub">登入會員以享有您的專屬優惠與點數折抵。</p>
-                            <!-- 直接導向會員系統 -->
-                            <a href="#member" class="editorial-link" data-i18n="co_login_btn">登入 / 註冊會員</a>
+                            <!-- ★ 修復按鈕：補上 id="go-to-login-btn" -->
+                            <a href="#member" id="go-to-login-btn" class="editorial-link" data-i18n="co_login_btn">登入 / 註冊會員</a>
                         </div>
                         <div class="logged-in-view" style="display: none;">
                             <h4 class="serif-title member-greeting">Welcome, <span id="checkout-user-name"></span></h4>
@@ -328,7 +297,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. 運送資訊 -->
                     <div class="checkout-block">
                         <h4 class="serif-title" data-i18n="co_shipping">Shipping address</h4>
                         <form id="shipping-form" class="checkout-form">
@@ -340,7 +308,6 @@
                         </form>
                     </div>
 
-                    <!-- 3. 付款資訊 -->
                     <div class="checkout-block">
                         <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
                         <form id="payment-form" class="checkout-form">
@@ -353,21 +320,18 @@
                     </div>
                 </div>
 
-                <!-- 右側：訂單摘要區 -->
                 <div class="checkout-summary-area">
                     <div class="summary-header">
                         <h3 class="serif-title" data-i18n="co_summary">Your order</h3>
                         <a href="#shop" class="editorial-link small" data-i18n="co_edit_cart">Edit cart</a>
                     </div>
                     
-                    <!-- 購物車商品列表 -->
                     <div id="cart-items-list" class="cart-items-container">
                         <!-- 商品由 JS 動態生成 -->
                     </div>
 
                     <hr class="thin-divider">
 
-                    <!-- 優惠碼與點數 -->
                     <div class="discount-inputs">
                         <div class="input-with-btn">
                             <input type="text" id="promo-code-input" data-i18n-placeholder="co_ph_promo" placeholder="Discount code">
@@ -381,7 +345,6 @@
 
                     <hr class="thin-divider">
 
-                    <!-- 價格明細 -->
                     <div class="price-breakdown">
                         <div class="price-row">
                             <span data-i18n="co_subtotal">Subtotal</span>
@@ -399,7 +362,6 @@
 
                     <hr class="thin-divider">
 
-                    <!-- 總計 -->
                     <div class="price-total-area">
                         <div class="price-row total">
                             <span data-i18n="co_total">Total</span>
@@ -416,7 +378,7 @@
             </div>
         </section>
     
-        <!-- 4. FAQ 與政策 -->
+        <!-- 6. FAQ 與政策 -->
         <section id="support" class="page-section">
             <div class="support-container">
                 <div class="support-header">
@@ -424,47 +386,30 @@
                     <p class="support-intro" data-i18n="support_intro">感謝您來到 Lavend/r。為了提供您最完善的購物體驗...</p>
                 </div>
 
-                <!-- 摺疊面板 (Accordion) 區塊 -->
                 <div class="accordion-wrapper">
-                    <!-- 購物須知 -->
                     <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h3 class="serif-title" data-i18n="policy1_title">購物須知</h3>
-                            <span class="icon">+</span>
-                        </div>
+                        <button class="accordion-header"><span data-i18n="policy1_title">購物須知</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy1_content"></div>
                         </div>
                     </div>
 
-                    <!-- 配送與運費 -->
                     <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h3 class="serif-title" data-i18n="policy2_title">配送與運費</h3>
-                            <span class="icon">+</span>
-                        </div>
+                        <button class="accordion-header"><span data-i18n="policy2_title">配送與運費</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy2_content"></div>
                         </div>
                     </div>
 
-                    <!-- 退換貨政策 -->
                     <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h3 class="serif-title" data-i18n="policy3_title">退換貨政策</h3>
-                            <span class="icon">+</span>
-                        </div>
+                        <button class="accordion-header"><span data-i18n="policy3_title">退換貨政策</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy3_content"></div>
                         </div>
                     </div>
 
-                    <!-- 聯絡我們 -->
                     <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h3 class="serif-title" data-i18n="policy4_title">聯絡我們</h3>
-                            <span class="icon">+</span>
-                        </div>
+                        <button class="accordion-header"><span data-i18n="policy4_title">聯絡我們</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy4_content"></div>
                         </div>
@@ -473,21 +418,18 @@
             </div>
         </section>
 
-        <!-- === 會員系統頁面 === -->
+        <!-- 7. 會員系統頁面 -->
         <section id="member" class="page-section">
             <div class="member-page-container">
                 
-                <!-- 浮動快捷導覽 -->
                 <div class="member-anchor-nav">
                     <a href="#member-auth" class="anchor-link" data-i18n="mem_nav_auth">會員登入</a>
                     <a href="#member-tiers" class="anchor-link" data-i18n="mem_nav_tiers">等級權益</a>
                     <a href="#member-faq" class="anchor-link" data-i18n="mem_nav_faq">點數規則</a>
                 </div>
 
-                <!-- 📌 第一區塊：核心行動區 (高級毛玻璃分割佈局) -->
                 <div id="member-auth" class="member-section-block split-layout">
                     
-                    <!-- 左側：視覺形象區 (增加氛圍感) -->
                     <div class="auth-visual">
                         <img src="./story-img.png" alt="Lavend/r 品牌意象" class="auth-bg-img">
                         <div class="glass-overlay-text">
@@ -496,10 +438,8 @@
                         </div>
                     </div>
 
-                    <!-- 右側：表單與看板區 (毛玻璃質感) -->
                     <div class="auth-content premium-glass">
                         
-                        <!-- 狀態 A：登入 / 註冊表單 -->
                         <div id="auth-card-view">
                             <div class="auth-header">
                                 <h3 class="serif-title" data-i18n="mem_title_auth">會員系統</h3>
@@ -511,7 +451,6 @@
                                 <button class="auth-tab" id="tab-register" data-i18n="mem_tab_register">註冊</button>
                             </div>
 
-                            <!-- 登入表單 -->
                             <form id="login-form" class="auth-form active">
                                 <div class="input-group">
                                     <input type="tel" data-i18n-placeholder="mem_ph_account" placeholder="手機號碼 (Account)" required>
@@ -522,24 +461,19 @@
                                 <button type="submit" class="premium-btn" data-i18n="mem_btn_login">登入</button>
                             </form>
 
-                            <!-- 註冊表單 -->
                             <form id="register-form" class="auth-form">
-                                <!-- 第一欄：姓名 -->
                                 <div class="input-group">
                                     <input type="text" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
                                 </div>
                                 
-                                <!-- 第二欄：手機號碼 -->
                                 <div class="input-group">
                                     <input type="tel" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required>
                                 </div>
                                 
-                                <!-- 第三欄：生日 -->
                                 <div class="input-group">
                                     <input type="text" data-i18n-placeholder="mem_ph_birth" placeholder="生日 (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
                                 </div>
                                 
-                                <!-- 第四欄 (最後一欄)：密碼 (設定至少 8 碼) -->
                                 <div class="input-group">
                                     <input type="password" minlength="8" data-i18n-placeholder="mem_ph_setpass" placeholder="設定密碼 (至少 8 碼)" required>
                                 </div>
@@ -548,17 +482,14 @@
                             </form>
                         </div>
 
-                        <!-- 狀態 B：儀表板 -->
                         <div id="dashboard-card-view" style="display: none;">
                             <h3 class="serif-title">Welcome</h3>
                             <p class="member-tier-label">目前等級：微風草本 Seedling</p>
                             
                             <div class="progress-section">
                                 <div class="progress-bar-container">
-                                    <!-- 加上 id="progress-bar-fill" 讓 JS 控制寬度 -->
                                     <div id="progress-bar-fill" class="progress-bar" style="width: 0%;"></div>
                                 </div>
-                                <!-- 加上 id="progress-text-desc" 讓 JS 替換差額數字與文案 -->
                                 <p id="progress-text-desc" class="progress-text">距離升階「晨露花香」還差 NT$6,000</p>
                             </div>
                             
@@ -577,16 +508,13 @@
                             
                             <button id="logout-btn" class="outline-btn" data-i18n="mem_btn_logout">登出</button>
                         </div>
+                    </div> 
+                </div> 
 
-                    </div> <!-- ⚠️ 確保這裡有閉合右側毛玻璃區塊 -->
-                </div> <!-- ⚠️ 確保這裡有閉合第一區塊 (split-layout) -->
-
-                <!-- 📌 第二區塊：品牌專屬會員等級介紹 (典雅橫排設計) -->
                 <div id="member-tiers" class="member-section-block">
                     <h2 class="serif-title section-title" data-i18n="mem_title_tiers">Lavend/r 會員等級與禮遇</h2>
                     
                     <div class="tiers-stack">
-                        <!-- 等級 1 -->
                         <div class="tier-horizontal-card">
                             <div class="tier-header">
                                 <h4 class="serif-title">微風草本 <span>Seedling</span></h4>
@@ -601,7 +529,6 @@
                             </div>
                         </div>
                         
-                        <!-- 等級 2 -->
                         <div class="tier-horizontal-card">
                             <div class="tier-header">
                                 <h4 class="serif-title">晨露花香 <span>Dewdrop</span></h4>
@@ -616,7 +543,6 @@
                             </div>
                         </div>
 
-                        <!-- 等級 3 -->
                         <div class="tier-horizontal-card">
                             <div class="tier-header">
                                 <h4 class="serif-title">薰衣草花田 <span>Lavender (VIP)</span></h4>
@@ -634,7 +560,6 @@
                     </div>
                 </div>
 
-                <!-- 📌 第三區塊：點數經濟與常見 Q&A -->
                 <div id="member-faq" class="member-section-block">
                     <h2 class="serif-title section-title" data-i18n="mem_title_faq">點數規則與常見問題</h2>
                     
@@ -668,26 +593,23 @@
 
             </div>
         </section>
-    </main> <!-- 確保這是原本 main 區塊的結尾 -->
+        
+    </main> <!-- ★ 修正：將真正的結尾移至所有 section 之後 -->
 
     <!-- === 頁尾 (Footer) 區塊 === -->
     <footer class="site-footer">
         <div class="footer-container">
-            <!-- 區塊 1：客服與聯絡 -->
             <div class="footer-col">
                 <h4 data-i18n="footer_cs">客服中心</h4>
                 <ul class="footer-links">
                     <li><a href="#support" data-i18n="footer_faq">常見問題</a></li>
-                    <!-- 使用你的 Gmail 網址 -->
                     <li><a href="mailto:annyziyun@gmail.com">annyziyun@gmail.com</a></li>
-                    <!-- 預留電話欄位，可自行更改 -->
                     <li><a href="tel:+886976955612" data-i18n="footer_tel">+886 976-955-612</a></li>
                     <li><a href="#support" data-i18n="footer_shipping">運送服務</a></li>
                     <li><a href="#support" data-i18n="footer_return">退換貨服務</a></li>
                 </ul>
             </div>
 
-            <!-- 區塊 2：關於品牌 -->
             <div class="footer-col">
                 <h4 data-i18n="footer_about">關於我們</h4>
                 <ul class="footer-links">
@@ -696,17 +618,14 @@
                 </ul>
             </div>
 
-            <!-- 區塊 3：了解我們 (社群) -->
             <div class="footer-col">
                 <h4 data-i18n="footer_social">了解我們</h4>
                 <ul class="footer-links">
-                    <!-- 替換成你實際的社群連結 -->
                     <li><a href="https://www.instagram.com/lavendr_tw/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a></li>
                     <li><a href="#" target="_blank">LINE Official</a></li>
                 </ul>
             </div>
 
-            <!-- 區塊 4：電子報訂閱 -->
             <div class="footer-col newsletter-col">
                 <h4 data-i18n="footer_newsletter">訂閱電子報</h4>
                 <form class="newsletter-form" onsubmit="event.preventDefault(); alert('感謝您的訂閱！');">
@@ -716,19 +635,16 @@
             </div>
         </div>
 
-        <!-- 頁尾底層：版權與條款 -->
         <div class="footer-bottom">
             <p class="copyright">© Lavend/r Digital Studio 2027</p>
             <div class="footer-legal">
                 <a href="#" data-i18n="footer_terms">條款細則</a>
                 <a href="#" data-i18n="footer_privacy">隱私權政策</a>
             </div>
-            <!-- 回到頂端按鈕 -->
             <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
         </div>
     </footer>
 
-    <!-- 原本的腳本引入 -->
     <script src="js/i18n.js"></script>
     <script src="js/app.js"></script>
 </body>
