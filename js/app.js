@@ -9,6 +9,10 @@ function updateLanguage(lang) {
     if (storedUser && typeof renderDashboard === 'function') {
         renderDashboard(JSON.parse(storedUser));
     }
+    
+    if (typeof renderCheckoutPage === 'function' && document.getElementById('checkout')) {
+        renderCheckoutPage();
+    }
 
     // 1. 替換一般文字
     const elements = document.querySelectorAll('[data-i18n]');
@@ -948,6 +952,8 @@ let appliedPromoDiscount = 0;
 let appliedPoints = 0;
 
 function renderCheckoutPage() {
+    const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
+    
     // 1. 檢查會員登入狀態
     const storedUser = localStorage.getItem('lavendr_user');
     const guestView = document.querySelector('.guest-view');
@@ -959,70 +965,93 @@ function renderCheckoutPage() {
 
     if (storedUser) {
         user = JSON.parse(storedUser);
-        guestView.style.display = 'none';
-        loggedInView.style.display = 'block';
-        document.getElementById('checkout-user-name').textContent = user.name;
-        document.getElementById('checkout-user-tier').textContent = user.tier;
+        if(guestView) guestView.style.display = 'none';
+        if(loggedInView) loggedInView.style.display = 'block';
         
-        // 判斷是否享有 85 折 (晨露花香 或 薰衣草花田)
-        if (user.tier.includes('Dewdrop') || user.tier.includes('Lavender')) {
+        const userNameEl = document.getElementById('checkout-user-name');
+        if(userNameEl) userNameEl.textContent = user.name;
+        
+        const userTierEl = document.getElementById('checkout-user-tier');
+        if(userTierEl && user.tier) {
+            let tierName = user.tier;
+            if (lang === 'en') {
+                 if (tierName.includes('Seedling')) tierName = 'Seedling';
+                 else if (tierName.includes('Dewdrop')) tierName = 'Dewdrop';
+                 else if (tierName.includes('Lavender')) tierName = 'Lavender (VIP)';
+            }
+            userTierEl.textContent = tierName;
+        }
+        
+        if (user.tier && (user.tier.includes('Dewdrop') || user.tier.includes('Lavender'))) {
             isVipOrDewdrop = true;
         }
 
-        // 開放點數折抵區塊
-        pointsArea.style.display = 'flex';
-        document.getElementById('points-use-input').placeholder = `欲折抵點數 (可用: ${user.points})`;
-    } else {
-        guestView.style.display = 'block';
-        loggedInView.style.display = 'none';
-        pointsArea.style.display = 'none';
-    }
-
-    // 2. 渲染購物車商品列表
-    const cartContainer = document.getElementById('cart-items-list');
-    cartContainer.innerHTML = '';
-    let subtotal = 0;
-
-    cart.forEach(item => {
-        if(item.quantity > 0) {
-            subtotal += item.price * item.quantity;
-            cartContainer.innerHTML += `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <h5>${item.name}</h5>
-                        <p>NT$ ${item.price.toLocaleString()} x ${item.quantity}</p>
-                    </div>
-                    <div class="cart-item-controls">
-                        <span>NT$ ${(item.price * item.quantity).toLocaleString()}</span>
-                        <!-- 未來可在此加入 + - 按鈕與垃圾桶圖示 -->
-                    </div>
-                </div>
-            `;
+        if(pointsArea) {
+            pointsArea.style.display = 'flex';
+            const ptsInput = document.getElementById('points-use-input');
+            if(ptsInput) {
+                ptsInput.placeholder = lang === 'zh' ? `欲折抵點數 (可用: ${user.points})` : `Points to redeem (Available: ${user.points})`;
+            }
         }
-    });
-
-    // 3. 計算折扣與總計
-    let tierDiscount = isVipOrDewdrop ? Math.floor(subtotal * 0.15) : 0; // 85折等於折抵 15%
-    let finalTotal = subtotal - tierDiscount - appliedPromoDiscount - appliedPoints;
-    if (finalTotal < 0) finalTotal = 0;
-
-    // 4. 更新右側摘要數字
-    document.getElementById('summary-subtotal').textContent = `NT$ ${subtotal.toLocaleString()}`;
-    
-    const rowTier = document.getElementById('row-tier-discount');
-    if (tierDiscount > 0) {
-        rowTier.style.display = 'flex';
-        document.getElementById('summary-tier-discount').textContent = `- NT$ ${tierDiscount.toLocaleString()}`;
     } else {
-        rowTier.style.display = 'none';
+        if(guestView) guestView.style.display = 'block';
+        if(loggedInView) loggedInView.style.display = 'none';
+        if(pointsArea) pointsArea.style.display = 'none';
     }
 
-    document.getElementById('summary-total').textContent = `NT$ ${finalTotal.toLocaleString()}`;
+    // 2. 渲染購物車商品列表 (雙語商品名)
+    const cartContainer = document.getElementById('cart-items-list');
+    if(cartContainer) {
+        cartContainer.innerHTML = '';
+        let subtotal = 0;
 
-    // 5. 計算預計獲得點數 (假設基本規則：每 100 元得 1 點，依照實付金額計算)
-    let pointsEarned = Math.floor(finalTotal / 100);
-    // (未來可依照等級倍率再做加乘，如 Dewdrop * 1.5)
-    document.getElementById('summary-points-earned').textContent = pointsEarned.toLocaleString();
+        cart.forEach(item => {
+            if(item.quantity > 0) {
+                subtotal += item.price * item.quantity;
+                
+                // 切割中英文品名 (假設原資料為 "中文名 (English Name)")
+                let displayName = item.name;
+                if(item.name.includes('(')) {
+                    let parts = item.name.split('(');
+                    displayName = lang === 'zh' ? parts[0].trim() : parts[1].replace(')', '').trim();
+                }
+
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h5>${displayName}</h5>
+                            <p>NT$ ${item.price.toLocaleString()} x ${item.quantity}</p>
+                        </div>
+                        <div class="cart-item-controls">
+                            <span>NT$ ${(item.price * item.quantity).toLocaleString()}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        // 3. 計算折扣與總計
+        let tierDiscount = isVipOrDewdrop ? Math.floor(subtotal * 0.15) : 0;
+        let finalTotal = subtotal - tierDiscount - appliedPromoDiscount - appliedPoints;
+        if (finalTotal < 0) finalTotal = 0;
+
+        // 4. 更新數字
+        document.getElementById('summary-subtotal').textContent = `NT$ ${subtotal.toLocaleString()}`;
+        
+        const rowTier = document.getElementById('row-tier-discount');
+        if (tierDiscount > 0) {
+            rowTier.style.display = 'flex';
+            document.getElementById('summary-tier-discount').textContent = `- NT$ ${tierDiscount.toLocaleString()}`;
+        } else {
+            rowTier.style.display = 'none';
+        }
+
+        document.getElementById('summary-total').textContent = `NT$ ${finalTotal.toLocaleString()}`;
+
+        // 5. 預計獲得點數
+        let pointsEarned = Math.floor(finalTotal / 100);
+        document.getElementById('summary-points-earned').textContent = pointsEarned.toLocaleString();
+    }
 }
 
 // 綁定跳轉登入按鈕
