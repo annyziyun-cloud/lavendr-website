@@ -348,15 +348,45 @@
                     <div class="checkout-block">
                         <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
                         <form id="payment-form" class="checkout-form">
-                            <!-- 加上 cc-number 與 inputmode，手機鍵盤自動轉為數字模式 -->
-                            <input type="text" autocomplete="cc-number" inputmode="numeric" pattern="[\d\s]*" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (Card number)" required>
-                            <div class="input-row">
-                                <input type="text" autocomplete="cc-exp" inputmode="numeric" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (Expiry date)" required>
-                                <input type="text" autocomplete="cc-csc" inputmode="numeric" maxlength="4" data-i18n-placeholder="co_ph_cvc" placeholder="安全碼 (CVC)" required>
+                            
+                            <!-- 付款方式切換 -->
+                            <div class="shipping-method-toggle" style="margin-bottom: 2rem;">
+                                <label class="radio-label">
+                                    <input type="radio" name="payment_method" value="credit_card" checked>
+                                    <span class="custom-radio"></span>
+                                    <span data-i18n="co_method_card">信用卡刷卡 (Credit Card)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="payment_method" value="bank_transfer">
+                                    <span class="custom-radio"></span>
+                                    <span data-i18n="co_method_bank">銀行匯款 (Bank Transfer)</span>
+                                </label>
                             </div>
+
+                            <!-- 狀態 A：信用卡資訊 -->
+                            <div id="payment-cc-view">
+                                <input type="text" id="cc-number" autocomplete="cc-number" inputmode="numeric" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (Card number)" maxlength="19" required>
+                                <div class="input-row">
+                                    <input type="text" id="cc-exp" autocomplete="cc-exp" inputmode="numeric" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (MM/YY)" maxlength="5" required>
+                                    <input type="text" id="cc-cvc" autocomplete="cc-csc" inputmode="numeric" data-i18n-placeholder="co_ph_cvc" placeholder="安全碼 (CVC)" maxlength="4" required>
+                                </div>
+                            </div>
+
+                            <!-- 狀態 B：匯款資訊 (預設隱藏) -->
+                            <div id="payment-bank-view" style="display: none;">
+                                <div class="bank-info-box">
+                                    <p class="bank-notice" data-i18n="co_bank_notice">請於訂單成立後 24 小時內完成匯款，以保留您的專屬商品。</p>
+                                    <div class="bank-details">
+                                        <p><span data-i18n="co_bank_name_label">銀行名稱：</span><strong data-i18n="co_bank_name">玉山銀行 (808)</strong></p>
+                                        <p><span data-i18n="co_bank_branch_label">分行名稱：</span><strong data-i18n="co_bank_branch">中山分行</strong></p>
+                                        <p><span data-i18n="co_bank_account_label">帳戶號碼：</span><strong data-i18n="co_bank_account">0000-1111-2222-3333</strong></p>
+                                        <p><span data-i18n="co_bank_title_label">戶名：</span><strong data-i18n="co_bank_title">LAVENDR DIGITAL STUDIO</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
-                </div>
 
                 <!-- 4. 右側訂單摘要區 -->
                 <div class="checkout-summary-area">
