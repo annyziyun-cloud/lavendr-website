@@ -119,6 +119,10 @@ const translations = {
         co_points_earn_2: 'pts',
         co_btn_checkout: '確認結帳',
         co_guest_sub: '登入會員以享有您的專屬優惠與點數折抵。',
+        co_method_home: '宅配 (Home Delivery)',
+        co_method_store: '超商取貨 (Store Pickup)',
+        co_ph_city: '選擇縣市 (City)',
+        co_ph_store: '選擇門市 (Store)',
         
         // --- 會員系統 ---
         mem_nav_auth: "會員登入",
@@ -283,6 +287,10 @@ const translations = {
         co_points_earn_2: 'pts',
         co_btn_checkout: 'Checkout Now',
         co_guest_sub: 'Log in to enjoy your exclusive discounts and point redemption.',
+        co_method_home: 'Home Delivery',
+        co_method_store: 'Store Pickup',
+        co_ph_city: 'Select City',
+        co_ph_store: 'Select Store',
         
         // --- 會員系統 ---
         mem_nav_auth: "Login",
