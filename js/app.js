@@ -940,16 +940,46 @@ function resetQuiz() {
 /* =======================================================
    5. 購物車與結帳邏輯 (Checkout Logic)
    ======================================================= */
-// 模擬購物車資料 (未來會從加入購物車按鈕動態寫入)
+// 擴充購物車資料，加入商品圖片路徑 (請替換為實際圖檔路徑)
 let cart = [
-    { id: 'p1', name: '擴香瓶禮盒 (Diffuser Gift Box)', price: 1280, quantity: 1 },
-    { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 260, quantity: 2 },
-    { id: 'p3', name: '補充包 (Refill)', price: 660, quantity: 0 } // 數量為0暫不顯示
+    { id: 'p1', name: '擴香瓶禮盒 (Diffuser Gift Box)', price: 1280, quantity: 1, img: 'images/product-box.jpg' },
+    { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 260, quantity: 2, img: 'images/product-reeds.jpg' },
+    { id: 'p3', name: '補充包 (Refill)', price: 660, quantity: 1, img: 'images/product-refill.jpg' }
 ];
 
-// 優惠狀態
 let appliedPromoDiscount = 0; 
 let appliedPoints = 0;
+
+// ★ 新增：更新商品數量的函數 (必須掛載到 window 以供 HTML inline onclick 呼叫)
+window.updateCartQuantity = function(productId, change) {
+    const item = cart.find(p => p.id === productId);
+    if (item) {
+        let newQty = item.quantity + change;
+        if (newQty < 1) newQty = 1; // 最少為 1，若要刪除請按垃圾桶
+        item.quantity = newQty;
+        renderCheckoutPage(); // 重新渲染畫面與價格
+        updateCartBadge();    // 更新右上角購物袋數字
+    }
+};
+
+// ★ 新增：刪除商品的函數
+window.removeCartItem = function(productId) {
+    if (confirm(typeof currentLang !== 'undefined' && currentLang === 'en' ? 'Remove this item?' : '確定要移除此商品嗎？')) {
+        cart = cart.filter(p => p.id !== productId);
+        renderCheckoutPage();
+        updateCartBadge();
+    }
+};
+
+// ★ 新增：更新右上角導覽列的購物袋數字
+window.updateCartBadge = function() {
+    const badge = document.getElementById('cart-badge');
+    if (badge) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        badge.textContent = totalItems;
+        badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+};
 
 function renderCheckoutPage() {
     const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
@@ -1009,21 +1039,29 @@ function renderCheckoutPage() {
             if(item.quantity > 0) {
                 subtotal += item.price * item.quantity;
                 
-                // 切割中英文品名 (假設原資料為 "中文名 (English Name)")
                 let displayName = item.name;
                 if(item.name.includes('(')) {
                     let parts = item.name.split('(');
                     displayName = lang === 'zh' ? parts[0].trim() : parts[1].replace(')', '').trim();
                 }
 
+                // 新的渲染結構：加入 img, qty-control, remove-btn
                 cartContainer.innerHTML += `
                     <div class="cart-item">
+                        <img src="${item.img}" alt="${displayName}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/65x65?text=Img'">
+                        
                         <div class="cart-item-info">
                             <h5>${displayName}</h5>
-                            <p>NT$ ${item.price.toLocaleString()} x ${item.quantity}</p>
+                            <p>NT$ ${item.price.toLocaleString()}</p>
                         </div>
-                        <div class="cart-item-controls">
-                            <span>NT$ ${(item.price * item.quantity).toLocaleString()}</span>
+                        
+                        <div class="cart-item-actions">
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateCartQuantity('${item.id}', -1)">−</button>
+                                <span class="qty-value">${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateCartQuantity('${item.id}', 1)">+</button>
+                            </div>
+                            <button class="remove-btn" onclick="removeCartItem('${item.id}')" title="移除商品">✕</button>
                         </div>
                     </div>
                 `;
