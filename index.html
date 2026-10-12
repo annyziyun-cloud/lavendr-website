@@ -22,7 +22,23 @@
                 <li><a href="#support" class="nav-item" data-i18n="nav_support">客服與政策</a></li>
                 <li><a href="#member" class="nav-item" data-i18n="nav_member">會員系統</a></li>
             </ul>
-            <button id="lang-btn" class="lang-toggle">EN / 中</button>
+            
+            <!-- 右側功能區：包含語言切換與購物袋 -->
+            <div class="nav-actions">
+                <button id="lang-btn" class="lang-toggle">EN / 中</button>
+                
+                <!-- 購物袋圖示 (點擊後跳轉至結帳區塊) -->
+                <a href="#checkout" class="cart-icon-link" aria-label="購物車">
+                    <!-- 簡約高級感購物袋 SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <!-- 購物車數量標記 (測試先顯示 3，未來可由 JS 動態更新) -->
+                    <span id="cart-badge" class="cart-badge">3</span>
+                </a>
+            </div>
         </div>
     </nav>
 
