@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* --- G. 結帳頁：運送方式與超商門市連動邏輯 --- */
+    /* --- F. 結帳頁：運送方式與超商門市連動邏輯 --- */
     // ★ 修正：將這段拉進 DOMContentLoaded 確保網頁載入後才綁定事件
     const storeData = {
         '台北市': ['7-11 敦南門市', '7-11 松江門市', '7-11 信義門市'],
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* --- F. 啟動與初始化 --- */
+    /* --- G. 啟動與初始化 --- */
     window.addEventListener('popstate', () => navigateTo(window.location.hash));
     navigateTo(window.location.hash);
     updateLanguage(currentLang);
@@ -535,6 +535,63 @@ document.addEventListener('DOMContentLoaded', () => {
     checkLoginState();
 });
 
+/* --- H. 結帳頁：付款方式切換與信用卡格式化邏輯 --- */
+    const radioCard = document.querySelector('input[value="credit_card"]');
+    const radioBank = document.querySelector('input[value="bank_transfer"]');
+    const viewCard = document.getElementById('payment-cc-view');
+    const viewBank = document.getElementById('payment-bank-view');
+    
+    const ccNum = document.getElementById('cc-number');
+    const ccExp = document.getElementById('cc-exp');
+    const ccCvc = document.getElementById('cc-cvc');
+
+    if (radioCard && radioBank && viewCard && viewBank) {
+        // 1. 切換付款方式
+        function togglePaymentView() {
+            if (radioCard.checked) {
+                viewCard.style.display = 'block';
+                viewBank.style.display = 'none';
+                if(ccNum) ccNum.setAttribute('required', 'true');
+                if(ccExp) ccExp.setAttribute('required', 'true');
+                if(ccCvc) ccCvc.setAttribute('required', 'true');
+            } else {
+                viewCard.style.display = 'none';
+                viewBank.style.display = 'block';
+                if(ccNum) ccNum.removeAttribute('required');
+                if(ccExp) ccExp.removeAttribute('required');
+                if(ccCvc) ccCvc.removeAttribute('required');
+            }
+        }
+        radioCard.addEventListener('change', togglePaymentView);
+        radioBank.addEventListener('change', togglePaymentView);
+
+        // 2. 信用卡號自動格式化 (每 4 碼空一格)
+        if (ccNum) {
+            ccNum.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, ''); // 移除非數字
+                let formatted = value.match(/.{1,4}/g); // 每 4 個分一組
+                e.target.value = formatted ? formatted.join(' ') : '';
+            });
+        }
+
+        // 3. 有效期限自動格式化 (自動補上 / )
+        if (ccExp) {
+            ccExp.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                e.target.value = value;
+            });
+        }
+
+        // 4. CVC 限制為 4 位純數字
+        if (ccCvc) {
+            ccCvc.addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
+            });
+        }
+    }
 
 /* =======================================================
    4. 商品切換邏輯 (保留原樣)
