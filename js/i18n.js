@@ -118,6 +118,7 @@ const translations = {
         co_points_earn_1: '完成此筆訂單預計可獲得',
         co_points_earn_2: 'pts',
         co_btn_checkout: '確認結帳',
+        co_guest_sub: '登入會員以享有您的專屬優惠與點數折抵。',
         
         // --- 會員系統 ---
         mem_nav_auth: "會員登入",
@@ -281,6 +282,7 @@ const translations = {
         co_points_earn_1: 'You will earn',
         co_points_earn_2: 'pts',
         co_btn_checkout: 'Checkout Now',
+        co_guest_sub: 'Log in to enjoy your exclusive discounts and point redemption.',
         
         // --- 會員系統 ---
         mem_nav_auth: "Login",
