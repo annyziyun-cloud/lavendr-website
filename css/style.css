@@ -706,16 +706,24 @@ body {
 /* 滿版雙欄佈局 (無邊框、無陰影) */
 .checkout-page-container.split-layout {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row; /* 強制水平左右排列 */
+    flex-wrap: nowrap; /* 強制不換行，避免右側掉下去 */
+    justify-content: space-between;
     align-items: flex-start;
-    gap: 8%;
+    gap: 6%; /* 左右兩欄的安全間距 */
+    max-width: 1200px; /* 控制最大寬度讓畫面凝聚不鬆散 */
     margin: 0 auto;
 }
 
-.checkout-forms-area { flex: 1 1 50%; }
+.checkout-forms-area { 
+    flex: 0 0 54%; /* 左側固定佔比 54% */
+    width: 54%; 
+}
+
 /* 確保右側明細區背景透明，無陰影，並固定在右側 */
 .checkout-summary-area { 
-    flex: 1 1 40%; 
+    flex: 0 0 40%; /* 右側固定佔比 40% */
+    width: 40%; 
     position: sticky; 
     top: 120px; 
     background: transparent; 
