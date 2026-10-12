@@ -305,6 +305,7 @@
                         </div>
                     </div>
 
+                    <!-- 2. 運送資訊 -->
                     <div class="checkout-block">
                         <h4 class="serif-title" data-i18n="co_shipping">Shipping address</h4>
                         <form id="shipping-form" class="checkout-form">
@@ -312,10 +313,42 @@
                                 <input type="text" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名 (First / Last name)" required>
                                 <input type="tel" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話 (Phone)" required>
                             </div>
-                            <input type="text" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
+
+                            <!-- 運送方式切換 -->
+                            <div class="shipping-method-toggle">
+                                <label class="radio-label">
+                                    <input type="radio" name="shipping_method" value="home" checked>
+                                    <span class="custom-radio"></span>
+                                    <span data-i18n="co_method_home">宅配 (Home Delivery)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="shipping_method" value="store">
+                                    <span class="custom-radio"></span>
+                                    <span data-i18n="co_method_store">超商取貨 (Store Pickup)</span>
+                                </label>
+                            </div>
+
+                            <!-- 狀態 A：宅配地址輸入 -->
+                            <div id="shipping-home-view">
+                                <input type="text" id="home-address-input" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
+                            </div>
+
+                            <!-- 狀態 B：超商取貨下拉選單 (預設隱藏) -->
+                            <div id="shipping-store-view" style="display: none;">
+                                <div class="input-row">
+                                    <select id="store-city-select">
+                                        <option value="" disabled selected data-i18n="co_ph_city">選擇縣市 (City)</option>
+                                        <!-- JS 動態匯入 -->
+                                    </select>
+                                    <select id="store-name-select" disabled>
+                                        <option value="" disabled selected data-i18n="co_ph_store">選擇門市 (Store)</option>
+                                        <!-- JS 動態匯入 -->
+                                    </select>
+                                </div>
+                            </div>
                         </form>
                     </div>
-
+                    
                     <div class="checkout-block">
                         <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
                         <form id="payment-form" class="checkout-form">
