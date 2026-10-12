@@ -95,7 +95,7 @@ body {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem; /* 控制按鈕與購物袋之間的距離 */
+    gap: 1.5rem;
 }
 
 .cart-icon-link {
@@ -108,16 +108,15 @@ body {
 }
 
 .cart-icon-link:hover {
-    color: #a39587; /* 游標移上時變成品牌暖咖色 */
-    transform: translateY(-2px); /* 微微上浮的細節互動 */
+    color: #a39587; 
+    transform: translateY(-2px); 
 }
 
-/* 購物袋右上角的數量小圓點 */
 .cart-badge {
     position: absolute;
     top: -6px;
     right: -8px;
-    background-color: #a39587; /* 品牌暖咖色 */
+    background-color: #a39587; 
     color: #fff;
     font-size: 0.7rem;
     font-weight: 500;
@@ -129,8 +128,9 @@ body {
     justify-content: center;
     padding: 0 4px;
     box-sizing: border-box;
-    font-family: 'Times New Roman', serif; /* 數字採用襯線體增加質感 */
+    font-family: 'Times New Roman', serif; 
 }
+
 
 /* =========================================
    2. 頁面切換動畫
@@ -190,7 +190,6 @@ body {
     object-position: center;
 }
 
-/* 確保文字浮在圖片上方，並精準靠左 */
 .hero-content {
     position: absolute;
     left: 8%;
@@ -217,7 +216,6 @@ body {
 }
 .hero-content .hero-btn:hover { background: #2c2a29; color: #fff; }
 
-/* 輪播控制組件 */
 .carousel-control {
     position: absolute; top: 50%; transform: translateY(-50%);
     background: transparent; border: none; color: rgba(255, 255, 255, 0.6);
@@ -343,7 +341,6 @@ body {
 }
 .add-to-cart-btn:hover { background: var(--text-dark); color: #fff; }
 
-/* 專屬介紹視角 (Detail View) */
 .back-btn {
     background: none; border: none; font-size: 0.95rem; color: var(--text-light);
     cursor: pointer; margin-bottom: 2rem; letter-spacing: 1px; transition: color 0.3s;
@@ -364,7 +361,6 @@ body {
 }
 .detail-cart-btn { padding: 1rem 3rem; font-size: 1rem; }
 
-/* 產品注意事項 */
 .product-notice {
     margin-bottom: 2.5rem; padding: 1.5rem; background: rgba(247, 245, 240, 0.5); 
     border-left: 2px solid var(--primary-color); border-radius: 0 4px 4px 0;
@@ -390,8 +386,8 @@ body {
 .member-anchor-nav .anchor-link:hover { color: var(--text-dark); }
 .member-section-block { margin-bottom: 8rem; }
 
-/* --- 第一區塊：高級毛玻璃分割佈局 (Split Layout) --- */
-.split-layout {
+/* --- 會員系統的卡片佈局 --- */
+.member-section-block.split-layout {
     display: flex;
     flex-direction: row;
     background: linear-gradient(135deg, #efebe4 0%, #f7f5f0 100%);
@@ -403,7 +399,6 @@ body {
     max-width: 1000px;
 }
 
-/* 左側視覺形象 */
 .auth-visual {
     flex: 1.2;
     position: relative;
@@ -444,7 +439,6 @@ body {
     line-height: 2;
 }
 
-/* 右側毛玻璃面板 */
 .premium-glass {
     flex: 1;
     background: rgba(255, 255, 255, 0.65);
@@ -462,7 +456,6 @@ body {
 .auth-header h3 { font-size: 1.6rem; letter-spacing: 2px; color: var(--text-dark); margin-bottom: 0.8rem; }
 .security-notice { font-size: 0.85rem; color: #a39587; letter-spacing: 1px; line-height: 1.6; }
 
-/* 登入/註冊切換標籤 */
 .auth-tabs { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; }
 .auth-tab {
     background: none; border: none; font-size: 1.05rem; color: #a39587;
@@ -477,7 +470,6 @@ body {
 .auth-tab.active { color: var(--text-dark); font-weight: 600; }
 .auth-tab.active::after { width: 100%; }
 
-/* 表單與圓潤輸入框 */
 .auth-form { display: none; flex-direction: column; gap: 1.2rem; animation: fadeIn 0.4s ease-out; }
 .auth-form.active { display: flex; }
 
@@ -491,7 +483,6 @@ body {
     background: #fff; border-color: #a39587; box-shadow: 0 0 0 4px rgba(163, 149, 135, 0.1);
 }
 
-/* 高級質感按鈕 */
 .premium-btn {
     background: #a39587; color: #fff; border: none; padding: 1.2rem;
     border-radius: 12px; font-size: 1rem; letter-spacing: 3px; cursor: pointer;
@@ -500,7 +491,6 @@ body {
 }
 .premium-btn:hover { background: #8e8071; transform: translateY(-2px); box-shadow: 0 15px 25px rgba(163, 149, 135, 0.3); }
 
-/* 儀表板樣式 */
 #dashboard-card-view { text-align: center; }
 .member-tier-label { font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem; letter-spacing: 1px; }
 .progress-section { background: rgba(255,255,255,0.6); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; text-align: left; }
@@ -518,7 +508,6 @@ body {
 .outline-btn { background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark); padding: 0.8rem 2rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; letter-spacing: 1px;}
 .outline-btn:hover { background: var(--text-dark); color: #fff; }
 
-/* --- 第二區塊：會員等級橫排滿版設計 --- */
 .tiers-stack { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
 .tier-horizontal-card { display: flex; flex-direction: row; align-items: center; background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 16px; padding: 3.5rem 4rem; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03); transition: transform 0.4s ease, box-shadow 0.4s ease; }
 .tier-horizontal-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06); }
@@ -627,16 +616,13 @@ body {
    11. 手機版響應式設計 (RWD)
    ========================================= */
 @media (max-width: 900px) {
-    /* 品牌故事 */
     .story-upper { flex-direction: column; gap: 3rem; }
     .story-upper-right { padding-top: 2rem; }
 }
 
 @media (max-width: 768px) {
-    /* 導覽列 */
     .nav-links { display: none; }
     
-    /* 首頁 */
     .hero-section::after { background: rgba(255, 255, 255, 0.4); }
     .hero-content {
         left: 50%;
@@ -646,40 +632,33 @@ body {
     }
     .hero-content h2 { font-size: 1.8rem; }
     
-    /* 活動區塊 */
     .event-row, .event-row.reverse { flex-direction: column-reverse; }
     .event-image { width: 100%; }
     .event-image img { min-height: 300px; }
     .event-text { padding: 3rem 2rem; text-align: center; }
     
-    /* 品牌故事 */
     .story-layout { flex-direction: column; gap: 3rem; margin-left: 0; margin-top: 4rem; }
     .story-text { padding-right: 0; }
     .vertical-text { left: 1rem; top: -20px; }
     
-    /* 商品詳情 */
     .detail-layout { flex-direction: column; gap: 2rem; }
     .detail-info { padding-top: 0; }
 
-    /* 會員系統 */
     .tier-horizontal-card { flex-direction: column; align-items: flex-start; padding: 2.5rem 2rem; }
     .tier-header { flex: 1; width: 100%; padding-right: 0; border-right: none; border-bottom: 1px solid rgba(163, 149, 135, 0.2); padding-bottom: 2rem; margin-bottom: 2rem; }
     .tier-benefits { padding-left: 0; }
     .member-anchor-nav { flex-wrap: wrap; gap: 1.5rem; }
     .member-card { padding: 2rem 1.5rem; }
 
-   /* 會員系統手機版修正 */
-    .split-layout { flex-direction: column; min-height: auto; }
+    .member-section-block.split-layout { flex-direction: column; min-height: auto; }
     .auth-visual { padding: 4rem 2rem; text-align: center; }
     .glass-overlay-text { padding: 1rem; text-align: center; }
     .premium-glass { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(255,255,255,0.8); }
     
-    /* 問卷區塊 */
     .question-box { padding: 2rem 1.5rem; min-height: auto; }
     .result-details { padding: 2rem 1.5rem; }
     .result-name { font-size: 1.8rem; }
 
-    /* 頁尾 */
     .footer-container { gap: 2.5rem; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .footer-legal a { margin: 0 1rem; }
@@ -687,282 +666,189 @@ body {
 }
 
 /* =========================================
-   結帳與購物車頁面 (Checkout) - 高質感優化版
+   12. 結帳與購物車頁面 (Checkout - 高級編輯風格)
    ========================================= */
 .checkout-section {
-    background-color: #FAF9F7;
-    padding: 120px 5% 4rem 5%; 
+    background-color: var(--bg-color); /* 融入全站背景，徹底取消卡片感 */
+    padding: 140px 5% 8rem 5%;
+    color: var(--text-dark);
 }
 
+/* ★ 強力覆寫：避免結帳區塊被會員系統的 split-layout 卡片樣式污染 */
+.checkout-section .split-layout {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    min-height: auto;
+    max-width: 1400px; /* 拉寬滿版，增加呼吸感 */
+}
+
+/* 頂部進度條 */
+.checkout-progress-bar {
+    text-align: left;
+    max-width: 1400px;
+    margin: 0 auto 4rem auto;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-light);
+}
+.checkout-progress-bar .active { color: var(--text-dark); font-weight: 600; }
+.checkout-progress-bar .separator { margin: 0 1rem; font-weight: 300; }
+
+/* 滿版雙欄佈局 (無邊框、無陰影) */
 .checkout-page-container.split-layout {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 5%;
-    max-width: 1200px;
+    gap: 8%;
     margin: 0 auto;
 }
 
-.checkout-forms-area {
-    flex: 1 1 55%;
+.checkout-forms-area { flex: 1 1 50%; }
+/* 確保右側明細區背景透明，無陰影，並固定在右側 */
+.checkout-summary-area { 
+    flex: 1 1 40%; 
+    position: sticky; 
+    top: 120px; 
+    background: transparent; 
+    padding: 0; 
+    box-shadow: none; 
+    border: none; 
+    border-radius: 0;
 }
 
-.checkout-summary-area {
-    flex: 1 1 35%;
-    background: #FFFFFF; /* 右側用純白底色凸顯 */
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* 極輕微的高級陰影 */
-    position: sticky;
-    top: 100px;
-}
-
-.checkout-block {
-    margin-bottom: 3.5rem;
-}
-
+/* 區塊標題 */
+.checkout-block { margin-bottom: 4rem; }
 .checkout-block .serif-title {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    font-weight: 400;
+    border-bottom: none; /* 確保沒有多餘底線 */
+    padding-bottom: 0;
 }
 
-/* =========================================
-   結帳頁 - 會員資訊獨立卡片
-   ========================================= */
-.member-info-card {
-    background-color: #FFFFFF;
-    padding: 2rem 2.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.04);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.02);
-    margin-bottom: 3rem;
-}
+.guest-subtitle { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; }
 
-.member-info-card .guest-view {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.2rem;
-}
-
-.member-info-card .guest-view .serif-title {
-    margin-bottom: 0;
-}
-
-.guest-subtitle {
-    font-size: 0.9rem;
-    color: #777;
-    margin: 0;
-}
-
-/* 登入後的字體美化 */
-.member-greeting {
-    font-family: 'Times New Roman', serif;
-    font-size: 1.35rem;
-    color: #222;
-    margin: 0 0 0.8rem 0;
-    letter-spacing: 0.5px;
-}
-
-.member-tier-info {
-    font-size: 0.95rem;
-    color: #a39587; /* 品牌暖咖色 */
-    margin: 0;
-    font-weight: 500;
-}
-
-.checkout-form .input-row {
-    display: flex;
-    gap: 1.5rem;
-}
-
+/* === 極簡底線輸入框 (核心靈魂) === */
+.checkout-form .input-row { display: flex; gap: 2rem; }
 .checkout-form input {
     width: 100%;
-    padding: 1rem 1.2rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid rgba(0,0,0,0.1);
+    padding: 0.8rem 0; /* 左右不留白，文字完美貼齊左側 */
+    margin-bottom: 2rem;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.15); /* 只有細細的底線 */
     background: transparent;
-    border-radius: 6px;
+    border-radius: 0;
     font-family: inherit;
     font-size: 0.95rem;
+    color: var(--text-dark);
     transition: border-color 0.3s ease;
 }
-
-.checkout-form input:focus {
-    outline: none;
-    border-color: #a39587; /* 聚焦時顯示品牌色 */
+.checkout-form input::placeholder { color: #999; font-weight: 300; letter-spacing: 0.5px; }
+.checkout-form input:focus { 
+    outline: none; 
+    border-bottom: 1px solid var(--text-dark); 
+    box-shadow: none; /* 移除圓角版本的發光效果 */
+    background: transparent; 
 }
 
-/* 訂單明細清單 */
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-/* 商品圖片 */
-.cart-item-img {
-    width: 65px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 6px;
-    background-color: #f5f5f5; /* 圖片若沒載入的預設底色 */
-}
-
-/* 商品名稱與單價 */
-.cart-item-info {
-    flex: 1;
-}
-.cart-item-info h5 { margin: 0 0 0.3rem 0; font-size: 0.95rem; font-weight: 500; }
-.cart-item-info p { margin: 0; font-size: 0.85rem; color: #888; }
-
-/* 右側控制區 (增減按鈕與刪除) */
-.cart-item-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* 數量控制按鈕組 */
-.qty-control {
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    overflow: hidden;
-}
-.qty-btn {
-    background: transparent;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #555;
-    transition: background 0.2s ease;
-}
-.qty-btn:hover { background: rgba(0,0,0,0.05); }
-.qty-value {
-    font-size: 0.9rem;
-    padding: 0 0.5rem;
-    min-width: 20px;
-    text-align: center;
-}
-
-/* 刪除按鈕 */
-.remove-btn {
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
-    color: #999;
-    cursor: pointer;
-    padding: 0.2rem;
-    transition: color 0.2s ease;
-}
-.remove-btn:hover { color: #d9534f; }
-
-.discount-inputs { margin-top: 2rem; }
-.discount-inputs .input-with-btn {
-    display: flex;
-    gap: 0.8rem;
-    margin-bottom: 1rem;
-}
-
-.discount-inputs input {
-    flex: 1;
-    padding: 0.8rem 1rem;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 6px;
-}
-
-.small-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
-
-.price-breakdown { margin-top: 2rem; }
-.price-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-    color: #555;
-}
-
-.highlight-discount { color: #a39587; }
-
-.summary-divider {
-    border: none;
-    border-top: 1px dashed rgba(0,0,0,0.1); /* 用虛線增加精緻感 */
-    margin: 1.5rem 0;
-}
-
-.price-total-area { margin-top: 1.5rem; }
-.price-row.total {
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: #111;
-}
-
-.points-earned-hint {
-    text-align: right;
+/* === 文字連結與按鈕 === */
+.editorial-link {
+    display: inline-block;
     font-size: 0.85rem;
-    color: #888;
-    margin-top: 0.5rem;
-}
-
-.full-width { width: 100%; margin-top: 2rem; padding: 1.2rem; font-size: 1.05rem; }
-
-@media (max-width: 768px) {
-    .checkout-page-container.split-layout { flex-direction: column; }
-    .checkout-summary-area { position: relative; top: 0; margin-top: 2rem; padding: 1.5rem; }
-    .checkout-form .input-row { flex-direction: column; gap: 0; }
-}
-
-/* =========================================
-   結帳頁 - 左側質感卡片設計
-   ========================================= */
-/* 統一三大區塊的純白卡片風格 */
-.checkout-card {
-    background-color: #FFFFFF;
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* 輕微的高級陰影 */
-    margin-bottom: 2.5rem;
-    border: 1px solid rgba(0,0,0,0.02);
-}
-
-.checkout-card .serif-title {
-    margin-bottom: 1.5rem;
-    color: #333;
-    font-size: 1.15rem;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    padding-bottom: 1rem;
-}
-
-/* 表單輸入框高級感優化 */
-.checkout-form input {
-    width: 100%;
-    padding: 1.2rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid rgba(0,0,0,0.08); /* 邊框變柔和 */
-    background-color: #FAFAFA; /* 微微的灰白底色，與純白卡片做出區隔 */
-    border-radius: 8px; 
-    font-family: inherit;
-    font-size: 0.95rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-light);
+    padding-bottom: 2px;
     transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+.editorial-link:hover { color: var(--text-dark); border-color: var(--text-dark); }
+.editorial-link.small { font-size: 0.75rem; border: none; text-decoration: underline; }
+
+.editorial-btn {
+    background: transparent;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+.editorial-btn:hover { background: var(--text-dark); color: #fff; }
+.editorial-btn.full-width { width: 100%; margin-top: 2rem; padding: 1.2rem; }
+
+/* === 訂單摘要區 === */
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2.5rem;
+}
+.summary-header .serif-title { margin: 0; font-size: 1.5rem; }
+
+/* 購物車商品列表 */
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: none; /* 移除預設底線 */
+    padding: 0;
+}
+.cart-item-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    background-color: #eaeaea;
+    border-radius: 0; /* 編輯風格通常是直角圖片 */
+}
+.cart-item-info { flex: 1; }
+.cart-item-info h5 { margin: 0 0 0.5rem 0; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; }
+.cart-item-info p { margin: 0 0 0.5rem 0; font-size: 0.85rem; color: var(--text-light); }
+.cart-item-price { font-size: 0.9rem; font-weight: 500; }
+
+.qty-control {
+    border: none !important; /* 強制移除邊框 */
+    margin-top: 0.5rem; 
+    color: var(--text-light); 
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.qty-control span[onclick] { font-size: 1.1rem; }
+
+.cart-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; }
+.remove-text-btn {
+    background: none; border: none; font-size: 0.75rem; color: #999;
+    text-decoration: underline; cursor: pointer; padding: 0;
+}
+.remove-text-btn:hover { color: var(--text-dark); }
+
+/* 極細分隔線 */
+.thin-divider {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin: 2rem 0;
 }
 
-.checkout-form input:focus {
-    outline: none;
-    border-color: #a39587;
-    background-color: #FFFFFF;
-    box-shadow: 0 0 0 3px rgba(163, 149, 135, 0.1);
+/* 優惠碼與價格明細 */
+.discount-inputs .input-with-btn { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-end; }
+.discount-inputs input { margin-bottom: 0; flex: 1; padding: 0.8rem 0; border-radius: 0; }
+.discount-inputs .editorial-btn { padding: 0.6rem 1.5rem; }
+
+.price-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-light); }
+.price-row.total { font-size: 1.2rem; color: var(--text-dark); margin-top: 1rem; font-weight: 600; }
+.muted-text { color: #999; font-size: 0.8rem; }
+.points-earned-hint { text-align: right; font-size: 0.8rem; color: #999; margin-top: 0.5rem; }
+
+/* 結帳區 RWD 微調 */
+@media (max-width: 768px) {
+    .checkout-page-container.split-layout { flex-direction: column; gap: 4rem; }
+    .checkout-summary-area { position: relative; top: 0; margin-top: 0; }
+    .checkout-form .input-row { flex-direction: column; gap: 0; }
 }
