@@ -25,7 +25,7 @@
             
             <!-- 右側功能區：包含語言切換與購物袋 -->
             <div class="nav-actions">
-                <button id="lang-btn" class="lang-toggle">EN / 中</button>
+                <button type="button" id="lang-btn" class="lang-toggle">EN / 中</button>
                 
                 <!-- 購物袋圖示 (點擊後跳轉至結帳區塊) -->
                 <a href="#checkout" class="cart-icon-link" aria-label="購物車">
@@ -60,8 +60,8 @@
                 </div>
 
                 <!-- 左右切換箭頭 -->
-                <button class="carousel-control prev" aria-label="Previous slide">❮</button>
-                <button class="carousel-control next" aria-label="Next slide">❯</button>
+                <button type="button" class="carousel-control prev" aria-label="Previous slide">❮</button>
+                <button type="button" class="carousel-control next" aria-label="Next slide">❯</button>
                 
                 <!-- 下方切換點點 -->
                 <div class="carousel-dots">
@@ -139,7 +139,7 @@
                         </div>
                         
                         <div style="text-align: center; margin-top: 3rem;">
-                            <button class="action-btn" onclick="resetQuiz()" data-i18n="quiz_restart">重新測驗</button>
+                            <button type="button" class="action-btn" onclick="resetQuiz()" data-i18n="quiz_restart">重新測驗</button>
                             <a href="#shop" class="action-btn" style="background: var(--primary-color); margin-left: 1rem;" data-i18n="quiz_go_shop">前往探索商品</a>
                         </div>
                     </div>
@@ -200,61 +200,60 @@
                 <div id="shop-list-view">
                     <h2 class="serif-title section-title">Shop Collection</h2>
                     
-                    <!-- 主打商品 -->
                     <h3 class="category-title" data-i18n="shop_main">主打商品</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p1')">
                             <div class="img-wrapper"><img src="assets/mood-1.jpg" alt="留白示意圖"></div>
                             <h4 class="product-title" data-i18n="p1_title">【茶香】留白 (Blank Space) 禮盒 100ml</h4>
                             <p class="product-price">NT$ 1,280</p>
-                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p2')">
                             <div class="img-wrapper"><img src="assets/mood-2.jpg" alt="織眠示意圖"></div>
                             <h4 class="product-title" data-i18n="p2_title">【花香】織眠 (Woven Sleep) 禮盒 100ml</h4>
                             <p class="product-price">NT$ 1,280</p>
-                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p3')">
                             <div class="img-wrapper"><img src="assets/mood-3.jpg" alt="隅間示意圖"></div>
                             <h4 class="product-title" data-i18n="p3_title">【咖啡】隅間 (The Corner) 禮盒 100ml</h4>
                             <p class="product-price">NT$ 1,280</p>
-                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
 
-                    <!-- 香氛小物 -->
                     <h3 class="category-title" style="margin-top: 5rem;" data-i18n="shop_acc">香氛小物</h3>
                     <div class="product-grid">
                         <div class="product-card" onclick="openProduct('p4')">
                             <div class="img-wrapper"><img src="assets/product-4.png" alt="擴香棒"></div>
                             <h4 class="product-title" data-i18n="p4_title">擴香棒禮盒 10根+2朵裝飾紙花</h4>
                             <p class="product-price">NT$ 350</p>
-                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p5')">
                             <div class="img-wrapper"><img src="assets/product-5.jpg" alt="留白補充包"></div>
                             <h4 class="product-title" data-i18n="p5_title">【茶香】留白 (Blank Space) 補充包 100ml</h4>
                             <p class="product-price">NT$ 560</p>
-                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p6')">
                             <div class="img-wrapper"><img src="assets/product-6.jpg" alt="織眠補充包"></div>
                             <h4 class="product-title" data-i18n="p6_title">【花香】織眠 (Woven Sleep) 補充包 100ml</h4>
                             <p class="product-price">NT$ 560</p>
-                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p7')">
                             <div class="img-wrapper"><img src="assets/product-7.jpg" alt="隅間補充包"></div>
                             <h4 class="product-title" data-i18n="p7_title">【咖啡】隅間 (The Corner) 補充包 100ml</h4>
                             <p class="product-price">NT$ 560</p>
-                            <button class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
+                </div>
 
                 <!-- 視角 B：單一商品介紹頁 -->
                 <div id="product-detail-view" style="display: none;">
-                    <button class="back-btn" onclick="closeProduct()" data-i18n="back_to_list">← 返回商品列表</button>
+                    <button type="button" class="back-btn" onclick="closeProduct()" data-i18n="back_to_list">← 返回商品列表</button>
                     <div class="detail-layout">
                         <div class="detail-images-column">
                             <img id="detail-mood-img" src="" alt="香味風格示意圖">
@@ -269,7 +268,7 @@
                                 <p id="detail-notice"></p>
                             </div>
                             
-                            <button class="add-to-cart-btn detail-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <button type="button" class="add-to-cart-btn detail-cart-btn" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
                 </div>
@@ -292,11 +291,11 @@
                 
                 <div class="checkout-forms-area">
                     
+                    <!-- 1. 會員狀態區塊 -->
                     <div id="checkout-member-status" class="checkout-block">
                         <div class="guest-view">
                             <h4 class="serif-title" data-i18n="co_guest_msg">專屬折扣與點數折抵</h4>
                             <p class="guest-subtitle" data-i18n="co_guest_sub">登入會員以享有您的專屬優惠與點數折抵。</p>
-                            <!-- ★ 修復按鈕：補上 id="go-to-login-btn" -->
                             <a href="#member" id="go-to-login-btn" class="editorial-link" data-i18n="co_login_btn">登入 / 註冊會員</a>
                         </div>
                         <div class="logged-in-view" style="display: none;">
@@ -310,11 +309,11 @@
                         <h4 class="serif-title" data-i18n="co_shipping">Shipping address</h4>
                         <form id="shipping-form" class="checkout-form">
                             <div class="input-row">
-                                <input type="text" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名 (First / Last name)" required>
-                                <input type="tel" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話 (Phone)" required>
+                                <!-- 加上 autocomplete 優化瀏覽器自動填入 -->
+                                <input type="text" autocomplete="name" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名 (First / Last name)" required>
+                                <input type="tel" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話 (Phone)" required>
                             </div>
 
-                            <!-- 運送方式切換 -->
                             <div class="shipping-method-toggle">
                                 <label class="radio-label">
                                     <input type="radio" name="shipping_method" value="home" checked>
@@ -328,39 +327,38 @@
                                 </label>
                             </div>
 
-                            <!-- 狀態 A：宅配地址輸入 -->
                             <div id="shipping-home-view">
-                                <input type="text" id="home-address-input" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
+                                <input type="text" autocomplete="street-address" id="home-address-input" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
                             </div>
 
-                            <!-- 狀態 B：超商取貨下拉選單 (預設隱藏) -->
                             <div id="shipping-store-view" style="display: none;">
                                 <div class="input-row">
-                                    <select id="store-city-select">
+                                    <select id="store-city-select" autocomplete="address-level1">
                                         <option value="" disabled selected data-i18n="co_ph_city">選擇縣市 (City)</option>
-                                        <!-- JS 動態匯入 -->
                                     </select>
                                     <select id="store-name-select" disabled>
                                         <option value="" disabled selected data-i18n="co_ph_store">選擇門市 (Store)</option>
-                                        <!-- JS 動態匯入 -->
                                     </select>
                                 </div>
                             </div>
                         </form>
                     </div>
                     
+                    <!-- 3. 付款資訊 -->
                     <div class="checkout-block">
                         <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
                         <form id="payment-form" class="checkout-form">
-                            <input type="text" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (Card number)" required>
+                            <!-- 加上 cc-number 與 inputmode，手機鍵盤自動轉為數字模式 -->
+                            <input type="text" autocomplete="cc-number" inputmode="numeric" pattern="[\d\s]*" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (Card number)" required>
                             <div class="input-row">
-                                <input type="text" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (Expiry date)" required>
-                                <input type="text" data-i18n-placeholder="co_ph_cvc" placeholder="安全碼 (CVC)" required>
+                                <input type="text" autocomplete="cc-exp" inputmode="numeric" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (Expiry date)" required>
+                                <input type="text" autocomplete="cc-csc" inputmode="numeric" maxlength="4" data-i18n-placeholder="co_ph_cvc" placeholder="安全碼 (CVC)" required>
                             </div>
                         </form>
                     </div>
                 </div>
 
+                <!-- 4. 右側訂單摘要區 -->
                 <div class="checkout-summary-area">
                     <div class="summary-header">
                         <h3 class="serif-title" data-i18n="co_summary">Your order</h3>
@@ -376,11 +374,11 @@
                     <div class="discount-inputs">
                         <div class="input-with-btn">
                             <input type="text" id="promo-code-input" data-i18n-placeholder="co_ph_promo" placeholder="Discount code">
-                            <button id="apply-promo-btn" class="editorial-btn" data-i18n="co_btn_apply">Apply</button>
+                            <button type="button" id="apply-promo-btn" class="editorial-btn" data-i18n="co_btn_apply">Apply</button>
                         </div>
                         <div id="points-redemption-area" class="input-with-btn" style="display: none;">
                             <input type="number" id="points-use-input" placeholder="Points to redeem">
-                            <button id="apply-points-btn" class="editorial-btn" data-i18n="co_btn_apply_pts">Apply</button>
+                            <button type="button" id="apply-points-btn" class="editorial-btn" data-i18n="co_btn_apply_pts">Apply</button>
                         </div>
                     </div>
 
@@ -413,7 +411,7 @@
                         </p>
                     </div>
 
-                    <button id="checkout-submit-btn" class="editorial-btn full-width" data-i18n="co_btn_checkout">COMPLETE PURCHASE</button>
+                    <button type="button" id="checkout-submit-btn" class="editorial-btn full-width" data-i18n="co_btn_checkout">COMPLETE PURCHASE</button>
                 </div>
 
             </div>
@@ -429,28 +427,28 @@
 
                 <div class="accordion-wrapper">
                     <div class="accordion-item">
-                        <button class="accordion-header"><span data-i18n="policy1_title">購物須知</span> <span class="icon">+</span></button>
+                        <button type="button" class="accordion-header"><span data-i18n="policy1_title">購物須知</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy1_content"></div>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <button class="accordion-header"><span data-i18n="policy2_title">配送與運費</span> <span class="icon">+</span></button>
+                        <button type="button" class="accordion-header"><span data-i18n="policy2_title">配送與運費</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy2_content"></div>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <button class="accordion-header"><span data-i18n="policy3_title">退換貨政策</span> <span class="icon">+</span></button>
+                        <button type="button" class="accordion-header"><span data-i18n="policy3_title">退換貨政策</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy3_content"></div>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <button class="accordion-header"><span data-i18n="policy4_title">聯絡我們</span> <span class="icon">+</span></button>
+                        <button type="button" class="accordion-header"><span data-i18n="policy4_title">聯絡我們</span> <span class="icon">+</span></button>
                         <div class="accordion-content">
                             <div class="content-inner" data-i18n="policy4_content"></div>
                         </div>
@@ -488,35 +486,35 @@
                             </div>
                             
                             <div class="auth-tabs">
-                                <button class="auth-tab active" id="tab-login" data-i18n="mem_tab_login">登入</button>
-                                <button class="auth-tab" id="tab-register" data-i18n="mem_tab_register">註冊</button>
+                                <button type="button" class="auth-tab active" id="tab-login" data-i18n="mem_tab_login">登入</button>
+                                <button type="button" class="auth-tab" id="tab-register" data-i18n="mem_tab_register">註冊</button>
                             </div>
 
                             <form id="login-form" class="auth-form active">
                                 <div class="input-group">
-                                    <input type="tel" data-i18n-placeholder="mem_ph_account" placeholder="手機號碼 (Account)" required>
+                                    <input type="tel" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="mem_ph_account" placeholder="手機號碼 (Account)" required>
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" data-i18n-placeholder="mem_ph_pass" placeholder="密碼 (Password)" required>
+                                    <input type="password" autocomplete="current-password" data-i18n-placeholder="mem_ph_pass" placeholder="密碼 (Password)" required>
                                 </div>
                                 <button type="submit" class="premium-btn" data-i18n="mem_btn_login">登入</button>
                             </form>
 
                             <form id="register-form" class="auth-form">
                                 <div class="input-group">
-                                    <input type="text" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
+                                    <input type="text" autocomplete="name" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
                                 </div>
                                 
                                 <div class="input-group">
-                                    <input type="tel" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required>
+                                    <input type="tel" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required>
                                 </div>
                                 
                                 <div class="input-group">
-                                    <input type="text" data-i18n-placeholder="mem_ph_birth" placeholder="生日 (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <input type="text" autocomplete="bday" data-i18n-placeholder="mem_ph_birth" placeholder="生日 (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
                                 </div>
                                 
                                 <div class="input-group">
-                                    <input type="password" minlength="8" data-i18n-placeholder="mem_ph_setpass" placeholder="設定密碼 (至少 8 碼)" required>
+                                    <input type="password" autocomplete="new-password" minlength="8" data-i18n-placeholder="mem_ph_setpass" placeholder="設定密碼 (至少 8 碼)" required>
                                 </div>
                                 
                                 <button type="submit" class="premium-btn" data-i18n="mem_btn_register">發送驗證碼並註冊</button>
@@ -547,7 +545,7 @@
                                 </div>
                             </div>
                             
-                            <button id="logout-btn" class="outline-btn" data-i18n="mem_btn_logout">登出</button>
+                            <button type="button" id="logout-btn" class="outline-btn" data-i18n="mem_btn_logout">登出</button>
                         </div>
                     </div> 
                 </div> 
@@ -606,25 +604,25 @@
                     
                     <div class="faq-accordion">
                         <div class="accordion-item">
-                            <button class="accordion-header"><span data-i18n="faq_q1">Q1：點數如何累積與折抵？</span> <span class="icon">+</span></button>
+                            <button type="button" class="accordion-header"><span data-i18n="faq_q1">Q1：點數如何累積與折抵？</span> <span class="icon">+</span></button>
                             <div class="accordion-content">
                                 <p data-i18n="faq_a1">每一份對香氣的熱愛，都能化為實質的回饋。在 Lavend/r 每消費 NT$100 即可累積 1 點，點數可於結帳時直接折抵現金，或換購限定小禮盒，讓您的下一趟感官旅程更加輕盈。</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header"><span data-i18n="faq_q2">Q2：點數何時會到期？</span> <span class="icon">+</span></button>
+                            <button type="button" class="accordion-header"><span data-i18n="faq_q2">Q2：點數何時會到期？</span> <span class="icon">+</span></button>
                             <div class="accordion-content">
                                 <p data-i18n="faq_a2">為了讓點數循環流動，所有累積的點數將統一於每年 12 月 31 日到期歸零。建議您在歲末年終之際，挑選一份專屬香氛犒賞自己。</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header"><span data-i18n="faq_q3">Q3：如何升級或維持會員資格？</span> <span class="icon">+</span></button>
+                            <button type="button" class="accordion-header"><span data-i18n="faq_q3">Q3：如何升級或維持會員資格？</span> <span class="icon">+</span></button>
                             <div class="accordion-content">
                                 <p data-i18n="faq_a3">您的每一筆訂單我們都用心記錄。只要在 12 個月內累積消費達到指定門檻，系統將會自動為您升級，並立即開啟下一階段的專屬禮遇。</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header"><span data-i18n="faq_q4">Q4：點數過期了怎麼辦？</span> <span class="icon">+</span></button>
+                            <button type="button" class="accordion-header"><span data-i18n="faq_q4">Q4：點數過期了怎麼辦？</span> <span class="icon">+</span></button>
                             <div class="accordion-content">
                                 <p data-i18n="faq_a4">我們明白生活有時會讓人忘記時間。Lavend/r 提供溫暖的「點數緩衝機制」：每年 1 月 1 日至 1 月 7 日期間，只要在官網成立任一筆不限金額的訂單，系統將會自動解凍您上一年度未使用的點數，並延展效期至當年年底。</p>
                             </div>
@@ -635,7 +633,7 @@
             </div>
         </section>
         
-    </main> <!-- ★ 修正：將真正的結尾移至所有 section 之後 -->
+    </main> 
 
     <!-- === 頁尾 (Footer) 區塊 === -->
     <footer class="site-footer">
@@ -662,15 +660,16 @@
             <div class="footer-col">
                 <h4 data-i18n="footer_social">了解我們</h4>
                 <ul class="footer-links">
-                    <li><a href="https://www.instagram.com/lavendr_tw/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a></li>
-                    <li><a href="#" target="_blank">LINE Official</a></li>
+                    <!-- 加上 target="_blank" 與 rel="noopener noreferrer" 增強安全性 -->
+                    <li><a href="https://www.instagram.com/lavendr_tw/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">LINE Official</a></li>
                 </ul>
             </div>
 
             <div class="footer-col newsletter-col">
                 <h4 data-i18n="footer_newsletter">訂閱電子報</h4>
                 <form class="newsletter-form" onsubmit="event.preventDefault(); alert('感謝您的訂閱！');">
-                    <input type="email" placeholder="Email" required data-i18n-placeholder="footer_email_placeholder">
+                    <input type="email" autocomplete="email" placeholder="Email" required data-i18n-placeholder="footer_email_placeholder">
                     <button type="submit">→</button>
                 </form>
             </div>
@@ -682,7 +681,7 @@
                 <a href="#" data-i18n="footer_terms">條款細則</a>
                 <a href="#" data-i18n="footer_privacy">隱私權政策</a>
             </div>
-            <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
+            <button type="button" class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
         </div>
     </footer>
 
