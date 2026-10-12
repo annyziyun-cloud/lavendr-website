@@ -297,46 +297,56 @@
             </div>
         </section>
 
-    <!-- === 購物車與結帳頁面 === -->
+    <!-- === 購物車與結帳頁面 (極簡高級版) === -->
         <section id="checkout" class="page-section checkout-section">
+            
+            <!-- 頂部進度提示 (純文字質感) -->
+            <div class="checkout-progress-bar">
+                <span class="active">SHOPPING CART</span>
+                <span class="separator">——</span>
+                <span>SHIPPING</span>
+                <span class="separator">——</span>
+                <span>PAYMENT</span>
+            </div>
+
             <div class="checkout-page-container split-layout">
                 
                 <!-- 左側：資料填寫區 -->
                 <div class="checkout-forms-area">
                     
-                    <!-- 1. 會員狀態區塊 (純白卡片) -->
-                    <div id="checkout-member-status" class="checkout-block checkout-card">
+                    <!-- 1. 會員狀態 -->
+                    <div id="checkout-member-status" class="checkout-block">
                         <div class="guest-view">
                             <h4 class="serif-title" data-i18n="co_guest_msg">專屬折扣與點數折抵</h4>
                             <p class="guest-subtitle" data-i18n="co_guest_sub">登入會員以享有您的專屬優惠與點數折抵。</p>
-                            <!-- ★ 最簡單的跳轉解法：直接改用 a 標籤 -->
-                            <a href="#member" class="outline-btn" data-i18n="co_login_btn" style="text-decoration: none; display: inline-block; text-align: center;">登入 / 註冊會員</a>
+                            <!-- 直接導向會員系統 -->
+                            <a href="#member" class="editorial-link" data-i18n="co_login_btn">登入 / 註冊會員</a>
                         </div>
                         <div class="logged-in-view" style="display: none;">
-                            <p class="member-greeting">Welcome, <span id="checkout-user-name"></span></p>
+                            <h4 class="serif-title member-greeting">Welcome, <span id="checkout-user-name"></span></h4>
                             <p class="member-tier-info"><span data-i18n="co_tier_prefix">目前等級：</span><span id="checkout-user-tier"></span></p>
                         </div>
                     </div>
 
-                    <!-- 2. 運送資訊 (純白卡片) -->
-                    <div class="checkout-block checkout-card">
-                        <h4 class="serif-title" data-i18n="co_shipping">運送詳情</h4>
+                    <!-- 2. 運送資訊 -->
+                    <div class="checkout-block">
+                        <h4 class="serif-title" data-i18n="co_shipping">Shipping address</h4>
                         <form id="shipping-form" class="checkout-form">
                             <div class="input-row">
-                                <input type="text" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名" required>
-                                <input type="tel" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話" required>
+                                <input type="text" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名 (First / Last name)" required>
+                                <input type="tel" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話 (Phone)" required>
                             </div>
-                            <input type="text" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (含縣市、區)" required>
+                            <input type="text" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
                         </form>
                     </div>
 
-                    <!-- 3. 付款資訊 (純白卡片) -->
-                    <div class="checkout-block checkout-card">
-                        <h4 class="serif-title" data-i18n="co_payment">付款資訊</h4>
+                    <!-- 3. 付款資訊 -->
+                    <div class="checkout-block">
+                        <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
                         <form id="payment-form" class="checkout-form">
-                            <input type="text" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (XXXX-XXXX-XXXX-XXXX)" required>
+                            <input type="text" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (Card number)" required>
                             <div class="input-row">
-                                <input type="text" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (MM/YY)" required>
+                                <input type="text" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (Expiry date)" required>
                                 <input type="text" data-i18n-placeholder="co_ph_cvc" placeholder="安全碼 (CVC)" required>
                             </div>
                         </form>
@@ -345,61 +355,62 @@
 
                 <!-- 右側：訂單摘要區 -->
                 <div class="checkout-summary-area">
-                    <h3 class="serif-title" data-i18n="co_summary">Order Summary</h3>
+                    <div class="summary-header">
+                        <h3 class="serif-title" data-i18n="co_summary">Your order</h3>
+                        <a href="#shop" class="editorial-link small" data-i18n="co_edit_cart">Edit cart</a>
+                    </div>
                     
                     <!-- 購物車商品列表 -->
                     <div id="cart-items-list" class="cart-items-container">
-                        <!-- 商品將由 JS 動態生成 -->
+                        <!-- 商品由 JS 動態生成 -->
                     </div>
 
-                    <!-- 優惠碼與點數折抵區 -->
+                    <hr class="thin-divider">
+
+                    <!-- 優惠碼與點數 -->
                     <div class="discount-inputs">
                         <div class="input-with-btn">
-                            <input type="text" id="promo-code-input" data-i18n-placeholder="co_ph_promo" placeholder="輸入優惠碼">
-                            <button id="apply-promo-btn" class="outline-btn small-btn" data-i18n="co_btn_apply">套用</button>
+                            <input type="text" id="promo-code-input" data-i18n-placeholder="co_ph_promo" placeholder="Discount code">
+                            <button id="apply-promo-btn" class="editorial-btn" data-i18n="co_btn_apply">Apply</button>
                         </div>
                         <div id="points-redemption-area" class="input-with-btn" style="display: none;">
-                            <input type="number" id="points-use-input" placeholder="欲折抵點數">
-                            <button id="apply-points-btn" class="outline-btn small-btn" data-i18n="co_btn_apply_pts">折抵</button>
+                            <input type="number" id="points-use-input" placeholder="Points to redeem">
+                            <button id="apply-points-btn" class="editorial-btn" data-i18n="co_btn_apply_pts">Apply</button>
                         </div>
                     </div>
 
-                    <hr class="summary-divider">
+                    <hr class="thin-divider">
 
-                    <!-- 價格計算明細 -->
+                    <!-- 價格明細 -->
                     <div class="price-breakdown">
                         <div class="price-row">
-                            <span data-i18n="co_subtotal">小計 (Subtotal)</span>
+                            <span data-i18n="co_subtotal">Subtotal</span>
                             <span id="summary-subtotal">NT$ 0</span>
                         </div>
+                        <div class="price-row">
+                            <span data-i18n="co_shipping_fee">Shipping</span>
+                            <span class="muted-text">Calculated at next step</span>
+                        </div>
                         <div class="price-row highlight-discount" id="row-tier-discount" style="display: none;">
-                            <span data-i18n="co_tier_discount">會員等級折扣 (85折)</span>
+                            <span data-i18n="co_tier_discount">Tier Discount (15% OFF)</span>
                             <span id="summary-tier-discount">- NT$ 0</span>
-                        </div>
-                        <div class="price-row highlight-discount" id="row-promo-discount" style="display: none;">
-                            <span data-i18n="co_promo_discount">優惠碼折扣</span>
-                            <span id="summary-promo-discount">- NT$ 0</span>
-                        </div>
-                        <div class="price-row highlight-discount" id="row-points-discount" style="display: none;">
-                            <span data-i18n="co_points_discount">點數折抵</span>
-                            <span id="summary-points-discount">- NT$ 0</span>
                         </div>
                     </div>
 
-                    <!-- 總計與預計獲得點數 -->
+                    <hr class="thin-divider">
+
+                    <!-- 總計 -->
                     <div class="price-total-area">
                         <div class="price-row total">
-                            <span data-i18n="co_total">總計 (Total)</span>
+                            <span data-i18n="co_total">Total</span>
                             <span id="summary-total">NT$ 0</span>
                         </div>
                         <p class="points-earned-hint">
-                            <span data-i18n="co_points_earn_1">完成此筆訂單預計可獲得</span> 
-                            <strong id="summary-points-earned">0</strong> 
-                            <span data-i18n="co_points_earn_2">pts</span>
+                            <span data-i18n="co_points_earn_1">預計獲得</span> <strong id="summary-points-earned">0</strong> <span data-i18n="co_points_earn_2">pts</span>
                         </p>
                     </div>
 
-                    <button id="checkout-submit-btn" class="premium-btn full-width" data-i18n="co_btn_checkout">確認結帳</button>
+                    <button id="checkout-submit-btn" class="editorial-btn full-width" data-i18n="co_btn_checkout">COMPLETE PURCHASE</button>
                 </div>
 
             </div>
