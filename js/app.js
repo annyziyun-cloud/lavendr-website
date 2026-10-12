@@ -452,6 +452,76 @@ document.addEventListener('DOMContentLoaded', () => {
     checkLoginState();
 });
 
+/* --- G. 結帳頁：運送方式與超商門市連動邏輯 --- */
+    // 預先保留的門市資料庫 (未來可無痛無限擴充)
+    const storeData = {
+        '台北市': ['7-11 敦南門市', '7-11 松江門市', '7-11 信義門市'],
+        '新北市': ['7-11 溫州門市', '7-11 永安門市'],
+        '台中市': ['7-11 逢甲門市', '7-11 勤美門市']
+    };
+
+    const radioHome = document.querySelector('input[value="home"]');
+    const radioStore = document.querySelector('input[value="store"]');
+    const viewHome = document.getElementById('shipping-home-view');
+    const viewStore = document.getElementById('shipping-store-view');
+    const inputHome = document.getElementById('home-address-input');
+    const selectCity = document.getElementById('store-city-select');
+    const selectStore = document.getElementById('store-name-select');
+
+    if (radioHome && radioStore && viewHome && viewStore) {
+        // 1. 切換顯示與必填狀態
+        function toggleShippingView() {
+            if (radioHome.checked) {
+                viewHome.style.display = 'block';
+                viewStore.style.display = 'none';
+                inputHome.setAttribute('required', 'true');
+                selectCity.removeAttribute('required');
+                selectStore.removeAttribute('required');
+            } else {
+                viewHome.style.display = 'none';
+                viewStore.style.display = 'block';
+                inputHome.removeAttribute('required');
+                selectCity.setAttribute('required', 'true');
+                selectStore.setAttribute('required', 'true');
+            }
+        }
+
+        radioHome.addEventListener('change', toggleShippingView);
+        radioStore.addEventListener('change', toggleShippingView);
+
+        // 2. 匯入縣市清單
+        if (selectCity) {
+            // 讀取字典裡面的翻譯當作 Placeholder
+            const phCityText = currentLang === 'zh' ? '選擇縣市 (City)' : 'Select City';
+            selectCity.innerHTML = `<option value="" disabled selected data-i18n="co_ph_city">${phCityText}</option>`;
+            
+            for (let city in storeData) {
+                let opt = document.createElement('option');
+                opt.value = city;
+                opt.textContent = city;
+                selectCity.appendChild(opt);
+            }
+
+            // 3. 根據縣市動態產生對應的門市
+            selectCity.addEventListener('change', function() {
+                const selectedCity = this.value;
+                const phStoreText = currentLang === 'zh' ? '選擇門市 (Store)' : 'Select Store';
+                selectStore.innerHTML = `<option value="" disabled selected data-i18n="co_ph_store">${phStoreText}</option>`;
+                
+                if (storeData[selectedCity]) {
+                    storeData[selectedCity].forEach(store => {
+                        let opt = document.createElement('option');
+                        opt.value = store;
+                        opt.textContent = store;
+                        selectStore.appendChild(opt);
+                    });
+                    selectStore.disabled = false; // 解除門市選單封印
+                } else {
+                    selectStore.disabled = true;
+                }
+            });
+        }
+    }
 
 /* =======================================================
    3. 商品切換邏輯
