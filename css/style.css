@@ -543,34 +543,47 @@ body {
 .input-wrapper {
     position: relative;
     width: 100%;
-    flex: 1; /* 確保在雙欄中能均分寬度 */
+    flex: 1; 
 }
 .validation-icon {
     position: absolute;
     right: 0;
-    top: 15px; /* 對齊底線輸入框的高度 */
+    top: 15px; 
     width: 16px;
     height: 16px;
     display: none;
     background-size: contain;
     background-repeat: no-repeat;
 }
-/* 成功：低調綠色底線 + 勾勾 */
+
+/* 成功：低調綠色底線 + 勾勾 SVG */
 .checkout-form input.is-valid { border-bottom-color: #7b9e87 !important; }
 .checkout-form input.is-valid + .validation-icon {
     display: block;
     background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%237b9e87" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>');
 }
-/* 失敗：莫蘭迪淺磚紅底線 */
+
+/* 失敗：莫蘭迪淺磚紅底線 + 叉號 SVG */
 .checkout-form input.is-invalid { border-bottom-color: #c98a83 !important; }
-.checkout-block { margin-bottom: 4rem; }
-.checkout-block .serif-title {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-dark);
-    font-weight: 400;
-    border-bottom: none; 
-    padding-bottom: 0;
+.checkout-form input.is-invalid + .validation-icon {
+    display: block;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%23c98a83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
+}
+
+/* 失敗提示文字 */
+.error-text {
+    display: none; /* 預設隱藏 */
+    position: absolute;
+    left: 0;
+    top: 46px; /* 精準卡在 input 下方的留白處 */
+    font-size: 0.75rem;
+    color: #c98a83;
+    letter-spacing: 0.5px;
+}
+/* 當 input 擁有 is-invalid 時，顯示後方的提示文字 */
+.checkout-form input.is-invalid ~ .error-text {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .guest-subtitle { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; }
