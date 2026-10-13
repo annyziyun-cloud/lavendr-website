@@ -502,7 +502,67 @@ body {
     position: sticky; 
     top: 120px; 
 }
+/* === 結帳頁：訂單摘要懸浮毛玻璃 === */
+.checkout-summary-area.glass-summary-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 16px !important;
+    padding: 3rem 2.5rem !important; /* 增加內距讓卡片有呼吸感 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04) !important;
+}
 
+/* === 付款方式 Trust Signals 與提示框 === */
+.payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+}
+.payment-header .serif-title { margin-bottom: 0; }
+.trust-signals {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #8D8B85;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+.payment-hint-box {
+    background: rgba(247, 245, 240, 0.7);
+    padding: 1.5rem;
+    border-left: 2px solid #8D8B85;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    border-radius: 0 4px 4px 0;
+}
+
+/* === 即時驗證 (Inline Validation) 樣式 === */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    flex: 1; /* 確保在雙欄中能均分寬度 */
+}
+.validation-icon {
+    position: absolute;
+    right: 0;
+    top: 15px; /* 對齊底線輸入框的高度 */
+    width: 16px;
+    height: 16px;
+    display: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+/* 成功：低調綠色底線 + 勾勾 */
+.checkout-form input.is-valid { border-bottom-color: #7b9e87 !important; }
+.checkout-form input.is-valid + .validation-icon {
+    display: block;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%237b9e87" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+}
+/* 失敗：莫蘭迪淺磚紅底線 */
+.checkout-form input.is-invalid { border-bottom-color: #c98a83 !important; }
 .checkout-block { margin-bottom: 4rem; }
 .checkout-block .serif-title {
     font-size: 1.5rem;
@@ -570,20 +630,6 @@ body {
 .checkout-form select:invalid { color: #999; }
 .checkout-form select option { color: var(--text-dark); }
 .checkout-form select:disabled { opacity: 0.5; cursor: not-allowed; }
-
-/* === 銀行匯款資訊框 === */
-.bank-info-box {
-    background-color: transparent; border: 1px solid rgba(0,0,0,0.1); padding: 1.8rem 2rem;
-    border-left: 2px solid var(--text-dark); margin-bottom: 2rem;
-}
-.bank-notice { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px; }
-.bank-details p {
-    font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.8rem; display: flex; justify-content: space-between;
-    border-bottom: 1px dashed rgba(0,0,0,0.05); padding-bottom: 0.8rem;
-}
-.bank-details p:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.bank-details span { color: var(--text-light); }
-.bank-details strong { font-family: 'Lato', sans-serif; font-weight: 600; letter-spacing: 1.5px; }
 
 /* === 連結與按鈕 === */
 .editorial-link {
