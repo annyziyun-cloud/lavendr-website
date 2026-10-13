@@ -122,10 +122,10 @@ function updateShippingPlaceholders() {
     const selectCity = document.getElementById('store-city-select');
     const selectStore = document.getElementById('store-name-select');
     
-    if (selectCity && selectCity.options[0].disabled) {
+    if (selectCity && selectCity.options.length > 0 && selectCity.options[0].disabled) {
         selectCity.options[0].textContent = currentLang === 'zh' ? '選擇縣市 (City)' : 'Select City';
     }
-    if (selectStore && selectStore.options[0].disabled) {
+    if (selectStore && selectStore.options.length > 0 && selectStore.options[0].disabled) {
         selectStore.options[0].textContent = currentLang === 'zh' ? '選擇門市 (Store)' : 'Select Store';
     }
 }
@@ -366,11 +366,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formRegister) {
         formRegister.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // ★ 優化防呆抓取法，避免 input 順序調換時壞掉
-            const name = formRegister.querySelector('input[autocomplete="name"]')?.value.trim() || formRegister.querySelectorAll('input')[0].value.trim();
-            const phone = formRegister.querySelector('input[type="tel"]')?.value.trim() || formRegister.querySelectorAll('input')[1].value.trim();
-            const birthday = formRegister.querySelector('input[autocomplete="bday"]')?.value || formRegister.querySelectorAll('input')[2].value;
-            const password = formRegister.querySelector('input[type="password"]').value;
+            const nameEl = formRegister.querySelector('input[autocomplete="name"]') || formRegister.querySelectorAll('input')[0];
+            const phoneEl = formRegister.querySelector('input[type="tel"]') || formRegister.querySelectorAll('input')[1];
+            const birthEl = formRegister.querySelector('input[autocomplete="bday"]') || formRegister.querySelectorAll('input')[2];
+            const passEl = formRegister.querySelector('input[type="password"]');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const phone = phoneEl ? phoneEl.value.trim() : '';
+            const birthday = birthEl ? birthEl.value : '';
+            const password = passEl ? passEl.value : '';
             
             if (password.length < 8) {
                 alert(currentLang === 'zh' ? '為了您的帳號安全，密碼請至少設定 8 個字元。' : 'For security, password must be at least 8 characters.');
@@ -414,9 +418,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // ★ 優化防呆抓取法
-            const phone = formLogin.querySelector('input[type="tel"]')?.value.trim() || formLogin.querySelectorAll('input')[0].value.trim();
-            const password = formLogin.querySelector('input[type="password"]').value;
+            const phoneEl = formLogin.querySelector('input[type="tel"]') || formLogin.querySelectorAll('input')[0];
+            const passEl = formLogin.querySelector('input[type="password"]');
+            
+            const phone = phoneEl ? phoneEl.value.trim() : '';
+            const password = passEl ? passEl.value : '';
 
             setButtonLoading(formLogin, true, currentLang === 'zh' ? '登入中...' : 'Logging in...');
 
@@ -461,7 +467,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* --- F. 結帳頁：運送方式與超商門市連動邏輯 --- */
-    // ★ 修正：將這段拉進 DOMContentLoaded 確保網頁載入後才綁定事件
     const storeData = {
         '台北市': ['7-11 敦南門市', '7-11 松江門市', '7-11 信義門市'],
         '新北市': ['7-11 溫州門市', '7-11 永安門市'],
@@ -527,15 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* --- G. 啟動與初始化 --- */
-    window.addEventListener('popstate', () => navigateTo(window.location.hash));
-    navigateTo(window.location.hash);
-    updateLanguage(currentLang);
-    initQuiz();
-    checkLoginState();
-});
-
-/* --- H. 結帳頁：付款方式切換與信用卡格式化邏輯 --- */
+    /* --- H. 結帳頁：付款方式切換與信用卡格式化邏輯 --- */
     const radioCard = document.querySelector('input[value="credit_card"]');
     const radioBank = document.querySelector('input[value="bank_transfer"]');
     const viewCard = document.getElementById('payment-cc-view');
@@ -546,7 +543,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ccCvc = document.getElementById('cc-cvc');
 
     if (radioCard && radioBank && viewCard && viewBank) {
-        // 1. 切換付款方式
         function togglePaymentView() {
             if (radioCard.checked) {
                 viewCard.style.display = 'block';
@@ -565,16 +561,14 @@ document.addEventListener('DOMContentLoaded', () => {
         radioCard.addEventListener('change', togglePaymentView);
         radioBank.addEventListener('change', togglePaymentView);
 
-        // 2. 信用卡號自動格式化 (每 4 碼空一格)
         if (ccNum) {
             ccNum.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, ''); // 移除非數字
-                let formatted = value.match(/.{1,4}/g); // 每 4 個分一組
+                let value = e.target.value.replace(/\D/g, ''); 
+                let formatted = value.match(/.{1,4}/g); 
                 e.target.value = formatted ? formatted.join(' ') : '';
             });
         }
 
-        // 3. 有效期限自動格式化 (自動補上 / )
         if (ccExp) {
             ccExp.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, '');
@@ -585,7 +579,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // 4. CVC 限制為 4 位純數字
         if (ccCvc) {
             ccCvc.addEventListener('input', function(e) {
                 e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
@@ -593,8 +586,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ★ 結帳頁「登入/註冊」按鈕精準跳轉至會員系統
+    document.addEventListener('click', function(e) {
+        if (e.target && (e.target.id === 'go-to-login-btn' || e.target.closest('#go-to-login-btn'))) {
+            e.preventDefault();
+            const memberSection = document.getElementById('member');
+            if (memberSection) {
+                const headerOffset = 80;
+                const elementPosition = memberSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                     top: offsetPosition,
+                     behavior: "smooth"
+                });
+                
+                history.pushState(null, null, '#member');
+                document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                memberSection.classList.add('active');
+                const targetNav = document.querySelector(`.nav-item[href="#member"]`);
+                if (targetNav) targetNav.classList.add('active');
+            }
+        }
+    });
+
+    /* --- G. 啟動與初始化 --- */
+    window.addEventListener('popstate', () => navigateTo(window.location.hash));
+    navigateTo(window.location.hash);
+    updateLanguage(currentLang);
+    initQuiz();
+    checkLoginState();
+});
+
 /* =======================================================
-   4. 商品切換邏輯 (保留原樣)
+   4. 商品切換邏輯
    ======================================================= */
 const productData = {
     'p1': { moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg', noticeKey: 'notice_gift' },
@@ -637,7 +663,7 @@ function closeProduct() {
 
 
 /* =======================================================
-   5. Lavend/r 調香系統大腦 (保留原樣)
+   5. Lavend/r 調香系統大腦 
    ======================================================= */
 const scentQuizData = {
     baseQuestions: [
@@ -1070,8 +1096,8 @@ function resetQuiz() {
    ======================================================= */
 let cart = [
     { id: 'p1', name: '擴香瓶禮盒 (Diffuser Gift Box)', price: 1280, quantity: 1, img: 'images/product-box.jpg' },
-    { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 260, quantity: 2, img: 'images/product-reeds.jpg' },
-    { id: 'p3', name: '補充包 (Refill)', price: 660, quantity: 1, img: 'images/product-refill.jpg' }
+    { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 350, quantity: 2, img: 'images/product-reeds.jpg' },
+    { id: 'p3', name: '補充包 (Refill)', price: 560, quantity: 1, img: 'images/product-refill.jpg' }
 ];
 
 let appliedPromoDiscount = 0; 
