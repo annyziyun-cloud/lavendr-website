@@ -54,7 +54,7 @@ function updateLanguage(lang) {
 }
 
 /* =======================================================
-   2. 全域渲染函數 (提至全域避免 Scope 抓不到)
+   2. 全域渲染函數 
    ======================================================= */
 function renderDashboard(data) {
     const dashboardCardView = document.getElementById('dashboard-card-view');
@@ -129,7 +129,6 @@ function updateShippingPlaceholders() {
         selectStore.options[0].textContent = currentLang === 'zh' ? '選擇門市 (Store)' : 'Select Store';
     }
 }
-
 
 /* =======================================================
    3. 網頁互動主邏輯 (DOMContentLoaded)
@@ -264,14 +263,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showSlide(n) {
         if (!slides.length) return;
-        
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
-        
         slideIndex = n;
         if (slideIndex >= slides.length) slideIndex = 0;
         if (slideIndex < 0) slideIndex = slides.length - 1;
-        
         slides[slideIndex].classList.add('active');
         if (dots[slideIndex]) dots[slideIndex].classList.add('active');
     }
@@ -310,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const storedUser = localStorage.getItem('lavendr_user');
         if (storedUser) {
             const userData = JSON.parse(storedUser);
-            
             if(authCardView) authCardView.style.display = 'none';
             if(dashboardCardView) {
                 dashboardCardView.style.display = 'block';
@@ -324,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         body: JSON.stringify({ action: "getUserInfo", phone: userData.phone })
                     });
                     const result = await response.json();
-                    
                     if (result.success) {
                         const newData = {
                             name: result.name,
@@ -533,6 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --- H. 結帳頁：付款方式切換與信用卡格式化邏輯 --- */
+    // ★ 已正確包覆在 DOMContentLoaded 內，確保抓得到元素
     const radioCard = document.querySelector('input[value="credit_card"]');
     const radioBank = document.querySelector('input[value="bank_transfer"]');
     const viewCard = document.getElementById('payment-cc-view');
@@ -611,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --- G. 啟動與初始化 --- */
+    /* --- I. 啟動與初始化 --- */
     window.addEventListener('popstate', () => navigateTo(window.location.hash));
     navigateTo(window.location.hash);
     updateLanguage(currentLang);
