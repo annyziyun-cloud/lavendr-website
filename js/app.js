@@ -618,21 +618,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =======================================================
-   4. 商品切換邏輯
+   4. 商品切換與購物車串接邏輯
    ======================================================= */
 const productData = {
-    'p1': { moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg', noticeKey: 'notice_gift' },
-    'p2': { moodImg: 'assets/mood-2.jpg', productImg: 'assets/product-2.jpg', noticeKey: 'notice_gift' },
-    'p3': { moodImg: 'assets/mood-3.jpg', productImg: 'assets/product-3.jpg', noticeKey: 'notice_gift' },
-    'p4': { productImg: 'assets/product-4.png', noticeKey: 'notice_sticks' }, 
-    'p5': { productImg: 'assets/product-5.jpg', noticeKey: 'notice_refill' },
-    'p6': { productImg: 'assets/product-6.jpg', noticeKey: 'notice_refill' },
-    'p7': { productImg: 'assets/product-7.jpg', noticeKey: 'notice_refill' }
+    'p1': { price: 1280, nameZh: '【茶香】留白 (Blank Space) 禮盒 100ml', nameEn: 'Blank Space Gift Box 100ml', moodImg: 'assets/mood-1.jpg', productImg: 'assets/product-1.jpg', noticeKey: 'notice_gift' },
+    'p2': { price: 1280, nameZh: '【花香】織眠 (Woven Sleep) 禮盒 100ml', nameEn: 'Woven Sleep Gift Box 100ml', moodImg: 'assets/mood-2.jpg', productImg: 'assets/product-2.jpg', noticeKey: 'notice_gift' },
+    'p3': { price: 1280, nameZh: '【咖啡】隅間 (The Corner) 禮盒 100ml', nameEn: 'The Corner Gift Box 100ml', moodImg: 'assets/mood-3.jpg', productImg: 'assets/product-3.jpg', noticeKey: 'notice_gift' },
+    'p4': { price: 350, nameZh: '擴香棒禮盒 10根+2朵裝飾紙花', nameEn: 'Diffuser Reeds Set', productImg: 'assets/product-4.png', noticeKey: 'notice_sticks' }, 
+    'p5': { price: 560, nameZh: '【茶香】留白 (Blank Space) 補充包 100ml', nameEn: 'Blank Space Refill 100ml', productImg: 'assets/product-5.jpg', noticeKey: 'notice_refill' },
+    'p6': { price: 560, nameZh: '【花香】織眠 (Woven Sleep) 補充包 100ml', nameEn: 'Woven Sleep Refill 100ml', productImg: 'assets/product-6.jpg', noticeKey: 'notice_refill' },
+    'p7': { price: 560, nameZh: '【咖啡】隅間 (The Corner) 補充包 100ml', nameEn: 'The Corner Refill 100ml', productImg: 'assets/product-7.jpg', noticeKey: 'notice_refill' }
 };
+
+// 詳細頁面的數量狀態
+let currentDetailProductId = null;
+let currentDetailQty = 1;
 
 function openProduct(productId) {
     const data = productData[productId];
     if (!data) return;
+
+    currentDetailProductId = productId;
+    currentDetailQty = 1; // 每次打開預設為 1
+    const qtyEl = document.getElementById('detail-qty-value');
+    if (qtyEl) qtyEl.textContent = currentDetailQty;
 
     document.getElementById('detail-title').setAttribute('data-i18n', productId + '_title');
     document.getElementById('detail-desc').setAttribute('data-i18n', productId + '_desc');
@@ -659,6 +668,41 @@ function closeProduct() {
     window.scrollTo(0, 0);
 }
 
+// 增減列表卡片的數量
+window.adjustCardQty = function(productId, change) {
+    const qtyEl = document.getElementById('qty-' + productId);
+    if (qtyEl) {
+        let qty = parseInt(qtyEl.textContent) + change;
+        if (qty < 1) qty = 1;
+        qtyEl.textContent = qty;
+    }
+};
+
+// 從列表卡片加入購物車
+window.addCardToCart = function(productId) {
+    const qtyEl = document.getElementById('qty-' + productId);
+    let qty = 1;
+    if (qtyEl) {
+        qty = parseInt(qtyEl.textContent);
+        qtyEl.textContent = 1; // 加入後重置顯示數量為 1
+    }
+    window.addToCart(productId, qty);
+};
+
+// 增減詳細頁的數量
+window.adjustDetailQty = function(change) {
+    currentDetailQty += change;
+    if (currentDetailQty < 1) currentDetailQty = 1;
+    const qtyEl = document.getElementById('detail-qty-value');
+    if (qtyEl) qtyEl.textContent = currentDetailQty;
+};
+
+// 從詳細頁加入購物車
+window.addDetailToCart = function() {
+    if (currentDetailProductId) {
+        window.addToCart(currentDetailProductId, currentDetailQty);
+    }
+};
 
 /* =======================================================
    5. Lavend/r 調香系統大腦 
@@ -1092,11 +1136,70 @@ function resetQuiz() {
 /* =======================================================
    6. 購物車與結帳邏輯 (Checkout Logic - 高級感編輯版)
    ======================================================= */
-let cart = [
-    { id: 'p1', name: '擴香瓶禮盒 (Diffuser Gift Box)', price: 1280, quantity: 1, img: 'images/product-box.jpg' },
-    { id: 'p2', name: '擴香棒組 (Diffuser Reeds)', price: 350, quantity: 2, img: 'images/product-reeds.jpg' },
-    { id: 'p3', name: '補充包 (Refill)', price: 560, quantity: 1, img: 'images/product-refill.jpg' }
-];
+/* =======================================================
+   6. 購物車與結帳邏輯 (動態即時串接版)
+   ======================================================= */
+// 將購物車初始為空陣列
+let cart = [];
+let appliedPromoDiscount = 0; 
+let appliedPoints = 0;
+
+// 全域加入購物車函數
+window.addToCart = function(productId, qty) {
+    const product = productData[productId];
+    if (!product) return;
+
+    // 檢查購物車內是否已有該商品
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity += qty;
+    } else {
+        cart.push({
+            id: productId,
+            nameZh: product.nameZh,
+            nameEn: product.nameEn,
+            price: product.price,
+            quantity: qty,
+            img: product.productImg
+        });
+    }
+    
+    // 即時更新畫面與數字
+    renderCheckoutPage(); 
+    updateCartBadge();    
+
+    // 跳出成功提示
+    const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
+    alert(lang === 'zh' ? '已成功加入購物車！' : 'Added to cart successfully!');
+};
+
+window.updateCartQuantity = function(productId, change) {
+    const item = cart.find(p => p.id === productId);
+    if (item) {
+        let newQty = item.quantity + change;
+        if (newQty < 1) newQty = 1; 
+        item.quantity = newQty;
+        renderCheckoutPage(); 
+        updateCartBadge();    
+    }
+};
+
+window.removeCartItem = function(productId) {
+    if (confirm(typeof currentLang !== 'undefined' && currentLang === 'en' ? 'Remove this item?' : '確定要移除此商品嗎？')) {
+        cart = cart.filter(p => p.id !== productId);
+        renderCheckoutPage();
+        updateCartBadge();
+    }
+};
+
+window.updateCartBadge = function() {
+    const badge = document.getElementById('cart-badge');
+    if (badge) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        badge.textContent = totalItems;
+        badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+};
 
 let appliedPromoDiscount = 0; 
 let appliedPoints = 0;
@@ -1181,40 +1284,42 @@ function renderCheckoutPage() {
         cartContainer.innerHTML = '';
         let subtotal = 0;
 
-        cart.forEach(item => {
-            if(item.quantity > 0) {
-                subtotal += item.price * item.quantity;
-                
-                let displayName = item.name;
-                if(item.name.includes('(')) {
-                    let parts = item.name.split('(');
-                    displayName = lang === 'zh' ? parts[0].trim() : parts[1].replace(')', '').trim();
-                }
+        // 若購物車為空，顯示提示訊息
+        if (cart.length === 0) {
+            cartContainer.innerHTML = `<p style="color: var(--text-light); text-align: center; padding: 2rem 0; font-size: 0.95rem;">${lang === 'zh' ? '購物車是空的，快去選購喜歡的香氛吧！' : 'Your cart is empty. Explore our collection!'}</p>`;
+        } else {
+            cart.forEach(item => {
+                if(item.quantity > 0) {
+                    subtotal += item.price * item.quantity;
+                    
+                    // 動態切換中英文品名
+                    let displayName = lang === 'zh' ? item.nameZh : item.nameEn;
 
-                cartContainer.innerHTML += `
-                    <div class="cart-item">
-                        <img src="${item.img}" alt="${displayName}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/60x60?text=Img'">
-                        
-                        <div class="cart-item-info">
-                            <h5>${displayName}</h5>
-                            <p>NT$ ${item.price.toLocaleString()}</p>
+                    cartContainer.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${item.img}" alt="${displayName}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/60x60?text=Img'">
                             
-                            <div class="qty-control" style="border:none; margin-top:0.5rem; color:#777; font-size:0.8rem;">
-                                Quantity: 
-                                <span style="cursor:pointer; padding:0 5px;" onclick="updateCartQuantity('${item.id}', -1)">-</span>
-                                ${item.quantity}
-                                <span style="cursor:pointer; padding:0 5px;" onclick="updateCartQuantity('${item.id}', 1)">+</span>
+                            <div class="cart-item-info">
+                                <h5>${displayName}</h5>
+                                <p>NT$ ${item.price.toLocaleString()}</p>
+                                
+                                <div class="qty-control" style="border:none; margin-top:0.5rem; color:#777; font-size:0.8rem;">
+                                    Quantity: 
+                                    <span style="cursor:pointer; padding:0 5px;" onclick="updateCartQuantity('${item.id}', -1)">-</span>
+                                    ${item.quantity}
+                                    <span style="cursor:pointer; padding:0 5px;" onclick="updateCartQuantity('${item.id}', 1)">+</span>
+                                </div>
+                            </div>
+                            
+                            <div class="cart-item-actions">
+                                <span class="cart-item-price">NT$ ${(item.price * item.quantity).toLocaleString()}</span>
+                                <button class="remove-text-btn" onclick="removeCartItem('${item.id}')">${lang === 'en' ? 'Remove' : '移除'}</button>
                             </div>
                         </div>
-                        
-                        <div class="cart-item-actions">
-                            <span class="cart-item-price">NT$ ${(item.price * item.quantity).toLocaleString()}</span>
-                            <button class="remove-text-btn" onclick="removeCartItem('${item.id}')">${lang === 'en' ? 'Remove' : '移除'}</button>
-                        </div>
-                    </div>
-                `;
-            }
-        });
+                    `;
+                }
+            });
+        }
 
         let tierDiscount = isVipOrDewdrop ? Math.floor(subtotal * 0.15) : 0;
         let finalTotal = subtotal - tierDiscount - appliedPromoDiscount - appliedPoints;
