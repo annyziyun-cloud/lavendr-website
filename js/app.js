@@ -7,17 +7,14 @@ let currentLang = localStorage.getItem('lavendr_lang') || 'zh';
 function updateLanguage(lang) {
     const storedUser = localStorage.getItem('lavendr_user');
     
-    // 確保 renderDashboard 在全域可用後執行
     if (storedUser && typeof renderDashboard === 'function') {
         renderDashboard(JSON.parse(storedUser));
     }
     
-    // 確保 renderCheckoutPage 在全域可用後執行
     if (typeof renderCheckoutPage === 'function' && document.getElementById('checkout')) {
         renderCheckoutPage();
     }
 
-    // 1. 替換一般文字
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -26,7 +23,6 @@ function updateLanguage(lang) {
         }
     });
 
-    // 2. 替換輸入框提示文字 (Placeholder)
     const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
     placeholders.forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
@@ -35,21 +31,18 @@ function updateLanguage(lang) {
         }
     });
     
-    // 3. 替換按鈕本身文字
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
         langBtn.textContent = lang === 'zh' ? 'EN / 中文' : '中 / English';
     }
     localStorage.setItem('lavendr_lang', lang);
 
-    // 4. 即時更新問卷語言
     if (document.getElementById('quizContainer') && document.getElementById('quizContainer').style.display === 'block') {
         renderQuestion();
     } else if (document.getElementById('quizResult') && document.getElementById('quizResult').style.display === 'block') {
         showResult();
     }
 
-    // 5. 即時更新超商下拉選單的預設文字
     updateShippingPlaceholders();
 }
 
@@ -188,15 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLanguage(currentLang);
         });
     }
-
-    const cartBtns = document.querySelectorAll('.add-to-cart-btn');
-    cartBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            const alertMsg = currentLang === 'zh' ? '已成功加入購物車！' : 'Added to cart successfully!';
-            alert(alertMsg);
-        });
-    });
 
     const accordions = document.querySelectorAll('.accordion-header');
     accordions.forEach(acc => {
@@ -357,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ★ 依據使用者需求，保留未經修改的舊版 formRegister 邏輯
     if (formRegister) {
         formRegister.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -532,7 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewCard = document.getElementById('payment-cc-view');
     const viewBank = document.getElementById('payment-bank-view');
 
-    // 1. 付款提示文字切換 (取代原本的必填欄位切換)
     if (radioCard && radioBank && viewCard && viewBank) {
         function togglePaymentView() {
             if (radioCard.checked) {
@@ -547,7 +531,6 @@ document.addEventListener('DOMContentLoaded', () => {
         radioBank.addEventListener('change', togglePaymentView);
     }
 
-    // 2. 表單即時驗證 (Blur Event)
     const nameInput = document.getElementById('shipping-name');
     const phoneInput = document.getElementById('shipping-phone');
 
@@ -560,7 +543,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.classList.remove('is-valid');
                 this.classList.add('is-invalid');
             } else {
-                // 若空白則重置狀態
                 this.classList.remove('is-valid', 'is-invalid');
             }
         });
@@ -568,9 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (phoneInput) {
         phoneInput.addEventListener('blur', function() {
-            // 簡單正則驗證：台灣手機 09 開頭共 10 碼，或是市話格式
             const phoneRegex = /^(09\d{8}|0\d{1,2}\d{6,8})$/;
-            const val = this.value.replace(/\D/g, ''); // 濾掉符號
+            const val = this.value.replace(/\D/g, ''); 
             
             if (phoneRegex.test(val)) {
                 this.classList.remove('is-invalid');
@@ -584,7 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ★ 結帳頁「登入/註冊」按鈕精準跳轉至會員系統
+    // 結帳頁「登入/註冊」按鈕精準跳轉至會員系統
     document.addEventListener('click', function(e) {
         if (e.target && (e.target.id === 'go-to-login-btn' || e.target.closest('#go-to-login-btn'))) {
             e.preventDefault();
@@ -639,7 +620,7 @@ function openProduct(productId) {
     if (!data) return;
 
     currentDetailProductId = productId;
-    currentDetailQty = 1; // 每次打開預設為 1
+    currentDetailQty = 1; 
     const qtyEl = document.getElementById('detail-qty-value');
     if (qtyEl) qtyEl.textContent = currentDetailQty;
 
@@ -684,7 +665,7 @@ window.addCardToCart = function(productId) {
     let qty = 1;
     if (qtyEl) {
         qty = parseInt(qtyEl.textContent);
-        qtyEl.textContent = 1; // 加入後重置顯示數量為 1
+        qtyEl.textContent = 1; 
     }
     window.addToCart(productId, qty);
 };
@@ -965,7 +946,7 @@ const fragranceProfiles = {
         name: { zh: '《明亮柑橘與花果 (The Vibrant Awakening)》', en: '《Bright Citrus & Florals (The Vibrant Awakening)》' }, 
         quote: { zh: '「故事從最精彩的半途開始，沒有起點，也沒有終點。」', en: '"The story begins brilliantly in the middle, with no start and no end."' },
         story: { 
-            zh: ['折射著光線的流動稜鏡，將沉悶的空氣瞬間劃破。','跳躍的多汁果香與靈動的花朵，瓦解了過度的緊繃與猶豫不決。','這是破繭而出的生命力，帶有微氣泡般的明亮感，宣告著對未知的熱愛與無所畏懼，隨時準備好迎向下一場冒險。'], 
+            zh: ['折射著光線的流動稜鏡，將沉悶的空氣瞬間劃破。','跳躍的多汁果香與靈動解除了過度的緊繃與猶豫不決。','這是破繭而出的生命力，帶有微氣泡般的明亮感，宣告著對未知的熱愛與無所畏懼，隨時準備好迎向下一場冒險。'], 
             en: ['A flowing prism refracting light, instantly piercing through the dull air.', 'Jumping, juicy fruity notes and agile florals dissolve excessive tension and hesitation.', 'This is the vitality of breaking out of a cocoon, with a sparkling brightness that declares a love for the unknown and fearlessness, always ready for the next adventure.'] 
         }
     }
@@ -1134,9 +1115,6 @@ function resetQuiz() {
 }
 
 /* =======================================================
-   6. 購物車與結帳邏輯 (Checkout Logic - 高級感編輯版)
-   ======================================================= */
-/* =======================================================
    6. 購物車與結帳邏輯 (動態即時串接版)
    ======================================================= */
 // 將購物車初始為空陣列
@@ -1172,37 +1150,6 @@ window.addToCart = function(productId, qty) {
     const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
     alert(lang === 'zh' ? '已成功加入購物車！' : 'Added to cart successfully!');
 };
-
-window.updateCartQuantity = function(productId, change) {
-    const item = cart.find(p => p.id === productId);
-    if (item) {
-        let newQty = item.quantity + change;
-        if (newQty < 1) newQty = 1; 
-        item.quantity = newQty;
-        renderCheckoutPage(); 
-        updateCartBadge();    
-    }
-};
-
-window.removeCartItem = function(productId) {
-    if (confirm(typeof currentLang !== 'undefined' && currentLang === 'en' ? 'Remove this item?' : '確定要移除此商品嗎？')) {
-        cart = cart.filter(p => p.id !== productId);
-        renderCheckoutPage();
-        updateCartBadge();
-    }
-};
-
-window.updateCartBadge = function() {
-    const badge = document.getElementById('cart-badge');
-    if (badge) {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        badge.textContent = totalItems;
-        badge.style.display = totalItems > 0 ? 'flex' : 'none';
-    }
-};
-
-let appliedPromoDiscount = 0; 
-let appliedPoints = 0;
 
 window.updateCartQuantity = function(productId, change) {
     const item = cart.find(p => p.id === productId);
