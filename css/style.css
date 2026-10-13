@@ -482,20 +482,25 @@ body {
 .checkout-progress-bar .active { color: var(--text-dark); font-weight: 600; }
 .checkout-progress-bar .separator { margin: 0 1rem; font-weight: 300; }
 
-/* 🌟 全新專屬 Grid 容器：保證一刀兩斷，絕對左右並排 🌟 */
+/* 乾淨、穩定的左右並排佈局 */
 .checkout-grid-container {
-    display: grid !important;
-    grid-template-columns: 55% 38% !important; /* 左欄 55%，右欄 38% */
-    justify-content: space-between !important; /* 剩下 7% 留白做間距 */
-    align-items: start !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    width: 100% !important;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
+/* 明確設定左右佔比 */
+.checkout-forms-area { 
+    width: 55%; 
+}
 .checkout-summary-area { 
-    position: sticky !important; 
-    top: 120px !important; 
+    width: 38%;
+    position: sticky; 
+    top: 120px; 
 }
 
 .checkout-block { margin-bottom: 4rem; }
@@ -635,6 +640,19 @@ body {
     .story-upper { flex-direction: column; gap: 3rem; }
     .story-upper-right { padding-top: 2rem; }
 
+   /* 結帳區 RWD 微調 (平板與手機版改為上下排列) */
+    .checkout-grid-container { 
+        flex-direction: column; 
+        gap: 4rem; 
+    }
+    .checkout-forms-area, .checkout-summary-area {
+        width: 100%;
+    }
+    .checkout-summary-area { 
+        position: relative; 
+        top: 0; 
+    }
+}
 @media (max-width: 768px) {
     .nav-links { display: none; }
     
