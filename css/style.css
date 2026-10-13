@@ -277,6 +277,23 @@ body {
 }
 .product-notice p { font-size: 0.9rem; color: var(--text-light); line-height: 1.8; letter-spacing: 0.5px; }
 
+/* === 商品卡片小數量選擇器 === */
+.mini-qty-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+.mini-qty-control span[onclick] {
+    cursor: pointer;
+    padding: 0 8px;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.mini-qty-control span[onclick]:hover { color: var(--text-dark); }
 
 /* =========================================
    7. 會員系統 (Member System)
