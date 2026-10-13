@@ -286,9 +286,10 @@
                 <span class="separator">——</span>
                 <span>PAYMENT</span>
             </div>
-            
+
             <div class="checkout-grid-container">
                 
+                <!-- ====== 左側：資料填寫區 ====== -->
                 <div class="checkout-forms-area">
                     
                     <!-- 1. 會員狀態區塊 -->
@@ -309,7 +310,6 @@
                         <h4 class="serif-title" data-i18n="co_shipping">Shipping address</h4>
                         <form id="shipping-form" class="checkout-form">
                             <div class="input-row">
-                                <!-- 加上 autocomplete 優化瀏覽器自動填入 -->
                                 <input type="text" autocomplete="name" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名 (First / Last name)" required>
                                 <input type="tel" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話 (Phone)" required>
                             </div>
@@ -348,8 +348,6 @@
                     <div class="checkout-block">
                         <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
                         <form id="payment-form" class="checkout-form">
-                            
-                            <!-- 付款方式切換 -->
                             <div class="shipping-method-toggle" style="margin-bottom: 2rem;">
                                 <label class="radio-label">
                                     <input type="radio" name="payment_method" value="credit_card" checked>
@@ -363,7 +361,6 @@
                                 </label>
                             </div>
 
-                            <!-- 狀態 A：信用卡資訊 -->
                             <div id="payment-cc-view">
                                 <input type="text" id="cc-number" autocomplete="cc-number" inputmode="numeric" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (Card number)" maxlength="19" required>
                                 <div class="input-row">
@@ -372,7 +369,6 @@
                                 </div>
                             </div>
 
-                            <!-- 狀態 B：匯款資訊 (預設隱藏) -->
                             <div id="payment-bank-view" style="display: none;">
                                 <div class="bank-info-box">
                                     <p class="bank-notice" data-i18n="co_bank_notice">請於訂單成立後 24 小時內完成匯款，以保留您的專屬商品。</p>
@@ -384,11 +380,13 @@
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                     </div>
 
-                <!-- 4. 右側訂單摘要區 -->
+                </div> <!-- ====== 左側區塊：結束 ====== -->
+
+
+                <!-- ====== 右側：訂單摘要區 ====== -->
                 <div class="checkout-summary-area">
                     <div class="summary-header">
                         <h3 class="serif-title" data-i18n="co_summary">Your order</h3>
@@ -442,7 +440,7 @@
                     </div>
 
                     <button type="button" id="checkout-submit-btn" class="editorial-btn full-width" data-i18n="co_btn_checkout">COMPLETE PURCHASE</button>
-                </div>
+                </div> <!-- ====== 右側區塊：結束 ====== -->
 
             </div>
         </section>
