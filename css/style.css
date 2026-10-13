@@ -635,17 +635,6 @@ body {
     .story-upper { flex-direction: column; gap: 3rem; }
     .story-upper-right { padding-top: 2rem; }
 
-    /* 結帳區 RWD 微調 (平板與手機版改為上下排列) */
-    .checkout-grid-container { 
-        grid-template-columns: 100% !important; 
-        gap: 4rem !important; 
-    }
-    .checkout-summary-area { 
-        position: relative !important; 
-        top: 0 !important; 
-    }
-}
-
 @media (max-width: 768px) {
     .nav-links { display: none; }
     
