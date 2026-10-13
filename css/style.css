@@ -13,6 +13,7 @@
     --glass-shadow: rgba(0, 0, 0, 0.05);
 }
 
+/* ★ 修復：將原本誤打的 "-" 改回 "*" */
 * {
     margin: 0;
     padding: 0;
@@ -462,7 +463,7 @@ body {
 
 
 /* =========================================
-   12. 結帳與購物車頁面 (Checkout - 高級編輯風格)
+   11. 結帳與購物車頁面 (Checkout - 高級編輯風格)
    ========================================= */
 .checkout-section {
     background-color: var(--bg-color); 
@@ -483,34 +484,18 @@ body {
 
 /* 🌟 全新專屬 Grid 容器：保證一刀兩斷，絕對左右並排 🌟 */
 .checkout-grid-container {
-    display: grid;
-    grid-template-columns: 55% 38%; /* 左欄 55%，右欄 38% */
-    justify-content: space-between; /* 剩下 7% 留白做間距 */
-    align-items: start;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.checkout-forms-area {
-    /* 不需設定寬度，由 Grid 的 55% 自動接管 */
+    display: grid !important;
+    grid-template-columns: 55% 38% !important; /* 左欄 55%，右欄 38% */
+    justify-content: space-between !important; /* 剩下 7% 留白做間距 */
+    align-items: start !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
 }
 
 .checkout-summary-area { 
-    position: sticky; 
-    top: 120px; 
-}
-
-/* 手機版 RWD：切換為上下排列 */
-@media (max-width: 900px) {
-    .checkout-grid-container { 
-        grid-template-columns: 100%; /* 強制變為單一欄位 */
-        gap: 4rem; 
-    }
-    .checkout-summary-area { 
-        position: relative; 
-        top: 0; 
-    }
+    position: sticky !important; 
+    top: 120px !important; 
 }
 
 .checkout-block { margin-bottom: 4rem; }
@@ -625,7 +610,7 @@ body {
     border: none !important; margin-top: 0.5rem; color: var(--text-light); font-size: 0.85rem;
     display: flex; align-items: center; gap: 0.5rem;
 }
-.qty-control span[onclick] { font-size: 1.1rem; }
+.qty-control span[onclick] { font-size: 1.1rem; cursor: pointer; }
 
 .cart-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; }
 .remove-text-btn { background: none; border: none; font-size: 0.75rem; color: #999; text-decoration: underline; cursor: pointer; padding: 0; }
@@ -642,21 +627,18 @@ body {
 .muted-text { color: #999; font-size: 0.8rem; }
 .points-earned-hint { text-align: right; font-size: 0.8rem; color: #999; margin-top: 0.5rem; }
 
+
 /* =========================================
-   11. 手機版響應式設計 (RWD)
+   12. 手機版響應式設計 (RWD - 統一放於最底層)
    ========================================= */
 @media (max-width: 900px) {
     .story-upper { flex-direction: column; gap: 3rem; }
     .story-upper-right { padding-top: 2rem; }
 
     /* 結帳區 RWD 微調 (平板與手機版改為上下排列) */
-    .checkout-page-container.split-layout { 
-        display: flex !important; 
-        flex-direction: column !important; 
+    .checkout-grid-container { 
+        grid-template-columns: 100% !important; 
         gap: 4rem !important; 
-    }
-    .checkout-forms-area, .checkout-summary-area {
-        width: 100% !important;
     }
     .checkout-summary-area { 
         position: relative !important; 
@@ -678,9 +660,9 @@ body {
     .event-image img { min-height: 300px; }
     .event-text { padding: 3rem 2rem; text-align: center; }
     
-    .story-layout { flex-direction: column; gap: 3rem; margin-left: 0; margin-top: 4rem; }
-    .story-text { padding-right: 0; }
-    .vertical-text { left: 1rem; top: -20px; }
+    .story-upper { flex-direction: column; gap: 3rem; margin-left: 0; margin-top: 4rem; }
+    .story-upper-right { padding-right: 0; }
+    .vertical-title { left: 1rem; top: -20px; }
     
     .detail-layout { flex-direction: column; gap: 2rem; }
     .detail-info { padding-top: 0; }
@@ -689,8 +671,7 @@ body {
     .tier-header { flex: 1; width: 100%; padding-right: 0; border-right: none; border-bottom: 1px solid rgba(163, 149, 135, 0.2); padding-bottom: 2rem; margin-bottom: 2rem; }
     .tier-benefits { padding-left: 0; }
     .member-anchor-nav { flex-wrap: wrap; gap: 1.5rem; }
-    .member-card { padding: 2rem 1.5rem; }
-
+    
     .member-section-block.split-layout { flex-direction: column; min-height: auto; }
     .auth-visual { padding: 4rem 2rem; text-align: center; }
     .glass-overlay-text { padding: 1rem; text-align: center; }
