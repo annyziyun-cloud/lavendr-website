@@ -7,14 +7,17 @@ let currentLang = localStorage.getItem('lavendr_lang') || 'zh';
 function updateLanguage(lang) {
     const storedUser = localStorage.getItem('lavendr_user');
     
+    // 確保 renderDashboard 在全域可用後執行
     if (storedUser && typeof renderDashboard === 'function') {
         renderDashboard(JSON.parse(storedUser));
     }
     
+    // 確保 renderCheckoutPage 在全域可用後執行
     if (typeof renderCheckoutPage === 'function' && document.getElementById('checkout')) {
         renderCheckoutPage();
     }
 
+    // 1. 替換一般文字
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -23,6 +26,7 @@ function updateLanguage(lang) {
         }
     });
 
+    // 2. 替換輸入框提示文字 (Placeholder)
     const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
     placeholders.forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
@@ -31,18 +35,21 @@ function updateLanguage(lang) {
         }
     });
     
+    // 3. 替換按鈕本身文字
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
         langBtn.textContent = lang === 'zh' ? 'EN / 中文' : '中 / English';
     }
     localStorage.setItem('lavendr_lang', lang);
 
+    // 4. 即時更新問卷語言
     if (document.getElementById('quizContainer') && document.getElementById('quizContainer').style.display === 'block') {
         renderQuestion();
     } else if (document.getElementById('quizResult') && document.getElementById('quizResult').style.display === 'block') {
         showResult();
     }
 
+    // 5. 即時更新超商下拉選單的預設文字
     updateShippingPlaceholders();
 }
 
@@ -181,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLanguage(currentLang);
         });
     }
+
+    // 移除原本無用的舊版加購物車按鈕綁定 (已改由 addCardToCart 處理)
+    // const cartBtns = document.querySelectorAll('.add-to-cart-btn'); ...
 
     const accordions = document.querySelectorAll('.accordion-header');
     accordions.forEach(acc => {
@@ -341,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ★ 依據使用者需求，保留未經修改的舊版 formRegister 邏輯
+    // ★ 完整保留你的舊版註冊邏輯
     if (formRegister) {
         formRegister.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -475,9 +485,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(selectCity) selectCity.setAttribute('required', 'true');
                 if(selectStore) selectStore.setAttribute('required', 'true');
             }
-            
+            // 運費重算
             renderCheckoutPage();
-        }
         }
 
         radioHome.addEventListener('change', toggleShippingView);
@@ -654,6 +663,11 @@ function closeProduct() {
 
 // 增減列表卡片的數量
 window.adjustCardQty = function(productId, change) {
+    // 預防事件冒泡，若有傳遞 event 物件，則阻擋
+    if (window.event && window.event.stopPropagation) {
+        window.event.stopPropagation();
+    }
+    
     const qtyEl = document.getElementById('qty-' + productId);
     if (qtyEl) {
         let qty = parseInt(qtyEl.textContent) + change;
@@ -664,6 +678,11 @@ window.adjustCardQty = function(productId, change) {
 
 // 從列表卡片加入購物車
 window.addCardToCart = function(productId) {
+    // 預防事件冒泡
+    if (window.event && window.event.stopPropagation) {
+        window.event.stopPropagation();
+    }
+
     const qtyEl = document.getElementById('qty-' + productId);
     let qty = 1;
     if (qtyEl) {
