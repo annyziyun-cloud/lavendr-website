@@ -344,9 +344,63 @@
                         </form>
                     </div>
                     
-                    <!-- 3. 付款資訊 -->
+                    <!-- 2. 運送資訊 (加入 Input Wrapper 以支援即時驗證勾勾) -->
                     <div class="checkout-block">
-                        <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
+                        <h4 class="serif-title" data-i18n="co_shipping">Shipping address</h4>
+                        <form id="shipping-form" class="checkout-form">
+                            <div class="input-row">
+                                <div class="input-wrapper">
+                                    <input type="text" id="shipping-name" autocomplete="name" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名 (First / Last name)" required>
+                                    <span class="validation-icon"></span>
+                                </div>
+                                <div class="input-wrapper">
+                                    <input type="tel" id="shipping-phone" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話 (Phone)" required>
+                                    <span class="validation-icon"></span>
+                                </div>
+                            </div>
+
+                            <div class="shipping-method-toggle">
+                                <!-- ... (超商與宅配 Radio 按鈕不變) ... -->
+                                <label class="radio-label">
+                                    <input type="radio" name="shipping_method" value="home" checked>
+                                    <span class="custom-radio"></span>
+                                    <span data-i18n="co_method_home">宅配 (Home Delivery)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="shipping_method" value="store">
+                                    <span class="custom-radio"></span>
+                                    <span data-i18n="co_method_store">超商取貨 (Store Pickup)</span>
+                                </label>
+                            </div>
+
+                            <!-- ... (地址與下拉選單不變) ... -->
+                            <div id="shipping-home-view">
+                                <input type="text" autocomplete="street-address" id="home-address-input" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
+                            </div>
+                            <div id="shipping-store-view" style="display: none;">
+                                <div class="input-row">
+                                    <select id="store-city-select" autocomplete="address-level1">
+                                        <option value="" disabled selected data-i18n="co_ph_city">選擇縣市 (City)</option>
+                                    </select>
+                                    <select id="store-name-select" disabled>
+                                        <option value="" disabled selected data-i18n="co_ph_store">選擇門市 (Store)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- 3. 付款資訊 (移除卡號輸入，加入 Trust Signals 與動態提示) -->
+                    <div class="checkout-block">
+                        <div class="payment-header">
+                            <h4 class="serif-title" data-i18n="co_payment">Payment method</h4>
+                            <!-- Trust Signal：安全加密提示 -->
+                            <div class="trust-signals">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <span data-i18n="co_secure_payment">SSL 安全加密環境</span>
+                            </div>
+                        </div>
+
                         <form id="payment-form" class="checkout-form">
                             <div class="shipping-method-toggle" style="margin-bottom: 2rem;">
                                 <label class="radio-label">
@@ -361,33 +415,21 @@
                                 </label>
                             </div>
 
-                            <div id="payment-cc-view">
-                                <input type="text" id="cc-number" autocomplete="cc-number" inputmode="numeric" data-i18n-placeholder="co_ph_card" placeholder="信用卡卡號 (Card number)" maxlength="19" required>
-                                <div class="input-row">
-                                    <input type="text" id="cc-exp" autocomplete="cc-exp" inputmode="numeric" data-i18n-placeholder="co_ph_exp" placeholder="有效期限 (MM/YY)" maxlength="5" required>
-                                    <input type="text" id="cc-cvc" autocomplete="cc-csc" inputmode="numeric" data-i18n-placeholder="co_ph_cvc" placeholder="安全碼 (CVC)" maxlength="4" required>
-                                </div>
+                            <!-- 狀態 A：信用卡提示 (取代原本的輸入框) -->
+                            <div id="payment-cc-view" class="payment-hint-box">
+                                <p data-i18n="co_cc_hint">點擊結帳後，系統將引導至安全加密的金流頁面進行付款。</p>
                             </div>
 
-                            <div id="payment-bank-view" style="display: none;">
-                                <div class="bank-info-box">
-                                    <p class="bank-notice" data-i18n="co_bank_notice">請於訂單成立後 24 小時內完成匯款，以保留您的專屬商品。</p>
-                                    <div class="bank-details">
-                                        <p><span data-i18n="co_bank_name_label">銀行名稱：</span><strong data-i18n="co_bank_name">玉山銀行 (808)</strong></p>
-                                        <p><span data-i18n="co_bank_branch_label">分行名稱：</span><strong data-i18n="co_bank_branch">中山分行</strong></p>
-                                        <p><span data-i18n="co_bank_account_label">帳戶號碼：</span><strong data-i18n="co_bank_account">0000-1111-2222-3333</strong></p>
-                                        <p><span data-i18n="co_bank_title_label">戶名：</span><strong data-i18n="co_bank_title">LAVENDR DIGITAL STUDIO</strong></p>
-                                    </div>
-                                </div>
+                            <!-- 狀態 B：匯款提示 (取代原本的詳細帳號) -->
+                            <div id="payment-bank-view" class="payment-hint-box" style="display: none;">
+                                <p data-i18n="co_bank_hint">訂單成立後，將於下一頁提供專屬匯款帳號。</p>
                             </div>
                         </form>
                     </div>
+                </div>
 
-                </div> <!-- ====== 左側區塊：結束 ====== -->
-
-
-                <!-- ====== 右側：訂單摘要區 ====== -->
-                <div class="checkout-summary-area">
+                <!-- 4. 右側訂單摘要區 (加上 .glass-summary-card 類別) -->
+                <div class="checkout-summary-area glass-summary-card">
                     <div class="summary-header">
                         <h3 class="serif-title" data-i18n="co_summary">Your order</h3>
                         <a href="#shop" class="editorial-link small" data-i18n="co_edit_cart">Edit cart</a>
