@@ -475,6 +475,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(selectCity) selectCity.setAttribute('required', 'true');
                 if(selectStore) selectStore.setAttribute('required', 'true');
             }
+            
+            renderCheckoutPage();
+        }
         }
 
         radioHome.addEventListener('change', toggleShippingView);
@@ -1268,12 +1271,49 @@ function renderCheckoutPage() {
             });
         }
 
+        // 1. 計算折扣後的商品小計
         let tierDiscount = isVipOrDewdrop ? Math.floor(subtotal * 0.15) : 0;
-        let finalTotal = subtotal - tierDiscount - appliedPromoDiscount - appliedPoints;
-        if (finalTotal < 0) finalTotal = 0;
+        let finalTotalBeforeShipping = subtotal - tierDiscount - appliedPromoDiscount - appliedPoints;
+        if (finalTotalBeforeShipping < 0) finalTotalBeforeShipping = 0;
 
+        // 2. 判斷運費邏輯 (宅配100 / 超取70 / 滿千免運)
+        let shippingFee = 0;
+        const selectedShipping = document.querySelector('input[name="shipping_method"]:checked');
+        const shippingType = selectedShipping ? selectedShipping.value : 'home'; // 預設宅配
+        
+        if (subtotal > 0) {
+            if (finalTotalBeforeShipping >= 1000) {
+                shippingFee = 0; // 折扣後滿千免運
+            } else {
+                shippingFee = (shippingType === 'home') ? 100 : 70; // 宅配 100，超取 70
+            }
+        }
+
+        // 3. 計算最終總金額
+        let finalTotal = finalTotalBeforeShipping + shippingFee;
+
+        // 4. 更新畫面文字
         document.getElementById('summary-subtotal').textContent = `NT$ ${subtotal.toLocaleString()}`;
         
+        // ★ 更新運費 UI 顯示
+        const shippingFeeEl = document.getElementById('summary-shipping-fee');
+        if (shippingFeeEl) {
+            if (subtotal === 0) {
+                shippingFeeEl.textContent = 'NT$ 0';
+                shippingFeeEl.style.color = 'var(--text-light)';
+                shippingFeeEl.style.fontWeight = 'normal';
+            } else if (shippingFee === 0) {
+                shippingFeeEl.textContent = lang === 'zh' ? '免運費' : 'Free';
+                shippingFeeEl.style.color = '#7b9e87'; // 綠色提示免運
+                shippingFeeEl.style.fontWeight = '600';
+            } else {
+                shippingFeeEl.textContent = `NT$ ${shippingFee}`;
+                shippingFeeEl.style.color = 'var(--text-light)';
+                shippingFeeEl.style.fontWeight = 'normal';
+            }
+            shippingFeeEl.classList.remove('muted-text'); 
+        }
+
         const rowTier = document.getElementById('row-tier-discount');
         if (tierDiscount > 0) {
             rowTier.style.display = 'flex';
