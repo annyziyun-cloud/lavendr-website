@@ -304,45 +304,6 @@
                             <p class="member-tier-info"><span data-i18n="co_tier_prefix">目前等級：</span><span id="checkout-user-tier"></span></p>
                         </div>
                     </div>
-
-                    <!-- 2. 運送資訊 -->
-                    <div class="checkout-block">
-                        <h4 class="serif-title" data-i18n="co_shipping">Shipping address</h4>
-                        <form id="shipping-form" class="checkout-form">
-                            <div class="input-row">
-                                <input type="text" autocomplete="name" data-i18n-placeholder="co_ph_name" placeholder="收件人姓名 (First / Last name)" required>
-                                <input type="tel" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="co_ph_phone" placeholder="聯絡電話 (Phone)" required>
-                            </div>
-
-                            <div class="shipping-method-toggle">
-                                <label class="radio-label">
-                                    <input type="radio" name="shipping_method" value="home" checked>
-                                    <span class="custom-radio"></span>
-                                    <span data-i18n="co_method_home">宅配 (Home Delivery)</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="shipping_method" value="store">
-                                    <span class="custom-radio"></span>
-                                    <span data-i18n="co_method_store">超商取貨 (Store Pickup)</span>
-                                </label>
-                            </div>
-
-                            <div id="shipping-home-view">
-                                <input type="text" autocomplete="street-address" id="home-address-input" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
-                            </div>
-
-                            <div id="shipping-store-view" style="display: none;">
-                                <div class="input-row">
-                                    <select id="store-city-select" autocomplete="address-level1">
-                                        <option value="" disabled selected data-i18n="co_ph_city">選擇縣市 (City)</option>
-                                    </select>
-                                    <select id="store-name-select" disabled>
-                                        <option value="" disabled selected data-i18n="co_ph_store">選擇門市 (Store)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     
                     <!-- 2. 運送資訊 (加入 Input Wrapper 以支援即時驗證勾勾) -->
                     <div class="checkout-block">
@@ -360,7 +321,6 @@
                             </div>
 
                             <div class="shipping-method-toggle">
-                                <!-- ... (超商與宅配 Radio 按鈕不變) ... -->
                                 <label class="radio-label">
                                     <input type="radio" name="shipping_method" value="home" checked>
                                     <span class="custom-radio"></span>
@@ -373,7 +333,6 @@
                                 </label>
                             </div>
 
-                            <!-- ... (地址與下拉選單不變) ... -->
                             <div id="shipping-home-view">
                                 <input type="text" autocomplete="street-address" id="home-address-input" data-i18n-placeholder="co_ph_address" placeholder="詳細送貨地址 (Address / City / Postal code)" required>
                             </div>
@@ -415,20 +374,20 @@
                                 </label>
                             </div>
 
-                            <!-- 狀態 A：信用卡提示 (取代原本的輸入框) -->
+                            <!-- 狀態 A：信用卡提示 -->
                             <div id="payment-cc-view" class="payment-hint-box">
                                 <p data-i18n="co_cc_hint">點擊結帳後，系統將引導至安全加密的金流頁面進行付款。</p>
                             </div>
 
-                            <!-- 狀態 B：匯款提示 (取代原本的詳細帳號) -->
+                            <!-- 狀態 B：匯款提示 -->
                             <div id="payment-bank-view" class="payment-hint-box" style="display: none;">
                                 <p data-i18n="co_bank_hint">訂單成立後，將於下一頁提供專屬匯款帳號。</p>
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> <!-- ====== 左側區塊：結束 ====== -->
 
-                <!-- 4. 右側訂單摘要區 (加上 .glass-summary-card 類別) -->
+                <!-- ====== 右側：訂單摘要區 (加上 .glass-summary-card 類別) ====== -->
                 <div class="checkout-summary-area glass-summary-card">
                     <div class="summary-header">
                         <h3 class="serif-title" data-i18n="co_summary">Your order</h3>
@@ -730,7 +689,6 @@
             <div class="footer-col">
                 <h4 data-i18n="footer_social">了解我們</h4>
                 <ul class="footer-links">
-                    <!-- 加上 target="_blank" 與 rel="noopener noreferrer" 增強安全性 -->
                     <li><a href="https://www.instagram.com/lavendr_tw/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                     <li><a href="#" target="_blank" rel="noopener noreferrer">LINE Official</a></li>
                 </ul>
