@@ -206,19 +206,34 @@
                             <div class="img-wrapper"><img src="assets/mood-1.jpg" alt="留白示意圖"></div>
                             <h4 class="product-title" data-i18n="p1_title">【茶香】留白 (Blank Space) 禮盒 100ml</h4>
                             <p class="product-price">NT$ 1,280</p>
-                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <div class="mini-qty-control">
+                                <span onclick="event.stopPropagation(); adjustCardQty('p1', -1)">-</span>
+                                <span id="qty-p1">1</span>
+                                <span onclick="event.stopPropagation(); adjustCardQty('p1', 1)">+</span>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" onclick="event.stopPropagation(); addCardToCart('p1')" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p2')">
                             <div class="img-wrapper"><img src="assets/mood-2.jpg" alt="織眠示意圖"></div>
                             <h4 class="product-title" data-i18n="p2_title">【花香】織眠 (Woven Sleep) 禮盒 100ml</h4>
                             <p class="product-price">NT$ 1,280</p>
-                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <div class="mini-qty-control">
+                                <span onclick="event.stopPropagation(); adjustCardQty('p2', -1)">-</span>
+                                <span id="qty-p2">1</span>
+                                <span onclick="event.stopPropagation(); adjustCardQty('p2', 1)">+</span>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" onclick="event.stopPropagation(); addCardToCart('p2')" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p3')">
                             <div class="img-wrapper"><img src="assets/mood-3.jpg" alt="隅間示意圖"></div>
                             <h4 class="product-title" data-i18n="p3_title">【咖啡】隅間 (The Corner) 禮盒 100ml</h4>
                             <p class="product-price">NT$ 1,280</p>
-                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <div class="mini-qty-control">
+                                <span onclick="event.stopPropagation(); adjustCardQty('p3', -1)">-</span>
+                                <span id="qty-p3">1</span>
+                                <span onclick="event.stopPropagation(); adjustCardQty('p3', 1)">+</span>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" onclick="event.stopPropagation(); addCardToCart('p3')" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
 
@@ -228,25 +243,45 @@
                             <div class="img-wrapper"><img src="assets/product-4.png" alt="擴香棒"></div>
                             <h4 class="product-title" data-i18n="p4_title">擴香棒禮盒 10根+2朵裝飾紙花</h4>
                             <p class="product-price">NT$ 350</p>
-                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <div class="mini-qty-control">
+                                <span onclick="event.stopPropagation(); adjustCardQty('p4', -1)">-</span>
+                                <span id="qty-p4">1</span>
+                                <span onclick="event.stopPropagation(); adjustCardQty('p4', 1)">+</span>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" onclick="event.stopPropagation(); addCardToCart('p4')" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p5')">
                             <div class="img-wrapper"><img src="assets/product-5.jpg" alt="留白補充包"></div>
                             <h4 class="product-title" data-i18n="p5_title">【茶香】留白 (Blank Space) 補充包 100ml</h4>
                             <p class="product-price">NT$ 560</p>
-                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <div class="mini-qty-control">
+                                <span onclick="event.stopPropagation(); adjustCardQty('p5', -1)">-</span>
+                                <span id="qty-p5">1</span>
+                                <span onclick="event.stopPropagation(); adjustCardQty('p5', 1)">+</span>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" onclick="event.stopPropagation(); addCardToCart('p5')" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p6')">
                             <div class="img-wrapper"><img src="assets/product-6.jpg" alt="織眠補充包"></div>
                             <h4 class="product-title" data-i18n="p6_title">【花香】織眠 (Woven Sleep) 補充包 100ml</h4>
                             <p class="product-price">NT$ 560</p>
-                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <div class="mini-qty-control">
+                                <span onclick="event.stopPropagation(); adjustCardQty('p6', -1)">-</span>
+                                <span id="qty-p6">1</span>
+                                <span onclick="event.stopPropagation(); adjustCardQty('p6', 1)">+</span>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" onclick="event.stopPropagation(); addCardToCart('p6')" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                         <div class="product-card" onclick="openProduct('p7')">
                             <div class="img-wrapper"><img src="assets/product-7.jpg" alt="隅間補充包"></div>
                             <h4 class="product-title" data-i18n="p7_title">【咖啡】隅間 (The Corner) 補充包 100ml</h4>
                             <p class="product-price">NT$ 560</p>
-                            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <div class="mini-qty-control">
+                                <span onclick="event.stopPropagation(); adjustCardQty('p7', -1)">-</span>
+                                <span id="qty-p7">1</span>
+                                <span onclick="event.stopPropagation(); adjustCardQty('p7', 1)">+</span>
+                            </div>
+                            <button type="button" class="add-to-cart-btn" onclick="event.stopPropagation(); addCardToCart('p7')" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
                 </div>
@@ -268,7 +303,18 @@
                                 <p id="detail-notice"></p>
                             </div>
                             
-                            <button type="button" class="add-to-cart-btn detail-cart-btn" data-i18n="add_to_cart">加入購物車</button>
+                            <!-- ★ 新增：詳細頁面的數量選擇器 -->
+                            <div class="detail-qty-selector" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                                <span data-i18n="shop_qty" style="color: var(--text-light); font-size: 0.95rem;">數量 (Quantity)：</span>
+                                <div class="qty-control" style="border: 1px solid rgba(0,0,0,0.15) !important; padding: 0.3rem 0.8rem; border-radius: 4px; display: flex; align-items: center; gap: 1rem;">
+                                    <span onclick="adjustDetailQty(-1)" style="cursor: pointer; font-size: 1.2rem;">-</span>
+                                    <span id="detail-qty-value" style="font-size: 1rem; min-width: 20px; text-align: center;">1</span>
+                                    <span onclick="adjustDetailQty(1)" style="cursor: pointer; font-size: 1.2rem;">+</span>
+                                </div>
+                            </div>
+                            
+                            <!-- ★ 按鈕綁定新事件 -->
+                            <button type="button" class="add-to-cart-btn detail-cart-btn" onclick="addDetailToCart()" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
                 </div>
