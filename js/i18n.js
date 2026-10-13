@@ -137,6 +137,7 @@ const translations = {
         co_secure_payment: 'SSL 安全加密環境',
         co_cc_hint: '點擊結帳後，系統將引導至安全加密的金流頁面進行付款。',
         co_bank_hint: '訂單成立後，將於下一頁提供專屬匯款帳號。',
+        co_err_phone: '請輸入完整 10 位數電話號碼',
         
         // --- 會員系統 ---
         mem_nav_auth: "會員登入",
@@ -319,6 +320,7 @@ const translations = {
         co_secure_payment: 'SSL Secure Checkout',
         co_cc_hint: 'You will be redirected to a secure payment gateway after checkout.',
         co_bank_hint: 'Bank account details will be provided on the next page after checkout.',
+        co_err_phone: 'Please enter a valid 10-digit phone number.',
         
         // --- 會員系統 ---
         mem_nav_auth: "Login",
