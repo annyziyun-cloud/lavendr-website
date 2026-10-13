@@ -303,7 +303,6 @@
                                 <p id="detail-notice"></p>
                             </div>
                             
-                            <!-- ★ 新增：詳細頁面的數量選擇器 -->
                             <div class="detail-qty-selector" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
                                 <span data-i18n="shop_qty" style="color: var(--text-light); font-size: 0.95rem;">數量 (Quantity)：</span>
                                 <div class="qty-control" style="border: 1px solid rgba(0,0,0,0.15) !important; padding: 0.3rem 0.8rem; border-radius: 4px; display: flex; align-items: center; gap: 1rem;">
@@ -313,7 +312,6 @@
                                 </div>
                             </div>
                             
-                            <!-- ★ 按鈕綁定新事件 -->
                             <button type="button" class="add-to-cart-btn detail-cart-btn" onclick="addDetailToCart()" data-i18n="add_to_cart">加入購物車</button>
                         </div>
                     </div>
@@ -581,11 +579,20 @@
                                     <input type="text" autocomplete="name" data-i18n-placeholder="mem_ph_name" placeholder="姓名 (Name)" required>
                                 </div>
                                 
-                                <div class="input-group">
-                                    <input type="tel" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required>
+                                <div class="input-group" style="display: flex; gap: 0.8rem; position: relative;">
+                                    <input type="tel" id="reg-phone-input" autocomplete="tel" inputmode="numeric" data-i18n-placeholder="mem_ph_phone" placeholder="手機號碼 (Phone)" required style="flex: 1;">
+                                    <button type="button" id="send-otp-btn" class="editorial-btn" style="padding: 0 1rem; border-radius: 8px; margin: 0; white-space: nowrap;" data-i18n="mem_btn_send_otp">發送驗證碼</button>
                                 </div>
                                 
-                                <div class="input-group">
+                                <div class="input-group" style="position: relative;">
+                                    <input type="text" id="reg-otp-input" inputmode="numeric" maxlength="6" data-i18n-placeholder="mem_ph_otp" placeholder="輸入 6 位數驗證碼" required>
+                                    <div id="otp-success-msg" style="display: none; position: absolute; left: 0; bottom: -20px; color: #7b9e87; font-size: 0.8rem; align-items: center; gap: 0.3rem;">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        <span data-i18n="mem_otp_verified">號碼已驗證</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group" style="margin-top: 0.8rem;">
                                     <input type="text" autocomplete="bday" data-i18n-placeholder="mem_ph_birth" placeholder="生日 (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
                                 </div>
                                 
