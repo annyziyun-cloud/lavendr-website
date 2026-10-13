@@ -526,59 +526,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* --- H. 結帳頁：付款方式切換與信用卡格式化邏輯 --- */
-    // ★ 已正確包覆在 DOMContentLoaded 內，確保抓得到元素
+    /* --- G. 結帳頁：付款切換與即時驗證 (Inline Validation) --- */
     const radioCard = document.querySelector('input[value="credit_card"]');
     const radioBank = document.querySelector('input[value="bank_transfer"]');
     const viewCard = document.getElementById('payment-cc-view');
     const viewBank = document.getElementById('payment-bank-view');
-    
-    const ccNum = document.getElementById('cc-number');
-    const ccExp = document.getElementById('cc-exp');
-    const ccCvc = document.getElementById('cc-cvc');
 
+    // 1. 付款提示文字切換 (取代原本的必填欄位切換)
     if (radioCard && radioBank && viewCard && viewBank) {
         function togglePaymentView() {
             if (radioCard.checked) {
                 viewCard.style.display = 'block';
                 viewBank.style.display = 'none';
-                if(ccNum) ccNum.setAttribute('required', 'true');
-                if(ccExp) ccExp.setAttribute('required', 'true');
-                if(ccCvc) ccCvc.setAttribute('required', 'true');
             } else {
                 viewCard.style.display = 'none';
                 viewBank.style.display = 'block';
-                if(ccNum) ccNum.removeAttribute('required');
-                if(ccExp) ccExp.removeAttribute('required');
-                if(ccCvc) ccCvc.removeAttribute('required');
             }
         }
         radioCard.addEventListener('change', togglePaymentView);
         radioBank.addEventListener('change', togglePaymentView);
+    }
 
-        if (ccNum) {
-            ccNum.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, ''); 
-                let formatted = value.match(/.{1,4}/g); 
-                e.target.value = formatted ? formatted.join(' ') : '';
-            });
-        }
+    // 2. 表單即時驗證 (Blur Event)
+    const nameInput = document.getElementById('shipping-name');
+    const phoneInput = document.getElementById('shipping-phone');
 
-        if (ccExp) {
-            ccExp.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length >= 2) {
-                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
-                }
-                e.target.value = value;
-            });
-        }
+    if (nameInput) {
+        nameInput.addEventListener('blur', function() {
+            if (this.value.trim().length >= 2) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            } else if (this.value.trim().length > 0) {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+            } else {
+                // 若空白則重置狀態
+                this.classList.remove('is-valid', 'is-invalid');
+            }
+        });
+    }
 
-        if (ccCvc) {
-            ccCvc.addEventListener('input', function(e) {
-                e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
-            });
-        }
+    if (phoneInput) {
+        phoneInput.addEventListener('blur', function() {
+            // 簡單正則驗證：台灣手機 09 開頭共 10 碼，或是市話格式
+            const phoneRegex = /^(09\d{8}|0\d{1,2}\d{6,8})$/;
+            const val = this.value.replace(/\D/g, ''); // 濾掉符號
+            
+            if (phoneRegex.test(val)) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            } else if (this.value.trim().length > 0) {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+            } else {
+                this.classList.remove('is-valid', 'is-invalid');
+            }
+        });
     }
 
     // ★ 結帳頁「登入/註冊」按鈕精準跳轉至會員系統
@@ -606,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --- I. 啟動與初始化 --- */
+    /* --- H. 啟動與初始化 --- */
     window.addEventListener('popstate', () => navigateTo(window.location.hash));
     navigateTo(window.location.hash);
     updateLanguage(currentLang);
