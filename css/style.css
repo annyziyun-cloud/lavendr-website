@@ -247,7 +247,6 @@ body {
 .product-title {
     font-size: 0.95rem; font-weight: 400; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.6; letter-spacing: 1px;
 }
-
 .product-price { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.2rem; letter-spacing: 1px; }
 .add-to-cart-btn {
     background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark);
@@ -291,7 +290,6 @@ body {
 .member-anchor-nav .anchor-link:hover { color: var(--text-dark); }
 .member-section-block { margin-bottom: 8rem; }
 
-/* --- 會員系統的卡片佈局 --- */
 .member-section-block.split-layout {
     display: flex; flex-direction: row; background: linear-gradient(135deg, #efebe4 0%, #f7f5f0 100%);
     border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
@@ -355,8 +353,6 @@ body {
 .stat-link h4 { margin-top: 0; color: var(--text-dark); transition: color 0.3s ease; }
 .stat-link:hover { transform: translateX(5px); }
 .stat-link:hover h4 { color: #a39587; }
-.outline-btn { background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark); padding: 0.8rem 2rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; letter-spacing: 1px;}
-.outline-btn:hover { background: var(--text-dark); color: #fff; }
 
 .tiers-stack { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
 .tier-horizontal-card { display: flex; flex-direction: row; align-items: center; background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 16px; padding: 3.5rem 4rem; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03); transition: transform 0.4s ease, box-shadow 0.4s ease; }
@@ -463,7 +459,7 @@ body {
 
 
 /* =========================================
-   11. 結帳與購物車頁面 (Checkout - 高級編輯風格)
+   11. 結帳與購物車頁面 (Checkout)
    ========================================= */
 .checkout-section {
     background-color: var(--bg-color); 
@@ -482,7 +478,6 @@ body {
 .checkout-progress-bar .active { color: var(--text-dark); font-weight: 600; }
 .checkout-progress-bar .separator { margin: 0 1rem; font-weight: 300; }
 
-/* 乾淨、穩定的左右並排佈局 */
 .checkout-grid-container {
     display: flex;
     flex-direction: row; 
@@ -493,149 +488,60 @@ body {
     width: 100%;
 }
 
-/* 明確設定左右佔比 */
-.checkout-forms-area { 
-    width: 55%; 
-}
-.checkout-summary-area { 
-    width: 38%;
-    position: sticky; 
-    top: 120px; 
-}
-/* === 結帳頁：訂單摘要懸浮毛玻璃 === */
+.checkout-forms-area { width: 55%; }
+.checkout-summary-area { width: 38%; position: sticky; top: 120px; }
+
+/* 訂單摘要懸浮毛玻璃卡片 */
 .checkout-summary-area.glass-summary-card {
     background: rgba(255, 255, 255, 0.85) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
     border: 1px solid rgba(255, 255, 255, 0.6) !important;
     border-radius: 16px !important;
-    padding: 3rem 2.5rem !important; /* 增加內距讓卡片有呼吸感 */
+    padding: 3rem 2.5rem !important; 
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* === 付款方式 Trust Signals 與提示框 === */
-.payment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 2rem;
-}
-.payment-header .serif-title { margin-bottom: 0; }
-.trust-signals {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #8D8B85;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-}
-.payment-hint-box {
-    background: rgba(247, 245, 240, 0.7);
-    padding: 1.5rem;
-    border-left: 2px solid #8D8B85;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    border-radius: 0 4px 4px 0;
-}
-
-/* === 即時驗證 (Inline Validation) 樣式 === */
-.input-wrapper {
-    position: relative;
-    width: 100%;
-    flex: 1; 
-}
-.validation-icon {
-    position: absolute;
-    right: 0;
-    top: 15px; 
-    width: 16px;
-    height: 16px;
-    display: none;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-/* 成功：低調綠色底線 + 勾勾 SVG */
-.checkout-form input.is-valid { border-bottom-color: #7b9e87 !important; }
-.checkout-form input.is-valid + .validation-icon {
-    display: block;
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%237b9e87" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>');
-}
-
-/* 失敗：莫蘭迪淺磚紅底線 + 叉號 SVG */
-.checkout-form input.is-invalid { border-bottom-color: #c98a83 !important; }
-.checkout-form input.is-invalid + .validation-icon {
-    display: block;
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%23c98a83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
-}
-
-/* 失敗提示文字 */
-.error-text {
-    display: none; /* 預設隱藏 */
-    position: absolute;
-    left: 0;
-    top: 46px; /* 精準卡在 input 下方的留白處 */
-    font-size: 0.75rem;
-    color: #c98a83;
-    letter-spacing: 0.5px;
-}
-/* 當 input 擁有 is-invalid 時，顯示後方的提示文字 */
-.checkout-form input.is-invalid ~ .error-text {
-    display: block;
-    animation: fadeIn 0.3s ease-out;
+.checkout-block { margin-bottom: 4rem; }
+.checkout-block .serif-title {
+    font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-dark);
+    font-weight: 400; border-bottom: none; padding-bottom: 0;
 }
 
 .guest-subtitle { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; }
 
-/* === 極簡底線輸入框 === */
+/* 極簡底線輸入框 */
 .checkout-form .input-row { display: flex; gap: 2rem; }
 .checkout-form input {
-    width: 100%;
-    padding: 0.8rem 0;
-    margin-bottom: 2rem;
-    border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
-    background: transparent;
-    border-radius: 0;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text-dark);
+    width: 100%; padding: 0.8rem 0; margin-bottom: 2rem; border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent;
+    border-radius: 0; font-family: inherit; font-size: 0.95rem; color: var(--text-dark);
     transition: border-color 0.3s ease;
 }
 .checkout-form input::placeholder { color: #999; font-weight: 300; letter-spacing: 0.5px; }
-.checkout-form input:focus { 
-    outline: none; 
-    border-bottom: 1px solid var(--text-dark); 
-    box-shadow: none; 
-    background: transparent; 
-}
+.checkout-form input:focus { outline: none; border-bottom: 1px solid var(--text-dark); background: transparent; }
 
-/* === 運送方式單選按鈕 === */
-.shipping-method-toggle {
-    display: flex; gap: 2.5rem; margin-bottom: 2rem;
-}
-.radio-label {
-    display: flex; align-items: center; gap: 0.6rem; cursor: pointer;
-    font-size: 0.9rem; color: var(--text-dark);
-}
+/* 即時驗證 (Inline Validation) 樣式 */
+.input-wrapper { position: relative; width: 100%; flex: 1; }
+.validation-icon { position: absolute; right: 0; top: 15px; width: 16px; height: 16px; display: none; background-size: contain; background-repeat: no-repeat; }
+.checkout-form input.is-valid { border-bottom-color: #7b9e87 !important; }
+.checkout-form input.is-valid + .validation-icon { display: block; background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%237b9e87" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>'); }
+.checkout-form input.is-invalid { border-bottom-color: #c98a83 !important; }
+.checkout-form input.is-invalid + .validation-icon { display: block; background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%23c98a83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'); }
+.error-text { display: none; position: absolute; left: 0; top: 46px; font-size: 0.75rem; color: #c98a83; letter-spacing: 0.5px; }
+.checkout-form input.is-invalid ~ .error-text { display: block; animation: fadeIn 0.3s ease-out; }
+
+/* 運送方式單選按鈕 */
+.shipping-method-toggle { display: flex; gap: 2.5rem; margin-bottom: 2rem; }
+.radio-label { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.9rem; color: var(--text-dark); }
 .radio-label input[type="radio"] { display: none; }
-.custom-radio {
-    width: 14px; height: 14px; border: 1px solid #aaa; border-radius: 50%;
-    display: inline-block; position: relative; transition: border-color 0.3s ease;
-}
+.custom-radio { width: 14px; height: 14px; border: 1px solid #aaa; border-radius: 50%; display: inline-block; position: relative; transition: border-color 0.3s ease; }
 .radio-label input[type="radio"]:checked + .custom-radio { border-color: var(--text-dark); }
-.radio-label input[type="radio"]:checked + .custom-radio::after {
-    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 6px; height: 6px; background: var(--text-dark); border-radius: 50%;
-}
+.radio-label input[type="radio"]:checked + .custom-radio::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 6px; height: 6px; background: var(--text-dark); border-radius: 50%; }
 
-/* === 極簡下拉選單 === */
+/* 極簡下拉選單 */
 .checkout-form select {
-    width: 100%; padding: 0.8rem 0; margin-bottom: 2rem; border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent; border-radius: 0;
-    font-family: inherit; font-size: 0.95rem; color: var(--text-dark); transition: border-color 0.3s ease; cursor: pointer;
-    appearance: none; -webkit-appearance: none;
+    width: 100%; padding: 0.8rem 0; margin-bottom: 2rem; border: none; border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent; border-radius: 0; font-family: inherit; font-size: 0.95rem; color: var(--text-dark); transition: border-color 0.3s ease; cursor: pointer; appearance: none; -webkit-appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="%23333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     background-repeat: no-repeat; background-position: right center; background-size: 16px;
 }
@@ -644,22 +550,27 @@ body {
 .checkout-form select option { color: var(--text-dark); }
 .checkout-form select:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* === 連結與按鈕 === */
-.editorial-link {
-    display: inline-block; font-size: 0.85rem; color: var(--text-light); text-decoration: none;
-    border-bottom: 1px solid var(--text-light); padding-bottom: 2px; transition: all 0.3s ease; letter-spacing: 1px;
-}
+/* 付款方式提示框 */
+.payment-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; }
+.payment-header .serif-title { margin-bottom: 0; }
+.trust-signals { display: flex; align-items: center; gap: 0.5rem; color: #8D8B85; font-size: 0.8rem; letter-spacing: 0.5px; }
+.payment-hint-box { background: rgba(247, 245, 240, 0.7); padding: 1.5rem; border-left: 2px solid #8D8B85; color: var(--text-light); font-size: 0.9rem; letter-spacing: 0.5px; border-radius: 0 4px 4px 0; }
+.bank-info-box { background-color: transparent; border: 1px solid rgba(0,0,0,0.1); padding: 1.8rem 2rem; border-left: 2px solid var(--text-dark); margin-bottom: 2rem; }
+.bank-notice { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px; }
+.bank-details p { font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.8rem; display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(0,0,0,0.05); padding-bottom: 0.8rem; }
+.bank-details p:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.bank-details span { color: var(--text-light); }
+.bank-details strong { font-family: 'Lato', sans-serif; font-weight: 600; letter-spacing: 1.5px; }
+
+/* 連結與按鈕 */
+.editorial-link { display: inline-block; font-size: 0.85rem; color: var(--text-light); text-decoration: none; border-bottom: 1px solid var(--text-light); padding-bottom: 2px; transition: all 0.3s ease; letter-spacing: 1px; }
 .editorial-link:hover { color: var(--text-dark); border-color: var(--text-dark); }
 .editorial-link.small { font-size: 0.75rem; border: none; text-decoration: underline; }
-
-.editorial-btn {
-    background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark);
-    padding: 1rem 2rem; font-size: 0.85rem; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;
-}
+.editorial-btn { background: transparent; border: 1px solid var(--text-dark); color: var(--text-dark); padding: 1rem 2rem; font-size: 0.85rem; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; }
 .editorial-btn:hover { background: var(--text-dark); color: #fff; }
 .editorial-btn.full-width { width: 100%; margin-top: 2rem; padding: 1.2rem; }
 
-/* === 訂單摘要區 === */
+/* 訂單摘要區 */
 .summary-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2.5rem; }
 .summary-header .serif-title { margin: 0; font-size: 1.5rem; }
 
@@ -670,10 +581,7 @@ body {
 .cart-item-info p { margin: 0 0 0.5rem 0; font-size: 0.85rem; color: var(--text-light); }
 .cart-item-price { font-size: 0.9rem; font-weight: 500; }
 
-.qty-control {
-    border: none !important; margin-top: 0.5rem; color: var(--text-light); font-size: 0.85rem;
-    display: flex; align-items: center; gap: 0.5rem;
-}
+.qty-control { border: none !important; margin-top: 0.5rem; color: var(--text-light); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
 .qty-control span[onclick] { font-size: 1.1rem; cursor: pointer; }
 
 .cart-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; }
@@ -681,7 +589,6 @@ body {
 .remove-text-btn:hover { color: var(--text-dark); }
 
 .thin-divider { border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 2rem 0; }
-
 .discount-inputs .input-with-btn { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-end; }
 .discount-inputs input { margin-bottom: 0; flex: 1; padding: 0.8rem 0; border-radius: 0; }
 .discount-inputs .editorial-btn { padding: 0.6rem 1.5rem; }
@@ -699,7 +606,7 @@ body {
     .story-upper { flex-direction: column; gap: 3rem; }
     .story-upper-right { padding-top: 2rem; }
 
-   /* 結帳區 RWD 微調 (平板與手機版改為上下排列) */
+    /* 結帳區 RWD 微調 */
     .checkout-grid-container { 
         flex-direction: column; 
         gap: 4rem; 
@@ -712,13 +619,12 @@ body {
         top: 0; 
     }
 }
+
 @media (max-width: 768px) {
     .nav-links { display: none; }
     
     .hero-section::after { background: rgba(255, 255, 255, 0.4); }
-    .hero-content {
-        left: 50%; transform: translate(-50%, -50%); text-align: center; width: 90%;
-    }
+    .hero-content { left: 50%; transform: translate(-50%, -50%); text-align: center; width: 90%; }
     .hero-content h2 { font-size: 1.8rem; }
     
     .event-row, .event-row.reverse { flex-direction: column-reverse; }
