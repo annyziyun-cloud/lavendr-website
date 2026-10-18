@@ -620,7 +620,8 @@ const productData = {
     'p4': { price: 350, nameZh: '擴香棒禮盒 10根+2朵裝飾紙花', nameEn: 'Diffuser Reeds Set', productImg: 'assets/product-4.png', noticeKey: 'notice_sticks' }, 
     'p5': { price: 560, nameZh: '【茶香】留白 (Blank Space) 補充包 100ml', nameEn: 'Blank Space Refill 100ml', productImg: 'assets/product-5.jpg', noticeKey: 'notice_refill' },
     'p6': { price: 560, nameZh: '【花香】織眠 (Woven Sleep) 補充包 100ml', nameEn: 'Woven Sleep Refill 100ml', productImg: 'assets/product-6.jpg', noticeKey: 'notice_refill' },
-    'p7': { price: 560, nameZh: '【咖啡】隅間 (The Corner) 補充包 100ml', nameEn: 'The Corner Refill 100ml', productImg: 'assets/product-7.jpg', noticeKey: 'notice_refill' }
+    'p7': { price: 560, nameZh: '【咖啡】隅間 (The Corner) 補充包 100ml', nameEn: 'The Corner Refill 100ml', productImg: 'assets/product-7.jpg', noticeKey: 'notice_refill' },
+    'p8': { price: 800, nameZh: '新年限定隨身香囊 三入禮盒組', nameEn: 'Happy Lunar New Year: Portable Sachet Trio Gift Set', moodImg: 'assets/mood-4.jpg', productImg: 'assets/product-8.jpg', noticeKey: 'notice_sachet' }
 };
 
 // 詳細頁面的數量狀態
