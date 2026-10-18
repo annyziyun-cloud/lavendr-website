@@ -59,11 +59,14 @@ const translations = {
         p6_desc: "（補充包）如同剛洗過的亞麻布一樣，散發著微風拂過後陽光晾曬的清新氣息。感覺就像被厚厚的羊毛毯輕輕包裹——純淨而無比柔軟。",
         p7_title: "【咖啡】隅間 (The Corner) 補充包 100ml",
         p7_desc: "（補充包）在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。",
+        p8_title: '新年限定隨身香囊 三入禮盒組',
+        p8_desc: '這是一份關於日常陪伴的溫暖心意。我們將三種截然不同的氣味，收納進帶著樸實觸感的印花棉麻小袋中。將它們掛在床頭、衣櫃或是常背的包包上，讓這些溫潤的氣息如同隱形的守護者，在每個不經意的瞬間，輕輕接住你的疲憊，為生活帶來深深的慰藉。',
 
-        // --- 三種不同的注意事項 (中文) ---
+        // --- 不同的注意事項 (中文) ---
         notice_gift: "擴香瓶系列產品為維持香氣品質並防止運送過程中液體外漏，我們採用安全的防光分裝包裝（補充包）形式出貨。禮盒內含總容量 100ml 之擴香液，並無額外附贈補充包。建議您收到後，再緩緩倒入擴香瓶中。",
         notice_sticks: "本禮盒含十根擴香棒與兩朵手工紙花。為確保最佳的擴香效果，建議初次使用時將擴香棒上下顛倒浸泡2-3分鐘，讓纖維充分吸收香氛。若感覺香氣變淡，可能為擴香棒的孔隙被灰塵填滿，導致吸附與揮發能力下降，建議 1 到 2 個月更換一次使用。",
         notice_refill: "本產品為擴香液補充包，無附贈擴香瓶。為確保香氣純粹，建議您保存置陰涼處。在注入不同香味前，請先將原有的擴香瓶清洗並完全晾乾，或直接更換全新擴香棒，以免破壞您的香氛體驗。",
+        notice_sachet: '香囊內部裝載高分子 EVA 擴香珠，香氣已完整吸附其中，不需要自行滴加精油或頻繁更換。依照空間大小，香氣約能維持 1 到 2 個月。當香氣漸漸淡去，可直接將內部的擴香珠清空，便能用來收納護唇膏、耳機或隨身飾品。',
 
         // --- 客服與政策 ---
         support_main_title: "客服與政策",
@@ -242,12 +245,15 @@ const translations = {
         p6_desc: "(Refill) Like freshly washed linen, it carries the crisp, sun-dried scent of a gentle breeze. It feels just like being gently wrapped in a thick wool blanket—pure and incredibly soft.",
         p7_title: "[ Coffee ] The Corner Refill 100ml",
         p7_desc: "(Refill) Tucked away in an old wooden house on the city's edge, the noise simply fades away. There is only the subtle bitterness of light-roast coffee, grounded by the deep, woody undertones of dry vetiver.",
-
-        // --- 三種不同的注意事項 (英文) ---
+        p8_title: 'Happy Lunar New Year: Portable Sachet Trio Gift Set',
+        p8_desc: 'This is a heartwarming gift designed for everyday companionship. We’ve thoughtfully tucked three distinctly different scents into printed cotton-linen pouches that offer a natural, rustic touch. Hang them by your bedside, in your wardrobe, or on your everyday bag. Let these warm, soothing aromas act as your invisible guardians—ready to gently catch your fatigue in unexpected moments and bring a profound sense of comfort to your daily life.',
+        
+        // --- 不同的注意事項 (英文) ---
         notice_gift: "To ensure the highest fragrance quality and prevent leakage during transit, our diffuser liquids are securely packed in refill pouches. The gift set includes a total of 100ml of fragrance (no additional refill included). Upon receiving, simply pour the liquid into your diffuser bottle.",
         notice_sticks: "For optimal fragrance diffusion, we recommend flipping the reed sticks upside down upon first use to allow the fibers to fully absorb the scent. If the fragrance fades, regularly invert the sticks or replace them with new ones.",
         notice_refill: "This eco-friendly refill pouch is designed to prolong your fragrance experience. To ensure scent purity, we recommend washing and thoroughly drying your diffuser bottle, or using new reed sticks, before switching to a different fragrance.",
-        
+        notice_sachet: 'The sachets are filled with high-polymer EVA aroma beads fully infused with fragrance, requiring no additional essential oils or frequent replacements. Depending on the space size, the scent lasts about 1 to 2 months. Once the fragrance fades, simply empty the beads to repurpose the pouch for storing lip balm, earphones, or small accessories.',
+
         // --- Support & Policy ---
         support_main_title: "Support & Policy",
         support_intro: "Welcome to Lavend/r.<br>To ensure you have the best shopping experience, please take a moment to read our policies before placing an order. If you have any questions, our team is always here to help.",
