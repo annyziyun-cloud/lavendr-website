@@ -61,7 +61,13 @@ const translations = {
         p7_desc: "（補充包）在城郊一棟古老的木屋裡，喧囂漸漸遠去。只有淡淡的烘焙咖啡的微苦，被乾香根草深沉的木質氣息所襯托。",
         p8_title: '新年限定隨身香囊<br>三入禮盒組',
         p8_desc: '這是一份關於日常陪伴的心意。三種截然不同的氣味，收納進帶著樸實觸感的印花棉麻小袋中。將它們掛在床頭、衣櫃或是常背的包包上，讓這些溫潤的氣息如同隱形的守護者，在每個不經意的瞬間，輕輕接住你的疲憊，為生活帶來深深的慰藉。',
-
+        p9_title: '隨身香囊 - 凌寒迎新',
+        p9_desc: '彷彿在冷冽的冬夜裡，披上一件帶有陽光餘溫的厚實針織開衫——溫潤且令人無比安心。琥珀的暖意與沉穩的木質香氣相互交織，像是一雙溫柔的手，輕輕包覆著你所有的不安。點綴其中的冷幽梅香，不甜不膩，如同隱形的防護網，為你在疲憊的寒冬中，帶來一股安穩又堅定的力量與深深的安全感。',
+        p10_title: '隨身香囊 - 幽蘭逢春',
+        p10_desc: '這是一個非常乾淨、沒有侵略性的味道。以清透的白茶為基底，揉合了淡淡的蘭花，以及一點早晨草地般的微涼綠意。聞起來就像是剛洗完澡後，留在皮膚上的清爽感，或是週末早晨打開窗戶吹進來的第一陣微風。',
+        p11_title: '隨身香囊 - 歲月芬芳',
+        p11_desc: '就像秋日午後那一抹和煦的暖陽，灑在泛黃的書頁上，散發著熟悉且令人完全放鬆的溫度。烘焙烏龍的茶香底蘊搭配微甜的桂花，宛如一杯剛捧在手心裡的溫熱好茶——甘潤、恬靜而不膩口。這股氣息像是許久不見的老友給予的一個溫暖擁抱，輕柔地托住你的疲憊，讓所有的緊繃都在茶香中慢慢化解。',
+        
         // --- 不同的注意事項 (中文) ---
         notice_gift: "擴香瓶系列產品為維持香氣品質並防止運送過程中液體外漏，我們採用安全的防光分裝包裝（補充包）形式出貨。禮盒內含總容量 100ml 之擴香液，並無額外附贈補充包。建議您收到後，再緩緩倒入擴香瓶中。",
         notice_sticks: "本禮盒含十根擴香棒與兩朵手工紙花。為確保最佳的擴香效果，建議初次使用時將擴香棒上下顛倒浸泡2-3分鐘，讓纖維充分吸收香氛。若感覺香氣變淡，可能為擴香棒的孔隙被灰塵填滿，導致吸附與揮發能力下降，建議 1 到 2 個月更換一次使用。",
@@ -247,6 +253,12 @@ const translations = {
         p7_desc: "(Refill) Tucked away in an old wooden house on the city's edge, the noise simply fades away. There is only the subtle bitterness of light-roast coffee, grounded by the deep, woody undertones of dry vetiver.",
         p8_title: 'Happy Lunar New Year: Portable Sachet Trio Gift Set',
         p8_desc: 'This is a heartwarming gift designed for everyday companionship. We’ve thoughtfully tucked three distinctly different scents into printed cotton-linen pouches that offer a natural, rustic touch. Hang them by your bedside, in your wardrobe, or on your everyday bag. Let these warm, soothing aromas act as your invisible guardians—ready to gently catch your fatigue in unexpected moments and bring a profound sense of comfort to your daily life.',
+        p9_title: 'Portable Sachet - Winter Blossom',
+        p9_desc: 'It feels like slipping on a thick, sun-warmed knit cardigan on a freezing winter night—gentle and deeply reassuring. The warmth of amber intertwines with grounding woody notes, acting like a tender pair of hands soothing away your worries. Accented by the cool, subtle elegance of plum blossom—neither too sweet nor cloying—it serves as an invisible shield, offering steady, comforting strength and a profound sense of security during exhausting winters.',
+        p10_title: 'Portable Sachet - Spring Awakening',
+        p10_desc: 'This is an incredibly clean and unobtrusive scent. Built on a base of crystal-clear white tea, it blends delicate hints of orchid with a refreshing, cool green note reminiscent of a dewy morning lawn. It smells exactly like that crisp, fresh-out-of-the-shower feeling, or the very first gentle breeze rolling in when you open the window on a weekend morning.',
+        p11_title: 'Portable Sachet - Timeless Comfort',
+        p11_desc: 'This scent is like the gentle afternoon sun in autumn spilling over the yellowed pages of a book—radiating a familiar, deeply relaxing warmth. A base of roasted oolong paired with mildly sweet osmanthus feels just like cradling a warm cup of fine tea in your hands—smooth, serene, and perfectly balanced. The aroma wraps around you like a warm hug from an old friend, gently carrying your fatigue and letting all your tension slowly melt away into the fragrant tea notes.',
         
         // --- 不同的注意事項 (英文) ---
         notice_gift: "To ensure the highest fragrance quality and prevent leakage during transit, our diffuser liquids are securely packed in refill pouches. The gift set includes a total of 100ml of fragrance (no additional refill included). Upon receiving, simply pour the liquid into your diffuser bottle.",
